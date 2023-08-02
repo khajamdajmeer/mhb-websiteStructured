@@ -15,6 +15,8 @@ app.use('/api/client',require('./ApiRoutes/ClientRoutes/Request'))
 app.use('/api/admin',require('./ApiRoutes/AdminRoutes/Sign_up_in'))
 //route for admin accessing client request DB
 app.use('/api/admin',require('./ApiRoutes/AdminRoutes/ClientRequests'))
+//route for admin to create a new emplooy
+app.use('/api/admin',require('./ApiRoutes/AdminRoutes/Emplooy'))
 
 
 

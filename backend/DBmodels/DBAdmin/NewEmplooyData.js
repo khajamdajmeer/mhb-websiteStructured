@@ -28,19 +28,13 @@ const Emplooy_Schema = new Schema({
         type:String,
         require:true
     },
-    // photo:{
-    //     type:Buffer,
-    //     require:true
-    // },
+  
     AdharNumber:{
         type:Number,
         require:true,
         unique:true
     },
-    // AdharScan:{
-    //     type:Buffer,
-    //     require:true
-    // },
+  
     presentAdress:{
         type:String,
         require:true
