@@ -18,6 +18,11 @@ app.use('/api/admin',require('./ApiRoutes/AdminRoutes/ClientRequests'))
 //route for admin to create a new emplooy
 app.use('/api/admin',require('./ApiRoutes/AdminRoutes/Emplooy'))
 
+//route for the emplooy if they forgot password and this will also work as the create password by verifiing the email
+app.use('/api/emplooy',require('./ApiRoutes/CommonRoutes/EmplooyPassword'))
+//route for the manager for the process of teh user requests
+app.use('/api/manager',require('./ApiRoutes/ManagerRoutes/Requests'))
+
 
 
 app.listen(port,(err)=>{

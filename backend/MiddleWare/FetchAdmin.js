@@ -2,8 +2,9 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const JWT_SECRET = process.env.REACT_JWT_TOKEN;
-
-const FetchAdmin = (req,res,next)=>{
+const AdminDB = require('../DBmodels/DBAdmin/AdminSignup')
+const mongoose = require('mongoose')
+const FetchAdmin = async(req,res,next)=>{
     const token = req.header('auth-token');
     if(!token){
        return res.status(401).send({message:"Token Doesn't exists"})
@@ -11,11 +12,11 @@ const FetchAdmin = (req,res,next)=>{
     try{
         const data = jwt.verify(token,JWT_SECRET);
         req.user = data.isadmin._id;
+        const isvalid = await AdminDB.findById(req.user)
 
         next();
     }
     catch(error){
-        console.log(error)
         res.status(401).send({message:'error occured',...error})
      }
 }

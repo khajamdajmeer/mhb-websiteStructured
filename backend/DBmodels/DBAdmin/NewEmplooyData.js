@@ -15,13 +15,13 @@ const Emplooy_Schema = new Schema({
     mobilenumber:{
         type:Number,
         require:true,
-        unique:true
+        // unique:true
 
     },
     email:{
         type:String,
         require:true,
-        unique:true
+        // unique:true
 
     },
     joiningdate:{
