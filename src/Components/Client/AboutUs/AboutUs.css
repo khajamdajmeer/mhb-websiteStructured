@@ -54,6 +54,9 @@ font-weight: bold;
 
 
 @media (max-width: 768px) {
+  .centerright{
+    display: none;
+  }
 
     .containercenter{
         flex-direction: column-reverse;

@@ -36,9 +36,9 @@ const AboutUs = () => {
             Fast Service 2
           </div>
         </div>
-        {/* <div className="centerright center-sides">
+        <div className="centerright center-sides">
           <img src={adimg} alt="" />
-        </div> */}
+        </div>
       </div>
     </div>
 

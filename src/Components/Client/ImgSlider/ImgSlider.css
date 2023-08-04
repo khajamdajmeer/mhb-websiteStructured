@@ -12,6 +12,7 @@
    text-align: center;
     animation-name: fade;
     animation-duration: 2s;
+    
   }
   .fade img{
     z-index: -1;
@@ -69,6 +70,9 @@
     /* .slideshow-container{
         height: 25vh;
     } */
+    .fade{
+      height: vh;
+    }
 
     .fade img{
        

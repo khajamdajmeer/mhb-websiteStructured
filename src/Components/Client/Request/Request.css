@@ -1,0 +1,85 @@
+
+.services-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0px;
+    background: whitesmoke;
+  }
+    /* @import url('https://fonts.googleapis.com/css2?family=Exo+2&family=Rajdhani:wght@600&display=swap'); */
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
+  
+  .ipbox {
+    padding: 4px 0px;
+  width: 500px;
+  display: flex;
+  font-family: 'Outfit', sans-serif;
+  }
+  
+  .ipbox label{
+    width: 150px;
+  }
+  
+  .ipbox input,
+  select {
+    padding: 5px 0px;
+    border-radius: 5px;
+    border-style: none;
+    border: 1px solid #023047;
+    text-transform: capitalize;
+    width: 300px;
+    text-align: center;
+  
+  }
+  #ncolumn{
+  grid-column: span 3;
+  }
+  
+  .reqlabel {
+    font-weight: bold;
+    /* color: #023e8a; */
+    text-transform: uppercase;
+  }
+  
+  
+  
+  .iptextbox {
+    padding-bottom: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+    color: #023e8a;
+    text-transform: uppercase;
+  }
+  
+  .ipbox select {
+    text-transform: capitalize;
+    /* font-size: 20px; */
+    font-weight: 500;
+  }
+  
+  .displaynone {
+    opacity: 0;
+  }
+  .requppercase{
+    text-transform: uppercase  !important; 
+  }
+  
+  .ipsubbox button {
+    padding: 6px 9px;
+    width: 300px;
+    font-weight: bold;
+    text-transform: capitalize;
+    background: #fb8500;
+    border: none;
+    color: rgb(0, 0, 0);
+    box-shadow: 3.5px 3.5px 2.5px #005066;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 3px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 3px;
+  }
+   .ipsubbox button[disabled]{
+    background: #d6ccc2;
+   }
