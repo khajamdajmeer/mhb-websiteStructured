@@ -1,0 +1,74 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap');
+.aboutcontainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #90e0ef;
+  font-family: 'Sawarabi Mincho', serif;
+  text-transform: capitalize;
+  
+}
+.containercenter{
+  width: 80%;
+  height: inherit;
+  display: flex;
+}
+.centerleft{
+  width: 55%;
+  padding: 20px 30px;
+  background-color: #90e0ef;
+}
+.abouthead{
+  font-size: 22px;
+  padding: 5px 0px;
+}
+.aboutdiscription{
+  font-size: 40px;
+  padding: 10px 0px;
+font-weight: bold;
+}
+.aboutquality{
+  font-size: 22px;
+  margin: 10px 0px;
+
+}
+.tickbackground{
+  padding: 0 6px;
+  background-color: #005066;
+  margin-right: 8px;
+  color: ghostwhite;
+  font-weight: bold;
+}
+.centerright{
+  background-color: #90e0ef;
+
+}
+.centerright img{
+  background-color: #90e0ef;
+  height: 90%;
+  border-bottom-left-radius: 10px;
+}
+
+
+
+@media (max-width: 768px) {
+
+    .containercenter{
+        flex-direction: column-reverse;
+    }
+    .aboutdiscription{
+        font-size: 25px;
+    }
+    .aboutquality{
+        font-size: 18px;
+    }
+    .centerleft{
+        width: auto;
+        padding: 10px 3px;
+    }
+    .centerright{
+        height: 60vh;
+    }
+}

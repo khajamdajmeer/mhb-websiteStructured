@@ -1,0 +1,79 @@
+.navbar {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: ghostwhite;
+    text-transform: capitalize;
+    
+  }
+  
+  .navleft {
+    display: inline-block;
+    padding-left: 20px;
+    height: inherit;
+    scale: 0.8;
+  }
+  
+  .navright {
+    display: inline-block;
+    height: inherit;
+  }
+  
+  .navleft img {
+    height: inherit;
+    border-radius: 40%;
+  }
+  
+  .listright {
+    list-style-type: none;
+    display: flex;
+    height: inherit;
+  }
+  
+  .listright li {
+    /* padding: 0 40px; */
+    padding-right: 30px;
+    display: flex;
+    align-items: center;
+    height: inherit;
+  }
+  
+  .lileft {
+    height: inherit;
+    /* background-color: orange; */
+    background-color: #fb8500;
+    border-radius: 50%;
+    scale: 0.7;
+  
+  }
+  
+  .lileft img {
+    height: inherit;
+    scale: 0.6;
+    /* filter: invert(1); */
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+  
+  .liright {
+    font-family: 'Concert One', cursive;
+  }
+  
+  .orangecolor {
+    color: #fb8500;
+  }
+
+  @media (max-width: 768px) {
+   
+
+    .navleft img{
+      display: none;
+    }
+    #location{
+      display: none;
+    }
+    #email{
+      display: none;
+    }
+  }

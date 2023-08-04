@@ -1,0 +1,90 @@
+.slideshow-container{
+
+    position: relative;
+  justify-content: center;
+    margin: auto;
+  background-color: #90e0ef;
+
+  }
+  
+  .fade{
+    position: relative;
+   text-align: center;
+    animation-name: fade;
+    animation-duration: 2s;
+  }
+  .fade img{
+    z-index: -1;
+    width: 100vw;
+    height: 85vh;
+  }
+  .slidercenter {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    text-align: left;
+    width: 56%;
+    height: 50%;
+  }
+  @keyframes fade{
+    from{
+      opacity: .6;
+    }
+    to{
+      opacity: 1;
+    }
+  }
+  
+    @import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
+  
+  .slidertop {
+    font-size: x-large;
+    font-family: 'Exo 2', sans-serif;
+    text-transform: capitalize;
+  }
+  
+  .slidermiddle {
+    /* border: 2px solid red; */
+    font-size: 75px;
+    font-family: 'Exo 2', sans-serif;
+  }
+  
+  .bookservice {
+    margin-top: 5px;
+    padding: 10px;
+    background: orange;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    box-shadow: 3px 3px 2px #005066;
+    font-weight: bold;
+    font-family: 'Exo 2', sans-serif;
+  }
+  
+  .bookservice:hover {
+    color: whitesmoke;
+  }
+
+  @media (max-width: 768px) {
+    /* .slideshow-container{
+        height: 25vh;
+    } */
+
+    .fade img{
+       
+        height: inherit;
+    }
+    .slidercenter{
+        width: auto;
+        height: auto;
+        top: 6%;
+        left: 10%;
+    }
+    
+    .slidertop{
+        font-size: 20px;
+    }
+    .slidermiddle{
+        font-size: 40px;
+    }
+  }
