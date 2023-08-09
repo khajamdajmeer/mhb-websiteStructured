@@ -5,3 +5,17 @@
 body{
     overflow-x: hidden;
 }
+
+
+::-webkit-scrollbar{
+    width: 0.5em;
+  }
+  ::-webkit-scrollbar-thumb{
+    background-color: rgb(124, 92, 228);
+    border-radius: 40px;
+  }
+  ::-webkit-scrollbar-track{
+    background-color: rgb(83, 47, 47);
+    border-radius: 40px;
+    
+  }

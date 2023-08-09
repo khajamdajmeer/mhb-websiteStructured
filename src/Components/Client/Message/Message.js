@@ -1,13 +1,15 @@
 import React from 'react';
 import cross from '../imgClient/navlogo/bgcross.png'
 import './Message.css'
-import success from '../imgClient/addgif.gif'
+import success from '../imgClient/addgif.gif';
 
 const Message = (props) => {
 
     const cancle = props.cancel;
     const handlecancle = async(e)=>{
         e.preventDefault();
+     
+
         const data = false
        await cancle(data);
     }

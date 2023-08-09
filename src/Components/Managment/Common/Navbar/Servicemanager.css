@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #888;
+  }
+  
+  nav {
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    background-color: #03045e;
+    color: #fff;
+    padding: 10px;
+    height: 25px;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: inherit;
+  }
+  
+ .menu-icon{
+    display: block;
+    height: inherit;
+ }
+  .menu-icon img{
+    height: inherit;
+    border-radius: 5px;
+  }
+  .menu {
+    display: flex;
+    /* position: absolute;
+    top: 45px; */
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+  }
+  
+  .menu li {
+    padding: 0 15px;
+  }
+  .menu li::after{
+    content: "";
+    position: relative;
+    top: 3px;
+    display: block;
+    height: 3px;
+    width: 105%;
+    background-color: #fb8500;
+    transform: scaleX(0);
+    border-radius: 3px;
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .menu li:hover::after{
+    cursor: pointer;
+    transform: scaleX(1);
+  }
+  
+
+  
+  .hambutton {
+    display: none;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    height: 20px;
+  }
+  .hambutton img{
+    height: inherit;
+    width: inherit;
+    filter: invert(1);
+    background-color: transparent;
+  }
+  .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+  }
+  
+  
+  /* Media Query for Hamburger Menu */
+  @media (max-width: 768px) {
+   
+    .menu {
+      display: none;
+      flex-direction: column;
+      background-color: #03045e;
+      position: absolute;
+      top: 50px;
+      left: 0;
+      right: 0;
+      transform-origin: top;
+      animation: hamopen 1s ease-in-out forwards ;
+    }
+
+    @keyframes hamopen{
+        from{
+            transform: scaleY(0);
+        }
+        to{
+            transform: scaleY(1);
+        }
+    }
+    .menu-icon{
+        display: block;
+     }
+    
+  
+    .menu li {
+      padding: 15px;
+      border-bottom: 1px solid #888;
+    }
+  
+    .hambutton {
+      display: block;
+    }
+  }
+  

@@ -7,7 +7,9 @@ const cors = require("cors");
 
 
 
-app.use(cors());
+app.use(cors(
+  
+));
 app.use(express.json());
 //route for the client Requests
 app.use('/api/client',require('./ApiRoutes/ClientRoutes/Request'))

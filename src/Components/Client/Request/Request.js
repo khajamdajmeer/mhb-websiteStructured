@@ -2,6 +2,9 @@ import React,{useState} from 'react';
 import './Request.css'
 import { AddRequest } from '../../../ApiCalls/ClientCall/CreateReq';
 import Message from '../Message/Message';
+import { Howl } from 'howler';
+import ordertone from '../../images and tones/mewe.mp3'
+
 // import { isDisabled } from '@testing-library/user-event/dist/utils';
 
 
@@ -13,9 +16,14 @@ const Request = (props) => {
     const [notification, setNotification] = useState(false);
     const [notifydata, setNotiydata] = useState(null);
 
+
     const handleRequest = async (e) => {
         e.preventDefault();
         const res = await AddRequest(data)
+        const sound = new Howl({
+            src:[ordertone]
+        })
+        sound.play();
         if (res.success) {
             setData({...data,[e.target.name]: null})
             setNotification(true);

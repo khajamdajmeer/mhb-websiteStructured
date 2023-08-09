@@ -83,3 +83,11 @@
    .ipsubbox button[disabled]{
     background: #d6ccc2;
    }
+
+@media (max-width: 768px) {
+  .ipbox{
+    flex-direction: column;
+    width: auto;
+  }
+
+}

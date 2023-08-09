@@ -100,3 +100,22 @@
   .address{
     max-width: min-content;
   }
+
+
+@media (max-width: 768px) {
+
+  .msgcenter{
+    border: none;
+  }
+  .msghead{
+    text-align: center;
+  }
+  .msgbody{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+
+
+}

@@ -50,6 +50,12 @@ font-weight: bold;
   height: 90%;
   border-bottom-left-radius: 10px;
 }
+@media (max-width: 916px) and (min-width: 768px) {
+  .centerright{
+    display: none;
+  }
+}
+
 
 
 
