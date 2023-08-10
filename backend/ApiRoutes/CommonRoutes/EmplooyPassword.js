@@ -157,21 +157,23 @@ router.post('/login',async(req,res)=>{
         const {username,password} = req.body;
         const isEmplooy = await EmplooyDB.findOne({username:username})
         if(!isEmplooy){
-            return res.status(400).send({message:'invalid credentils'})
+            console.log()
+            return res.status(400).send({message:'invalid credentils '})
         }
         const comparepassword = await bcrypt.compare(password,isEmplooy.password)
         if(!comparepassword){
-            return res.status(400).send({message:'invalid credentils'})
+            return res.status(400).send({message:'invalid credentils '})
         }
         if(isEmplooy.verification){
             const data = {
                 user:{
                     id:isEmplooy._id,
-                    authorization:isEmplooy.designation
+                    authorization:isEmplooy.designation,
                 }
             }
             const AuthToken = jwt.sign(data,JWT_SECRET)
-            res.status(200).send({message:"loginsuccess",Token:AuthToken})
+                    authorization:isEmplooy.designation,
+            res.status(200).send({message:"loginsuccess",Token:AuthToken,level:isEmplooy.designation,})
         }
         else{
             return res.status(200).send({message:"accout not verified"})

@@ -2,6 +2,9 @@ import './App.css';
 import Home from './Components/Client/Home';
 import { BrowserRouter as Router,Route,Routes } from 'react-router-dom';
 import Logincomponent from './Components/Managment/Common/Logincomponent/Logincomponent';
+import Dashborad from './Components/Managment/Manager/Dashboard/Dashborad';
+import ViewRequest from './Components/Managment/Manager/ViewRequest/ViewRequest';
+import ViewTechreq from './Components/Managment/Manager/ViewTechreq/ViewTechreq';
 
 function App() {
   return (
@@ -13,8 +16,13 @@ function App() {
 
 
       <Route path='service' element={<Logincomponent/>}></Route>
+      <Route path='dashboard'element={<Dashborad/>}>
 
-  {/* <Home/> */}
+
+      <Route path='Requests' element={<ViewRequest/>} />
+      <Route path='TechRequests' element={<ViewTechreq/>}/>
+      </Route>
+
     </Routes>
 
   </Router>

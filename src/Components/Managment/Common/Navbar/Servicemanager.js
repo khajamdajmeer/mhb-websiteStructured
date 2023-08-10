@@ -25,7 +25,7 @@ const Servicemanager = () => {
 }
   return (
     <>
-        <nav>
+        <nav className='servienav'>
     <div className="container">
       <div className="menu-icon">
       <img id='logoimg' src={logo} alt="" />
@@ -35,10 +35,10 @@ const Servicemanager = () => {
         <li>Manager Login</li>
         <li>Technician login</li>
       </ul> */}
-      <button className='hambutton' onClick={handlehambtn}>
+      {/* <button className='hambutton' onClick={handlehambtn}>
             <img src={hamlogo} alt="" id='hamimg'/>
         </button>
-    
+     */}
     </div>
   </nav>
   {/* <div className="container1">
