@@ -8,7 +8,7 @@
     background-color: rgba(0, 0, 0, 0.655);
     z-index: 20;
 }
-.msgbody{
+.msgbody1{
     position: relative;
     display: inline-block;
     margin: auto;
@@ -19,10 +19,10 @@
     background-color: #354f52;
 
 }
-.msgbody button:hover{
+.msgbody1 button:hover{
     background-color: #f4dea8;
 }
-.msgbody button{
+.msgbody1 button{
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -38,14 +38,14 @@
     font-weight: bolder;
     font-size: 20px;
     }
-    .msgbody h2{
+    .msgbody1 h2{
         background-color: #cdb4db;
         border-top-left-radius: 12px;
         border-top-right-radius: 12px;
         color: black;
         border-bottom: 1px solid #ffff;
     }
-    .msgbody p{
+    .msgbody1 p{
         height: 45%;
         justify-content: center;
         align-items: center;
@@ -57,20 +57,20 @@
         font-size: 1.2rem;
     }
 @media (max-width: 768px) {
-    .msgbody{
+    .msgbody1{
         width: 70%;
         height: 20%;
     }
-    .msgbody h2{
+    .msgbody1 h2{
         font-size: 20px;
         border-bottom: 2px solid #ffff;
         height: auto;
 
     }
-    .msgbody button{
+    .msgbody1 button{
         height: auto;
     }
-    .msgbody p{
+    .msgbody1 p{
         font-size: 16px;
     }
 }

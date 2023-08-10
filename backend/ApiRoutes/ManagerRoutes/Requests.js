@@ -52,10 +52,10 @@ router.put('/requests/update/:id',FetchEmplooy,async(req,res)=>{
     if(req.body.Address){newdata.Address=req.body.Address}
     if(req.body.ServiceDate){newdata.ServiceDate=req.body.ServiceDate}
     if(req.body.ServiceTime){newdata.ServiceTime=req.body.ServiceTime}
-    if(req.body.ServiceType){newdata.ServicType=req.body.ServiceType}
+    if(req.body.ServiceType){newdata.ServiceType=req.body.ServiceType}
     const id = req.params.id
     const update = await RequestDB.findByIdAndUpdate(id,{$set:newdata},{new:true})
-    res.status(200).send(update);
+    res.status(200).send({success:true,update});
 
     }catch(error){
         console.log(error)

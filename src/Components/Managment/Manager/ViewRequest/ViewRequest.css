@@ -1,13 +1,13 @@
-
-.viewreq{
+.viewreq {
     position: relative;
     width: 100vw;
     height: 100vh;
     display: flex;
 }
-.reqcenter{
-    
-position: relative;
+
+.reqcenter {
+
+    position: relative;
     display: flex;
     margin: auto;
     background-color: aliceblue;
@@ -17,37 +17,98 @@ position: relative;
     width: 80%;
     border-radius: 4px;
 }
-.reqleft{
-    position: sticky;
+
+.reqleft {
+    position: relative;
     top: 0;
     width: 35%;
     overflow: auto;
-    border-right: 2px solid black;
-    padding: 10px 0px;
-   
+    /* border-right: 2px solid black; */
+    padding: 0px 0px;
+
 
 }
-.reqhead{
+
+.reqhead {
     display: flex;
     padding: 3px 0;
-
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: rgb(227, 148, 0);
     text-align: center;
     font-weight: bold;
     border-bottom: 2px solid orange;
 }
-.reqhead div{
+
+.reqhead div {
     width: 50%;
 }
-.maps{
+
+.maps {
     display: flex;
     padding: 5px 0;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     z-index: -1;
+    padding-left: 4px;
+    cursor: pointer;
+
 }
-.maps div{
+.maps:hover{
+    background-color: antiquewhite;
+}
+
+.maps div {
     width: 50%;
     text-align: center;
 }
-.reqright{
+
+.reqright {
     width: 65%;
+    background:linear-gradient(45deg,#48cae4,#ade8f4,#48cae4,#90e0ef,#ade8f4,#48cae4,#90e0ef);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.reqright h2{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+}
+.detailsbox{
+    display: flex;
+    width: 100%;
+    height: 75%;
+    flex-direction: column;
+}
+.dblock{
+    margin: auto;
+    display: flex;
+    width: 60%;
+    justify-content: center;
+}
+.dataleft{
+    width: 40%;
+    font-size: 20px;
+    font-weight: bold;
+}
+.dataright{
+    width: 60%;
+    /* font-size: 20px; */
+    justify-content: center;
+padding: 3px 5px;
+}
+.detailsbuttons{
+    display: flex;
+    height: 15%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    /* width: 40%; */
+}
+.detailsbuttons button{
+    padding: 5px 20px ;
+
+    
 }

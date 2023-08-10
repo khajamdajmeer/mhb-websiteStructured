@@ -14,7 +14,7 @@ e.preventDefault();
 
   return (
     <div className='msggcontainer'>
-     <div className="msgbody">
+     <div className="msgbody1">
         <h2>Message</h2>
         <p>{props.message}</p>
         <button onClick={handleOk}>OK</button>
