@@ -3,8 +3,7 @@ const express = require('express')
 const router = express.Router();
 const RequestDB = require('../../DBmodels/DBClient/Request');
 const FetchEmplooy = require('../../MiddleWare/FetchEmplooy');
-const techDB = require('../../DBmodels/DBTechnican/ProcessRequest');
-
+const techDB = require('../../DBmodels/DBTechnican/ProcessRequest')
 
 // ROUTE 1 FOR THE MANAGER FOR VIEWING THE REQUEST
 router.get('/requests',FetchEmplooy,async(req,res)=>{
@@ -74,11 +73,13 @@ router.post('/forword/:id',FetchEmplooy,async(req,res)=>{
             const create = await techDB.create(
               {  name:data.name,
             mobileNumber:data.mobileNumber,
+            mobilenumberString:data.mobilenumberString,
             Location:data.Location,
             Address:data.Address,
             ServiceDate:data.ServiceDate,
             ServiceType:data.ServiceType,
-            ForwordedBy:managername
+            ForwordedBy:managername,
+            Forwordid:req.user
         }
             )
             if(create){
@@ -95,7 +96,21 @@ router.post('/forword/:id',FetchEmplooy,async(req,res)=>{
 
 })
 
+router.get('/techrequests',FetchEmplooy,async(req,res)=>{
+    try{
+        if(req.authorization!='technicain'){
+            const data = await techDB.find({});
+            res.status(200).send(data)
+        }
+       else{
+        return res.status(401).send({message:'unauthorized request'})
+       }
 
+
+    }catch(error){
+        res.status(400).send({error:'error occured',error})
+    }
+})
 
 
 module.exports = router

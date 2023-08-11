@@ -1,0 +1,84 @@
+.viewtechrequest{
+    height: 100vh;
+    width: 100vw;
+    background-color: wheat;
+    display: flex;
+}
+.techcenterdiv{
+    margin: auto;
+    height: 70%;
+    /* border: 2px solid red; */
+    border-radius: 5px;
+    width: 60%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background: white;
+
+}
+.navtopfortech{
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    width: unset;
+    background:linear-gradient(45deg,#1b4332,#2d6a4f,#40916c,#1b4332,#2d6a4f
+    ,#40916c,#1b4332,#2d6a4f,#40916c,#1b4332,#2d6a4f
+    ,#40916c,#74c69d,#1b4332,#2d6a4f,#40916c,#74c69d
+    ,#1b4332,#2d6a4f,#40916c,#1b4332,#2d6a4f,
+    #40916c,#1b4332,#2d6a4f,#40916c,#1b4332,#2d6a4f,#40916c);
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    color: white;
+    font-weight: bold;
+}
+.techright{
+    display: flex;
+}
+.techright select{
+    width: 70px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: none;
+    background-color: #26563e;
+    color: white;
+}
+.techright button{
+    width: 70px;
+    height: inherit;
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #74c69d;
+    transition: all 0.5s;
+/* color: ; */
+}
+.techright button:hover{
+    background-color: #2d6a4f;
+    color: #ffff;
+}
+.techright input{
+    border: none;
+    border-radius: none;
+}
+
+.techdatalist{
+    display: flex;
+    flex-direction: column;
+    
+    width: 100%;
+    height: 90%;
+}
+.techdatasublist{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    width: unset;
+    padding: 0 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.techdatasublist button{
+    padding: 0 10px;
+}

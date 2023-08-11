@@ -34,7 +34,7 @@ const MainNavbar = () => {
    <>
     <nav>
     <div className="container">
-      <div className="menu-icon">
+      <div className="menu-icon1">
       <img src={logo} alt="" />
       </div>
     <ul className="menu" id='mymenu'>

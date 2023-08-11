@@ -39,6 +39,7 @@
     font-size: 20px;
     }
     .msgbody1 h2{
+        text-align: center;
         background-color: #cdb4db;
         border-top-left-radius: 12px;
         border-top-right-radius: 12px;
@@ -47,6 +48,7 @@
     }
     .msgbody1 p{
         height: 45%;
+        text-align: center;
         justify-content: center;
         align-items: center;
         align-self: center;

@@ -25,6 +25,9 @@ app.use('/api/emplooy',require('./ApiRoutes/CommonRoutes/EmplooyPassword'))
 //route for the manager for the process of teh user requests
 app.use('/api/manager',require('./ApiRoutes/ManagerRoutes/Requests'))
 
+//router for teh serach function 
+app.use('/api/search',require('./ApiRoutes/ManagerRoutes/SearchRequest'))
+
 
 
 app.listen(port,(err)=>{

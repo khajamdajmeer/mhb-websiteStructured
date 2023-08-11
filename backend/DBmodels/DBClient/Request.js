@@ -11,6 +11,10 @@ const CustomerRequest = new Schema({
         type:Number,
         require:true
     },
+    mobilenumberString:{
+        type:String
+    
+    },
     Location:{
         type:String,
         require:false

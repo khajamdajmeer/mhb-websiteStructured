@@ -20,7 +20,8 @@ router.post('/service',async (req,res)=>{
             Address:req.body.Address,
             ServiceDate:req.body.ServiceDate,
             ServiceType:req.body.ServiceType,
-            ServiceTime:req.body.ServiceTime
+            ServiceTime:req.body.ServiceTime,
+            mobilenumberString:req.body.mobileNumber
         })
         res.status(200).send({success:true,...aka
         })

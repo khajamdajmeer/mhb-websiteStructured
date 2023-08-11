@@ -12,13 +12,18 @@ body{
 
 
 ::-webkit-scrollbar{
+  z-index: -1;
     width: 0.5em;
   }
   ::-webkit-scrollbar-thumb{
+  z-index: -1;
+
     background-color: rgb(124, 92, 228);
     border-radius: 40px;
   }
   ::-webkit-scrollbar-track{
+  z-index: -1;
+
     background-color: rgb(83, 47, 47);
     border-radius: 40px;
     

@@ -19,11 +19,11 @@ body {
     height: inherit;
   }
   
- .menu-icon{
+ .menu-icon1{
     display: none;
     height: inherit;
  }
-  .menu-icon img{
+  .menu-icon1 img{
     height: inherit;
     border-radius: 5px;
   }
@@ -84,7 +84,7 @@ body {
             transform: scaleY(1);
         }
     }
-    .menu-icon{
+    .menu-icon1{
         display: block;
      }
     

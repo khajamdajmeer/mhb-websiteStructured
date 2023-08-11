@@ -46,5 +46,17 @@ export const forwordRequest = async(data)=>{
     });
     const res = await response.json();
     return res;
-
 } 
+
+export const TechRequest = async()=>{
+    const response = await fetch(`${host}/api/manager/techrequests`,{
+        method:"GET",
+        headers:{
+            "Content-Type":"application/json"
+            ,"auth-token":localStorage.getItem('auth-token')
+           }
+    });
+    const res = await response.json()
+    return res;
+}
+

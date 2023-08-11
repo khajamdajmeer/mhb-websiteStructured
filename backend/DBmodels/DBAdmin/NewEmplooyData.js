@@ -18,6 +18,9 @@ const Emplooy_Schema = new Schema({
         // unique:true
 
     },
+    mobilenumberString:{
+        type:String
+    },
     email:{
         type:String,
         require:true,

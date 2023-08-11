@@ -9,6 +9,7 @@ const Message = (props) => {
 e.preventDefault();
 
         history(props.navigate)
+        return false;
     }
 
 

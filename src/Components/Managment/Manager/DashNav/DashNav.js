@@ -33,9 +33,9 @@ const DashNav = () => {
   <img id='logoimg' src={logo} alt="" />
   </div>
 <ul className="menu" id='mymenu'>
-    <li><Link className='Linktag' to='/dashboard/requests'>Requests</Link></li>
-    <li><Link className='Linktag' to='/dashboard/TechRequests'>Tech Requests</Link></li>
-    <li>Data Search</li>
+    <li><Link className='Linktag' to='requests'>Requests</Link></li>
+    <li><Link className='Linktag' to='techrequest'>Tech Requests</Link></li>
+    {/* <li>Data Search</li> */}
   </ul>
   <button className='hambutton' onClick={handlehambtn}>
         <img src={hamicon} alt="" id='hamimg'/>

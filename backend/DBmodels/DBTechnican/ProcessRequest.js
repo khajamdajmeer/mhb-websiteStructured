@@ -9,6 +9,10 @@ const TechAccessSchema = new Schema({
     mobileNumber:{
         type:Number,
         require:true
+    }, 
+    mobilenumberString:{
+        type:String
+    
     },
     Location:{
         type:String,
@@ -41,6 +45,10 @@ const TechAccessSchema = new Schema({
     ForwordedBy:{
         type:String,
         require:true
+    },
+    Forwordid:{
+        type:mongoose.Schema.Types.ObjectId, 
+        
     }
 })
 

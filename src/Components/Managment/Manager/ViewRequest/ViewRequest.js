@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './ViewRequest.css'
 import { ViewRequests,UpdateRequest,forwordRequest } from '../../../../ApiCalls/ManagerCalls/RequestCall';
+import Message from '../../Common/Message/Message';
+import { RequestSearch } from '../../../../ApiCalls/ManagerCalls/SearchCall';
 
 const ViewRequest = () => {
 
@@ -30,10 +32,15 @@ const ViewRequest = () => {
         setUpdatedata({ ...updatedata, [e.target.name]: e.target.value })
     }
 
+    const [showmsg,setShowmsg]=useState(false);
+    const [msgdata,setMsgdata]=useState({message:"",navigate:""})
+
+
 
     const handleviewdata = (index) => {
         setShowview(true)
         setShowupdate(false)
+
         setShowingdata(data[index])
     }
 
@@ -75,6 +82,10 @@ const handleupdate=async()=>{
     setShowupdate(false);
 
  const fdata = await forwordRequest(res.update);
+ setShowmsg(true)
+ setMsgdata({message:fdata.message,navigate:'/dashboard/requests'})
+ setTimeout(setShowmsg(false),2000);
+
 
         console.log(fdata)
         onMount();
@@ -83,11 +94,17 @@ const handleupdate=async()=>{
             Requestdate: "",
             __v: ""
         })
+
     }
 
  }
  const handleForwordOnly = async(index)=>{
     const fdata = await forwordRequest(showingdata)
+ setShowmsg(true)
+
+ setMsgdata({message:fdata.message,navigate:'/dashboard/requests'})
+ setTimeout(()=>{setShowmsg(false)},2000);
+
     console.log(fdata)
     setShowingdata({
         _id: "", name: "", mobileNumber: "", Location: "", Address: "", ServiceType: '', ServiceDate: "", ServiceTime: "",
@@ -112,9 +129,61 @@ const handleupdate=async()=>{
     const today_6 = new Date();
     today_6.setDate(today.getDate() + 6);
 
+    ///adding search function
+    const [searchdata,setSearchdata]=useState([
+        {
+            _id: "", name: "", mobileNumber: "", Location: "", Address: "", ServiceDate: "", ServiceTime: "", ServiceType: '',
+            Requestdate: "",ForwordedBy:"",
+            __v: ""
+        }
+      ])
+      
+      //for storging the data of serach input
+      const [searchinput,setSearchinput]=useState({
+        type:'',data:""
+      })
+      const [showsearchresult,setShowsearchresult]=useState(false)
+      
+      //onchange event for the serach input field
+      const onchangesearch =(e)=>{
+        setSearchinput({...searchinput,[e.target.name]:e.target.value})
+      }
+      //auto search on stoping the typing for 1 second 
+    const [typingTimer, setTypingTimer] = useState(null);
+    const doneTypingInterval = 500; // 1 second
+    const inputElement = React.createRef();
+  
+    const handleInput = async() => {
+      clearTimeout(typingTimer);
+      if(searchinput.data.length<=0){
+        setShowsearchresult(false)
+      }
+      setTypingTimer(setTimeout(doneTyping, doneTypingInterval));
+    };
+
+    const doneTyping = async() => {
+      setShowsearchresult(true);
+      const res = await RequestSearch(searchinput);
+      setSearchdata(res)
+    };
+    //serach button function handle
+    const handleSearch=()=>{
+
+    }
+
+    const handleviewserachdata=(index)=>{
+      setShowsearchresult(false);
+      setShowingdata(searchdata[index])
+
+
+
+    }
+
 
     return (
         <>
+        {showmsg&&(<Message message={msgdata.message} navigate={msgdata.navigate}/>)}
+        
             <div className="viewreq">
                 <div className="reqcenter">
                     <div className="reqleft">
@@ -135,10 +204,48 @@ const handleupdate=async()=>{
                         }
 
                     </div>
-                    <div className="reqright">
-                        <h2>Details</h2>
+                    <div className="reqright ">
+                    <div className="reqheadright">
+                        <div className='headingtype'>
+                      client request 
+                      </div>
+                            <div className='techright'>
+                              <select name="type" value={searchinput.type} onChange={onchangesearch} id="techsearchfilter">
+                            <option value="0">---select---</option>
+                              <option value="name">name</option>
+                              <option value="mobilenumber">mobilenumber</option>
+                            </select>
+                              <input type="text" name="data"ref={inputElement} onInput={handleInput} id="searchinput" value={searchinput.data} onChange={onchangesearch}/> 
+                            <button onClick={handleSearch}>search</button>
+                            </div>
+                    </div>
+
+                            {showsearchresult&&searchinput.data.length>0&&(
+                              <div className="serachresult1">
+                              <div className="sboxserach">
+                             {searchdata.map((ele,index)=>{
+                              return(
+                                <div className="searchdata" onClick={() => handleviewserachdata(index)}>
+                                  {searchinput.type.length<2&&(
+                                <div className="resultdata">select the feild to search by</div>
+
+                                  )}
+                                <div className="resultdata">{ele.name}</div>
+                                <div className="resultdata">{ele.mobileNumber}</div>
+                                <div className="resultdata">{ele.Location}</div>
+                                <div className="resultdata">{ele.Address}</div>
+                              </div> 
+                              )
+                             })}
+                              </div>
+                            </div>
+                            )}
+                            
+
                         {showview &&showingdata._id.length>5&& (
                             <>
+                        <h2>Details</h2>
+
                                 <div className="detailsbox">
                                     <div className="dblock">
                                         <div className="dataleft">Name</div>
@@ -262,6 +369,7 @@ const handleupdate=async()=>{
                         }
 
                     </div>
+
                 </div>
             </div>
         </>
