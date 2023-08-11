@@ -3,6 +3,7 @@ import './MainNavbar.css'
 import iconmenu from '../../imgClient/navlogo/menu-icon.png'
 import logo from '../../imgClient/navlogo/leftlogo.png';
 import crosslogo from '../../imgClient/navlogo/bgcross.png'
+import { Link } from 'react-router-dom';
 
 const MainNavbar = () => {
 
@@ -38,7 +39,7 @@ const MainNavbar = () => {
       <img src={logo} alt="" />
       </div>
     <ul className="menu" id='mymenu'>
-        <li>Home</li>
+        <li><Link to='service'>home</Link></li>
         <li>About</li>
         <li>Services</li>
         <li>Contact</li>
