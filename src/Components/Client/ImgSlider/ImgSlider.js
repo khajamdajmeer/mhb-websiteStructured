@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, useState} from 'react';
 import './ImgSlider.css';
 import img1 from "../imgClient/sliderimages/tech1.jpeg";
 import img2 from "../imgClient/sliderimages/tech2.jpeg";
@@ -6,8 +6,8 @@ import img3 from '../imgClient/sliderimages/bg3.jpg'
 
 const ImgSlider = () => {
     
+  let [slideIndex,setSlideIndex] = useState(0);
     useEffect(() => {
-        let slideIndex = 0;
     
         const slideshow = () => {
           const slides = document.getElementsByClassName('myslides');
@@ -16,9 +16,10 @@ const ImgSlider = () => {
           }
           slideIndex++;
           if (slideIndex > slides.length) {
-            slideIndex = 1;
+            setSlideIndex(1);
           }
           slides[slideIndex - 1].style.display = "block";
+          console.log(slideIndex-1)
           setTimeout(slideshow, 5000);
         }
     

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import './ViewTechreq.css';
-import { TechRequest } from '../../../../ApiCalls/ManagerCalls/RequestCall';
+// import { TechRequest } from '../../../../ApiCalls/ManagerCalls/RequestCall';
 import { SerachTechDB } from '../../../../ApiCalls/ManagerCalls/SearchCall';
-import serachlogo from '../../../images and tones/search-icon.png'
+// import serachlogo from '../../../images and tones/search-icon.png'
 
 const ViewTechreq = () => {
 
@@ -30,6 +30,26 @@ const ViewTechreq = () => {
  }
 
 
+ //auto serach on stoping the typing for .5 seconds
+ const [ typingTimer,setTypingTimer]  = useState(null);
+ const doneTypingIntervel = 500;
+ const inputElement = React.createRef();
+ const handleInput = async()=>{
+  clearTimeout(typingTimer);
+ setTypingTimer(setTimeout(doneTyping,doneTypingIntervel));
+ };
+ const doneTyping = async()=>{
+
+  if(searchinput.data.length>0){
+    const res = await SerachTechDB(searchinput);
+    setViewdata(res);
+
+  }
+
+ }
+
+
+
 
   return (
     <>
@@ -39,19 +59,19 @@ const ViewTechreq = () => {
           <div className="navtopfortech">
             <div className="techleft">Tech Requests</div>
             <div className='techright'>
-              <select name="type" id="techsearchfilter" onChange={onchange}>
+              <select name="type" id="techsearchfilter"value={searchinput.type} onChange={onchange}>
                 <option value="0">---select---</option>
                 <option value="name">name</option>
                 <option value="mobilenumber">mobile number</option>
               </select>
-              <input type="text" name="data" id="searchinput" onChange={onchange} />
+              <input type="text" name="data" id="searchinput" ref={inputElement} onInput={handleInput} value={searchinput.data} onChange={onchange} />
               <button onClick={handleSearch}>
                 search
               </button>
             </div>
           </div>
           <div className="techdatalist">
-            {showsearchdata&&(
+            {showsearchdata&&searchinput.data.length>0&&(
               viewdata.map((ele,index)=>{
                 return(
 <div className='techdatasublist'>
