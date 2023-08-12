@@ -2,7 +2,11 @@
 // import dotenv from 'dotenv'
 // dotenv.config();
 // const host = process.env.SERVER_URL;
-const host = 'http://localhost:5001';
+// const host = 'http://localhost:5001';
+// const {host} = require('../Host.js')
+// import {host} from '../Host'
+const {host} = require('../Host')
+
 
 
 export const AddRequest = async(data)=>{

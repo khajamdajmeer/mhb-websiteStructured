@@ -1,5 +1,7 @@
 
-const host = "http://localhost:5001";
+// const host = "http://localhost:5001";
+const {host} = require('../Host')
+
 
 export const ViewRequests = async()=>{
     const response = await fetch(`${host}/api/manager/requests`,{

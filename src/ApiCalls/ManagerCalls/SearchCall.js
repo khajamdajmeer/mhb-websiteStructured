@@ -1,4 +1,6 @@
-const host = "http://localhost:5001";
+// const host = "http://localhost:5001";
+const {host} = require('../Host')
+
 
 export const SerachTechDB = async(data)=>{
     const response = await fetch(`${host}/api/search/techdata`,{

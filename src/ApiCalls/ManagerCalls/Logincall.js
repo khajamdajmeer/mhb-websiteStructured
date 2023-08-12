@@ -1,6 +1,9 @@
 
 
-const host = 'http://localhost:5001';
+// const host = 'http://localhost:5001';
+// import {host} from '../Host'
+const {host} = require('../Host')
+
 export const Logincall = async(username,password)=>{
     const response = await fetch(`${host}/api/emplooy/login`,{
         method:'POST',

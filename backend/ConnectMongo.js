@@ -3,10 +3,11 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const mongoURI = process.env.REACT_MONGODB_URI
+const mongoURI = process.env.REACT_MONGODB_URI;
 
 const connecttoMongo = async()=>{
     const connet = await mongoose.connect(mongoURI)
+    // console.log(mongoURI)
     if(connet){
         console.log('Mongo connect succes');
     }
