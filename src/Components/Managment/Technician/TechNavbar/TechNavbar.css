@@ -4,7 +4,7 @@ body {
     background-color: #888;
   }
   
-  .dashnav{
+  .dashnavtech{
     position: fixed;
     top: 0;
     width: 100vw;
@@ -15,7 +15,7 @@ body {
     height: 25px;
   }
   
-  .container {
+  .containertech {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
@@ -24,16 +24,16 @@ body {
     height: inherit;
   }
   
- .menu-icon{
+ .menu-icontech{
     display: block;
     height: inherit;
     /* width: 35%; */
  }
-  .menu-icon img{
+  .menu-icontech img{
     height: inherit;
     border-radius: 5px;
   }
-  .menu {
+  .menutech {
     display: flex;
     /* position: absolute;
     top: 45px; */
@@ -43,16 +43,16 @@ body {
     padding: 0;
 
   }
-  .Linktag{
+  .Linktagtech{
     color: #ffff;
     text-decoration: none;
     font-size: 1rem;
   }
   
-  .menu li {
+  .menutech li {
     padding: 0 15px;
   }
-  .menu li::after{
+  .menutech li::after{
     content: "";
     position: relative;
     top: 3px;
@@ -65,7 +65,7 @@ body {
     transform-origin: right;
     transition: transform 0.4s ease;
   }
-  .menu li:hover::after{
+  .menutech li:hover::after{
     cursor: pointer;
     transform: scaleX(1);
     transform-origin: left;
@@ -74,26 +74,26 @@ body {
   
 
   
-  .hambutton {
+  .hambuttontech {
     display: none;
     cursor: pointer;
     background-color: transparent;
     border: none;
     height: 20px;
   }
-  .hambutton img{
+  .hambuttontech img{
     height: inherit;
     width: inherit;
     filter: invert(1);
     background-color: transparent;
   }
-  .bar {
+  .bartech {
     width: 25px;
     height: 3px;
     background-color: #fff;
     margin: 5px 0;
   }
-  #profiledatabox{
+  #profiledataboxtech{
     position: absolute;
     width: 300px;
     /* top: 2px; */
@@ -104,20 +104,23 @@ body {
     background-color: black;
 
   }
-  .profilebtn{
+  .profilebtntech{
     /* border: none; */
     padding: 1px 5px;
     background:transparent;
 
   }
-  .profilecontainer{
+  .profilecontainertech{
     position: relative;
+  }
+  .hamlogoutbtn{
+    display: none;
   }
   
   /* Media Query for Hamburger Menu */
   @media (max-width: 768px) {
    
-    .menu {
+    .menutech {
       display: none;
       flex-direction: column;
       background-color: #03045e;
@@ -128,6 +131,11 @@ body {
       transform-origin: top;
       animation: hamopen 1s ease-in-out forwards ;
     }
+    .profilecontainertech{
+        display: none;
+        width: 0;
+        /* position: absolute; */
+    }
 
     @keyframes hamopen{
         from{
@@ -137,18 +145,26 @@ body {
             transform: scaleY(1);
         }
     }
-    .menu-icon{
+    .menu-icontech{
         display: block;
      }
+     .hamlogoutbtn{
+        display: block;
+      }
     
   
-    .menu li {
+    .menutech li {
       padding: 15px;
       border-bottom: 1px solid #888;
+      text-align: center;
     }
   
-    .hambutton {
+    .hambuttontech {
       display: block;
     }
+
+  .menutech li::after{
+    background-color: transparent;
+  }
   }
   

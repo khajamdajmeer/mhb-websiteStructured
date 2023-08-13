@@ -1,0 +1,130 @@
+const mongoose = require('mongoose')
+const express = require('express');
+const FetchEmplooy = require('../../MiddleWare/FetchEmplooy');
+const router = express.Router();
+const techDB = require('../../DBmodels/DBTechnican/ProcessRequest')
+const ClientDB = require('../../DBmodels/DBAdmin/FinishedReq');
+const { findByIdAndDelete } = require('../../DBmodels/DBAdmin/NewEmplooyData');
+
+
+
+// route 1 for the technician to accept the request
+router.post('/viewtechRequest',FetchEmplooy,async(req,res)=>{
+
+    try{
+        if(req.authorization==='technician'){
+            const data = await techDB.find({"Technicain.name":null})
+            res.status(200).send(data);
+
+        }
+        else{
+            return res.status(401).send({message:'unauthorized request'})
+           }
+
+    }
+    catch(error){
+        res.status(500).send({message:'error occured'})
+
+
+    }
+})
+
+
+
+router.post('/acceptreq/:id',FetchEmplooy,async(req,res)=>{
+
+
+    try{
+        if(req.authorization==='technician'){
+            const rid =  req.params.id;
+        const emplooyname = req.name;
+        const emplooyid = req.user;
+        const newdata = {Technicain:{name:emplooyname,id:emplooyid}}
+        const updatedata = await techDB.findByIdAndUpdate(rid,{$set:newdata},{new:true})
+        res.status(200).send(updatedata)  
+
+        }
+        else{
+            return res.status(401).send({message:'unauthorized request'})
+           }
+       
+
+
+    }
+    catch(error){
+        res.status(500).send({message:'error occured'})
+
+    }
+})
+
+
+router.get('/viewmyreq',FetchEmplooy,async(req,res)=>{
+
+try{
+    if(req.authorization==='technician'){
+        
+    const emplooyid = req.user;
+    const data = await techDB.find({"Technicain.id":emplooyid})
+    res.status(200).send(data)  
+
+    }
+    else{
+        return res.status(401).send({message:'unauthorized request'})
+       }
+}
+catch(error){
+    res.status(500).send({message:'error occured'})
+
+}
+})
+
+router.post('/finishreq/:id',FetchEmplooy,async(req,res)=>{
+
+    try{
+    if(req.authorization==='technician'){
+        const emplooyid = req.user;
+        const reqid = req.params.id;
+        const Discription = req.body.discription;
+        const data = await techDB.findOne({
+            'Technicain.id':emplooyid,
+            '_id':reqid
+        })
+        // data.Discription = Discription
+         
+        const newdata = {
+            name:data.name,
+            mobileNumber:data.mobileNumber,
+            mobilenumberString:data.mobilenumberString,
+            Location:data.Location,
+            Address:data.Address,
+            Service:{
+                type:data.Service.type,
+                Date:data.Service.Date
+            },
+            Technicain:{
+                name:data.Technicain.name,
+                id:data.Technicain.id
+            },
+            Requestdate:data.Requestdate,
+            forworded:{
+                name:data.forworded.name,
+                id:data.forworded.id
+            },
+            Discription:Discription
+        }
+
+
+            const fdata = await ClientDB.create(newdata)
+            await techDB.findByIdAndDelete(data._id)
+            res.send(fdata)
+
+        
+    }
+    }
+    catch(error){
+        console.log(error)
+        res.status(500).send({message:'error occured',error})
+    }
+})
+
+module.exports = router

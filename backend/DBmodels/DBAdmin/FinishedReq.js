@@ -1,7 +1,8 @@
-const mongoose = require('mongoose')
-const { Schema } = require('mongoose');
 
-const TechAccessSchema = new Schema({
+const mongoose = require('mongoose')
+const {Schema}= require('mongoose')
+
+const Finishedreq  = new Schema({
     name: {
         type: String,
         require: true
@@ -31,9 +32,10 @@ const TechAccessSchema = new Schema({
             type: String,
             require: true
         },
-        Time: {
-            type: String,
-            require: true
+        Delivery: {
+            type:Date,
+            require: true,
+            default:Date.now
         }
     }
     ,
@@ -62,8 +64,12 @@ const TechAccessSchema = new Schema({
             type: mongoose.Schema.Types.ObjectId,
             requrie: true
         }
+    },
+    Discription:{
+        type:String,
+        require:true
     }
 
 })
 
-module.exports = mongoose.model("UnderTechProcess", TechAccessSchema);
+module.exports = mongoose.model("OnlineClient", Finishedreq);

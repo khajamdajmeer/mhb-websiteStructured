@@ -57,7 +57,7 @@ router.put('/requests/update/:id',FetchEmplooy,async(req,res)=>{
     res.status(200).send({success:true,update});
 
     }catch(error){
-        console.log(error)
+        // console.log(error)
         res.status(500).send({error:'error occured'})
     }
 })
@@ -66,9 +66,12 @@ router.put('/requests/update/:id',FetchEmplooy,async(req,res)=>{
 router.post('/forword/:id',FetchEmplooy,async(req,res)=>{
 
     try{
-
+        
         const managername = req.name;
         const data = await RequestDB.findById(req.params.id)
+        // console.log(req.body)
+        // console.log(data)
+
         if(data){
             const create = await techDB.create(
               {  name:data.name,
@@ -76,10 +79,19 @@ router.post('/forword/:id',FetchEmplooy,async(req,res)=>{
             mobilenumberString:data.mobilenumberString,
             Location:data.Location,
             Address:data.Address,
-            ServiceDate:data.ServiceDate,
-            ServiceType:data.ServiceType,
-            ForwordedBy:managername,
-            Forwordid:req.user
+            Requestdate:data.Requestdate,
+            Service:{
+                type:data.ServiceType,
+                Date:data.ServiceDate,
+                Time:data.ServiceTime
+
+            },
+            forworded:{
+                name:managername,
+                id:req.user
+            }
+           
+            
         }
             )
             if(create){

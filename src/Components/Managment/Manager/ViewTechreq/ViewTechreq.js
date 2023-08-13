@@ -41,10 +41,10 @@ const ViewTechreq = () => {
  const doneTyping = async()=>{
 
   if(searchinput.data.length>0){
-    const res = await SerachTechDB(searchinput);
-    setViewdata(res);
-
+    
   }
+  const res = await SerachTechDB(searchinput);
+  setViewdata(res);
 
  }
 

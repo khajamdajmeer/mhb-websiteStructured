@@ -29,6 +29,9 @@ app.use('/api/manager',require('./ApiRoutes/ManagerRoutes/Requests'))
 //router for teh serach function 
 app.use('/api/search',require('./ApiRoutes/ManagerRoutes/SearchRequest'))
 
+//router for technicain access functions
+app.use('/api/technician',require('./ApiRoutes/TechnicainRoutes/TechRequest'))
+
 
 
 app.listen(port,(err)=>{

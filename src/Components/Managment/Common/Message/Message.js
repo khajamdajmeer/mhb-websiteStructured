@@ -6,7 +6,7 @@ const Message = (props) => {
     const history = useNavigate();
 
     const handleOk = (e)=>{
-e.preventDefault();
+// e.preventDefault();
 
         history(props.navigate)
         return false;

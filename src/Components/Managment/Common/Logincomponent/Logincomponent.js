@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Servicemanager from '../Navbar/Servicemanager';
+// import Servicemanager from '../Navbar/Servicemanager';
 import './Logincomponent.css';
 import { Logincall } from '../../../../ApiCalls/ManagerCalls/Logincall';
 import Message from '../Message/Message';
@@ -28,21 +28,25 @@ useEffect(()=>{
   else{
     history('/service')
   }
-})
+},[history])
 
 const handlelogin = async(e)=>{
   e.preventDefault();
   const res =await Logincall(logindata.username,logindata.password);
   if(res.message==="loginsuccess"){
     setShowmessage(true)
-    setMessage({message:res.message,navigate:"/dashboard"})
     console.log(res);
     localStorage.setItem("auth-token",res.Token)
-    if(res.level==='Technician'){
+    if(res.level==='technician'){
+      console.log(res)
+
+      setMessage({message:res.message,navigate:"/technician"})
       let lv = "L3"
       localStorage.setItem('level',lv)
     }
     else{
+      console.log(res)
+      setMessage({message:res.message,navigate:"/dashboard"})
       let lv = 'L2'
       localStorage.setItem('level',lv)
     }
@@ -61,7 +65,7 @@ const handlelogin = async(e)=>{
 
   return (
     <>
-    <Servicemanager/>
+    {/* <Servicemanager/> */}
     {showmessage&&message&&(
     <Message message={message.message} navigate={message.navigate}/>
     )
