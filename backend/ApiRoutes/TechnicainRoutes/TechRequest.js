@@ -124,14 +124,14 @@ router.post('/finishreq/:id',FetchEmplooy,async(req,res)=>{
 
             const fdata = await ClientDB.create(newdata)
             await techDB.findByIdAndDelete(data._id)
-            res.send(fdata)
+            res.status(200).send({message:'Success',Success:true})
 
         
     }
     }
     catch(error){
         console.log(error)
-        res.status(500).send({message:'error occured',error})
+        res.status(500).send({message:'error occured',Success:false})
     }
 })
 

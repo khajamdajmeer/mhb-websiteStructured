@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './TechRequest.css';
 import { techAuthorization } from '../../../../ApiCalls/CommonCalls/Authorization';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +13,7 @@ const history = useNavigate();
         name:'',Location:"",adress:"",_id:""
     }])
     
-    const checkauthorization = async()=>{
+    const checkauthorization = useCallback(async()=>{
         if(token){
             const res = await techAuthorization();
             setName(res.name)
@@ -31,16 +31,24 @@ const history = useNavigate();
         else{
             history('/service')
         }
-    }
+    },[token,history])
     useEffect(()=>{
         checkauthorization();
     },[checkauthorization])
 
+    const [showmsg,setShowmsg]= useState(false);
+    const [msg,setMsg]=useState({message:"",name:""})
+    const handleMsgOkClick = ()=>{
+        setShowmsg(false);
+        setMsg({message:"",name:""})
+    }
 
     const handleAcceptReq = async(data)=>{
 
         const res =await AcceptRequest(data);
         console.log(res);
+        setMsg(res);
+        setShowmsg(true);
         const newdata = await viewallTechReq();
         if(newdata.length<1){
             setTechdata([{
@@ -49,12 +57,27 @@ const history = useNavigate();
         }
         else{
             setTechdata(newdata);
+          
         }
+       
     }
 
 
   return (
     <>
+    {showmsg&&msg&&(
+        <div id="tech-msgfullScreen">
+        <div id="techmsg-centerbox">
+            <div id="techmsg-body"> {msg.name}{msg.message}</div>
+            <div id="techmsgbtn">
+                <button id='techmsgokbtn' onClick={handleMsgOkClick}>ok</button>
+            </div>
+        </div>
+    </div>
+    )
+
+    }
+    
     <div className="techreqcontainer">
 
             <h1>Technician request</h1>

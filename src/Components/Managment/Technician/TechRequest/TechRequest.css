@@ -91,6 +91,70 @@ box-shadow: rgba(0, 0, 0, 0.02) 0px 0px 0px 0px, rgba(27, 31, 35, 0.15) 0px 0px 
     overflow-x: hidden;
 }
 
+/* msgbody css here */
+@import url('https://fonts.googleapis.com/css2?family=Kanit&family=Noto+Sans+JP:wght@300&display=swap');
+#tech-msgfullScreen{
+    height: 100vh;
+    width: 100vw;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.618);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Kanit', sans-serif;
+font-family: 'Noto Sans JP', sans-serif;
+}
+#techmsg-centerbox{
+    position: relative;
+    /* border: 2px solid whitesmoke; */
+    height: 150px;
+    width: 200px;
+    background-color: #f1faee;
+    border-radius: 12px;
+
+}
+#techmsg-body{
+    width: unset;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    text-align: center;
+    padding: 0 10px;
+}
+#techmsgbtn{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+#techmsgokbtn{
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-bottom-right-radius: 11px;
+    border-bottom-left-radius: 11px;
+    background-color: #606c38;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: bold;
+}
+#techmsgokbtn:hover{
+    background-color: #457b9d;
+    transition: all 0.3s ease-in-out;
+}
+
+
 
 @media (max-width:786px) and (min-width:400px){
 #tech-req-view-center{

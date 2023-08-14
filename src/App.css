@@ -28,3 +28,20 @@ body{
     border-radius: 40px;
     
   }
+  @media (max-width:768px) {
+    
+
+::-webkit-scrollbar{
+  display: none;
+
+  }
+  ::-webkit-scrollbar-thumb{
+    display: none;
+
+  }
+  ::-webkit-scrollbar-track{
+  display: none;
+    
+  }
+
+  }

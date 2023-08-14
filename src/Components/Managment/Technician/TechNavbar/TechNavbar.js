@@ -37,8 +37,8 @@ const TechNavbar = () => {
   </div>
   <div>
 <ul className="menutech" id='mymenutech'>
-    <li><Link className='Linktag' to='requests'>Requests</Link></li>
-    <li><Link className='Linktag' to='techrequest'>My Requests</Link></li>
+    <li><Link className='Linktag' to='request' >Requests</Link></li>
+    <li><Link className='Linktag' to='myrequests' >My Requests</Link></li>
     <li className='hamlogoutbtn'><button onClick={handlelogout}>Logout</button></li>
     {/* <li>Data Search</li> */}
   </ul>
