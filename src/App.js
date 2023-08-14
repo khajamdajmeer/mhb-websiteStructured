@@ -7,6 +7,7 @@ import Dashborad from './Components/Managment/Manager/Dashboard/Dashborad';
 import ViewRequest from './Components/Managment/Manager/ViewRequest/ViewRequest';
 import ViewTechreq from './Components/Managment/Manager/ViewTechreq/ViewTechreq';
 import TechDashboard from './Components/Managment/Technician/TechDashboard/TechDashboard';
+import TechRequest from './Components/Managment/Technician/TechRequest/TechRequest';
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
           </Route>
 
           <Route path='technician' element={<TechDashboard/>}>
-
+          <Route path='request' element={<TechRequest/>}/>
           </Route>
 
         </Routes>

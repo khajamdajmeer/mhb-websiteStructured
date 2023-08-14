@@ -31,6 +31,8 @@ app.use('/api/search',require('./ApiRoutes/ManagerRoutes/SearchRequest'))
 
 //router for technicain access functions
 app.use('/api/technician',require('./ApiRoutes/TechnicainRoutes/TechRequest'))
+//router for checking authorization of technnicain on mouting the page
+app.use('/api/authorization',require('./ApiRoutes/CommonRoutes/AuthorizationCheck'))
 
 
 

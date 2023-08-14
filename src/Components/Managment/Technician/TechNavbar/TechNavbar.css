@@ -13,6 +13,7 @@ body {
     color: #fff;
     padding: 10px;
     height: 25px;
+    z-index: 5;
   }
   
   .containertech {
@@ -125,7 +126,7 @@ body {
       flex-direction: column;
       background-color: #03045e;
       position: absolute;
-      top: 50px;
+      top: 45px;
       left: 0;
       right: 0;
       transform-origin: top;
@@ -150,6 +151,7 @@ body {
      }
      .hamlogoutbtn{
         display: block;
+     
       }
     
   
@@ -161,6 +163,7 @@ body {
   
     .hambuttontech {
       display: block;
+      margin-right: 20px;
     }
 
   .menutech li::after{

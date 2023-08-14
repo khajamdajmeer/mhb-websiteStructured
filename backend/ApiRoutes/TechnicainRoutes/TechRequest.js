@@ -14,7 +14,15 @@ router.post('/viewtechRequest',FetchEmplooy,async(req,res)=>{
     try{
         if(req.authorization==='technician'){
             const data = await techDB.find({"Technicain.name":null})
-            res.status(200).send(data);
+            const extractdata = data.map(item=>{
+                return{
+                    name:item.name,
+                    Location:item.Location,
+                    Address:item.Address.replace(/\n/g,' '),
+                    _id:item._id
+                }
+            })
+            res.status(200).send(extractdata);
 
         }
         else{
@@ -41,7 +49,7 @@ router.post('/acceptreq/:id',FetchEmplooy,async(req,res)=>{
         const emplooyid = req.user;
         const newdata = {Technicain:{name:emplooyname,id:emplooyid}}
         const updatedata = await techDB.findByIdAndUpdate(rid,{$set:newdata},{new:true})
-        res.status(200).send(updatedata)  
+        res.status(200).send({message:'Accepted the Request',name:req.name})  
 
         }
         else{

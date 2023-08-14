@@ -1,12 +1,16 @@
 import React from 'react';
 import TechNavbar from '../TechNavbar/TechNavbar';
+import { Outlet } from 'react-router-dom';
 
 const TechDashboard = () => {
   return (
-    <div>
+    <>
         <TechNavbar/>
-      this is tech dashboard
-    </div>
+      
+      <main>
+        <Outlet/>
+      </main>
+    </>
   );
 }
 
