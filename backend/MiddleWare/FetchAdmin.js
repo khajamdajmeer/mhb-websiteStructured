@@ -13,8 +13,14 @@ const FetchAdmin = async(req,res,next)=>{
         const data = jwt.verify(token,JWT_SECRET);
         req.user = data.isadmin._id;
         const isvalid = await AdminDB.findById(req.user)
+        if(isvalid){
 
-        next();
+            next();
+        }
+        else{
+       return res.status(401).send({message:"user does not exists"})
+
+        }
     }
     catch(error){
         res.status(401).send({message:'error occured',...error})

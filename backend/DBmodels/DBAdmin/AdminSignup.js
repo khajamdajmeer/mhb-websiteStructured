@@ -21,11 +21,20 @@ const AdminSignup = new Schema({
         require:true
     },
     OTP:{
-        type:String,
+        type:Number,
         require:true,
 
     },
+    adminOTP:{
+        type:Number,
+        require:true
+    }
+    ,
     verification:{
+        type:Boolean,
+        default:false
+    },
+    adminverification:{
         type:Boolean,
         default:false
     },

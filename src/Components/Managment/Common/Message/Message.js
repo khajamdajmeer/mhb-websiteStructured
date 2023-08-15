@@ -6,17 +6,16 @@ const Message = (props) => {
     const history = useNavigate();
 
     const handleOk = (e)=>{
-// e.preventDefault();
+
 
         history(props.navigate)
-        return false;
     }
 
 
   return (
     <div className='msggcontainer'>
      <div className="msgbody1">
-        <h2>Message</h2>
+        {/* <h2>Message</h2> */}
         <p>{props.message}</p>
         <button onClick={handleOk}>OK</button>
      </div>
