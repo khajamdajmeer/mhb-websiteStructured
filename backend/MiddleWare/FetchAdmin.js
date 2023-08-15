@@ -11,7 +11,7 @@ const FetchAdmin = async(req,res,next)=>{
     }
     try{
         const data = jwt.verify(token,JWT_SECRET);
-        req.user = data.isadmin._id;
+        req.user = data.isadmin.id;
         const isvalid = await AdminDB.findById(req.user)
         if(isvalid){
 

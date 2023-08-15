@@ -1,7 +1,8 @@
-import React, {  useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import './ViewTechreq.css';
 // import { TechRequest } from '../../../../ApiCalls/ManagerCalls/RequestCall';
 import { SerachTechDB } from '../../../../ApiCalls/ManagerCalls/SearchCall';
+import { useNavigate } from 'react-router-dom';
 // import serachlogo from '../../../images and tones/search-icon.png'
 
 const ViewTechreq = () => {
@@ -28,6 +29,18 @@ const ViewTechreq = () => {
    console.log(response)
 
  }
+ const history = useNavigate()
+  useEffect(()=>{
+    const level = localStorage.getItem('level')
+    if(level==='l2'){
+    }
+    else if(level==='l3'){
+       history('/technician/request')
+     }
+     else if(level==='l1'){
+       history('/admindashboard/emplooys')
+     }
+  },[history])
 
 
  //auto serach on stoping the typing for .5 seconds

@@ -13,6 +13,8 @@ import AdminLoginpage from './Components/Managment/Admin/AdminLoginpage/AdminLog
 import AdminDashborad from './Components/Managment/Admin/AdminDashboard/AdminDashborad';
 import Emplooys from './Components/Managment/Admin/Emplooys/Emplooys';
 import Clients from './Components/Managment/Admin/Clients/Clients';
+import AddEmploy from './Components/Managment/Admin/AddEmploy/AddEmploy';
+import EmplooyUpdate from './Components/Managment/Admin/EmplooyUpdate/EmplooyUpdate';
 
 function App() {
   return (
@@ -43,6 +45,8 @@ function App() {
 
           <Route path='admindashboard' element={<AdminDashborad/>}>
           <Route path='emplooys' element={<Emplooys/>}/>
+          <Route path='newemplooy' element={<AddEmploy/>} />
+          <Route path='updateemplooy' element={<EmplooyUpdate/>}/>
           <Route path='clients' element={<Clients/>}/>
           </Route>
 

@@ -10,7 +10,8 @@ const Emplooy_Schema = new Schema({
     },
     age:
       {  type:Number,
-        require:true}
+        require:true
+    }
     ,
     mobilenumber:{
         type:Number,
@@ -53,7 +54,6 @@ const Emplooy_Schema = new Schema({
     },
     username:{
         type:String,require:true,
-        default:null
     },
     password:{
         type:String,

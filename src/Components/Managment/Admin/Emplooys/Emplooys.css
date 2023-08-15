@@ -1,0 +1,209 @@
+.ad-em-fullscreen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #edf6f9;
+    position: relative;
+}
+
+.ad-em-center{
+    height: 80%;
+    width: 90%;
+max-height: 600px;
+    max-width: 950px;
+    position: relative;
+    margin-top: 30px;
+    box-shadow: 5px 5px 50px 10px #030404b2;
+    border-radius: 20px;
+}
+.ad-em-add{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1e6091;
+    /* border: 1px solid gray; */
+}
+
+.ad-em-heading{
+    width: unset;
+    text-align: center;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    /* border: 1px solid red; */
+    padding: 10px 10px;
+    box-shadow: 0px 2px 0px #d3d0d0;
+    z-index: 4;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ad-em-id-data{
+    width: unset;
+    box-shadow: 0px 1px 0px #d3d0d0;
+height: 25px;
+display: flex;
+flex-direction: column;
+/* align-items: center; */
+padding: 10px 0 0 0 ;
+overflow: hidden;
+
+/* justify-content: center; */
+}
+.ad-em-id-data-wrap{
+    height: 320px;
+
+    animation: togglewrap 1s forwards;
+}
+.colortech{
+    background:#cdb4db !important;
+}
+@keyframes togglewrap {
+    from{
+        height: 40px;
+    }
+    to{
+        height: 320px;
+    }
+
+}
+.ad-em-scrolable{
+    overflow-y: auto;
+    height: 83%;
+}
+.ad-em-edata{
+    display: flex;
+    height: 20px;
+    padding: 0px 10px 7px 10px;
+    justify-content: space-between;
+}
+.ad-em-rdata{
+    display: flex;
+    justify-content: center;
+    height: 285px;
+    background: linear-gradient(135deg,#184e77,#1e6091,#184e77,#184e77,#1e6091,#184e77);
+    padding: 3px;
+}
+.ad-emleft{
+    display: flex;
+width: 90%;
+max-width: 300px;
+justify-content: space-between;
+align-items: center;
+}
+.ad-leftrole{
+    /* border: 1px solid blue; */
+    border-radius: 3px;
+    height: 100%;
+    
+    padding: 2px 5px;
+    background: #74c69dd3;
+    align-self: center;
+    user-select: none;
+}
+
+.ad-emright img{
+    height: 20px;
+    user-select: none;
+
+}
+.ad-em-rdata-center{
+    width: 95%;
+    max-width: 400px;
+    position: relative;
+    /* border: 2px solid white; */
+
+}
+.ad-em-rdata-center ul{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    /* justify-content: flex-end; */
+    width: 100%;
+
+}
+.ad-em-rdata-center li{
+    padding: 0 !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+.ad-em-lileft{
+    width: 35%;
+text-align: right;
+text-transform: capitalize;
+/* overflow-wrap: break-word; */
+/* font-weight: bold; */
+color: #bdbab5;
+font-family: 'Libre Baskerville', serif;
+
+}
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+.ad-em-liright{
+    width: 65%;
+    text-align: center;
+    overflow-wrap: break-word;
+    color: #e0e1dd;
+    font-weight: 500;
+    /* font-family: 'Oswald', sans-serif; */
+font-family: 'Libre Baskerville', serif;
+
+
+}
+.ad-em-pabsolute{
+    position: absolute;
+    bottom: 10px;
+}
+.ad-em-pabsolute button{
+    padding: 10px 5px;
+    background: #bfd3c1;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #184e77;
+    cursor: pointer;
+}
+.ad-em-pabsolute button:hover{
+    transition: all 0.5s ease;
+    background: #808d81;
+    color: white;
+}
+.ad-em-plusimg{
+    height: 60%;
+    user-select: none;
+    width: 60%;
+    filter: invert(0);
+    
+}
+
+.ad-em-add:hover {
+    background-color: #1e6091;
+    /* background-color: #ffffff; */
+    transition: all 0.3s ease;
+
+}
+
+.ad-em-add:hover .ad-em-plusimg {
+    filter: invert(1);
+transition: all 0.3s ease;
+}
+.ad-em-updatelink{
+    text-decoration: none;
+    
+    padding: 10px 5px;
+    background: #bfd3c1;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #184e77;
+    cursor: pointer;
+}
+.ad-em-updatelink:hover{
+    transition: all 0.4s ease;
+    background-color: #79857b;
+}

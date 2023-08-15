@@ -21,7 +21,7 @@ const twilio = require('twilio')(twilosid,twiloAuth)
 router.post('/newemplooy',FetchAdmin,async(req,res)=>{
 
         try{
-            const {name,age,mobilenumber,email,joiningdate,AdharNumber,presentAdress,permanentAdress,designation} =req.body;
+            const {name,age,mobilenumber,email,joiningdate,AdharNumber,presentAdress,permanentAdress,designation,username} =req.body;
             const employ = await EmplooyDB.create({
                 name:name,
                 age:age,
@@ -31,10 +31,12 @@ router.post('/newemplooy',FetchAdmin,async(req,res)=>{
                 AdharNumber:AdharNumber
                 ,presentAdress:presentAdress,
                 permanentAdress:permanentAdress,
-                designation:designation
+                designation:designation,
+                username:username
             })
+            
            
-            res.status(200).send(employ)
+            res.status(200).send({success:true,message:'Emplooy data created'})
         }
         catch(error){
             res.status(500).send(error)
@@ -58,6 +60,22 @@ router.get('/emplooy',FetchAdmin,async(req,res)=>{
 
 })
 
+//Route for viewing individual emplooy
+router.get('/emplooy/:id',FetchAdmin,async(req,res)=>{
+    try{
+        const id = req.params.id
+        const response = await EmplooyDB.findById(id)
+        if(response){
+            return res.status(200).send(response)
+        }
+        return res.status(400).send(response)
+
+    }
+    catch(error){
+        res.status(200).send({message:'error occures'})
+    }
+})
+
 
 
 //ROUTE 3 FOR UPDATING A EMPLOOY DETAILS BY THE ADMIN
@@ -73,12 +91,13 @@ router.put('/emplooy/update/:id',FetchAdmin,async(req,res)=>{
         if(req.body.presentAdress){newdata.presentAdress=req.body.presentAdress}
         if(req.body.permanentAdress){newdata.permanentAdress=req.body.permanentAdress}
         if(req.body.designation){newdata.designation=req.body.designation}
+        if(req.body.username){newdata.username=req.body.username}
 
         const emplooy = await EmplooyDB.findByIdAndUpdate(req.params.id,{$set:newdata},{new:true})
-        res.status(200).send({message:'emplooy data updated success',emplooy})
+        res.status(200).send({message:'emplooy data updated success',success:true})
 
     }catch(error){
-        res.status(500).send({message:'error occured'})
+        res.status(500).send({message:'error occured',success:false})
     }
 
 

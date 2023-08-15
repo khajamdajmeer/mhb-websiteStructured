@@ -4,12 +4,27 @@ import hamicon from '../../Imgs/menu-icon.png'
 import crosslogo from '../../Imgs/bgcross.png'
 import logo from '../../Imgs/logo mhb.png'
 import { Link, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 
 const DashNav = () => {
 
   const history = useNavigate();
+  useEffect(() => {
+const level = localStorage.getItem('level')
+if(level==='l2'){
+  history('/service')
+
+}
+else if(level==='l3'){
+  history('/technician/request')
+}
+else if(level==='l1'){
+  history('/admindashboard/emplooys')
+}
+
+  }, [history])
 
 
     

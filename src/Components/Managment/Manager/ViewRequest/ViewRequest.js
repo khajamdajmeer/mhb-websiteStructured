@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import './ViewRequest.css'
 import { ViewRequests,UpdateRequest,forwordRequest } from '../../../../ApiCalls/ManagerCalls/RequestCall';
 import Message from '../../Common/Message/Message';
@@ -53,17 +53,27 @@ const ViewRequest = () => {
 
     const onMount = async () => {
 
+
         const res = await ViewRequests();
-        setData(res)
-        console.log(res)
-        setShowview(true)
-        setShowupdate(false)
+        if(res.length<1){
+            setData([
+                {
+                    _id: "", name: "", mobileNumber: "", Location: "", Address: "", ServiceDate: "", ServiceTime: "", ServiceType: '',
+                    Requestdate: "",
+                    __v: ""
+                }
+            ])
+        }
+        else{
+
+            setData(res)
+            console.log(res)
+            setShowview(true)
+            setShowupdate(false)
+        }
     }
 
-    useEffect(() => {
-        onMount();
-
-    }, [])
+  
 
 const handleupdate=async()=>{
    const res = await UpdateRequest(updatedata);
