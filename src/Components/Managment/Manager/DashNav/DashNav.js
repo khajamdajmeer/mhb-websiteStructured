@@ -50,6 +50,7 @@ const handleprofilebtn = ()=>{
 <ul className="menu" id='mymenu'>
     <li><Link className='Linktag' to='requests'>Requests</Link></li>
     <li><Link className='Linktag' to='techrequest'>Tech Requests</Link></li>
+    <li><button  id='menulogoutbtn' onClick={handleprofilebtn}>logout</button></li>
     {/* <li>Data Search</li> */}
   </ul>
 
@@ -57,8 +58,8 @@ const handleprofilebtn = ()=>{
   <button className='hambutton' onClick={handlehambtn}>
         <img src={hamicon} alt="" id='hamimg'/>
     </button>
-<div className='profilecontainer'>
-  <button className='profilebtn' onClick={handleprofilebtn}>logout</button>
+<div className='profilecontainer' id='logoutbtnright'>
+  <button className='profilebtn'  onClick={handleprofilebtn}>logout</button>
   {/* <div className="profilebox" id='profiledatabox'> 
   this is profile
   </div> */}

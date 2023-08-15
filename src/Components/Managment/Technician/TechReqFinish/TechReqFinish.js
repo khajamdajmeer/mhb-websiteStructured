@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './TechReqFinish.css'
-import { finishReq } from '../../../../ApiCalls/TechnicalCalls/TechnicianRequest';
+// import { finishReq } from '../../../../ApiCalls/TechnicalCalls/TechnicianRequest';
 
 const TechReqFinish = (props) => {
     

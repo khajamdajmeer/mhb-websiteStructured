@@ -13,6 +13,7 @@ body {
     color: #fff;
     padding: 10px;
     height: 25px;
+    z-index: 8;
   }
   
   .container {
@@ -113,6 +114,9 @@ body {
   .profilecontainer{
     position: relative;
   }
+  #menulogoutbtn{
+    display: none;
+  }
   
   /* Media Query for Hamburger Menu */
   @media (max-width: 768px) {
@@ -129,6 +133,9 @@ body {
       animation: hamopen 1s ease-in-out forwards ;
     }
 
+    #logoutbtnright{
+      display: none;
+    }
     @keyframes hamopen{
         from{
             transform: scaleY(0);
@@ -149,6 +156,28 @@ body {
   
     .hambutton {
       display: block;
+      margin-right: 18px;
+    }
+    .navtopfortech{
+      height: 14%;
+      justify-content: none;
+      flex-direction: column;
+    }
+    .menu li:hover::after{
+      cursor: pointer;
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+    .menu li::after{
+      display: none;
+    }
+    .menu li{
+      text-align: center !important;
+    }
+    #menulogoutbtn{
+      display: block;
+      padding: 1px 5px;
+
     }
   }
   

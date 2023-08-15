@@ -48,7 +48,7 @@ const TechNavbar = () => {
         <img src={hamicon} alt="" id='hamimgtech'/>
     </button>
 <div className='profilecontainertech'>
-  <button className='profilebtntech' >logout</button>
+  <button className='profilebtntech'onClick={handlelogout} >logout</button>
   {/* <div className="profilebox" id='profiledatabox'> 
   this is profile
   </div> */}

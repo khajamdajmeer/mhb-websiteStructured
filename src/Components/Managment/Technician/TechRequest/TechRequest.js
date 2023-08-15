@@ -11,21 +11,30 @@ const history = useNavigate();
     const [name,setName] = useState('')
     const [techdata,setTechdata]=useState([{
         name:'',Location:"",adress:"",_id:""
+    },{
+        name:'',Location:"",adress:"",_id:""
     }])
     
     const checkauthorization = useCallback(async()=>{
         if(token){
             const res = await techAuthorization();
+            if(res.name){
             setName(res.name)
-            const newdata = await viewallTechReq();
-            if(newdata.length<1){
-                setTechdata([{
-                    name:'',Location:" ",adress: " "  ,_id:" "
-                }])
+
+                const newdata = await viewallTechReq();
+                if(newdata.length<1){
+                    setTechdata([{
+                        name:'',Location:" ",adress: " "  ,_id:" "
+                    }])
+                }
+                else{
+                    setTechdata(newdata);
+                }
             }
             else{
-                setTechdata(newdata);
+                history('/service')
             }
+           
             // console.log(newdata)
         }
         else{
