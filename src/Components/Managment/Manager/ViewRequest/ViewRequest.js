@@ -1,6 +1,6 @@
-import React, {  useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import './ViewRequest.css'
-import { ViewRequests,UpdateRequest,forwordRequest } from '../../../../ApiCalls/ManagerCalls/RequestCall';
+import { ViewRequests,UpdateRequest,GetTechDetails,PushToTech } from '../../../../ApiCalls/ManagerCalls/RequestCall';
 import Message from '../../Common/Message/Message';
 import { RequestSearch } from '../../../../ApiCalls/ManagerCalls/SearchCall';
 
@@ -20,7 +20,7 @@ const ViewRequest = () => {
         __v: ""
     })
 
-    const [showupdate, setShowupdate] = useState(true);
+    const [showupdate, setShowupdate] = useState(false);
     const [showview, setShowview] = useState(false);
     const [updatedata, setUpdatedata] = useState({
         _id: "", name: "", mobileNumber: "", Location: "", Address: "", ServiceType: '', ServiceDate: "", ServiceTime: "",
@@ -50,10 +50,16 @@ const ViewRequest = () => {
         setShowview(false);
         setUpdatedata(showingdata)
     }
+    const [techdata,setTechdata]=useState([{
+        name:'',_id:'',count:''
+    }])
+
 
     const onMount = async () => {
 
 
+        const techres = await GetTechDetails();
+        setTechdata(techres)
         const res = await ViewRequests();
         if(res.length<1){
             setData([
@@ -73,6 +79,9 @@ const ViewRequest = () => {
         }
     }
 
+    useEffect(()=>{
+        onMount();
+    },[])
   
 
 const handleupdate=async()=>{
@@ -85,43 +94,29 @@ const handleupdate=async()=>{
    }
 
 }
- const hadleupdateForword=async()=>{
-    const res = await UpdateRequest(updatedata);
-    if(res.success){
-        setShowview(true);
-    setShowupdate(false);
 
- const fdata = await forwordRequest(res.update);
- setShowmsg(true)
- setMsgdata({message:fdata.message,navigate:'/dashboard/requests'})
- setTimeout(setShowmsg(false),2000);
+const [techindex,setTechindex]=useState({id:''})
+const ontechchange = (e)=>{
+    setTechindex({...techindex,[e.target.name]:e.target.value})
+    
+    
+    
+}
 
+const handleForwordOnly = async()=>{
+    const send = {tid:techindex.id,id:showingdata._id}
+    console.log(send)
+    const response = await PushToTech(send)
+if(response.success){
 
-        console.log(fdata)
-        onMount();
-        setShowingdata({
-            _id: "", name: "", mobileNumber: "", Location: "", Address: "", ServiceType: '', ServiceDate: "", ServiceTime: "",
-            Requestdate: "",
-            __v: ""
-        })
-
-    }
-
- }
- const handleForwordOnly = async(index)=>{
-    const fdata = await forwordRequest(showingdata)
- setShowmsg(true)
-
- setMsgdata({message:fdata.message,navigate:'/dashboard/requests'})
- setTimeout(()=>{setShowmsg(false)},2000);
-
-    console.log(fdata)
-    setShowingdata({
-        _id: "", name: "", mobileNumber: "", Location: "", Address: "", ServiceType: '', ServiceDate: "", ServiceTime: "",
-        Requestdate: "",
-        __v: ""
-    })
     onMount();
+    setShowmsg(true);
+    setShowview(false)
+    setMsgdata({message:response.message,navigate:'/dashboard'})
+    setTimeout(() => {
+        setShowmsg(false)
+    }, 2000);
+}    
  }
 
     // taking the date for the servicedate feild for which the date should be selected
@@ -254,7 +249,7 @@ const handleupdate=async()=>{
 
                         {showview &&showingdata._id.length>5&& (
                             <>
-                        <h2>Details</h2>
+                        {/* <h2>Details</h2> */}
 
                                 <div className="detailsbox">
                                     <div className="dblock">
@@ -295,11 +290,26 @@ const handleupdate=async()=>{
                                         <div className="dataleft">Request date</div>
                                         <div className="dataright">{showingdata.Requestdate.slice(0, 10)}</div>
                                     </div>
+                                    <div className="dblock">
+                                        <div className="dataleft">Asign Technician</div>
+                                        <select className="dataright drightselect" name='id' value={techindex.id} onChange={ontechchange}>
+                                            <option value='-1'>---select---</option>
+                                            {techdata.map((ele,index)=>{
+                                                return(
+                                            <option value={ele._id} >{ele.name}   ({ele.count})</option>
+
+                                                )
+                                                })
+
+                                            }
+
+                                        </select>
+                                    </div>
                                 </div>
                                 <div className="detailsbuttons">
                                     <button onClick={() => { handelEdit(showingdata) }} disabled={showingdata._id.length<5}>Edit</button>
                                     {/* <button >update</button> */}
-                                    <button onClick={handleForwordOnly}  disabled={showingdata._id.length<5}>forward</button>
+                                    <button onClick={handleForwordOnly}  disabled={showingdata._id.length<5||techindex.id.length<5}>forward</button>
                                 </div>
                             </>
                         )
@@ -370,7 +380,6 @@ const handleupdate=async()=>{
                                 </div>
                                 <div className="detailsbuttons">
                                     <button onClick={handleupdate} >update</button>
-                                    <button onClick={hadleupdateForword}>Update & forward</button>
                                 </div>
 
 

@@ -92,6 +92,24 @@ overflow: hidden;
     height: 285px;
     background: linear-gradient(135deg,#184e77,#1e6091,#184e77,#184e77,#1e6091,#184e77);
     padding: 3px;
+    position: relative;
+}
+.info-dots{
+    position: absolute;
+    top: 6px;
+    right: 5px;
+    height: 30px;
+    width: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+}
+.info-dots img{
+    /* filter: invert(0.6); */
+    height: 24px;
+    width: 8px;
 }
 .ad-emleft{
     display: flex;
@@ -127,8 +145,11 @@ align-items: center;
     display: flex;
     flex-direction: row;
     list-style: none;
+    align-items: center;
+    justify-content: center;
     /* justify-content: flex-end; */
     width: 100%;
+    padding: 2px 0;
 
 }
 .ad-em-rdata-center li{
@@ -150,6 +171,7 @@ font-family: 'Libre Baskerville', serif;
     width: 65%;
     text-align: center;
     overflow-wrap: break-word;
+    overflow: hidden;
     color: #e0e1dd;
     font-weight: 500;
     /* font-family: 'Oswald', sans-serif; */
@@ -178,7 +200,7 @@ font-family: 'Libre Baskerville', serif;
     height: 60%;
     user-select: none;
     width: 60%;
-    filter: invert(0);
+    filter: invert(1);
     
 }
 
@@ -190,7 +212,7 @@ font-family: 'Libre Baskerville', serif;
 }
 
 .ad-em-add:hover .ad-em-plusimg {
-    filter: invert(1);
+    filter: invert(0.7);
 transition: all 0.3s ease;
 }
 .ad-em-updatelink{
@@ -202,8 +224,27 @@ transition: all 0.3s ease;
     font-weight: bold;
     color: #184e77;
     cursor: pointer;
+    padding: 10px 5px;
+    background: #bfd3c1;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #184e77;
+    cursor: pointer;
 }
 .ad-em-updatelink:hover{
     transition: all 0.4s ease;
     background-color: #79857b;
+}
+
+
+@media (max-width:768px) {
+    
+    .ad-em-rdata-center ul{
+        
+        padding: 1px 0;
+    
+    }
+    .ad-em-pabsolute li{
+        width: 50%;
+    }
 }

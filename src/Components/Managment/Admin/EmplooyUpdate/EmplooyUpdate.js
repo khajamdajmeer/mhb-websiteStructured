@@ -106,7 +106,7 @@ const EmplooyUpdate = () => {
             </select>
             </div>
             <div className="ad-nem-ipbox">
-            <button name="" id="" className='ad-nem-input ad-nem-btn' onClick={handleCancle}
+            <button name="" id="" className='ad-nem-input ad-nem-btncancle' onClick={handleCancle}
           
             >  Cancle </button>   
             <button name="" id="" className='ad-nem-input ad-nem-btn' onClick={handleUpdate}

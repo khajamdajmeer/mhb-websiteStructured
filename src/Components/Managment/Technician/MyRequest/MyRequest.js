@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import './MyRequest.css';
 import downarrow  from '../../../images and tones/downarrow.png'
 import { ViewMyReq,finishReq } from '../../../../ApiCalls/TechnicalCalls/TechnicianRequest';
@@ -19,29 +19,35 @@ const MyRequest = () => {
 
     const [mydata,setMydata]=useState(
        [ {
-            _id:"",name:'',mobileNumber:'',Address:'',Location:'',Service:{type:"",Date:'',Time:''}
+            _id:"",name:'',mobileNumber:'',Address:'',Location:'',Service:{type:"",Date:'',Time:''},Accepted:''
         }]
     )
 
-    const request = useCallback(async()=>{
+    const request = async()=>{
         if(token){
             const res = await techAuthorization();
             setName(res.name)
-            const newdata = await ViewMyReq();
-            if(newdata.length<1){
-               setMydata(  [ {
-                _id:"",name:'',mobileNumber:'',Address:'',Location:'',Service:{type:"",Date:'',Time:''}
-            }])
+            if(res){
+
+                const newdata = await ViewMyReq();
+                if(newdata.length<1){
+                    setMydata(  [ {
+                        _id:"",name:'',mobileNumber:'',Address:'',Location:'',Service:{type:"",Date:'',Time:''}
+                    }])
+                }
+                else{
+                    setMydata(newdata);
+                    // console.log(newdata)
+                }
             }
             else{
-                setMydata(newdata);
-                // console.log(newdata)
+                localStorage.clear();
             }
         }
         else{
             history('/service')
         }
-    },[token,history])
+    }
 
     const [activeIndex, setActiveIndex] = useState(null);
 
@@ -51,7 +57,8 @@ const MyRequest = () => {
 
     useEffect(()=>{
         request()
-    },[request])
+        // eslint-disable-next-line
+    },[])
 
 
 
@@ -130,7 +137,7 @@ const MyRequest = () => {
         {
             mydata.map((ele,index)=>{
                 return(
-                    <>
+                    ele.name.length>2&&ele.Accepted&& (<>
                     <div  className={`techdatabox ${activeIndex===index ? 'techdatawrapbox':''}`}>
                <div className="techdataboxshow" onClick={()=>toggleWrap(index)}>
                 <div className="techdatabox-left">
@@ -192,7 +199,7 @@ const MyRequest = () => {
                     </div>
                
             </div>
-                    </>
+                    </>)
                 )
             })
         }

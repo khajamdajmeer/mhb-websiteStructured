@@ -16,7 +16,7 @@ const FetchEmplooy = async (req,res,next)=>{
         req.authorization = data.user.authorization;
         const isvalid = await EmplooyDB.findById(req.user)
         req.name = isvalid.name
-        if(req.authorization!='technicain'&&isvalid){
+        if(req.authorization!='Technicain'&&isvalid){
             next();
         }
         else{

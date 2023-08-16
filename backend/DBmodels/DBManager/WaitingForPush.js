@@ -1,11 +1,11 @@
-
 const mongoose = require('mongoose')
-const {Schema}= require('mongoose')
+const { Schema } = require('mongoose');
 
 const date = new Date();
 const dateslice = date.toISOString().slice(0, 10);
 
-const Finishedreq  = new Schema({
+
+const ManagerPushWait = new Schema({
     name: {
         type: String,
         require: true
@@ -75,4 +75,5 @@ const Finishedreq  = new Schema({
 
 })
 
-module.exports = mongoose.model("Online_Client", Finishedreq);
+
+module.exports = mongoose.model("Completed_DB", ManagerPushWait);

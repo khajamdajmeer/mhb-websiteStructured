@@ -5,6 +5,7 @@ const router = express.Router();
 const techDB = require('../../DBmodels/DBTechnican/ProcessRequest')
 const ClientDB = require('../../DBmodels/DBAdmin/FinishedReq');
 const { findByIdAndDelete } = require('../../DBmodels/DBAdmin/NewEmplooyData');
+const ManagerPushDB = require('../../DBmodels/DBManager/WaitingForPush')
 
 
 
@@ -12,7 +13,7 @@ const { findByIdAndDelete } = require('../../DBmodels/DBAdmin/NewEmplooyData');
 router.post('/viewtechRequest',FetchEmplooy,async(req,res)=>{
 
     try{
-        if(req.authorization==='technician'){
+        if(req.authorization==='Technician'){
             const data = await techDB.find({"Technicain.name":null})
             const extractdata = data.map(item=>{
                 return{
@@ -43,11 +44,11 @@ router.post('/acceptreq/:id',FetchEmplooy,async(req,res)=>{
 
 
     try{
-        if(req.authorization==='technician'){
+        if(req.authorization==='Technician'){
             const rid =  req.params.id;
         const emplooyname = req.name;
         const emplooyid = req.user;
-        const newdata = {Technicain:{name:emplooyname,id:emplooyid}}
+        const newdata = {Technicain:{name:emplooyname,id:emplooyid},Accepted:true}
         const updatedata = await techDB.findByIdAndUpdate(rid,{$set:newdata},{new:true})
         res.status(200).send({message:'Accepted the Request',name:req.name})  
 
@@ -69,7 +70,7 @@ router.post('/acceptreq/:id',FetchEmplooy,async(req,res)=>{
 router.get('/viewmyreq',FetchEmplooy,async(req,res)=>{
 
 try{
-    if(req.authorization==='technician'){
+    if(req.authorization==='Technician'){
         
     const emplooyid = req.user;
     const data = await techDB.find({"Technicain.id":emplooyid})
@@ -89,14 +90,11 @@ catch(error){
 router.post('/finishreq/:id',FetchEmplooy,async(req,res)=>{
 
     try{
-    if(req.authorization==='technician'){
+    if(req.authorization==='Technician'){
         const emplooyid = req.user;
         const reqid = req.params.id;
         const Discription = req.body.discription;
-        const data = await techDB.findOne({
-            'Technicain.id':emplooyid,
-            '_id':reqid
-        })
+        const data = await techDB.findById( reqid )
         // data.Discription = Discription
          
         const newdata = {
@@ -122,7 +120,7 @@ router.post('/finishreq/:id',FetchEmplooy,async(req,res)=>{
         }
 
 
-            const fdata = await ClientDB.create(newdata)
+            const fdata = await ManagerPushDB.create(newdata)
             await techDB.findByIdAndDelete(data._id)
             res.status(200).send({message:'Success',Success:true})
 

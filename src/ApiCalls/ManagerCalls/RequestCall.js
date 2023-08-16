@@ -35,30 +35,64 @@ export const UpdateRequest = async(data)=>{
     });
     const res = await response.json();
     return res;
+
 }
 
-export const forwordRequest = async(data)=>{
-    const response = await fetch(`${host}/api/manager/forword/${data._id}`,{
+
+export const GetTechDetails = async()=>{
+    const response = await fetch(`${host}/api/track/findtechnician`,{
+        method:'GET',
+        headers:{
+            'Content-Type':'application/json',
+            'auth-token':localStorage.getItem('auth-token')
+        }
+    })
+    const res = await response.json()
+    return res
+}
+
+export const PushToTech = async(data)=>{
+    const response = await fetch(`${host}/api/track/assign/${data.id}`,{
         method:'POST',
         headers:{
-            "Content-Type":"application/json"
-            ,"auth-token":localStorage.getItem('auth-token')
+            'Content-type':'application/json',
+            'auth-token':localStorage.getItem('auth-token')
         },
-     
+        body:JSON.stringify({
+            tid:data.tid
+            
+        })
     });
-    const res = await response.json();
-    return res;
-} 
+    const res = await response.json()
+    return res
+}
 
-export const TechRequest = async()=>{
-    const response = await fetch(`${host}/api/manager/techrequests`,{
-        method:"GET",
+export const GetTechReq = async()=>{
+    const response = await fetch(`${host}/api/track/viewtechreq`,{
+        method:'GET',
         headers:{
-            "Content-Type":"application/json"
-            ,"auth-token":localStorage.getItem('auth-token')
-           }
+            'Content-Type':'application/json'
+            ,'auth-token':localStorage.getItem('auth-token')
+        }
+    });
+    const res = await response.json()
+    return res;
+    
+}
+
+export const GetReviewReq = async()=>{
+
+    const response = await fetch(`${host}/api/track/reviewreq`,{
+        method:'GET',
+        headers:{
+            'Content-Type':'application/json'
+            ,'auth-token':localStorage.getItem('auth-token')
+        }
     });
     const res = await response.json()
     return res;
 }
+
+
+
 

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import './TechRequest.css';
 import { techAuthorization } from '../../../../ApiCalls/CommonCalls/Authorization';
 import { useNavigate } from 'react-router-dom';
-import { viewallTechReq,AcceptRequest } from '../../../../ApiCalls/TechnicalCalls/TechnicianRequest';
+import { AcceptRequest,ViewMyReq } from '../../../../ApiCalls/TechnicalCalls/TechnicianRequest';
 
 const TechRequest = () => {
 
@@ -21,7 +21,7 @@ const history = useNavigate();
             if(res.name){
             setName(res.name)
 
-                const newdata = await viewallTechReq();
+                const newdata = await ViewMyReq();
                 if(newdata.length<1){
                     setTechdata([{
                         name:'',Location:" ",adress: " "  ,_id:" "
@@ -58,7 +58,7 @@ const history = useNavigate();
         console.log(res);
         setMsg(res);
         setShowmsg(true);
-        const newdata = await viewallTechReq();
+        const newdata = await ViewMyReq();
         if(newdata.length<1){
             setTechdata([{
                 name:'',Location:" ",adress: " "  ,_id:" "
@@ -101,8 +101,9 @@ const history = useNavigate();
 
             {
                 techdata.map((item,index)=>{
-                    return( <>
-                        <div id='tech-data-div' key={item._id}>
+                    return( 
+                    <>
+                    { !item.Accepted&&(    <div id='tech-data-div' key={item._id}>
                     {techdata.length<2&&item._id.length<2&&(
                         <>No Requests to show</>
                     )}
@@ -120,7 +121,7 @@ const history = useNavigate();
                     }
 
                 </div>
-            </div>
+            </div>)}
                         </>)
                     
                 })

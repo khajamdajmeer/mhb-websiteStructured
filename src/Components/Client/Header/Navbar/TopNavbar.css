@@ -76,4 +76,10 @@
     #email{
       display: none;
     }
+    .navbar{
+      display: none;
+    }
+    .menu{
+      top: 40px !important;
+    }
   }

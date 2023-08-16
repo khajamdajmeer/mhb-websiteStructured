@@ -32,35 +32,35 @@
     font-weight: bold;
 }
 
-.ma-vtr-bottom{
+.ma-vrr-bottom{
   height: 90%;
 overflow: auto;  
 width: 100%;
 }
-.ma-vtr-fullhead{
+.ma-vrr-fullhead{
   height: 40px;
   overflow: hidden;
   box-shadow: 2px 1px 4px #000;
-  background-color: #ebebeb;
+  background-color: #a3b18a;
 
 
 }
-.ma-vtr-dhead{
+.ma-vrr-dhead{
   height: 40px;
   width: unset;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  background-color: #ebebeb;
+  background-color: #e9edc9;
 
 }
-.ma-vtr-dbody{
+.ma-vrr-dbody{
   height: 210px;
   transition: all 0.5s ease;
   animation: openwrap 1s forwards;
   overflow: auto;
 }
-.ma-vtr-openwrap{
+.ma-vrr-openwrap{
   height: 40px ;
   animation: openwrap 1s forwards;
 }
@@ -73,12 +73,12 @@ width: 100%;
   }
   
 }
-.ma-vtr-dhead-body{
+.ma-vrr-dhead-body{
   width: 25%;
 }
-.ma-vtr-dreq{
+.ma-vrr-dreq{
   width: unset;
-  background-color: #caf0f8;
+  background-color: #dad7cd;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -86,11 +86,11 @@ width: 100%;
   padding: 0 10px;
   box-shadow: 1px 1px 2px #000000;
 }
-.ma-vtr-colorgreen{
+.ma-vrr-colorgreen{
   background-color: #c7f9cc;
 
 }
-.ma-vtr-name{
+.ma-vrr-name{
   padding: 0 2px;
   display: flex;
   justify-content: space-evenly;
@@ -109,11 +109,11 @@ width: 100%;
   .navtopfortech .techleft{
     font-size: 1.5em;
   }
-.ma-vtr-dreq{
+.ma-vrr-dreq{
   height: fit-content;
   flex-direction: column;
 }
-.ma-vtr-openwrap{
+.ma-vrr-openwrap{
   height: 40px ;
   animation: openwrap 1s forwards;
 }

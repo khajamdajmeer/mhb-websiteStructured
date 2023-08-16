@@ -37,7 +37,7 @@ const handlelogin = async(e)=>{
     setShowmessage(true)
     console.log(res);
     localStorage.setItem("auth-token",res.Token)
-    if(res.level==='technician'){
+    if(res.level==='Technician'){
       console.log(res)
 
       setMessage({message:res.message,navigate:"/technician"})

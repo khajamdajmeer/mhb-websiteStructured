@@ -11,6 +11,7 @@ export const techAuthorization = async()=>{
         }
     });
     const res = await response.json()
+    console.log(res)
     return res;
 
 }

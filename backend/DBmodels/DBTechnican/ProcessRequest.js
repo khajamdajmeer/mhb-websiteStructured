@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const { Schema } = require('mongoose');
 
+
 const TechAccessSchema = new Schema({
     name: {
         type: String,
@@ -25,7 +26,7 @@ const TechAccessSchema = new Schema({
     Service: {
         type: {
             type: String,
-            require: false
+            require: true
         },
         Date: {
             type: String,
@@ -60,8 +61,13 @@ const TechAccessSchema = new Schema({
         },
         id: {
             type: mongoose.Schema.Types.ObjectId,
-            requrie: true
+            require: true
         }
+    },
+    Accepted:{
+        type:Boolean,
+        require:true,
+        default:false
     }
 
 })

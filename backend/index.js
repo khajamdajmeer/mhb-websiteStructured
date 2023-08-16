@@ -29,6 +29,9 @@ app.use('/api/manager',require('./ApiRoutes/ManagerRoutes/Requests'))
 //router for teh serach function 
 app.use('/api/search',require('./ApiRoutes/ManagerRoutes/SearchRequest'))
 
+//route for the manager to fetch forward and track technician request
+app.use('/api/track',require('./ApiRoutes/ManagerRoutes/TechReqHandle'))
+
 //router for technicain access functions
 app.use('/api/technician',require('./ApiRoutes/TechnicainRoutes/TechRequest'))
 //router for checking authorization of technnicain on mouting the page

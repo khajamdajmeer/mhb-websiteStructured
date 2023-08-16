@@ -1,0 +1,15 @@
+.ad-nem-btncancle{
+    width: 100%;
+    background:#a0a8b3;
+    border: none;
+    padding: 8px 0px !important;
+    color: whitesmoke;
+    font-weight: bold;
+    border-radius: 4px;
+
+}
+.ad-nem-btncancle:hover{
+   transition: all 0.3s ease;
+    background:#39404a;
+color: black;
+}

@@ -1,13 +1,12 @@
-import React, { useCallback, useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import TechNavbar from '../TechNavbar/TechNavbar';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { async } from 'q';
 import { techAuthorization } from '../../../../ApiCalls/CommonCalls/Authorization';
 const TechDashboard = () => {
   const history= useNavigate();
 
   const token = localStorage.getItem('auth-token')
-  const checkauthorization = useCallback(async()=>{
+  const checkauthorization = async()=>{
     if(token){
       const res = await techAuthorization();
       if(res){
@@ -20,11 +19,12 @@ const TechDashboard = () => {
     else{
       history('/service')
     }
-  },[token,history])
+  }
 
   useEffect(()=>{
     checkauthorization()
-  },[checkauthorization])
+    // eslint-disable-next-line
+  },[])
   return (
     <>
         <TechNavbar/>

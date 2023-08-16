@@ -61,6 +61,7 @@ const Emplooys = () => {
             <div className="ad-emright"><img src={arrow} alt="" /></div>
           </div>
           <div className="ad-em-rdata">
+            {/* <button className='info-dots'> <img src={dotsicom} alt="" /></button> */}
           <div className="ad-em-rdata-center">
             <ul>
               <li className='ad-em-lileft'>name:</li>
@@ -98,8 +99,8 @@ const Emplooys = () => {
             </ul>
 
             <ul className='ad-em-pabsolute'>
-              <li className='ad-em-lileft'><button>view progress</button></li>
-              <li className='ad-em-liright'><Link to='/admindashboard/updateemplooy' state={{id:ele._id}} className='ad-em-updatelink'>Update Data</Link></li>
+              <li className='ad-em-lileft'><Link state={{id:ele._id,name:ele.name,role:ele.designation,mobile:ele.mobilenumber}} to='/admindashboard/progress' className='ad-em-updatelink'>view progress</Link></li>
+              {/* <li className='ad-em-liright'><Link to='/admindashboard/updateemplooy' state={{id:ele._id}} className='ad-em-updatelink'>Update Data</Link></li> */}
             </ul>
             
             

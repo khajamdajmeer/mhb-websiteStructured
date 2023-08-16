@@ -65,6 +65,7 @@ const handleprofilebtn = ()=>{
 <ul className="menu" id='mymenu'>
     <li><Link className='Linktag' to='requests'>Requests</Link></li>
     <li><Link className='Linktag' to='techrequest'>Tech Requests</Link></li>
+    <li><Link className='Linktag' to='reviewreq'>Review</Link></li>
     <li><button  id='menulogoutbtn' onClick={handleprofilebtn}>logout</button></li>
     {/* <li>Data Search</li> */}
   </ul>

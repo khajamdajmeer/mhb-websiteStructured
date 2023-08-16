@@ -10,7 +10,7 @@ router.get('/requests',FetchEmplooy,async(req,res)=>{
 
 
     try{
-        if(req.authorization!='technicain'){
+        if(req.authorization!='Technicain'){
             const data = await RequestDB.find({});
             res.status(200).send(data)
         }
@@ -110,7 +110,7 @@ router.post('/forword/:id',FetchEmplooy,async(req,res)=>{
 
 router.get('/techrequests',FetchEmplooy,async(req,res)=>{
     try{
-        if(req.authorization!='technicain'){
+        if(req.authorization!='Technicain'){
             const data = await techDB.find({});
             res.status(200).send(data)
         }

@@ -1,12 +1,44 @@
+
+.techright{
+    display: flex;
+}
+.techright select{
+    width: 70px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: none;
+    background-color: #26563e;
+    color: white;
+}
+.techright button{
+    width: 70px;
+    height: inherit;
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #74c69d;
+    transition: all 0.5s;
+/* color: ; */
+}
+.techright button:hover{
+    background-color: #2d6a4f;
+    color: #ffff;
+}
+.techright input{
+    border: none;
+    border-radius: none;
+}
 .viewreq {
     /* position: relative; */
     width: 100vw;
     height: 100vh;
     display: flex;
+    background: #f1faee;
 }
 
 .reqcenter {
-
     position: relative;
     display: flex;
     margin: auto;
@@ -40,7 +72,7 @@
 
 .reqhead {
     display: flex;
-    padding: 3px 0;
+    padding: 8px 0;
     position: sticky;
     top: 0;
     width: 100%;
@@ -51,10 +83,9 @@
 }
 .reqheadright{
     display: flex;
-    padding: 0.5px 10px;
+    padding: 4.5px 10px;
     justify-content: space-between;
     background-color: rgb(227, 148, 0);
-
 }
 
 .reqhead div {
@@ -96,13 +127,13 @@
 .detailsbox{
     display: flex;
     width: 100%;
-    height: 70%;
+    height: 81%;
     flex-direction: column;
 }
 .dblock{
     margin: auto;
     display: flex;
-    width: 60%;
+    width: 75%;
     justify-content: center;
 }
 .dataleft{
@@ -115,6 +146,11 @@
     /* font-size: 20px; */
     justify-content: center;
 padding: 3px 5px;
+}
+.drightselect{
+    height: 26px;
+    border: none;
+    font-size: 18px;
 }
 .detailsbuttons{
     display: flex;

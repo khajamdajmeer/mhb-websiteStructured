@@ -1,65 +1,54 @@
-import React, {  useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ViewTechreq.css';
-// import { TechRequest } from '../../../../ApiCalls/ManagerCalls/RequestCall';
-import { SerachTechDB } from '../../../../ApiCalls/ManagerCalls/SearchCall';
-import { useNavigate } from 'react-router-dom';
-// import serachlogo from '../../../images and tones/search-icon.png'
+import { GetTechReq } from '../../../../ApiCalls/ManagerCalls/RequestCall';
 
 const ViewTechreq = () => {
 
-
-  const [searchinput,setSearchinput]=useState({type:"",data:""})
-  const onchange = (e)=>{
- setSearchinput({...searchinput,[e.target.name]:e.target.value});
+  const [activeIndex,setActiveIndex]=useState(0);
+const [data,setData]=useState([
+  {_id:'',name:'',mobile:'',data:[ {
+    Service: {
+      type:'',
+      Date: "",
+      Service: ""
+    },
+    Technicain: {
+      name: "",
+      id: ""
+    },
+    forworded: {
+      name: "",
+      id: ""
+    },
+    _id: "",
+    name: "",
+    mobileNumber: '',
+    mobilenumberString: "",
+    Location: "",
+    Address: "  ",
+    Requestdate: "",
+    Accepted: '',
+    __v: 0
+  }]}
+])
+  //functions to load onMount
+  const onMount=async()=>{
+    const res = await GetTechReq();
+    setData(res)
   }
-
-  const [viewdata,setViewdata]=useState({
-    _id: "", name: "", mobileNumber: "", Location: "", Address: "", ServiceDate: "", ServiceTime: "", ServiceType: '',
-    Requestdate: "",ForwordedBy:"",
-    __v: ""
-  })
-  const [showsearchdata,setShowingdata]=useState(false);
-
- const handleSearch = async()=>{
-
-  const response = await SerachTechDB(searchinput);
-  // setSearchinput({type:"",data:""})
-  setShowingdata(true)
-  setViewdata(response);
-   console.log(response)
-
- }
- const history = useNavigate()
   useEffect(()=>{
-    const level = localStorage.getItem('level')
-    if(level==='l2'){
-    }
-    else if(level==='l3'){
-       history('/technician/request')
-     }
-     else if(level==='l1'){
-       history('/admindashboard/emplooys')
-     }
-  },[history])
+onMount();
+  },[])
 
 
- //auto serach on stoping the typing for .5 seconds
- const [ typingTimer,setTypingTimer]  = useState(null);
- const doneTypingIntervel = 500;
- const inputElement = React.createRef();
- const handleInput = async()=>{
-  clearTimeout(typingTimer);
- setTypingTimer(setTimeout(doneTyping,doneTypingIntervel));
- };
- const doneTyping = async()=>{
 
-  if(searchinput.data.length>0){
-    
+
+  const handlewrap = (index)=>{
+  setActiveIndex(activeIndex === index ? null : index)
+
   }
-  const res = await SerachTechDB(searchinput);
-  setViewdata(res);
 
- }
+ 
 
 
 
@@ -71,43 +60,58 @@ const ViewTechreq = () => {
         <div className="techcenterdiv">
           <div className="navtopfortech">
             <div className="techleft">Tech Requests</div>
-            <div className='techright'>
-              <select name="type" id="techsearchfilter"value={searchinput.type} onChange={onchange}>
-                <option value="0">---select---</option>
-                <option value="name">name</option>
-                <option value="mobilenumber">mobile number</option>
-              </select>
-              <input type="text" name="data" id="searchinput" ref={inputElement} onInput={handleInput} value={searchinput.data} onChange={onchange} />
-              <button onClick={handleSearch}>
-                search
-              </button>
-            </div>
           </div>
-          <div className="techdatalist">
-            {showsearchdata&&searchinput.data.length>0&&(
-              viewdata.map((ele,index)=>{
+          <div className="ma-vtr-bottom">
+            {
+              data.map((ele,index)=>{
                 return(
-<div className='techdatasublist'>
-                <div>{ele.name}</div>
-                <div>{ele.mobileNumber}</div>
-                <div>{ele.Location}</div>
-                <div>{ele.ForwordedBy}</div>
-                <div><button>Delete</button>
-                <button>revert</button></div>
+<div className={`ma-vtr-fullhead ${activeIndex===index ? 'ma-vtr-openwrap':''}`}>
+              <div className="ma-vtr-dhead" onClick={()=>handlewrap(index)}>
+                <div className="ma-vtr-dhead-body">{ele.name}</div>
+                <div className="ma-vtr-dhead-body">{ele.mobile}</div>
+                <div className="ma-vtr-dhead-body">{ele.data.length}</div>
+                {/* <div className="ma-vtr-dhead-body">this is body</div> */}
               </div>
+
+              <div className="ma-vtr-dbody">
+                {ele.data.map((element)=>{
+                  return(
+                    <>
+                    <div className={`ma-vtr-dreq ${element.Accepted ? 'ma-vtr-colorgreen':''}`}>
+                  <div className="ma-vtr-name">
+                    {element.name}
+                    </div>
+                  <div className="ma-vtr-name">{element.mobileNumber}</div>
+                  <div className="ma-vtr-name">{element.Location}</div>
+                  <div className="ma-vtr-name">{element.Service.type}</div>
+                  <div className="ma-vtr-name">{element.Requestdate.slice(0,10)}</div>
+                  <div className="ma-vtr-name">
+
+                  <button>Delete</button>
+                  <button>revert</button>
+                  </div>
+                 </div>
+                    
+                    </>
+                  )
+                })
+
+                }
+                 
+                 
+              
+              </div>
+             </div>
                 )
               })
-                
-
-            )
-
             }
-        
+
+          </div>
+      
          
           </div>
         </div>
 
-      </div>
 
     </>
   );
