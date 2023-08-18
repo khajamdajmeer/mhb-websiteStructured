@@ -78,10 +78,10 @@ width: 100%;
 }
 
 .ma-vtr-count{
-  background-color: #ffea00;
+  background-color: #80ed99;
   height: 30px;
   width: 30px;
-  outline: 1px solid #000;
+  /* outline: 1px solid #000; */
   /* width: fit-content; */
   /* padding: 0 4px; */
   display: flex;

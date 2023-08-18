@@ -3,6 +3,7 @@ import hamicon from '../../Imgs/menu-icon.png';
 import logo from '../../Imgs/logo mhb.png'
 import { Link, useNavigate } from 'react-router-dom';
 import './TechNavbar.css'
+import Cookies from 'js-cookie';
 
 const TechNavbar = () => {
     const history = useNavigate();
@@ -22,7 +23,10 @@ const TechNavbar = () => {
      }
 
      const handlelogout =()=>{
-        localStorage.clear();
+        const cookies = Cookies.get();
+        for(const cookie in cookies){
+          Cookies.remove(cookie)
+        }
   
   
         history("/service")

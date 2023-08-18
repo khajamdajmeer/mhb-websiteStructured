@@ -38,7 +38,8 @@ app.use('/api/technician',require('./ApiRoutes/TechnicainRoutes/TechRequest'))
 app.use('/api/authorization',require('./ApiRoutes/CommonRoutes/AuthorizationCheck'))
 // rotue for checking admin authorization token
 app.use('/api/adminauthorization',require('./ApiRoutes/CommonRoutes/AdminAuthorization'))
-
+//ROUTE FOR TEH ADMIN FOR TEH VIEW THE PROGRESS OF THE EMPLOOY
+app.use('/api/progress',require('./ApiRoutes/AdminRoutes/Progress'))
 
 
 app.listen(port,(err)=>{

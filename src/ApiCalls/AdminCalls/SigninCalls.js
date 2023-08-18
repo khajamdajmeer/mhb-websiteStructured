@@ -18,9 +18,8 @@ export const adminlogin = async(data)=>{
     console.log(res);
 
     if(res.success){
-        localStorage.setItem('auth-token',res.Token)
-        localStorage.setItem('level','l1')
         Cookies.set('auth-token',res.Token)
+        Cookies.set('level','l1')
     
         return res;
     }
@@ -36,7 +35,7 @@ export const adminAuthorization = async()=>{
         method:'GET',
         headers:{
             'Content-Type':'application/json',
-            'auth-token':localStorage.getItem('auth-token')
+            'auth-token':Cookies.get('auth-token')
         }
     });
     const res = await response.json();
@@ -45,7 +44,10 @@ export const adminAuthorization = async()=>{
         return res;
     }
     else{
-        localStorage.clear();
+        const cookies = Cookies.get();
+        for(const cookie in cookies){
+            Cookies.remove(cookie)
+        }
         return res;
     }
 }

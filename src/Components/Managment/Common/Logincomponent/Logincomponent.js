@@ -17,9 +17,8 @@ const onchange = (e)=>{
 const [message,setMessage]=useState({message:"",navigate:"",showOk:''})
 const [showmessage,setShowmessage]=useState(false);
 useEffect(()=>{
-  const istoken = localStorage.getItem('auth-token')
-  const authlevel = localStorage.getItem('level')
-  // localStorage.clear()
+  const istoken = Cookies.get('auth-token')
+  const authlevel = Cookies.get('level')
   if(istoken&&authlevel!=="L3"){
     history('/dashboard')
   }
@@ -35,20 +34,19 @@ const handlelogin = async(e)=>{
   if(res.message==="login success"){
     setShowmessage(true)
     setMessage({message:res.message,navigate:'/dashboard',showOk:true})
-    localStorage.setItem("auth-token",res.Token)
-    Cookies.set('auth-token',res.Token)
+    Cookies.set("auth-token",res.Token)
     if(res.level==='Technician'){
-      console.log(res)
+
       setMessage({message:res.message,navigate:"/technician",showOk:true})
       let lv = "L3"
-      localStorage.setItem('level',lv)
+      Cookies.set('level',lv)
     }
     else{
-      console.log(res)
+      console.log(Cookies.get('auth-token'))
       setMessage({message:res.message,navigate:'/dashboard',showOk:true})
 
       let lv = 'L2'
-      localStorage.setItem('level',lv)
+      Cookies.set('level',lv)
     }
   }
   else{

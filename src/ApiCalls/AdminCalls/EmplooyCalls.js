@@ -1,11 +1,11 @@
 import { host } from "../Host";
-
+import Cookies from "js-cookie";
 export const AllEmploydata = async()=>{
     const response = await fetch(`${host}/api/admin/emplooy`,{
         method:'GET',
         headers:{
             'Content-Type':'application/json',
-            'auth-token':localStorage.getItem('auth-token')
+            'auth-token':Cookies.get('auth-token')
         }
     })
     const res = await response.json();
@@ -17,7 +17,7 @@ export const CreateNewEmploy = async(data)=>{
         method:'POST',
         headers:{
             'Content-Type':'application/json',
-            'auth-token':localStorage.getItem('auth-token')
+            'auth-token':Cookies.get('auth-token')
         },
         body:JSON.stringify(
             {
@@ -44,7 +44,7 @@ export const viewSingleEmplooy = async(id)=>{
         method:'GET',
         headers:{
             'Content-Type':'application/json',
-            'auth-token':localStorage.getItem('auth-token')
+            'auth-token':Cookies.get('auth-token')
         },
     });
     return response.json()
@@ -56,7 +56,7 @@ export const UpdateEmplooy=async(data)=>{
         method:'PUT',
         headers:{
             'Content-Type':'application/json',
-            'auth-token':localStorage.getItem('auth-token')
+            'auth-token':Cookies.get('auth-token')
         },
         body:JSON.stringify({
             name:name,

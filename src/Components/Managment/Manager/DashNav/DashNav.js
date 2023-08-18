@@ -5,6 +5,7 @@ import crosslogo from '../../Imgs/bgcross.png'
 import logo from '../../Imgs/logo mhb.png'
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import Cookies from 'js-cookie';
 
 
 
@@ -12,7 +13,7 @@ const DashNav = () => {
 
   const history = useNavigate();
   useEffect(() => {
-const level = localStorage.getItem('level')
+const level = Cookies.get('level')
 if(level==='l2'){
   history('/service')
 
@@ -50,7 +51,10 @@ const handleprofilebtn = ()=>{
   // else{
   //   profileelement.style.display = 'none'
   // }
-  localStorage.clear();
+  const cookies = Cookies.get();
+  for(const cookie in cookies){
+    Cookies.remove(cookie)
+  }
   history("/service")
 }
 

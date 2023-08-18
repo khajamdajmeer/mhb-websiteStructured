@@ -8,6 +8,7 @@ import dots from '../../../images and tones/3dot.png'
 import { useNavigate } from 'react-router-dom';
 import DeleteMsg from '../DeleteMsg/DeleteMsg';
 import RevertMsg from '../RevertMsg/RevertMsg';
+import Cookies from 'js-cookie';
 
 const ViewTechreq = () => {
   const history = useNavigate();
@@ -59,10 +60,13 @@ const loadinstate = useSelector(state=>state.load)
     
   }
   const validationcheck = ()=>{
-    const token = localStorage.getItem('auth-token')
-    const level = localStorage.getItem('level')
+    const token = Cookies.get('auth-token')
+    const level = Cookies.get('level')
     if(!token||level!=='L2'){
-      localStorage.clear()
+      const cookies = Cookies.get();
+      for(const cookie in cookies){
+        Cookies.remove(cookie)
+      }
       history('/service')
       return false;
     } else{
@@ -118,6 +122,7 @@ const [oldTid,setOldTid]=useState('')
  const handleCancleRevert=()=>{
   setShowRevert(false);
   onMount();
+  setBtnindex(null)
  }
 
 

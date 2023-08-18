@@ -5,6 +5,7 @@
     import { adminlogin,adminAuthorization } from '../../../../ApiCalls/AdminCalls/SigninCalls';
     import Message from '../../Common/Message/Message';
     import { useNavigate } from 'react-router-dom';
+    import Cookies from 'js-cookie';
     const AdminLoginpage = (props) => {
     
       const history = useNavigate();
@@ -18,9 +19,9 @@
     const [showmessage,setShowmessage]=useState(false);
 
     //checking authorization of the token
-    const istoken = localStorage.getItem('auth-token')
+    const istoken = Cookies.get('auth-token')
     const authorization= useCallback(async()=>{
-        const authlevel = localStorage.getItem('level')
+        const authlevel = Cookies.get('level')
         if(authlevel==='l1'&&istoken){
           const val =  await adminAuthorization();
           if(val.validation){
@@ -64,7 +65,7 @@
         <>
         {/* <Servicemanager/> */}
         {showmessage&&message&&(
-        <Message message={message.message} navigate={message.navigate}/>
+        <Message message={message.message} navigate={message.navigate} showOk={true}/>
         )
     
         }

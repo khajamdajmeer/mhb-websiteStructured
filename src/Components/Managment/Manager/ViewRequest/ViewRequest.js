@@ -4,6 +4,7 @@ import { ViewRequests, UpdateRequest, GetTechDetails, PushToTech } from '../../.
 import Message from '../../Common/Message/Message';
 import { RequestSearch } from '../../../../ApiCalls/ManagerCalls/SearchCall';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 
 const ViewRequest = () => {
@@ -64,6 +65,7 @@ const ViewRequest = () => {
         const techres = await GetTechDetails();
         setTechdata(techres)
         const res = await ViewRequests();
+        console.log(res)
         if (res.length < 1) {
             setData([
                 {
@@ -82,10 +84,13 @@ const ViewRequest = () => {
     }
     const history = useNavigate();
     const validationcheck = ()=>{
-        const token = localStorage.getItem('auth-token')
-        const level = localStorage.getItem('level')
+        const token = Cookies.get('auth-token')
+        const level = Cookies.get('level')
         if(!token||level!=='L2'){
-          localStorage.clear()
+            const cookies = Cookies.get();
+            for(const cookie in cookies){
+                Cookies.remove(cookie)
+            }
           history('/service')
           return false;
         } else{

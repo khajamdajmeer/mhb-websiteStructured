@@ -1,4 +1,4 @@
-// const host = "http://localhost:5001";
+import Cookies from 'js-cookie';
 const {host} = require('../Host')
 
 
@@ -7,7 +7,7 @@ export const SerachTechDB = async(data)=>{
         method:'POST',
         headers:{
             "Content-Type": "application/json",
-            "auth-token":localStorage.getItem('auth-token')
+            "auth-token":Cookies.set('auth-token')
         },
         body:JSON.stringify({
             type:data.type,
@@ -25,7 +25,7 @@ export const RequestSearch=async(data)=>{
         method:"POST",
         headers:{
             "Content-Type": "application/json",
-            "auth-token":localStorage.getItem('auth-token')
+            "auth-token":Cookies.set('auth-token')
         },
         body:JSON.stringify({
             type:data.type,

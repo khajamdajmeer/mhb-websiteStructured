@@ -211,7 +211,7 @@ router.put('/revert/:id',FetchEmplooy,async(req,res)=>{
         const data = await TechDB.findById(rid)
         if(data){
             const techchnician =await EmplooyDB.findById(req.body.id)
-            const newdata ={Technicain:{id:req.body.id,name:techchnician.name}}
+            const newdata ={Technicain:{id:req.body.id,name:techchnician.name},Accepted:false}
             await TechDB.findByIdAndUpdate(rid,{$set:newdata},{new:true})
             res.status(200).send({success:true,message:`Assigned to the ${techchnician.name}` })
         }else{

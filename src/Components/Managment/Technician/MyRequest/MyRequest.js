@@ -5,12 +5,13 @@ import { ViewMyReq,finishReq } from '../../../../ApiCalls/TechnicalCalls/Technic
 import { techAuthorization } from '../../../../ApiCalls/CommonCalls/Authorization';
 import {  useNavigate } from 'react-router-dom';
 import TechReqFinish from '../TechReqFinish/TechReqFinish';
+import Cookies from 'js-cookie';
 const MyRequest = () => {
 
 
 
     const history = useNavigate();
-    const token = localStorage.getItem('auth-token')
+    const token = Cookies.get('auth-token')
     const [name,setName]=useState('')
 
 
@@ -41,7 +42,10 @@ const MyRequest = () => {
                 }
             }
             else{
-                localStorage.clear();
+                const cookies = Cookies.get();
+                for(const cookie in cookies){
+                    Cookies.remove(cookie)
+                }
             }
         }
         else{

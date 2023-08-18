@@ -10,9 +10,15 @@ const mongoose = require('mongoose')
 // ROUTE 1 : FOR VIEWING CLIENT REQUESTS FOR TEH ADMIN
 
 router.get('/requests',FetchAdmin,async(req,res)=>{
+    try{
 
-    const requests = await RequestDB.find({})
-    res.status(200).send(requests);
+        const requests = await RequestDB.find({})
+        res.status(200).send(requests);
+    }catch(error){
+        res.status(500).send({message:'error occured'});
+
+    }
+
 })
 
 // ROUTE 2 : FOR VIEWING INDIVIDUAL REQUESTS FOR THE ADMIN

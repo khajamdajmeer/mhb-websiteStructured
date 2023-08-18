@@ -1,5 +1,6 @@
 
 import {host} from '../Host'
+import Cookies from 'js-cookie';
 
 export const techAuthorization = async()=>{
 
@@ -7,7 +8,7 @@ export const techAuthorization = async()=>{
         method:'GET',
         headers:{
             "Content-Type": "application/json",
-            "auth-token":localStorage.getItem('auth-token')
+            'auth-token':Cookies.get('auth-token')
         }
     });
     const res = await response.json()

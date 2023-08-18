@@ -3,11 +3,12 @@ import './TechRequest.css';
 import { techAuthorization } from '../../../../ApiCalls/CommonCalls/Authorization';
 import { useNavigate } from 'react-router-dom';
 import { AcceptRequest,ViewMyReq } from '../../../../ApiCalls/TechnicalCalls/TechnicianRequest';
+import Cookies from 'js-cookie';
 
 const TechRequest = () => {
 
 const history = useNavigate();
-    const token = localStorage.getItem('auth-token')
+    const token = Cookies.get('auth-token')
     const [name,setName] = useState('')
     const [techdata,setTechdata]=useState([{
         name:'',Location:"",adress:"",_id:""

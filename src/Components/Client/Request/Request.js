@@ -31,7 +31,6 @@ const Request = (props) => {
     const handleRequest = async (e) => {
         showloading()
         e.preventDefault();
-        setTimeout(async () => {
             const res = await AddRequest(data);
             const sound = new Howl({
                 src: [ordertone]
@@ -48,7 +47,6 @@ const Request = (props) => {
                 hideloading();
                 console.log('something went wrong, please try again');
             }
-        }, 4000); 
     }
     const onchange = (e)=>{
 setData({...data,[e.target.name]:e.target.value})
@@ -57,7 +55,7 @@ setData({...data,[e.target.name]:e.target.value})
     const cancelmessage= async(data)=> {
         
         setNotification(data)
-        setData({ name: "", mobilenumber: "", location: "", address: "",ServiceType:"" ,servicedate: "", servicetime: ""})
+        setData({ name: "", mobilenumber: "", location: "", address: "",ServiceType:"0" ,servicedate: "", servicetime: ""})
     }
 
     // taking the date for the servicedate feild for which the date should be selected
@@ -118,7 +116,7 @@ setData({...data,[e.target.name]:e.target.value})
         <div className="ipbox">
             <label htmlFor="location" className='reqlabel'>Location</label>
             <select name="location" onChange={onchange} value={data.location} id="" required>
-                <option value="0" >---SELECT--- </option>
+                <option value={null} >---SELECT--- </option>
                 <option value="tolichowki">towlichoki</option>
                 <option value="malakpet">malakpet</option>
                 <option value="dilshuknagar">dilshuknagar</option>

@@ -1,14 +1,15 @@
+import Cookies from 'js-cookie';
 
-// const host = "http://localhost:5001";
 const {host} = require('../Host')
 
 
 export const ViewRequests = async()=>{
+    // console.log(Cookies.get('auth-token'))
     const response = await fetch(`${host}/api/manager/requests`,{
         method:'GET',
         headers:{
             "Content-Type": "application/json",
-            "auth-token":localStorage.getItem('auth-token')
+            "auth-token": Cookies.get('auth-token')
         }
     });
     const res = await response.json();
@@ -21,7 +22,7 @@ export const UpdateRequest = async(data)=>{
         method:'PUT',
         headers:{
             "Content-Type":"application/json"
-            ,"auth-token":localStorage.getItem('auth-token')
+            ,"auth-token": Cookies.get('auth-token')
         },
         body:JSON.stringify({
             name: data.name,
@@ -44,7 +45,7 @@ export const GetTechDetails = async()=>{
         method:'GET',
         headers:{
             'Content-Type':'application/json',
-            'auth-token':localStorage.getItem('auth-token')
+            'auth-token': Cookies.get('auth-token')
         }
     })
     const res = await response.json()
@@ -56,7 +57,7 @@ export const PushToTech = async(data)=>{
         method:'POST',
         headers:{
             'Content-type':'application/json',
-            'auth-token':localStorage.getItem('auth-token')
+            'auth-token': Cookies.get('auth-token')
         },
         body:JSON.stringify({
             tid:data.tid
@@ -72,7 +73,7 @@ export const GetTechReq = async()=>{
         method:'GET',
         headers:{
             'Content-Type':'application/json'
-            ,'auth-token':localStorage.getItem('auth-token')
+            ,'auth-token': Cookies.get('auth-token')
         }
     });
     const res = await response.json()
@@ -86,7 +87,7 @@ export const GetReviewReq = async()=>{
         method:'GET',
         headers:{
             'Content-Type':'application/json'
-            ,'auth-token':localStorage.getItem('auth-token')
+            ,'auth-token': Cookies.get('auth-token')
         }
     });
     const res = await response.json()
@@ -98,7 +99,7 @@ export const PushToFinished = async(id)=>{
         method:'POST',
         headers:{
             'Content-Type':'application/json',
-            'auth-token':localStorage.getItem('auth-token')
+            'auth-token': Cookies.get('auth-token')
         }
         
     })
@@ -112,7 +113,7 @@ export const DeleteReq = async(data)=>{
         method:'DELETE',
         headers:{
             'Content-Type':'application/json',
-            'auth-token':localStorage.getItem('auth-token')
+            'auth-token': Cookies.get('auth-token')
         },
         body:JSON.stringify({reason:data.reason})
     });
@@ -122,16 +123,29 @@ export const DeleteReq = async(data)=>{
 }
 
 export const RevertReq = async(data)=>{
-    const response = await fetch(`${host}/api/track/revert/${data.rid}`,{
-        method:'PUT',
-        headers:{
-            'Content-Type':'application/json',
-            'auth-token':localStorage.getItem('auth-token') 
-        },body:JSON.stringify({id:data.tid})
+    
 
-    })
-    const res = await response.json();
-    return res;
+        const response = await fetch(`${host}/api/track/revert/${data.rid}`,{
+            method:'PUT',
+            headers:{
+                'Content-Type':'application/json',
+                // 'auth-token':Cookies.get('auth-token') 
+                'auth-token': Cookies.get('auth-token') 
+            },body:JSON.stringify({id:data.tid})
+    
+        })
+        // try{
+        //     if(!response.ok){
+        //         throw new Error()
+        //     }
+            
+        // }catch(error){
+        //     console.error(error)
+        //     // throw error
+        // }
+        const res = await response.json();
+        return res;
+   
 }
 
 

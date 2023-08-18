@@ -92,7 +92,7 @@ const [data,setData]=useState([
     <>
         {showmsg&&<Message message={msgdata.message} navigate={msgdata.navigate} showOk={msgdata.showOk}/>}
 
-      <div className="viewtechrequest">
+      <div className="viewtechrequests">
 
         <div className="techcenterdiv">
           <div className="navtopfortech">

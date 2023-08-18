@@ -3,22 +3,29 @@ import './AdminNavbar.css'
 import logo from '../../Imgs/logo mhb.png'
 import hamicon from '../../Imgs/menu-icon.png'
 import { Link, useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const AdminNavbar = () => {
   const history = useNavigate();
 
   useEffect(()=>{
-    const token = localStorage.getItem('auth-token')
-    const lvl = localStorage.getItem('level')
+    const token = Cookies.get('auth-token')
+    const lvl = Cookies.get('level')
     if(!token||lvl!=='l1'){
-      localStorage.clear();
+      const cookies = Cookies.get()
+        for(const cookie in cookies){
+          Cookies.remove(cookie)
+        }
       history('/loginadmin')
     }
   },[history])
 
 
     const handlelogout = ()=>{
-        localStorage.clear();
+      const cookies = Cookies.get()
+      for(const cookie in cookies){
+        Cookies.remove(cookie)
+      }
         history('/loginadmin')
     }
 
