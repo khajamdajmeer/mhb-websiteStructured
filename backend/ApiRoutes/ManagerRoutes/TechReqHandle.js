@@ -203,6 +203,28 @@ router.delete('/delete/:id',FetchEmplooy,async(req,res)=>{
         res.status(500).send({message:'error occured',success:false})
     }
 })
+//ROUTE 7 FOR THE MANAGER TO CHANGE THE REQ TO OTHER TECHNICIAN
+router.put('/revert/:id',FetchEmplooy,async(req,res)=>{
+
+    try{
+        const rid = req.params.id;
+        const data = await TechDB.findById(rid)
+        if(data){
+            const techchnician =await EmplooyDB.findById(req.body.id)
+            const newdata ={Technicain:{id:req.body.id,name:techchnician.name}}
+            await TechDB.findByIdAndUpdate(rid,{$set:newdata},{new:true})
+            res.status(200).send({success:true,message:`Assigned to the ${techchnician.name}` })
+        }else{
+            res.status(200).send({success:false,message:'data not found! Please try again'})
+
+        }
+
+    }catch(error){
+        console.log(error)
+        res.status(500).send({message:'error occured',success:false})
+    }
+
+})
 
 
 module.exports = router;

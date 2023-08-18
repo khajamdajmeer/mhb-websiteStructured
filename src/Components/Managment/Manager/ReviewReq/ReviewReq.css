@@ -76,6 +76,18 @@ width: 100%;
 .ma-vrr-dhead-body{
   width: 25%;
 }
+.ma-vrr-count{
+  background-color: #9ef01a;
+  height: 30px;
+  width: 30px;
+  outline: 1px solid #004b23;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border-radius: 50%;
+  color: #004b23;
+}
 .ma-vrr-dreq{
   width: unset;
   background-color: #dad7cd;

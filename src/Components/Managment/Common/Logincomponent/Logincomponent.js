@@ -4,6 +4,7 @@ import './Logincomponent.css';
 import { Logincall } from '../../../../ApiCalls/ManagerCalls/Logincall';
 import Message from '../Message/Message';
 import { useNavigate,Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
 const Logincomponent = (props) => {
 
   const history = useNavigate();
@@ -35,6 +36,7 @@ const handlelogin = async(e)=>{
     setShowmessage(true)
     setMessage({message:res.message,navigate:'/dashboard',showOk:true})
     localStorage.setItem("auth-token",res.Token)
+    Cookies.set('auth-token',res.Token)
     if(res.level==='Technician'){
       console.log(res)
       setMessage({message:res.message,navigate:"/technician",showOk:true})

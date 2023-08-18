@@ -1,4 +1,5 @@
 
+import Cookies from "js-cookie";
 import { host } from "../Host"
 
 export const adminlogin = async(data)=>{
@@ -19,6 +20,8 @@ export const adminlogin = async(data)=>{
     if(res.success){
         localStorage.setItem('auth-token',res.Token)
         localStorage.setItem('level','l1')
+        Cookies.set('auth-token',res.Token)
+    
         return res;
     }
     else{

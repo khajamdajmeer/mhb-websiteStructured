@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 import dots from '../../../images and tones/3dot.png'
 import { useNavigate } from 'react-router-dom';
 import DeleteMsg from '../DeleteMsg/DeleteMsg';
+import RevertMsg from '../RevertMsg/RevertMsg';
 
 const ViewTechreq = () => {
   const history = useNavigate();
@@ -104,8 +105,20 @@ const handleCancleDelete = ()=>{
   onMount();
   setShowDelete(false)
 }
+///HANDLING REVERT BUTTON LOGIC HERE
+const [showRevert,setShowRevert]=useState(false)
+const [RevertData,setRevertData]=useState('')
+const [oldTid,setOldTid]=useState('')
+ const handleRevert =(data,tid)=>{
+  setShowRevert(true)
+  setRevertData(data)
+  setOldTid(tid)
 
- 
+ }
+ const handleCancleRevert=()=>{
+  setShowRevert(false);
+  onMount();
+ }
 
 
 
@@ -113,6 +126,8 @@ const handleCancleDelete = ()=>{
   return (
     <>
     {showDelete&&(<DeleteMsg newdata={deleteData} handlecancle={handleCancleDelete}/>)}
+    {showRevert&&(<RevertMsg newdata={RevertData} tid={oldTid} handlecancle={handleCancleRevert}/>)}
+    
       <div className="viewtechrequest">
 
         <div className="techcenterdiv">
@@ -129,7 +144,7 @@ const handleCancleDelete = ()=>{
                     <div className="ma-vtr-dhead" onClick={()=>handlewrap(index)}>
                       <div className="ma-vtr-dhead-body">{ele.name}</div>
                       <div className="ma-vtr-dhead-body">{ele.mobile}</div>
-                      <div className="ma-vtr-dhead-body">{ele.data.length}</div>
+                      <div className="ma-vtr-dhead-body"><div className='ma-vtr-count'>{ele.data.length}</div></div>
                       {/* <div className="ma-vtr-dhead-body">this is body</div> */}
                     </div>
       
@@ -151,7 +166,7 @@ const handleCancleDelete = ()=>{
                         {activeIndex===index &&btnindex===iindex&&(
                           <div className="ma-vtr-dbtn">
                               <button onClick={()=>handleDelete(element)}>delete</button>
-                              <button>revert</button>
+                              <button onClick={()=>handleRevert(element,ele._id)}>revert</button>
                             </div>
                         )
 

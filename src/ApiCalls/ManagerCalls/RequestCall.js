@@ -121,5 +121,18 @@ export const DeleteReq = async(data)=>{
 
 }
 
+export const RevertReq = async(data)=>{
+    const response = await fetch(`${host}/api/track/revert/${data.rid}`,{
+        method:'PUT',
+        headers:{
+            'Content-Type':'application/json',
+            'auth-token':localStorage.getItem('auth-token') 
+        },body:JSON.stringify({id:data.tid})
+
+    })
+    const res = await response.json();
+    return res;
+}
+
 
 
