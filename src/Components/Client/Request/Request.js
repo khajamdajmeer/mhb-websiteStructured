@@ -4,11 +4,22 @@ import { AddRequest } from '../../../ApiCalls/ClientCall/CreateReq';
 import Message from '../Message/Message';
 import { Howl } from 'howler';
 import ordertone from '../../images and tones/mewe.mp3'
+import { useDispatch, useSelector } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {actionCreator} from '../../../Redux/index'
 
 // import { isDisabled } from '@testing-library/user-event/dist/utils';
 
 
 const Request = (props) => {
+
+
+    ///using readux state here
+    const dispatch = useDispatch();
+    const {showloading,hideloading} = bindActionCreators(actionCreator,dispatch)
+    const loading = useSelector(state=>state.load)
+
+
 
     const [data, setData] = useState({ name: "", mobilenumber: "", location: "", address: "",servicetype:"" ,servicedate: "", servicetime: "" })
 
@@ -18,22 +29,26 @@ const Request = (props) => {
 
 
     const handleRequest = async (e) => {
+        showloading()
         e.preventDefault();
-        const res = await AddRequest(data)
-        const sound = new Howl({
-            src:[ordertone]
-        })
-        sound.play();
-        if (res.success) {
-            setData({...data,[e.target.name]: null})
-            setNotification(true);
-            setNotiydata(data);
-            console.log(res)
+        setTimeout(async () => {
+            const res = await AddRequest(data);
+            const sound = new Howl({
+                src: [ordertone]
+            });
+            sound.play();
             
-        }
-        else {
-            console.log('something went wrong plese try again')
-        }
+            if (res.success) {
+                hideloading();
+                setData({ ...data, [e.target.name]: null });
+                setNotification(true);
+                setNotiydata(data);
+                console.log(res);
+            } else {
+                hideloading();
+                console.log('something went wrong, please try again');
+            }
+        }, 4000); 
     }
     const onchange = (e)=>{
 setData({...data,[e.target.name]:e.target.value})
@@ -59,6 +74,12 @@ setData({...data,[e.target.name]:e.target.value})
     today_5.setDate(today.getDate() + 5);
     const today_6 = new Date();
     today_6.setDate(today.getDate() + 6);
+
+
+
+
+
+
   return (
     <>
     {notification && notifydata &&
@@ -83,7 +104,7 @@ setData({...data,[e.target.name]:e.target.value})
 
     <div className="services-container">
         <div className=" iptextbox">
-            Book service Now
+            Book service Now {loading&&(<div>wait loading</div>)}
         </div>
         <form action="post">
         <div className="ipbox">
@@ -156,9 +177,9 @@ setData({...data,[e.target.name]:e.target.value})
            
             <button type='submit' onClick={handleRequest} 
             disabled = {
-                !(data.name.length>3&&
-                data.mobilenumber.length===10
-                )
+                data.name.length<3||
+                data.mobilenumber.length!==10||loading
+                
             }>
                     {
                 !(data.name.length>3&&

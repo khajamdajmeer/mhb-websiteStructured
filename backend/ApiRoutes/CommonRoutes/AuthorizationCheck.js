@@ -21,11 +21,11 @@ const EmplooyDB = require('../../DBmodels/DBAdmin/NewEmplooyData')
         const authorization = data.user.authorization;
         const isvalid = await EmplooyDB.findById(user)
         const name = isvalid.name
-        if(authorization=='Technician'&&isvalid){
-                res.status(200).send({name:name})
+        if(authorization=='Technician'){
+                res.status(200).send({name:name,message:'welcome'})
         }
         else{
-            res.status(404).send({message:'unauthorized user',val:isvalid})
+            res.status(404).send({message:'unauthorized user'})
         }
 
         }

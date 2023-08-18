@@ -1,12 +1,21 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import './AdminNavbar.css'
 import logo from '../../Imgs/logo mhb.png'
 import hamicon from '../../Imgs/menu-icon.png'
 import { Link, useNavigate } from 'react-router-dom';
 
 const AdminNavbar = () => {
+  const history = useNavigate();
 
-    const history = useNavigate();
+  useEffect(()=>{
+    const token = localStorage.getItem('auth-token')
+    const lvl = localStorage.getItem('level')
+    if(!token||lvl!=='l1'){
+      localStorage.clear();
+      history('/loginadmin')
+    }
+  },[history])
+
 
     const handlelogout = ()=>{
         localStorage.clear();

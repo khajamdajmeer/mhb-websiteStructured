@@ -44,4 +44,4 @@ const AdminSignup = new Schema({
     }
     
 });
-module.exports = mongoose.model("admincredentials",AdminSignup);
+module.exports = mongoose.model("Administartion_DB",AdminSignup);

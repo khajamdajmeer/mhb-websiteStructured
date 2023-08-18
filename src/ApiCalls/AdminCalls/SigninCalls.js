@@ -16,9 +16,12 @@ export const adminlogin = async(data)=>{
     const res = await response.json();
     console.log(res);
 
-    if(res.Token){
+    if(res.success){
         localStorage.setItem('auth-token',res.Token)
         localStorage.setItem('level','l1')
+        return res;
+    }
+    else{
         return res;
     }
 

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './Logincomponent.css';
 import { Logincall } from '../../../../ApiCalls/ManagerCalls/Logincall';
 import Message from '../Message/Message';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 const Logincomponent = (props) => {
 
   const history = useNavigate();
@@ -13,7 +13,7 @@ const [logindata,setLogindata] = useState({username:"",password:""});
 const onchange = (e)=>{
   setLogindata({...logindata,[e.target.name]:e.target.value});
 }
-const [message,setMessage]=useState({message:"",navigate:""})
+const [message,setMessage]=useState({message:"",navigate:"",showOk:''})
 const [showmessage,setShowmessage]=useState(false);
 useEffect(()=>{
   const istoken = localStorage.getItem('auth-token')
@@ -25,40 +25,38 @@ useEffect(()=>{
   else if(istoken&&authlevel==='L3'){
     history('/technician')
   }
-  else{
-    history('/service')
-  }
+  
 },[history])
 
 const handlelogin = async(e)=>{
   e.preventDefault();
   const res =await Logincall(logindata.username,logindata.password);
-  if(res.message==="loginsuccess"){
+  if(res.message==="login success"){
     setShowmessage(true)
-    console.log(res);
+    setMessage({message:res.message,navigate:'/dashboard',showOk:true})
     localStorage.setItem("auth-token",res.Token)
     if(res.level==='Technician'){
       console.log(res)
-
-      setMessage({message:res.message,navigate:"/technician"})
+      setMessage({message:res.message,navigate:"/technician",showOk:true})
       let lv = "L3"
       localStorage.setItem('level',lv)
     }
     else{
       console.log(res)
-      setMessage({message:res.message,navigate:"/dashboard"})
+      setMessage({message:res.message,navigate:'/dashboard',showOk:true})
+
       let lv = 'L2'
       localStorage.setItem('level',lv)
     }
   }
   else{
     setShowmessage(true)
-    setMessage({message:res.message})
-
-    setTimeout(()=>{
-      setShowmessage(false)
-    },3000)
+    setMessage({message:res.message,navigate:'/dashboard',showOk:true})
   }
+  setTimeout(()=>{
+    setShowmessage(false)
+    history('/dashboard')
+  },3000)
 
 
 }
@@ -66,8 +64,8 @@ const handlelogin = async(e)=>{
   return (
     <>
     {/* <Servicemanager/> */}
-    {showmessage&&message&&(
-    <Message message={message.message} navigate={message.navigate}/>
+    {showmessage&&(
+    <Message message={message.message} navigate={message.navigate} showOk={message.showOk}/>
     )
 
     }
@@ -87,9 +85,9 @@ const handlelogin = async(e)=>{
       <li className="list-input"><div className="input-container">Password</div>
         <input type="password" value={logindata.password} onChange={onchange} className='signin-input' name='password' x placeholder='Enter your Password' required /></li>
 
-      <li className="list-input paddingnone forgotpass"><div className="input-container forgpass">
+      <li className="list-input paddingnone forgotpass"><Link to='/forgotpassword' className="input-container forgpass">
         forgot password?
-      </div></li>
+      </Link></li>
 
       <li className="list-input paddingnone" >
 

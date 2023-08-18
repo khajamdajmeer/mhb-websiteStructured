@@ -17,6 +17,7 @@ import AddEmploy from './Components/Managment/Admin/AddEmploy/AddEmploy';
 import EmplooyUpdate from './Components/Managment/Admin/EmplooyUpdate/EmplooyUpdate';
 import ViewProgress from './Components/Managment/Admin/ViewProgress/ViewProgress';
 import ReviewReq from './Components/Managment/Manager/ReviewReq/ReviewReq';
+import ForgotPassword from './Components/Managment/Common/ForgotPassword/ForgotPassword';
 
 function App() {
   return (
@@ -28,8 +29,8 @@ function App() {
 
 {/* Routes for the manager */}
 
+            <Route path='forgotpassword' element={<ForgotPassword/>}/>
           <Route path='service' element={<Logincomponent />}>
-
           </Route>
           <Route path='dashboard' element={<Dashborad />}>
             <Route path='requests' element={<ViewRequest />} />

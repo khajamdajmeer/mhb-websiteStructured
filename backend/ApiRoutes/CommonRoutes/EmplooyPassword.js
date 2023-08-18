@@ -91,22 +91,29 @@ router.post('/forgotpassword',async(req,res)=>{
             `;
             const mailOptions = {
                 from: process.env.REACT_NODEMAILER_EMAIL_ADDRESS,
-                to: req.body.email,
+                to: emplooy.email,
                 subject: 'OTP Verfication',
                 text: ``,
                 html:htmlContent
             }
+            var otpsent=false
+            emailTransport.sendMail(mailOptions,(err,info)=>{
+                if(err){
+                    otpsent=false
+                }
+                else{otpsent=true}
+            })
             const newdata = {OTP:otp}
+
             const updateOtp = await EmplooyDB.findByIdAndUpdate(emplooy._id,{$set:newdata},{new:true})
 
 
 
-            res.status(200).send({message:'username valid',msg:`verification otp sent to the email${emplooy.email}`
-        })
+            res.status(200).send({message:`verification otp sent to the email ${emplooy.email.slice(0,4)}****${emplooy.email.slice(-8)}`,success:true    })
 
         }
         else{
-            return res.status(400).send({message:'invalid username '})
+            return res.status(400).send({message:'invalid username ',success:false})
         }
 
     }
@@ -121,6 +128,7 @@ router.post('/forgotpassword',async(req,res)=>{
 // ROUTE 2 FOR VERIFCATION OF THE OTP AND SET PASSWORD
 router.put('/verifyotp',async(req,res)=>{
     try{
+       
         const{username,password,OTP}=req.body
         const emplooy = await EmplooyDB.findOne({username:username})
         if(emplooy){
@@ -132,7 +140,7 @@ router.put('/verifyotp',async(req,res)=>{
                 newdata.OTP = null;
                 newdata.verification=true;
                 const update = await EmplooyDB.findByIdAndUpdate(emplooy._id,{$set:newdata},{new:true})
-                res.status(200).send(update)
+                res.status(200).send({message:'Password Updated Successfully'})
             }
             else{
                 return res.status(400).send({message:'invalid OTP'});
@@ -173,7 +181,7 @@ router.post('/login',async(req,res)=>{
             }
             const AuthToken = jwt.sign(data,JWT_SECRET)
                     authorization:isEmplooy.designation,
-            res.status(200).send({message:"loginsuccess",Token:AuthToken,level:isEmplooy.designation,})
+            res.status(200).send({message:"login success",Token:AuthToken,level:isEmplooy.designation,})
         }
         else{
             return res.status(200).send({message:"accout not verified"})

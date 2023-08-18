@@ -22,7 +22,7 @@ router.get('/authorize',async(req,res)=>{
         return res.status(200).send({message:`welcome ${isvalid.name}`,validation:true})
         }
         else{
-            return res.status(401).send({message:"invalid unAuthorized User",validation:false})
+            return res.status(401).send({message:"invalid Credentials ",validation:false})
         }
     }
     catch(error){

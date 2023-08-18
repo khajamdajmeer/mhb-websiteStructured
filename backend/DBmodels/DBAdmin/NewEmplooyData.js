@@ -74,4 +74,4 @@ const Emplooy_Schema = new Schema({
 
 });
 
-module.exports = mongoose.model('Managers',Emplooy_Schema);
+module.exports = mongoose.model('Emplooys_DB',Emplooy_Schema);

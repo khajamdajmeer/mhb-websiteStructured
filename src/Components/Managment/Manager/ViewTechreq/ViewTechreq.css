@@ -85,6 +85,7 @@ width: 100%;
   height: 15%;
   padding: 0 10px;
   box-shadow: 1px 1px 2px #000000;
+  position: relative;
 }
 .ma-vtr-colorgreen{
   background-color: #c7f9cc;
@@ -100,6 +101,92 @@ width: 100%;
   padding: 0 3px;
 }
 
+/* loading skeleton css */
+.ma-vtr-dhead-loader{
+  
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #ebebeb;
+  position: relative;
+  overflow: hidden;
+  margin: 2px 0;
+}
+.ma-vtr-dhead-loader::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(197, 179, 179, 0.4), transparent);
+  animation: loading 1.5s infinite;
+}
+@keyframes loading{
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+.ma-vtr-btn{
+  position: absolute;
+  right: 15px;
+  top: 6px;
+  height: 24px;
+  width: 8px;
+  background: transparent;
+  border: none;
+}
+.ma-vtr-btn img{
+  height: inherit;
+  width: inherit;
+  filter: invert(.3);
+}
+.ma-vtr-btn img:hover{
+  filter: invert(.1);
+}
+.ma-vtr-dbtn{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  /* padding: 10px 0; */
+  border-radius: 4px;
+  animation: opendbtn 0.4s forwards ease;
+  z-index: 6;
+  background-color: #457b9d;
+  transform-origin: top right;
+}
+.ma-vtr-dbtnshow{
+  animation: opendbtn 0.4s forwards ease;
+}
+@keyframes opendbtn {
+  from{
+    transform: scale(0);
+  }
+  to{
+    transform: scale(1);
+  }
+}
+.ma-vtr-dbtn button{
+  padding: 3px 15px;
+  width: 100%;
+background: transparent;
+border: none;
+box-shadow: 1px 1px 1px #caf0f8;
+}
+
+
+
+
+
+
+
+
 
 @media (max-width:768px) {
   .navtopfortech{
@@ -112,6 +199,7 @@ width: 100%;
 .ma-vtr-dreq{
   height: fit-content;
   flex-direction: column;
+  padding: 8px 0;
 }
 .ma-vtr-openwrap{
   height: 40px ;

@@ -23,7 +23,9 @@ const TechNavbar = () => {
 
      const handlelogout =()=>{
         localStorage.clear();
-  history("/service")
+  
+  
+        history("/service")
      }
 
 

@@ -53,33 +53,9 @@
       const res =await adminlogin(logindata);
       console.log(res)
       setShowmessage(true)
+
       setMessage({message:res.message,navigate:'/admindashboard'})
-    //   if(res.message==="loginsuccess"){
-    //     setShowmessage(true)
-    //     console.log(res);
-    //     localStorage.setItem("auth-token",res.Token)
-    //     if(res.level==='technician'){
-    //       console.log(res)
-    
-    //       setMessage({message:res.message,navigate:"/technician"})
-    //       let lv = "L3"
-    //       localStorage.setItem('level',lv)
-    //     }
-    //     else{
-    //       console.log(res)
-    //       setMessage({message:res.message,navigate:"/service"})
-    //       let lv = 'L2'
-    //       localStorage.setItem('level',lv)
-    //     }
-    //   }
-    //   else{
-    //     setShowmessage(true)
-    //     setMessage({message:res.message})
-    
-    //     setTimeout(()=>{
-    //       setShowmessage(false)
-    //     },3000)
-    //   }
+   
     
     
     }

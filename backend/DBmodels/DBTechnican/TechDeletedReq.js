@@ -68,3 +68,6 @@ const DeletedTechReq = new schema({
     }
 
 })
+
+
+module.exports = mongoose.model("Deleted_Requests", TechAccessSchema);

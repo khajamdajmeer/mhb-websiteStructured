@@ -93,7 +93,7 @@ router.get('/viewtechreq',FetchEmplooy,async(req,res)=>{
                 data: count
             };
         }));
-        res.status(200).send(data)
+        res.status(200).send({data:data,success:true})
 
 
     }catch(error){

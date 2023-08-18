@@ -94,6 +94,7 @@ padding: 30px 0px;
 }
 .forgpass{
   justify-content: right;
+  color: rgb(20, 190, 246);
 }
 #signin-btn::before{
 content: "";

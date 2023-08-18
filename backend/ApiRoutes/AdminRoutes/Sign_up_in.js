@@ -237,7 +237,7 @@ router.post('/signin',async(req,res)=>{
             if(isverified&&adminverified){
                 const comparepassword = await bcrypt.compare(password,isadmin.password)
                 if(!comparepassword){
-                    return res.status(500).send({message:'please use valid credentials'})
+                    return res.status(500).send({message:'please use valid credentials',success:false})
                 }
                 else{
                     const data = {
@@ -246,7 +246,7 @@ router.post('/signin',async(req,res)=>{
                         }
                     }
                     const AuthToken = jwt.sign(data,JWT_SECRET);
-                    return res.status(500).send({message:'Login success',Token:AuthToken})
+                    return res.status(500).send({message:'Login success',Token:AuthToken,success:true})
                 }
                 
             }

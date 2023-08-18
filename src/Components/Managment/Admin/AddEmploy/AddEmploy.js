@@ -18,7 +18,7 @@ const AddEmploy = () => {
     }
 
     const [showmsg,setShowmsg]=useState(false);
-    const [msginfo,setMsginfo]=useState({message:'',navigate:''})
+    const [msginfo,setMsginfo]=useState({message:'',navigate:'',showOk:''})
 
     const handleCreate = async()=>{
         const res = await CreateNewEmploy(data);
@@ -29,12 +29,14 @@ const AddEmploy = () => {
             //     adharnumber:''
             // }) 
             setShowmsg(true);
-            setMsginfo({message:res.message,navigate:'/admindashboard/emplooys'})
+            setMsginfo({message:res.message,navigate:'/admindashboard/emplooys',showOk:true})
         }
         else{
             setShowmsg(true);
-            setMsginfo({message:'error occured Please Check the data and try again',navigate:'/admindashboar/newemplooy'})
-
+            setMsginfo({message:'error occured Please Check the data and try again',navigate:'/admindashboar/newemplooy',showOk:false})
+            setTimeout(() => {
+                setShowmsg(false);
+            }, 3000);
 
         }
     }
@@ -43,7 +45,7 @@ const AddEmploy = () => {
   return (
     <>
     {showmsg&&msginfo&&(
-        <Message message={msginfo.message} navigate={msginfo.navigate}/>
+        <Message message={msginfo.message} navigate={msginfo.navigate} showOk={msginfo.showOk}/>
     )}
           <div className="ad-em-fullscreen">
           <div className="ad-em-center">

@@ -1,10 +1,14 @@
-import React, {  useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ViewRequest.css'
-import { ViewRequests,UpdateRequest,GetTechDetails,PushToTech } from '../../../../ApiCalls/ManagerCalls/RequestCall';
+import { ViewRequests, UpdateRequest, GetTechDetails, PushToTech } from '../../../../ApiCalls/ManagerCalls/RequestCall';
 import Message from '../../Common/Message/Message';
 import { RequestSearch } from '../../../../ApiCalls/ManagerCalls/SearchCall';
+import { useNavigate } from 'react-router-dom';
+
 
 const ViewRequest = () => {
+
+    const [activeIndex, setActiveIndex] = useState(null);
 
     const [data, setData] = useState([
         {
@@ -32,15 +36,15 @@ const ViewRequest = () => {
         setUpdatedata({ ...updatedata, [e.target.name]: e.target.value })
     }
 
-    const [showmsg,setShowmsg]=useState(false);
-    const [msgdata,setMsgdata]=useState({message:"",navigate:""})
+    const [showmsg, setShowmsg] = useState(false);
+    const [msgdata, setMsgdata] = useState({ message: "", navigate: "" })
 
 
 
     const handleviewdata = (index) => {
+        setActiveIndex(index)
         setShowview(true)
         setShowupdate(false)
-
         setShowingdata(data[index])
     }
 
@@ -50,18 +54,17 @@ const ViewRequest = () => {
         setShowview(false);
         setUpdatedata(showingdata)
     }
-    const [techdata,setTechdata]=useState([{
-        name:'',_id:'',count:''
+    const [techdata, setTechdata] = useState([{
+        name: '', _id: '', count: ''
     }])
 
 
     const onMount = async () => {
 
-
         const techres = await GetTechDetails();
         setTechdata(techres)
         const res = await ViewRequests();
-        if(res.length<1){
+        if (res.length < 1) {
             setData([
                 {
                     _id: "", name: "", mobileNumber: "", Location: "", Address: "", ServiceDate: "", ServiceTime: "", ServiceType: '',
@@ -70,54 +73,67 @@ const ViewRequest = () => {
                 }
             ])
         }
-        else{
-
+        else {
             setData(res)
             console.log(res)
             setShowview(true)
             setShowupdate(false)
         }
     }
+    const history = useNavigate();
+    const validationcheck = ()=>{
+        const token = localStorage.getItem('auth-token')
+        const level = localStorage.getItem('level')
+        if(!token||level!=='L2'){
+          localStorage.clear()
+          history('/service')
+          return false;
+        } else{
+          return true
+        }
+        
+      }
 
-    useEffect(()=>{
-        onMount();
-    },[])
-  
+    useEffect(() => {
+        const valid = validationcheck();
+        if(valid){
+            onMount();
+        }
+        // eslint-disable-next-line
+    }, [])
 
-const handleupdate=async()=>{
-   const res = await UpdateRequest(updatedata);
-   console.log(res);
-   if(res.success){
-    setShowview(true);
-    setShowupdate(false);
-    setShowingdata(res.update);
-   }
 
-}
+    const handleupdate = async () => {
+        const res = await UpdateRequest(updatedata);
+        console.log(res);
+        if (res.success) {
+            setShowview(true);
+            setShowupdate(false);
+            setShowingdata(res.update);
+        }
 
-const [techindex,setTechindex]=useState({id:''})
-const ontechchange = (e)=>{
-    setTechindex({...techindex,[e.target.name]:e.target.value})
-    
-    
-    
-}
+    }
 
-const handleForwordOnly = async()=>{
-    const send = {tid:techindex.id,id:showingdata._id}
-    console.log(send)
-    const response = await PushToTech(send)
-if(response.success){
+    const [techindex, setTechindex] = useState({ id: '' })
+    const ontechchange = (e) => {
+        setTechindex({ ...techindex, [e.target.name]: e.target.value })
+    }
 
-    onMount();
-    setShowmsg(true);
-    setShowview(false)
-    setMsgdata({message:response.message,navigate:'/dashboard'})
-    setTimeout(() => {
-        setShowmsg(false)
-    }, 2000);
-}    
- }
+    const handleForwordOnly = async () => {
+        const send = { tid: techindex.id, id: showingdata._id }
+        console.log(send)
+        const response = await PushToTech(send)
+        if (response.success) {
+            onMount();
+            setShowmsg(true);
+            setMsgdata({ message: response.message, navigate: '' })
+        }
+        setTimeout(() => {
+            setShowview(false)
+            setShowmsg(false)
+            setActiveIndex(null)
+        }, 2000);
+    }
 
     // taking the date for the servicedate feild for which the date should be selected
     const today = new Date();
@@ -135,50 +151,50 @@ if(response.success){
     today_6.setDate(today.getDate() + 6);
 
     ///adding search function
-    const [searchdata,setSearchdata]=useState([
+    const [searchdata, setSearchdata] = useState([
         {
             _id: "", name: "", mobileNumber: "", Location: "", Address: "", ServiceDate: "", ServiceTime: "", ServiceType: '',
-            Requestdate: "",ForwordedBy:"",
+            Requestdate: "", ForwordedBy: "",
             __v: ""
         }
-      ])
-      
-      //for storging the data of serach input
-      const [searchinput,setSearchinput]=useState({
-        type:'',data:""
-      })
-      const [showsearchresult,setShowsearchresult]=useState(false)
-      
-      //onchange event for the serach input field
-      const onchangesearch =(e)=>{
-        setSearchinput({...searchinput,[e.target.name]:e.target.value})
-      }
-      //auto search on stoping the typing for 1 second 
+    ])
+
+    //for storging the data of serach input
+    const [searchinput, setSearchinput] = useState({
+        type: '', data: ""
+    })
+    const [showsearchresult, setShowsearchresult] = useState(false)
+
+    //onchange event for the serach input field
+    const onchangesearch = (e) => {
+        setSearchinput({ ...searchinput, [e.target.name]: e.target.value })
+    }
+    //auto search on stoping the typing for 1 second 
     const [typingTimer, setTypingTimer] = useState(null);
     const doneTypingInterval = 500; // 1 second
     const inputElement = React.createRef();
-  
-    const handleInput = async() => {
-      clearTimeout(typingTimer);
-      if(searchinput.data.length<=0){
-        setShowsearchresult(false)
-      }
-      setTypingTimer(setTimeout(doneTyping, doneTypingInterval));
+
+    const handleInput = async () => {
+        clearTimeout(typingTimer);
+        if (searchinput.data.length <= 0) {
+            setShowsearchresult(false)
+        }
+        setTypingTimer(setTimeout(doneTyping, doneTypingInterval));
     };
 
-    const doneTyping = async() => {
-      setShowsearchresult(true);
-      const res = await RequestSearch(searchinput);
-      setSearchdata(res)
+    const doneTyping = async () => {
+        setShowsearchresult(true);
+        const res = await RequestSearch(searchinput);
+        setSearchdata(res)
     };
     //serach button function handle
-    const handleSearch=()=>{
+    const handleSearch = () => {
 
     }
 
-    const handleviewserachdata=(index)=>{
-      setShowsearchresult(false);
-      setShowingdata(searchdata[index])
+    const handleviewserachdata = (index) => {
+        setShowsearchresult(false);
+        setShowingdata(searchdata[index])
 
 
 
@@ -187,8 +203,8 @@ if(response.success){
 
     return (
         <>
-        {showmsg&&(<Message message={msgdata.message} navigate={msgdata.navigate}/>)}
-        
+            {showmsg && (<Message message={msgdata.message} navigate={msgdata.navigate} />)}
+
             <div className="viewreq">
                 <div className="reqcenter">
                     <div className="reqleft">
@@ -200,7 +216,7 @@ if(response.success){
                             data.map((ele, index) => {
 
                                 return (
-                                    <div className="maps" onClick={() => handleviewdata(index)} key={ele._id}>
+                                    <div className={`maps ${activeIndex === index ? 'active-bgcolor' : ''}`} onClick={() => handleviewdata(index)} key={ele._id}>
                                         {index + 1} <div className="mapname">{ele.name}</div>
                                         <div className="mapnumber">{ele.mobileNumber}</div>
                                     </div>
@@ -210,46 +226,46 @@ if(response.success){
 
                     </div>
                     <div className="reqright ">
-                    <div className="reqheadright">
-                        <div className='headingtype'>
-                      client request 
-                      </div>
+                        <div className="reqheadright">
+                            <div className='headingtype'>
+                                client request
+                            </div>
                             <div className='techright'>
-                              <select name="type" value={searchinput.type} onChange={onchangesearch} id="techsearchfilter">
-                            <option value="0">---select---</option>
-                              <option value="name">name</option>
-                              <option value="mobilenumber">mobilenumber</option>
-                            </select>
-                              <input type="text" name="data"ref={inputElement} onInput={handleInput} id="searchinput" value={searchinput.data} onChange={onchangesearch}/> 
-                            <button onClick={handleSearch}>search</button>
+                                <select name="type" value={searchinput.type} onChange={onchangesearch} id="techsearchfilter">
+                                    <option value="0">---select---</option>
+                                    <option value="name">name</option>
+                                    <option value="mobilenumber">mobilenumber</option>
+                                </select>
+                                <input type="text" name="data" ref={inputElement} onInput={handleInput} id="searchinput" value={searchinput.data} onChange={onchangesearch} />
+                                <button onClick={handleSearch}>search</button>
                             </div>
-                    </div>
+                        </div>
 
-                            {showsearchresult&&searchinput.data.length>0&&(
-                              <div className="serachresult1">
-                              <div className="sboxserach">
-                             {searchdata.map((ele,index)=>{
-                              return(
-                                <div className="searchdata" onClick={() => handleviewserachdata(index)}>
-                                  {searchinput.type.length<2&&(
-                                <div className="resultdata">select the feild to search by</div>
+                        {showsearchresult && searchinput.data.length > 0 && (
+                            <div className="serachresult1">
+                                <div className="sboxserach">
+                                    {searchdata.map((ele, index) => {
+                                        return (
+                                            <div className="searchdata" onClick={() => handleviewserachdata(index)}>
+                                                {searchinput.type.length < 2 && (
+                                                    <div className="resultdata">select the feild to search by</div>
 
-                                  )}
-                                <div className="resultdata">{ele.name}</div>
-                                <div className="resultdata">{ele.mobileNumber}</div>
-                                <div className="resultdata">{ele.Location}</div>
-                                <div className="resultdata">{ele.Address}</div>
-                              </div> 
-                              )
-                             })}
-                              </div>
+                                                )}
+                                                <div className="resultdata">{ele.name}</div>
+                                                <div className="resultdata">{ele.mobileNumber}</div>
+                                                <div className="resultdata">{ele.Location}</div>
+                                                <div className="resultdata">{ele.Address}</div>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
                             </div>
-                            )}
-                            
+                        )}
 
-                        {showview &&showingdata._id.length>5&& (
+
+                        {showview && showingdata._id.length > 5 && (
                             <>
-                        {/* <h2>Details</h2> */}
+                                {/* <h2>Details</h2> */}
 
                                 <div className="detailsbox">
                                     <div className="dblock">
@@ -294,12 +310,12 @@ if(response.success){
                                         <div className="dataleft">Asign Technician</div>
                                         <select className="dataright drightselect" name='id' value={techindex.id} onChange={ontechchange}>
                                             <option value='-1'>---select---</option>
-                                            {techdata.map((ele,index)=>{
-                                                return(
-                                            <option value={ele._id} >{ele.name}   ({ele.count})</option>
+                                            {techdata.map((ele, index) => {
+                                                return (
+                                                    <option value={ele._id} >{ele.name}   ({ele.count})</option>
 
                                                 )
-                                                })
+                                            })
 
                                             }
 
@@ -307,9 +323,9 @@ if(response.success){
                                     </div>
                                 </div>
                                 <div className="detailsbuttons">
-                                    <button onClick={() => { handelEdit(showingdata) }} disabled={showingdata._id.length<5}>Edit</button>
+                                    <button onClick={() => { handelEdit(showingdata) }} disabled={showingdata._id.length < 5}>Edit</button>
                                     {/* <button >update</button> */}
-                                    <button onClick={handleForwordOnly}  disabled={showingdata._id.length<5||techindex.id.length<5}>forward</button>
+                                    <button onClick={handleForwordOnly} disabled={showingdata._id.length < 5 || techindex.id.length < 5}>forward</button>
                                 </div>
                             </>
                         )

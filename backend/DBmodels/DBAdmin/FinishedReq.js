@@ -75,4 +75,4 @@ const Finishedreq  = new Schema({
 
 })
 
-module.exports = mongoose.model("Online_Client", Finishedreq);
+module.exports = mongoose.model("Online_clients", Finishedreq);

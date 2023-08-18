@@ -86,7 +86,6 @@ const MyRequest = () => {
     //js for complete req btn
     const handleComplete = async(data)=>{
         const res = await finishReq(data);
-        console.log(res)
         if(res.Success){
             setShowfinish(false)
             setShowfinishmsg(true)

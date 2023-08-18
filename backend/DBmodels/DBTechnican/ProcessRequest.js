@@ -72,4 +72,4 @@ const TechAccessSchema = new Schema({
 
 })
 
-module.exports = mongoose.model("UnderTechProcess", TechAccessSchema);
+module.exports = mongoose.model("Tech_Process_DB", TechAccessSchema);

@@ -43,4 +43,4 @@ const CustomerRequest = new Schema({
     }
 })
 
-module.exports = mongoose.model('CustomerRequest',CustomerRequest);
+module.exports = mongoose.model('Request_DB',CustomerRequest);
