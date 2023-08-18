@@ -99,6 +99,18 @@ width: 100%;
 .padding{
   padding: 0 3px;
 }
+.ma-vrr-deliverbtn{
+  padding: 5px 10px;
+  background: #0077b6;
+  border: none;
+  border-radius: 5px;
+  color: #ffff;
+}
+.ma-vrr-deliverbtn:hover{
+  transition: all 0.5s ease;
+  background: #073954;
+  /* color: #000; */
+}
 
 
 @media (max-width:768px) {

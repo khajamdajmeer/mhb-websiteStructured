@@ -69,8 +69,7 @@ router.post('/forword/:id',FetchEmplooy,async(req,res)=>{
         
         const managername = req.name;
         const data = await RequestDB.findById(req.params.id)
-        // console.log(req.body)
-        // console.log(data)
+     
 
         if(data){
             const create = await techDB.create(

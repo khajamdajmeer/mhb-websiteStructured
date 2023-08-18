@@ -5,6 +5,8 @@ const EmplooyDB = require('../../DBmodels/DBAdmin/NewEmplooyData');
 const TechDB = require('../../DBmodels/DBTechnican/ProcessRequest')
 const RequestDB = require('../../DBmodels/DBClient/Request')
 const ManagerPushDB = require('../../DBmodels/DBManager/WaitingForPush')
+const FinishedReqDB = require('../../DBmodels/DBAdmin/FinishedReq')
+const DeletedReq_DB = require('../../DBmodels/DBAdmin/Deleted_Req')
 const router = express.Router();
 
 //ROUTE FOR THE MANAGER TO FETCH TECHNICIAN
@@ -132,11 +134,8 @@ router.post('/finishreq/:id',FetchEmplooy,async(req,res)=>{
 
     try{
         const reqid = req.params.id;
-        const data = await ManagerPushDB.findOne({
-            '_id':reqid
-        })
+        const data = await ManagerPushDB.findById(reqid)
         // data.Discription = Discription
-         
         const newdata = {
             name:data.name,
             mobileNumber:data.mobileNumber,
@@ -160,8 +159,8 @@ router.post('/finishreq/:id',FetchEmplooy,async(req,res)=>{
         }
 
 
-            const fdata = await ManagerPushDB.create(newdata)
-            await techDB.findByIdAndDelete(data._id)
+            const fdata = await FinishedReqDB.create(newdata)
+            await ManagerPushDB.findByIdAndDelete(reqid)
             res.status(200).send({message:'Success',Success:true})
 
         
@@ -171,4 +170,39 @@ router.post('/finishreq/:id',FetchEmplooy,async(req,res)=>{
         res.status(500).send({message:'error occured',Success:false})
     }
 })
+
+//ROUTE 6 FOR THE MANAGER TO DELETE THE REQUEST BY WITH DISCRIPTION
+router.delete('/delete/:id',FetchEmplooy,async(req,res)=>{
+    try{
+        const id = req.params.id
+        const data = await TechDB.findById(id)
+        if(data){
+            const newdata ={
+                name:data.name,
+                mobileNumber:data.mobileNumber,
+                mobilenumberString:data.mobilenumberString,
+                Location:data.Location,
+                Address:data.Address,
+                Service:{type:data.Service.type
+                          , Date:data.Service.Date  
+                        },
+                Technicain:{name:data.Technicain.name, id:data.Technicain.id},
+                Requestdate:data.Requestdate,
+                forworded:{name:data.forworded.name,id:data.forworded.id},
+                Deleted:{reason:req.body.reason}
+            };
+           const push =  await DeletedReq_DB.create(newdata);
+            await TechDB.findByIdAndDelete(id)
+            res.status(200).send({message:'deleted succesfully',success:true})
+        }else{
+            res.status(200).send({message:'Request Details not found',success:false})
+
+        }
+
+    }catch(error){
+        res.status(500).send({message:'error occured',success:false})
+    }
+})
+
+
 module.exports = router;

@@ -93,6 +93,33 @@ export const GetReviewReq = async()=>{
     return res;
 }
 
+export const PushToFinished = async(id)=>{
+    const response = await fetch(`${host}/api/track/finishreq/${id}`,{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json',
+            'auth-token':localStorage.getItem('auth-token')
+        }
+        
+    })
+    const res = await response.json();
+    return res;
+
+}
+
+export const DeleteReq = async(data)=>{
+    const response = await fetch(`${host}/api/track/delete/${data.id}`,{
+        method:'DELETE',
+        headers:{
+            'Content-Type':'application/json',
+            'auth-token':localStorage.getItem('auth-token')
+        },
+        body:JSON.stringify({reason:data.reason})
+    });
+    const res = await response.json();
+    return res;
+
+}
 
 
 

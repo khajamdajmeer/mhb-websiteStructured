@@ -6,6 +6,7 @@ import { useDispatch,useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import dots from '../../../images and tones/3dot.png'
 import { useNavigate } from 'react-router-dom';
+import DeleteMsg from '../DeleteMsg/DeleteMsg';
 
 const ViewTechreq = () => {
   const history = useNavigate();
@@ -91,6 +92,18 @@ const loadinstate = useSelector(state=>state.load)
   const handle3dots = (iindex)=>{
     setBtnindex(btnindex===iindex?null:iindex)
   }
+//LOGIC FOR THE DELETE FUNCION
+const [showDelete,setShowDelete]=useState(false);
+const [deleteData,setDeleteData]=useState('')
+const handleDelete = (data)=>{
+  setShowDelete(true);
+  setDeleteData(data);
+  
+}
+const handleCancleDelete = ()=>{
+  onMount();
+  setShowDelete(false)
+}
 
  
 
@@ -99,6 +112,7 @@ const loadinstate = useSelector(state=>state.load)
 
   return (
     <>
+    {showDelete&&(<DeleteMsg newdata={deleteData} handlecancle={handleCancleDelete}/>)}
       <div className="viewtechrequest">
 
         <div className="techcenterdiv">
@@ -136,7 +150,7 @@ const loadinstate = useSelector(state=>state.load)
                         <button className='ma-vtr-btn' onClick={()=>handle3dots(iindex)}><img src={dots} alt="" /></button>
                         {activeIndex===index &&btnindex===iindex&&(
                           <div className="ma-vtr-dbtn">
-                              <button>delete</button>
+                              <button onClick={()=>handleDelete(element)}>delete</button>
                               <button>revert</button>
                             </div>
                         )

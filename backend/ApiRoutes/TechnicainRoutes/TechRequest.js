@@ -87,7 +87,7 @@ catch(error){
 }
 })
 
-router.post('/finishreq/:id',FetchEmplooy,async(req,res)=>{
+router.post('/completedreq/:id',FetchEmplooy,async(req,res)=>{
 
     try{
     if(req.authorization==='Technician'){
@@ -121,7 +121,7 @@ router.post('/finishreq/:id',FetchEmplooy,async(req,res)=>{
 
 
             const fdata = await ManagerPushDB.create(newdata)
-            await techDB.findByIdAndDelete(data._id)
+           const ddata= await techDB.findByIdAndDelete(reqid)
             res.status(200).send({message:'Success',Success:true})
 
         

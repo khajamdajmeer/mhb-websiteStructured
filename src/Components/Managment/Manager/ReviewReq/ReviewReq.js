@@ -1,9 +1,11 @@
 import './ReviewReq.css'
 import React, { useEffect, useState } from 'react';
-import { GetReviewReq } from '../../../../ApiCalls/ManagerCalls/RequestCall';
+import { GetReviewReq,PushToFinished } from '../../../../ApiCalls/ManagerCalls/RequestCall';
 import {actionCreator} from '../../../../Redux/index'
 import { useDispatch,useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Message from '../../Common/Message/Message'
+
 const ReviewReq = () => {
 
 
@@ -63,6 +65,21 @@ const [data,setData]=useState([
 
   const handlewrap = (index)=>{
   setActiveIndex(activeIndex === index ? null : index)
+  }
+
+  //declaring message data 
+  const [showmsg,setShowmsg] = useState(false);
+  const [msgdata,setMsgdata]=useState({message:'',navigate:'',showOk:''})
+
+  const handleDelevierd = async(id)=>{
+    const res = await PushToFinished(id);
+    setShowmsg(true)
+    onMount();
+    setMsgdata({message:res.message,showOk:false,navigate:'/dashboad/reviewreq'})
+    setTimeout(()=>{
+      setShowmsg(false)
+    },3000)
+    
 
   }
 
@@ -73,6 +90,8 @@ const [data,setData]=useState([
 
   return (
     <>
+        {showmsg&&<Message message={msgdata.message} navigate={msgdata.navigate} showOk={msgdata.showOk}/>}
+
       <div className="viewtechrequest">
 
         <div className="techcenterdiv">
@@ -107,7 +126,7 @@ const [data,setData]=useState([
       <div className="ma-vrr-name">{element.Requestdate.slice(0,10)}</div>
       <div className="ma-vrr-name">
 
-      <button>Delivered</button>
+      <button className='ma-vrr-deliverbtn' onClick={()=>handleDelevierd(element._id)}>Delivered</button>
       </div>
      </div>
         

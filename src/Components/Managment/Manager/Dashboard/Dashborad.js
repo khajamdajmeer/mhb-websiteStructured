@@ -8,8 +8,19 @@ const Dashborad = () => {
     const history = useNavigate();
     useEffect(()=>{
         const istoken = localStorage.getItem('auth-token')
+        const level= localStorage.getItem('level')
         if(!istoken){
           history('/service')
+        }
+        else{
+          switch(level){
+            case 'L3': {
+              history('/technician')
+            break;  }
+            default:{}
+          }
+        
+
         }
         
       })

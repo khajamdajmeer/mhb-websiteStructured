@@ -29,7 +29,7 @@ export const ViewMyReq = async()=>{
 }
 
 export const finishReq = async(data)=>{
-    const response = await fetch(`${host}/api/technician/finishreq/${data._id}`,{
+    const response = await fetch(`${host}/api/technician/completedreq/${data._id}`,{
         method:'POST',
         headers:{
             "Content-Type": "application/json",

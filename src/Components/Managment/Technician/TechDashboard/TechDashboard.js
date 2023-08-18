@@ -1,24 +1,17 @@
 import React, {  useEffect } from 'react';
 import TechNavbar from '../TechNavbar/TechNavbar';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { techAuthorization } from '../../../../ApiCalls/CommonCalls/Authorization';
 const TechDashboard = () => {
-  const history= useNavigate();
+  // const history= useNavigate();
 
   const token = localStorage.getItem('auth-token')
+  // const level = localStorage.getItem('level')
   const checkauthorization = async()=>{
     if(token){
-      const res = await techAuthorization();
-      if(res){
-
-      }
-      else{
-        history('/sevice')
-      }
+          await techAuthorization();
     }
-    else{
-      history('/service')
-    }
+    
   }
 
   useEffect(()=>{

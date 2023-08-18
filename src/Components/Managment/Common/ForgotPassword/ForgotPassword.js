@@ -17,7 +17,7 @@ setData({...data,[e.target.name]:e.target.value})
     setViewpass(!viewpass)
   }
 
-  const [submitstatus,setSubmiistatus]=useState(false);
+  // const [submitstatus,setSubmitstatus]=useState(false);
 const [showmsg,setShowmsg]=useState(false)
 const [msgdata,setMsgdata]=useState({message:'',showOk:'',navigate:''})
 const [disableusername,setDisableusername]=useState(false)
