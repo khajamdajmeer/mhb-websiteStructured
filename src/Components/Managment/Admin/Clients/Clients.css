@@ -1,0 +1,127 @@
+.ad-c-fullscreen{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    flex-direction: column;
+}
+.ad-c-centerdiv{
+    margin-top: 40px;
+    width: 100%;
+    height: auto;
+    /* border: 2px solid wheat; */
+}
+.ad-c-head{
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #edf2f4;
+}
+.ad-c-hright{
+    height: 100%;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+
+}
+.ad-c-hleft{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: larger;
+    margin-left: 4px;
+}
+.ad-c-selectip{
+    height: 20px;
+    border: none;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background-color: #a8dadc;
+    width: 60px;
+    outline: 1px solid black;
+    
+}
+
+.ad-c-searchip{
+    height: 20px;
+    border: none;
+    outline: 1px solid black;
+    
+}
+.ad-c-searchbtn{
+    height: 20px;
+    width: 30px;
+    border: none;
+    background-color: #a8dadc;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    outline: 1px solid black;
+
+}
+.ad-c-searchbtn img{
+    height: 20px;
+    width: unset;
+    transform: scale(0.8);
+    /* filter: invert(1); */
+}
+
+.ad-c-body{
+    /* padding: 10px 0; */
+}
+
+.ad-c-mapitem{
+    padding: 10px;
+    background-color: orange;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.ad-c-names{
+    padding: 4px 0;
+}
+
+
+
+
+
+.ad-c-pages{
+    /* min-height: 30px; */
+    /* height: auto; */
+    /* height: 60px; */
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e9ecef;
+    overflow-wrap: wrap;
+    padding: 6px 10px;
+
+}
+.ad-c-pages-ul{
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+}
+.ad-c-pages-ul li{
+    margin: 3px 10px;
+    background-color: orangered;
+    padding: 5px;
+    border-radius: 3px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ad-c-ul-prev{
+    background-color: #a8dadc !important;
+    color: black !important;
+}

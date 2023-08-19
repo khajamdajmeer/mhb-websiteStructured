@@ -1,5 +1,6 @@
 
 import { host } from "../Host"
+import Cookies from "js-cookie";
 
 
 export const AcceptRequest = async(data)=>{
@@ -7,7 +8,7 @@ export const AcceptRequest = async(data)=>{
         method:'POST',
         headers:{
             "Content-Type": "application/json",
-            "auth-token":localStorage.getItem('auth-token')
+            "auth-token":Cookies.get('auth-token')
         }
     })
     const res= await response.json();
@@ -20,7 +21,7 @@ export const ViewMyReq = async()=>{
         method:'GET',
         headers:{
             "Content-Type": "application/json",
-            "auth-token":localStorage.getItem('auth-token')
+            "auth-token":Cookies.get('auth-token')
 
         }
     })
@@ -33,7 +34,7 @@ export const finishReq = async(data)=>{
         method:'POST',
         headers:{
             "Content-Type": "application/json",
-            "auth-token":localStorage.getItem('auth-token')
+            "auth-token":Cookies.get('auth-token')
         },
         body:JSON.stringify({
             discription:data.discription

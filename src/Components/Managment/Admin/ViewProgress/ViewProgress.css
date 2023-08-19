@@ -1,3 +1,12 @@
+.ad-vp-fullscreen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #edf6f9;
+    position: relative;
+}
 
 .ad-emp-center{
     width: 100%;
@@ -128,6 +137,8 @@ height: inherit;
 width: inherit;
 }
 
+
+
 @media (max-width:786px) {
     
     .ad-emp-backbtn{
@@ -167,6 +178,7 @@ width: inherit;
     height: 100%;
     backface-visibility: hidden;
   }
+
   
   .card-front {
     background-color: #274c77;
@@ -174,7 +186,7 @@ width: inherit;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 10px solid #274c77;
+    /* border: 10px solid #274c77; */
     border-radius: 10px;
     justify-content: center;
     font-size: 24px;
@@ -193,16 +205,56 @@ width: inherit;
   }
   
   .card-back {
-    background-color: #F08A5D;
+    background-color: #c7f9cc;
     color: #fff;
-    display: flex;
-    align-items: center;
-    border: 10px solid #F08A5D;
+    /* display: flex; */
+    /* align-items: center; */
+    /* border: 10px solid #F08A5D; */
     border-radius: 10px;
     justify-content: center;
     font-size: 24px;
     transform: rotateY(180deg);
+    position: relative;
   }
+  .ad-vp-bs-head{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #023047;
+    border-top-right-radius: 9px;
+    border-top-left-radius: 9px;
+    position: sticky;
+    }
+    .ad-vp-bs-body{
+        height: 80%;
+        background-color: #c7f9cc;
+        border-bottom-right-radius: 9px;
+    border-bottom-left-radius: 9px;
+        overflow: auto;
+    }
+    .ad-vp-bs-subbody{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 3px 4px;
+        border-bottom: 1px solid #22577a;
+        height: 25%;
+    }
+    .ad-vp-bs-bname{
+        width: 70%;
+        /* height: 100%; */
+        overflow: hidden;
+        white-space: nowrap;
+        color: black;
+    }
+    .ad-vp-bs-bcount{
+        color: #000000;
+
+    }
+    
   
   .ad-emp-info-body{
     height:fit-content;
@@ -214,6 +266,7 @@ width: inherit;
     margin: 10px 0;
     overflow-y: auto;
   }
+
 
   @media (max-width:768px) {
     .ad-emp-info-body{

@@ -217,25 +217,33 @@ transition: all 0.3s ease;
 }
 .ad-em-updatelink{
     text-decoration: none;
-    
-    padding: 10px 5px;
+    height: 80%;
+   margin: 0 5px;
+    cursor: pointer;
+    padding: 4px 5px;
     background: #bfd3c1;
     border-radius: 5px;
     font-weight: bold;
     color: #184e77;
     cursor: pointer;
-    padding: 10px 5px;
-    background: #bfd3c1;
-    border-radius: 5px;
-    font-weight: bold;
-    color: #184e77;
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 .ad-em-updatelink:hover{
     transition: all 0.4s ease;
     background-color: #79857b;
 }
+.ad-em-updatelink img{
+    display: none;
+    height: inherit;
 
+
+}
+.ad-em-updatelink span{
+    display: block;
+}
 
 @media (max-width:768px) {
     
@@ -244,7 +252,19 @@ transition: all 0.3s ease;
         padding: 1px 0;
     
     }
+
     .ad-em-pabsolute li{
         width: 50%;
     }
+    .ad-emleft {
+        justify-content: space-around;
+    }
+    .ad-em-updatelink img{
+    display: block;
+    height: inherit;
+
+}
+.ad-em-updatelink span{
+    display: none;
+}
 }

@@ -22,7 +22,7 @@
   }
   
   .ipbox input,
-  select {
+  .ipbox select {
     padding: 5px 0px;
     border-radius: 5px;
     border-style: none;

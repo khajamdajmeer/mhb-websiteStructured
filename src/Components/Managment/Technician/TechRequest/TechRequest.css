@@ -170,10 +170,10 @@ font-family: 'Noto Sans JP', sans-serif;
     #tech-data-div{
         flex-direction: column;
     }
-    ul{
+    .tech-viewdata ul{
         flex-direction: column;
     }
-    li{
+    .tech-viewdata li{
         padding: 8px 0px;
     }
 }
