@@ -31,7 +31,12 @@ const ViewProgress = (props) => {
         const res = await GetCount(location.state.id)
         setCount(res);
     }
-    useEffect(()=>{onMount()},[])
+    useEffect(()=>{
+        onMount()
+
+
+    // eslint-disable-next-line
+},[])
 
 
 
