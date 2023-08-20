@@ -14,16 +14,18 @@
     /* border: 2px solid wheat; */
 }
 .ad-c-head{
-    height: 40px;
+    min-height: 40px;
+    height: auto;
     width: 100%;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     justify-content: space-between;
     background-color: #edf2f4;
 }
 .ad-c-hright{
     height: 100%;
-    text-align: right;
+    /* text-align: right; */
     display: flex;
     align-items: center;
     margin-right: 10px;
@@ -35,6 +37,9 @@
     align-items: center;
     font-size: larger;
     margin-left: 4px;
+    width: 70%;
+    justify-content: center;
+
 }
 .ad-c-selectip{
     height: 20px;
@@ -63,6 +68,21 @@
     outline: 1px solid black;
 
 }
+.ad-c-3dot{
+    width: 10px;
+    height: 30px;
+    border: none;
+    /* background-color: orange; */
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ad-c-3dot img{
+    height: inherit;
+    width: inherit;
+    scale: 0.7;
+}
 .ad-c-searchbtn img{
     height: 20px;
     width: unset;
@@ -76,10 +96,12 @@
 
 .ad-c-mapitem{
     padding: 10px;
-    background-color: orange;
+    background-color: #ced4da;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    box-shadow: 1px 0px 8px -2px #111 ;
+    border-bottom: 1px solid ;
 }
 .ad-c-names{
     padding: 4px 0;
@@ -124,4 +146,73 @@
 .ad-c-ul-prev{
     background-color: #a8dadc !important;
     color: black !important;
+}
+.ad-c-viewbtn{
+    padding: 4px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f77f00 ;
+    color: #fff;
+    outline: 1px solid black;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.ad-c-serachdiv{
+    display: flex;
+}
+.ad-c-3dot-hide{
+    position: relative;
+}
+.ad-c-3dot-hbody{
+    position: absolute;
+    background-color: #b8bedd;
+    width: 100px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    right: 90%;
+    animation: showbtns 0.6s forwards ease;
+    transform-origin: right top;
+    border-radius: 4px;
+}
+.ad-c-3dot-hbody button{
+    width: 100px;
+    /* animation: showbtns 1s forwards ease; */
+    /* transform-origin: right; */
+    overflow: hidden;
+   height: 25px;
+   background: transparent;
+   /* border: 1px solid white; */
+   border: none;
+  border-bottom: 1px solid white;
+   padding: 1px;
+   font-weight: bold;
+   color: #003049;
+    
+
+
+}
+@keyframes showbtns {
+    from{
+        transform: scale(0);
+    }
+    t0{
+        transform: scale(1);
+    }
+    
+}
+
+
+@media (max-width:786px) {
+    .ad-c-head{
+    padding: 8px 5px;
+
+    }
+    .ad-c-hright{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
 }
