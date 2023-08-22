@@ -53,7 +53,7 @@ router.put('/requests/update/:id',FetchAdmin,async(req,res)=>{
     if(Address){newdata.Address=Address}
     if(ServiceDate){newdata.ServiceDate=ServiceDate}
     if(ServiceTime){newdata.ServiceTime=ServiceTime}
-    if(ServiceType){newdata.ServicType=ServiceType}
+    if(ServiceType){newdata.ServiceType=ServiceType}
 
     try{
         const id = new mongoose.Types.ObjectId(req.params.id);
@@ -61,6 +61,7 @@ router.put('/requests/update/:id',FetchAdmin,async(req,res)=>{
         res.status(200).send(update)
     }
     catch(error){
+        console.log('Error:',error)
         res.status(500).send({message:"error occured "})
 
     }

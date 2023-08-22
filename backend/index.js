@@ -20,6 +20,8 @@ app.use('/api/admin',require('./ApiRoutes/AdminRoutes/Sign_up_in'))
 app.use('/api/admin',require('./ApiRoutes/AdminRoutes/ClientRequests'))
 //route for admin to create a new emplooy
 app.use('/api/admin',require('./ApiRoutes/AdminRoutes/Emplooy'))
+/// ROUTE FOR ADMIN TO FIND AND CLIENTS AND MENIPULATE CLIENT DATA
+app.use('/api/admin',require('./ApiRoutes/AdminRoutes/DBViews'))
 
 //route for the emplooy if they forgot password and this will also work as the create password by verifiing the email
 app.use('/api/emplooy',require('./ApiRoutes/CommonRoutes/EmplooyPassword'))

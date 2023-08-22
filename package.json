@@ -18,6 +18,8 @@
     "howl": "^0.2.0",
     "howler": "^2.2.3",
     "js-cookie": "^3.0.5",
+    "js-xlsx": "^0.8.22",
+    "json2xls": "^0.1.2",
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.4.1",
     "nodemailer": "^6.9.4",
@@ -30,7 +32,8 @@
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
     "twilio": "^4.14.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "xlsx": "^0.18.5"
   },
   "scripts": {
     "start": "react-scripts start",

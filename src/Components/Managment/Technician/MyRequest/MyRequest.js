@@ -72,6 +72,8 @@ const MyRequest = () => {
     const handlecompletbtn = (index)=>{
         setShowfinish(true)
         setSenddata(mydata[index])
+        setActiveIndex(activeIndex === index ? null : index);
+
     }
 
     //js for the cancle button
