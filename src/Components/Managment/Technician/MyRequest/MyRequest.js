@@ -196,6 +196,12 @@ const MyRequest = () => {
                                 </ul>
 
                             </div>
+                            <div className="techwrapbox-left tc-my-notecolor">
+                                <ul>
+                                    <li>Note</li>
+                                    <li>{ele.Note} </li>
+                                </ul>
+                            </div>
                             <div className="techwrapbox-left-btn">
                                 <button className='tech-link' onClick={()=>handlecompletbtn(index)}>complete Request</button>
                                 

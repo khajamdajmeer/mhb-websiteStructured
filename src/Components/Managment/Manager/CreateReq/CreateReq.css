@@ -1,0 +1,31 @@
+.ma-cr-fullscreen{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(187, 176, 176);
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+.ma-cr-center{
+    width: 100%;
+    max-width: 800px;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #dee2ff;
+}
+.ma-cr-head{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ma-cr-body{
+    height: 90%;
+    background-color: white;
+    width: 100%;
+}

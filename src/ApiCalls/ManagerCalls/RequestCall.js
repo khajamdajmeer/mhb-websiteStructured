@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Cookies from 'js-cookie';
 
 const {host} = require('../Host')
@@ -31,7 +32,8 @@ export const UpdateRequest = async(data)=>{
             Address: data.Address,
             ServiceType: data.ServiceType,
             ServiceDate: data.ServiceDate,
-            ServiceTime: data.ServiceTime
+            ServiceTime: data.ServiceTime,
+            Note:data.Note
         })
     });
     const res = await response.json();
@@ -94,13 +96,16 @@ export const GetReviewReq = async()=>{
     return res;
 }
 
-export const PushToFinished = async(id)=>{
-    const response = await fetch(`${host}/api/track/finishreq/${id}`,{
+export const PushToFinished = async(data)=>{
+    const response = await fetch(`${host}/api/track/finishreq/${data.id}`,{
         method:'POST',
         headers:{
             'Content-Type':'application/json',
             'auth-token': Cookies.get('auth-token')
-        }
+        },
+        body:JSON.stringify({
+            Discription:data.Discription
+        })
         
     })
     const res = await response.json();
@@ -129,24 +134,65 @@ export const RevertReq = async(data)=>{
             method:'PUT',
             headers:{
                 'Content-Type':'application/json',
-                // 'auth-token':Cookies.get('auth-token') 
                 'auth-token': Cookies.get('auth-token') 
             },body:JSON.stringify({id:data.tid})
     
         })
-        // try{
-        //     if(!response.ok){
-        //         throw new Error()
-        //     }
-            
-        // }catch(error){
-        //     console.error(error)
-        //     // throw error
-        // }
+ 
         const res = await response.json();
         return res;
    
 }
+
+
+
+export const PendingRequest = async(id)=>{
+    const response = await fetch(`${host}/api/manager/pending/${id}`,{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json'
+            ,'auth-token': Cookies.get('auth-token')
+        }
+    });
+    const res = await response.json()
+    return res;
+
+}
+
+export const getPendingReq = async()=>{
+    try{const response = await axios.get(`${host}/api/manager/pendingdata`,{
+        headers:{
+            'Content-Type':'application/json',
+            'auth-token':Cookies.get('auth-token')
+        }
+    })
+    return response.data
+}
+catch(err){
+    console.error(err)
+    throw err
+}
+}
+const header = {
+    'Content-Type': 'application/json',
+    'auth-token': Cookies.get('auth-token')
+}
+
+export const ForwordPendingReq = async (rid, data) => {
+    try {
+        const response = await axios.post(`${host}/api/manager/pendingforword/${rid}`, {
+            tid: data.tid,
+            Note: data.Note
+        }, {
+            headers: header // Move the headers to this level
+        });
+        return response.data;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+
 
 
 

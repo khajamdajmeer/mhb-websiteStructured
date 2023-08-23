@@ -52,6 +52,7 @@ router.put('/requests/update/:id',FetchEmplooy,async(req,res)=>{
     if(req.body.ServiceDate){newdata.ServiceDate=req.body.ServiceDate}
     if(req.body.ServiceTime){newdata.ServiceTime=req.body.ServiceTime}
     if(req.body.ServiceType){newdata.ServiceType=req.body.ServiceType}
+    if(req.body.Note){newdata.Note=req.body.Note}
     const id = req.params.id
     const update = await RequestDB.findByIdAndUpdate(id,{$set:newdata},{new:true})
     res.status(200).send({success:true,update});
@@ -122,6 +123,88 @@ router.get('/techrequests',FetchEmplooy,async(req,res)=>{
         res.status(400).send({error:'error occured',error})
     }
 })
+
+///Router for the manager to make some req pending on his name without assigning to the techniche
+router.post('/pending/:id',FetchEmplooy,async(req,res)=>{
+    try{
+        const managername = req.name;
+        const data = await RequestDB.findById(req.params.id)
+        if(data){
+            const create = await techDB.create(
+              {  name:data.name,
+            mobileNumber:data.mobileNumber,
+            mobilenumberString:data.mobilenumberString,
+            Location:data.Location,
+            Address:data.Address,
+            Requestdate:data.Requestdate,
+            Service:{
+                type:data.ServiceType,
+                Date:data.ServiceDate,
+                Time:data.ServiceTime
+
+            },
+            forworded:{
+                name:managername,
+                id:req.user
+            },
+            Note:data.Note
+           
+            
+        }
+            )
+            if(create){
+                await RequestDB.findByIdAndDelete(req.params.id)
+                res.status(200).send({message:'is Pending for forword',success:true})
+            }
+            
+        }
+       
+
+    }catch(error){
+        res.status(500).send({error:'error occured'})
+    }
+
+})
+
+//ROUTE FOR THE MANAGER TO GET HIS PENDING DATA
+router.get('/pendingdata',FetchEmplooy,async(req,res)=>{
+    try{
+        if(req.authorization!='Technicain'){
+            const data = await techDB.find({'forworded.id':req.user,'Technicain.id':null});
+            res.status(200).send(data)
+        }
+       else{
+        return res.status(401).send({message:'unauthorized request'})
+       }
+
+
+    }catch(error){
+        res.status(400).send({error:'error occured',error})
+    }
+})
+
+
+//ROUTER FOR THE MANAGER TO FORWORD TECH REQ TO A TECHNICIAN
+router.post('/pendingforword/:id',FetchEmplooy,async(req,res)=>{
+    try{
+        const data = techDB.findById(req.params.id);
+        if(data){
+            const newdata ={}
+            if(req.body.tid){
+                newdata.Technicain={id:req.body.tid}}
+            if(req.body.Note){
+                    newdata.Note=req.body.Note;
+                }
+                const update = await techDB.findByIdAndUpdate(req.params.id,{$set:newdata},{new:true})
+                res.status(200).send({message:'forworded Success'})
+        }
+
+    }catch(err){
+        console.error(err)
+        res.status(500).send({message:'error occured',success:false})
+    }
+})
+
 
 
 module.exports = router

@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const { Schema } = require('mongoose');
 
 
-const TechAccessSchema = new Schema({
+const ComplainSchema = new Schema({
     name: {
         type: String,
         require: true
@@ -26,19 +26,19 @@ const TechAccessSchema = new Schema({
     Service: {
         type: {
             type: String,
-            require: true,
-            default:''
+            require: true
         },
         Date: {
             type: String,
-            require: true,default:''
+            require: true
         },
         Time: {
             type: String,
-            require: true,default:''
+            require: true
         }
     }
     ,
+
     Technicain: {
         name: {
             type: String,
@@ -47,8 +47,7 @@ const TechAccessSchema = new Schema({
         },
         id: {
             type: mongoose.Schema.Types.ObjectId,
-            require: true,
-            default:null
+            require: true
         }
     },
     Requestdate: {
@@ -74,11 +73,11 @@ const TechAccessSchema = new Schema({
         type:Boolean,
         default:false
     },
-    Note:{
+    Discription:{
         type:String,
         default:null
     }
 
 })
 
-module.exports = mongoose.model("Tech_Process_DB", TechAccessSchema);
+module.exports = mongoose.model("Complain_DB", ComplainSchema);

@@ -40,7 +40,12 @@ const CustomerRequest = new Schema({
     Requestdate:{
         type:Date,
         default:Date.now
+    },
+    Note:{
+        type:String,
+        default:null
     }
+    
 })
 
 module.exports = mongoose.model('Request_DB',CustomerRequest);

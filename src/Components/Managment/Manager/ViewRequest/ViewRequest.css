@@ -179,6 +179,36 @@ padding: 3px 5px;
 .active-bgcolor{
     background-color: #90e0ef !important;
 }
+.ma-req-creatbtn{
+    position: absolute;
+    bottom: 40px;
+    right: 50px;
+    height: 60px;
+    width: 60px;
+    background-color: orange;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.ma-req-linkbtn{
+    width: inherit;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+.ma-req-linkbtn img{
+    width: inherit;
+    height: inherit;
+    transform: scale(0.7);
+    filter: invert(0.4);
+    user-select: none;
+    cursor: pointer;
+}
 @media (max-width:768px) {
     
     

@@ -57,7 +57,7 @@ width: 100%;
 .ma-vtr-dbody{
   height: 210px;
   transition: all 0.5s ease;
-  animation: openwrap 1s forwards;
+  /* animation: openwrap 1s forwards; */
   overflow: auto;
 }
 .ma-vtr-openwrap{
@@ -98,7 +98,7 @@ width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  height: 15%;
+  height: 18%;
   padding: 0 10px;
   box-shadow: 1px 1px 2px #000000;
   position: relative;

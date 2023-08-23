@@ -86,7 +86,11 @@ flex-direction: row;
 
 
 
-
+.tc-my-notecolor{
+    color: red;
+    font-weight: bold;
+    
+}
 
 
 

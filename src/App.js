@@ -18,6 +18,8 @@ import EmplooyUpdate from './Components/Managment/Admin/EmplooyUpdate/EmplooyUpd
 import ViewProgress from './Components/Managment/Admin/ViewProgress/ViewProgress';
 import ReviewReq from './Components/Managment/Manager/ReviewReq/ReviewReq';
 import ForgotPassword from './Components/Managment/Common/ForgotPassword/ForgotPassword';
+import PendingPage from './Components/Managment/Manager/PendingPage/PendingPage';
+import CreateReq from './Components/Managment/Manager/CreateReq/CreateReq';
 
 function App() {
   return (
@@ -36,6 +38,8 @@ function App() {
             <Route path='requests' element={<ViewRequest />} />
             <Route path='techrequest' element={<ViewTechreq />} />
             <Route path='reviewreq' element={<ReviewReq/>}/>
+            <Route path='pending' element={<PendingPage/>}/>
+            <Route path='newrequest' element={<CreateReq/>}/>
           </Route>
 
 {/* the routes for the technician */}

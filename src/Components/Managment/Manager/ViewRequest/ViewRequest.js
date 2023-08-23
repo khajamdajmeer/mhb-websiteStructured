@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './ViewRequest.css'
-import { ViewRequests, UpdateRequest, GetTechDetails, PushToTech } from '../../../../ApiCalls/ManagerCalls/RequestCall';
+import { ViewRequests, UpdateRequest, GetTechDetails, PushToTech,PendingRequest } from '../../../../ApiCalls/ManagerCalls/RequestCall';
 import Message from '../../Common/Message/Message';
 import { RequestSearch } from '../../../../ApiCalls/ManagerCalls/SearchCall';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { Link } from 'react-router-dom';
+import plusimg from '../../../images and tones/plus.png'
 
 
 const ViewRequest = () => {
@@ -15,21 +17,21 @@ const ViewRequest = () => {
         {
             _id: "", name: "", mobileNumber: "", Location: "", Address: "", ServiceDate: "", ServiceTime: "", ServiceType: '',
             Requestdate: "",
-            __v: ""
+            __v: "",Note:''
         }
     ])
 
     const [showingdata, setShowingdata] = useState({
         _id: "", name: "", mobileNumber: "", Location: "", Address: "", ServiceType: '', ServiceDate: "", ServiceTime: "",
         Requestdate: "",
-        __v: ""
+        __v: "",Note:''
     })
 
     const [showupdate, setShowupdate] = useState(false);
     const [showview, setShowview] = useState(false);
     const [updatedata, setUpdatedata] = useState({
         _id: "", name: "", mobileNumber: "", Location: "", Address: "", ServiceType: '', ServiceDate: "", ServiceTime: "",
-        Requestdate: "", __v: ""
+        Requestdate: "", __v: "",Note:''
     })
 
     const onchange = (e) => {
@@ -205,6 +207,18 @@ const ViewRequest = () => {
 
     }
 
+    //Logic for handling the pending
+    const handlepending = async(id)=>{
+        const res = await PendingRequest(id);
+        if(res.success){
+            setShowmsg(true);
+            setMsgdata({ message: res.message, navigate: '' })
+        }
+        setTimeout(()=>{
+            setShowmsg(false)
+        },3000)
+    }
+
 
     return (
         <>
@@ -312,6 +326,10 @@ const ViewRequest = () => {
                                         <div className="dataright">{showingdata.Requestdate.slice(0, 10)}</div>
                                     </div>
                                     <div className="dblock">
+                                        <div className="dataleft">Note</div>
+                                        <div className="dataright">{showingdata.Note!==null ? showingdata.Note:'Null'}</div>
+                                    </div>
+                                    <div className="dblock">
                                         <div className="dataleft">Asign Technician</div>
                                         <select className="dataright drightselect" name='id' value={techindex.id} onChange={ontechchange}>
                                             <option value='-1'>---select---</option>
@@ -329,6 +347,7 @@ const ViewRequest = () => {
                                 </div>
                                 <div className="detailsbuttons">
                                     <button onClick={() => { handelEdit(showingdata) }} disabled={showingdata._id.length < 5}>Edit</button>
+                                    <button onClick={() => { handlepending(showingdata._id) }} disabled={showingdata._id.length < 5}>Pending</button>
                                     {/* <button >update</button> */}
                                     <button onClick={handleForwordOnly} disabled={showingdata._id.length < 5 || techindex.id.length < 5}>forward</button>
                                 </div>
@@ -397,6 +416,11 @@ const ViewRequest = () => {
 
 
                                     </div>
+                                    <div className="dblock">
+                                        <div className="dataleft">Note</div>
+                                        <textarea type='text' name='Note' value={updatedata.Note} onChange={onchange} className="dataright" />
+                                    </div>
+                                    
 
                                 </div>
                                 <div className="detailsbuttons">
@@ -411,6 +435,11 @@ const ViewRequest = () => {
                     </div>
 
                 </div>
+            </div>
+            <div className="ma-req-creatbtn">
+                <Link to={'/dashboard/newrequest'} className='ma-req-linkbtn'>
+                    <img src={plusimg} alt="" />
+                </Link>
             </div>
         </>
 

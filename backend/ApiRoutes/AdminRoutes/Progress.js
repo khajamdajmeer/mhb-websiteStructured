@@ -2,6 +2,9 @@ const express = require('express');
 const FetchAdmin = require('../../MiddleWare/FetchAdmin');
 const FinishDB = require('../../DBmodels/DBAdmin/FinishedReq')
 const EmplooyDB = require('../../DBmodels/DBAdmin/NewEmplooyData')
+const Tech_Process_DB = require('../../DBmodels/DBTechnican/ProcessRequest');
+const Complain_DB = require('../../DBmodels/DBTechnican/Complain')
+const { finished } = require('stream');
 const router = express.Router();
 
 
@@ -181,5 +184,39 @@ router.get('/reqcount/:id',FetchAdmin,async(req,res)=>{
 
 })
 
+router.post('/complain/:id',FetchAdmin,async(req,res)=>{
+  try{
+    const findingdata = await FinishDB.findById(req.params.id);
+    if(findingdata){
+         const createComplain = await Complain_DB.create(
+       { name:findingdata.name,
+        mobileNumber:findingdata.mobileNumber,
+       mobilenumberString: findingdata.mobilenumberString,
+        Location:findingdata.Location, 
+        Address:findingdata.Address,
+        Service:{
+          type:findingdata.Service.type,
+       Date: findingdata.Service.Date },
+       Technicain:{ name: findingdata.Technicain.name,
+        id:findingdata.Technicain.id },
+        Requestdate:findingdata.Requestdate,
+        forworded:{name:findingdata.forworded.name,
+       id: findingdata.forworded.id},
+       Discription:findingdata.Discription,
+      complain:req.body.complain}
+      )
+      res.status(200).send({createComplain})
+    }
+    else{
+
+      res.status(200).send({message:'data not found'})
+    }
+    
+
+  }catch(error){
+    console.error('error:',error)
+    res.status(500).send({message:'error Occured try again',success:false})
+  }
+})
 
 module.exports = router;

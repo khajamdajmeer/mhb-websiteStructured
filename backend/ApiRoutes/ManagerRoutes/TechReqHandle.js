@@ -155,7 +155,7 @@ router.post('/finishreq/:id',FetchEmplooy,async(req,res)=>{
                 name:data.forworded.name,
                 id:data.forworded.id
             },
-            Discription:data.Discription
+            Discription:req.body.Discription
         }
 
 
