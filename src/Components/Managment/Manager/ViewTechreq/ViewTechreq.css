@@ -178,6 +178,14 @@ width: 100%;
   background-color: #457b9d;
   transform-origin: top right;
 }
+.ma-vtr-dbtn button{
+  color: #fff;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+.ma-vtr-dbtn button:hover{
+ background: #000;
+}
 .ma-vtr-dbtnshow{
   animation: opendbtn 0.4s forwards ease;
 }
@@ -221,6 +229,9 @@ box-shadow: 1px 1px 1px #caf0f8;
 .ma-vtr-openwrap{
   height: 40px ;
   animation: openwrap 1s forwards;
+}
+.ma-vtr-dbody{
+  height: 310px;
 }
 @keyframes openwrap {
   form{

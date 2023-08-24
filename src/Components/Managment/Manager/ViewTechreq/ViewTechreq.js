@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './ViewTechreq.css';
-import { GetTechReq } from '../../../../ApiCalls/ManagerCalls/RequestCall';
+import { GetTechReq,AcceptTechReq,TechfinishReq } from '../../../../ApiCalls/ManagerCalls/RequestCall';
 import {actionCreator} from '../../../../Redux/index'
 import { useDispatch,useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -9,7 +9,8 @@ import { useNavigate } from 'react-router-dom';
 import DeleteMsg from '../DeleteMsg/DeleteMsg';
 import RevertMsg from '../RevertMsg/RevertMsg';
 import Cookies from 'js-cookie';
-
+import Message from '../../Common/Message/Message';
+import TechreqView from '../TechreqView/TechreqView';
 const ViewTechreq = () => {
   const history = useNavigate();
 
@@ -127,12 +128,52 @@ const [oldTid,setOldTid]=useState('')
 
 
 
+ ///LOGIC FOR HANDLING THE ACCEPT REQUEST
+ const [showmsg,setShowmsg]=useState(false)
+ const [msg,setMsg]=useState('')
+ const handleAccept = async(id)=>{
+  const res = await AcceptTechReq(id);
+  if(res.success){
+    setShowmsg(true);
+    setMsg(res.message)
+  }
+  onMount();
+  setTimeout(()=>{
+    setShowmsg(false)
+  },2000)
+ }
+//LOGIC FOR HANDLING THE VIEW BTN
+const [showviewreq,setShowviewreq]=useState(false);
+const [reqviewdata,setReqviewdata]=useState({})
+const handleView = (data)=>{
+  setShowviewreq(true);
+  setReqviewdata(data);
+
+}
+const handlecancle = ()=>{
+  setShowviewreq(false)
+  onMount();
+}
+const handleClose=async(id)=>{
+  const res=await TechfinishReq(id);
+  console.log(res)
+  if(res.Success){
+    onMount();
+    setShowmsg(true);
+    setMsg(res.message)
+  }
+  setTimeout(()=>{
+    setShowmsg(false)
+  },2000)
+
+}
 
   return (
     <>
     {showDelete&&(<DeleteMsg newdata={deleteData} handlecancle={handleCancleDelete}/>)}
     {showRevert&&(<RevertMsg newdata={RevertData} tid={oldTid} handlecancle={handleCancleRevert}/>)}
-    
+    {showmsg&&(<Message message={msg}/>)}
+    {showviewreq&&(<TechreqView data={reqviewdata} handlecancle={handlecancle}/>)}
       <div className="viewtechrequest">
 
         <div className="techcenterdiv">
@@ -170,8 +211,11 @@ const [oldTid,setOldTid]=useState('')
                         <button className='ma-vtr-btn' onClick={()=>handle3dots(iindex)}><img src={dots} alt="" /></button>
                         {activeIndex===index &&btnindex===iindex&&(
                           <div className="ma-vtr-dbtn">
-                              <button onClick={()=>handleDelete(element)}>delete</button>
+                            <button onClick={()=>handleView(element)}>view</button>
+                              <button disabled={element.Accepted} onClick={()=>handleAccept(element._id) }>Accept</button>
                               <button onClick={()=>handleRevert(element,ele._id)}>revert</button>
+                              <button onClick={()=>handleDelete(element)}>delete</button>
+                            <button onClick={()=>handleClose(element._id)}>Close Req</button>
                             </div>
                         )
 

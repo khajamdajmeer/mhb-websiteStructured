@@ -68,6 +68,10 @@ const RevertMsg = (props) => {
             <li className='tech-finish-left'>ServiceDate:</li>
             <li className='tech-finish-right'>{props.newdata.Service.Date}</li>
         </ul>
+        <ul>
+            <li className='tech-finish-left'>Note:</li>
+            <li className='tech-finish-right'>{props.newdata.Note}</li>
+        </ul>
 
         <ul className='tech-finish-displayblock'>
         <li className='tech-finish-left'> <label htmlFor="Discription" className='tech-finishlabel'>Reason</label></li>

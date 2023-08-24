@@ -19,3 +19,16 @@ export const GetCount = async (id) => {
         throw error; // Rethrow the error to handle it in the calling code
     }
 };
+
+export const GetfullDetail = async(id)=>{
+    try {
+        const response = await axios.get(`${host}/api/progress/getdetails/${id}`, {
+            headers: header
+        });
+        return response.data;
+    } catch (error) {
+        // Handle error here
+        console.error('An error occurred:', error);
+        throw error; // Rethrow the error to handle it in the calling code
+    }
+}

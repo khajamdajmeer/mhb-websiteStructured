@@ -219,4 +219,21 @@ router.post('/complain/:id',FetchAdmin,async(req,res)=>{
   }
 })
 
+
+router.get('/getdetails/:id',FetchAdmin,async(req,res)=>{
+  const emplooy = await EmplooyDB.findById(req.params.id);
+  if(emplooy){
+      if(emplooy.designation==='Manager'){
+          const data = await FinishDB.find({'forworded.id':req.params.id})
+          res.status(200).send({data:data,success:true})
+      }
+      else{
+          const data = await FinishDB.find({'Technicain.id':req.params.id})
+        res.status(200).send({data:data,success:true})
+      }
+  }
+  else{
+      res.status(400).send({message:'data not found',success:false})
+  }
+})
 module.exports = router;

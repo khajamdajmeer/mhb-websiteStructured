@@ -2,8 +2,22 @@
 const mongoose = require('mongoose')
 const {Schema}= require('mongoose')
 
-const date = new Date();
-const dateslice = date.toISOString().slice(0, 10);
+
+function formatDateToIST(date) {
+    const utcDate = new Date(date);
+    const istOffset = 5.5 * 60 * 60 * 1000; // IST is UTC+5:30 in milliseconds
+  
+    const istDate = new Date(utcDate.getTime() + istOffset);
+    
+    const year = istDate.getFullYear();
+    const month = (istDate.getMonth() + 1).toString().padStart(2, '0');
+    const day = istDate.getDate().toString().padStart(2, '0');
+    
+    return `${year}-${month}-${day}`;
+  }
+  
+  const date = new Date(); // Current date in local time
+  const istFormattedDate = formatDateToIST(date);
 
 const Finishedreq  = new Schema({
     name: {
@@ -38,7 +52,7 @@ const Finishedreq  = new Schema({
         Delivery: {
             type:Date,
             require: true,
-            default:dateslice
+            default:istFormattedDate
         }
     }
     ,

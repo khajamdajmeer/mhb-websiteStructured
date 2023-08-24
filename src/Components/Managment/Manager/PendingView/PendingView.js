@@ -61,13 +61,17 @@ const [msgData,setMsgData]=useState({message:''})
                 <li className='ma-pv-lileft'>Address:</li>
                 <li className='ma-pv-liright'> {props.data.Address}</li>
             </ul>
-           
-           
-           
-            
             <ul className='ma-pv-bodyul'>
-                <li className='ma-pv-lileft'>Request Date:</li>
+                <li className='ma-pv-lileft'>Request Created:</li>
                 <li className='ma-pv-liright'>{props.data.Requestdate.slice(0,16)}</li>
+            </ul>
+            <ul className='ma-pv-bodyul'>
+                <li className='ma-pv-lileft'>Service Date:</li>
+                <li className='ma-pv-liright color-red'>{props.data.Service.Date.slice(0,16)}</li>
+            </ul>
+            <ul className='ma-pv-bodyul'>
+                <li className='ma-pv-lileft'>Service Date:</li>
+                <li className='ma-pv-liright'>{props.data.Service.type}</li>
             </ul>
             
             <ul className='ma-pv-bodyul'>

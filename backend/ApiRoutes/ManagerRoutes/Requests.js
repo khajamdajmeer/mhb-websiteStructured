@@ -124,7 +124,7 @@ router.get('/techrequests',FetchEmplooy,async(req,res)=>{
     }
 })
 
-///Router for the manager to make some req pending on his name without assigning to the techniche
+//Router for the manager to make some req pending on his name without assigning to the techniche
 router.post('/pending/:id',FetchEmplooy,async(req,res)=>{
     try{
         const managername = req.name;
@@ -176,8 +176,6 @@ router.get('/pendingdata',FetchEmplooy,async(req,res)=>{
        else{
         return res.status(401).send({message:'unauthorized request'})
        }
-
-
     }catch(error){
         res.status(400).send({error:'error occured',error})
     }
@@ -206,5 +204,92 @@ router.post('/pendingforword/:id',FetchEmplooy,async(req,res)=>{
 })
 
 
+//ROUTER FOR THE MANAGER TO CREATE A NEW REQUEST AND SEND IT TO THE PENDING
+router.post('/createpending',FetchEmplooy,async(req,res)=>{
+
+    try{
+        const managername = req.name;
+        const data = req.body.data
+       await techDB.create(
+            {  name:data.name,
+          mobileNumber:data.mobileNumber,
+          mobilenumberString:data.mobileNumber,
+          Location:data.Location,
+          Address:data.Address,
+          
+          Service:{
+              type:data.ServiceType,
+              Date:data.ServiceDate,
+              Time:data.ServiceTime
+
+          },
+          forworded:{
+              name:managername,
+              id:req.user
+          },
+          Note:data.Note
+        
+          
+      })
+            
+        res.status(200).send({message:'Req Created Succeffuly and IN pending State',success:true})
+           
+            
+       
+
+    }catch(error){
+        res.status(500).send({error:'error occured'})
+    }
+})
+router.post('/createforword',FetchEmplooy,async(req,res)=>{
+
+    try{
+        const managername = req.name;
+        const data = req.body.data
+       await techDB.create(
+            {  name:data.name,
+          mobileNumber:data.mobileNumber,
+          mobilenumberString:data.mobileNumber,
+          Location:data.Location,
+          Address:data.Address,
+          
+          Service:{
+              type:data.ServiceType,
+              Date:data.ServiceDate,
+              Time:data.ServiceTime
+
+          },
+          forworded:{
+              name:managername,
+              id:req.user
+          },Technicain:{
+            id:data.Technicianid
+          },
+          Note:data.Note
+        
+          
+      })
+            
+        res.status(200).send({message:'Req Created Succefully and Forworded',success:true})
+           
+            
+       
+
+    }catch(error){
+        res.status(500).send({error:'error occured'})
+    }
+})
+
+router.post('/acceptfortech/:id',FetchEmplooy,async(req,res)=>{
+    try{
+        const change = {Accepted:true};
+        const data = await techDB.findByIdAndUpdate(req.params.id,{$set:change},{new:true})
+        res.status(200).send({message:'Accepted the req',success:true})
+
+    }catch(error){
+        console.error(error)
+        res.status(500).send({message:'error occured',success:false})
+    }
+})
 
 module.exports = router

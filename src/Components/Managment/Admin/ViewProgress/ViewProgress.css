@@ -12,7 +12,7 @@
     width: 100%;
     height: 100%;
     display: flex;
-    
+    flex-direction: column;
     box-shadow: 2px 2px 2px 1px #0000;
 }
 .ad-emp-boxtop{
@@ -136,6 +136,127 @@ flex-direction: column;
 height: inherit;
 width: inherit;
 }
+.ad-emp-mapitem{
+    /* width: unset; */
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: 1px solid green;
+
+
+}
+.ad-emp-dataitem{
+    /* width: unset; */
+    width: 80%;
+    display: flex;
+    list-style-type: none;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 12px;
+    /* background-color: #ffffff; */
+}
+.ad-emp-dataitem li{
+    /* min-width: 140px; */
+    /* width: 150px; */
+    padding: 4px 0;
+    width: 23%;
+    overflow-wrap: wrap;
+    word-wrap: wrap;
+    text-align: center;
+}
+.bolditem{
+    font-weight: bold;
+}
+.ad-emp-maphead{
+    width: unset;
+    display: flex;
+    
+    height: 40px;
+    align-items: center;
+    padding: 8px 0;
+}
+.ad-emp-dataitemhead{
+    width: 100%;
+    display:flex;
+    width: 80%;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+}
+.ad-emp-dataitemhead li{
+    width: 23%;
+    text-align: center;
+}
+.ad-emp-inputdivhead{
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+
+}
+.ad-emp-inputdivhead input{
+    width: 40%;
+    text-align: center;
+}
+.ad-emp-inputdivhead button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+}
+.ad-emp-inputdivhead img{
+    height: inherit;
+    scale: 0.6;
+}
+.ad-emp-inputdiv{
+    width: 12%;
+    /* width: unset; */
+    
+    padding: 4px 20px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.ad-emp-inputdiv button{
+    /* width: 30px; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   outline: 1px solid black;
+   border-radius: 4px;
+   background: #023047;
+   color: #edf6f9;
+   border: none;
+   padding: 5px 10px;
+
+}
+.ad-emp-inputdiv img{
+    height: inherit;
+    width: inherit;
+    transform: scale(0.6);
+}
+.ad-emp-rstbtn{
+    width: auto !important;
+    background-color: #03045e;
+    color: whitesmoke;
+    margin-left: 10px;
+    border-radius: 4px;
+    padding: 0 10px !important;
+}
+.ad-emp-spanlen{
+    /* margin-right: 10px; */
+    /* width: 40px; */
+    /* background-color: rebeccapurple; */
+    padding: 5px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+
 
 
 
@@ -144,6 +265,25 @@ width: inherit;
     .ad-emp-backbtn{
         display: flex;
     }
+    .ad-emp-dataitemhead{
+        display: none;
+        /* width: 100%;
+        display:flex;
+        width: 80%;
+        align-items: center;
+        justify-content: space-between;
+        list-style: none; */
+    }
+    .ad-emp-inputdivhead{
+       width: 100%;
+    }
+    .ad-emp-dataitem li{
+        width:auto ;
+    }
+    .ad-emp-mapitem{
+        flex-wrap: wrap;
+    }
+
 }
 
 

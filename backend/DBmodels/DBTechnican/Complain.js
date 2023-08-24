@@ -70,8 +70,8 @@ const ComplainSchema = new Schema({
         default:false
     },
     Complain:{
-        type:Boolean,
-        default:false
+        type:String,
+        
     },
     Discription:{
         type:String,

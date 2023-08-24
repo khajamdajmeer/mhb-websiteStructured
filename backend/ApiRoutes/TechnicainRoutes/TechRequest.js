@@ -4,6 +4,7 @@ const FetchEmplooy = require('../../MiddleWare/FetchEmplooy');
 const router = express.Router();
 const techDB = require('../../DBmodels/DBTechnican/ProcessRequest')
 const ClientDB = require('../../DBmodels/DBAdmin/FinishedReq');
+const employ_db = require('../../DBmodels/DBAdmin/NewEmplooyData')
 const { findByIdAndDelete } = require('../../DBmodels/DBAdmin/NewEmplooyData');
 const ManagerPushDB = require('../../DBmodels/DBManager/WaitingForPush')
 
@@ -75,7 +76,6 @@ try{
     const emplooyid = req.user;
     const data = await techDB.find({"Technicain.id":emplooyid})
     res.status(200).send(data)  
-
     }
     else{
         return res.status(401).send({message:'unauthorized request'})
@@ -83,20 +83,18 @@ try{
 }
 catch(error){
     res.status(500).send({message:'error occured'})
-
 }
 })
 
 router.post('/completedreq/:id',FetchEmplooy,async(req,res)=>{
 
     try{
-    if(req.authorization==='Technician'){
-        const emplooyid = req.user;
+        
+        // const emplooyid = req.user;
         const reqid = req.params.id;
         const Discription = req.body.discription;
         const data = await techDB.findById( reqid )
-        // data.Discription = Discription
-         
+        const findtech= await employ_db.findById(data.forworded.id)
         const newdata = {
             name:data.name,
             mobileNumber:data.mobileNumber,
@@ -113,19 +111,14 @@ router.post('/completedreq/:id',FetchEmplooy,async(req,res)=>{
             },
             Requestdate:data.Requestdate,
             forworded:{
-                name:data.forworded.name,
+                name:findtech.name,
                 id:data.forworded.id
             },
             Discription:Discription
         }
-
-
             const fdata = await ManagerPushDB.create(newdata)
            const ddata= await techDB.findByIdAndDelete(reqid)
             res.status(200).send({message:'Success',Success:true})
-
-        
-    }
     }
     catch(error){
         console.log(error)

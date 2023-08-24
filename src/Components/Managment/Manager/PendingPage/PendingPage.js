@@ -21,11 +21,19 @@ const PendingPage = () => {
   const handlePView =(ele)=>{
     setShowpview(true);
     setPviewdata(ele);
+    console.log(ele)
   }
   const closepview = ()=>{
     setShowpview(false)
     onMount();
   }
+  //logic for geting the current data
+
+  const currentDate = new Date(); // Current date in local time
+const year = currentDate.getFullYear();
+const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+const day = String(currentDate.getDate()).padStart(2, '0');
+const formattedDate = `${year}-${month}-${day}`;
 
   return (
     <>
@@ -37,16 +45,17 @@ const PendingPage = () => {
       <div className="ma-pp-centerdiv">
         <div className="ma-pp-head">
           <h1>Pending Data</h1>
+          <h2 className='color-red'>{formattedDate.slice(0,10)}</h2>
         </div>
         <div className="ma-pp-body">
      {
       data.map((ele,index)=>{
         return( <div className="ma-pp-mapitem">
-        <div className="ma-pp-item-name">{ele.name.length>2 ? ele.name :'none'}</div>
-        <div className="ma-pp-item-name">{ele.mobilenumberString.length>2 ? ele.mobileNumber :'mobilenumber'}</div>
-        <div className="ma-pp-item-name">{ele.Location.length>2 ? ele.Location :'Location'}</div>
-        <div className="ma-pp-item-name">{ele.Service.Date.length>2 ? ele.Service.Date :'ServiceDate'}</div>
-        <div className="ma-pp-item-name">{ele.Address.length>2 ? ele.Address :'Address'}</div>
+        <div className="ma-pp-item-name">{ele.name}</div>
+        <div className="ma-pp-item-name">{ele.mobilenumberString}</div>
+        <div className="ma-pp-item-name">{ele.Location}</div>
+        <div className={`ma-pp-item-name ${ele.Service.Date.slice(0,10)<=formattedDate ? 'color-red':''}`}>{ele.Service.Date}</div>
+        <div className="ma-pp-item-name">{ele.Address}</div>
         {/* <div className="ma-pp-item-name">{ele.Service.type.length>2 ? ele.Service.type :'none'}</div> */}
         {/* <div className="ma-pp-item-name"><button className='ma-pp-btn'>view</button></div> */}
         <div className="ma-pp-item-name"><button className='ma-pp-btn' onClick={()=>{handlePView(ele)}}>forword</button></div>

@@ -2,12 +2,16 @@ import Cookies from "js-cookie";
 import { host } from "../Host";
 import axios from "axios";
 
+
+
+
 const XLSX = require('xlsx')
 
 const header = {
     'Content-Type': 'application/json',
     'auth-token': Cookies.get('auth-token')
-};
+}
+
 
 export const ViewClients = async()=>{
     
@@ -16,6 +20,7 @@ export const ViewClients = async()=>{
         const response = await axios.get(`${host}/api/admin/Customers`,{
             headers:header
         });
+        
         return response.data;
 
     }catch(err){

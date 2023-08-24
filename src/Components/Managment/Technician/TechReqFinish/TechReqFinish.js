@@ -56,7 +56,7 @@ const TechReqFinish = (props) => {
                 
                 <div className="tech-finish-btns">
                     <button className='btncancle' onClick={props.handlecancle}>cancle</button>
-                    <button className='btncomplete' onClick={()=>handlefinish({_id:id,discription:data.discription})} disabled={data.discription.length<6}>complete</button>
+                    <button className='btncomplete' onClick={()=>handlefinish({_id:id,discription:data.discription})} >complete</button>
 
                 </div>
                </div>

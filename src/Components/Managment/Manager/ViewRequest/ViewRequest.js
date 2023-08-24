@@ -312,9 +312,9 @@ const ViewRequest = () => {
                                         <div className="dataright">{showingdata.ServiceType}</div>
 
                                     </div>
-                                    <div className="dblock">
-                                        <div className="dataleft">ServiceDate</div>
-                                        <div className="dataright">{showingdata.ServiceDate}</div>
+                                    <div className="dblock ">
+                                        <div className="dataleft ">ServiceDate</div>
+                                        <div className="dataright color-red">{showingdata.ServiceDate}</div>
 
                                     </div>
                                     <div className="dblock">

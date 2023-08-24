@@ -194,5 +194,57 @@ export const ForwordPendingReq = async (rid, data) => {
 
 
 
+export const CreateReqSendtoPending = async(data)=>{
+ try{  const response= await axios.post(`${host}/api/manager/createpending`,{
+        data:data
+    },{
+        headers:header
+    }
+    );
+    return response.data;}catch(err){
+        console.error(err)
+    }
+}
+
+export const CreateReqandForword = async(data)=>{
+    try{  const response= await axios.post(`${host}/api/manager/createforword`,{
+           data:data
+       },{
+           headers:header
+       }
+       );
+       return response.data;}catch(err){
+           console.error(err)
+       }
+   }
+
+//    
+
+export const AcceptTechReq = async(id)=>{
+    try{  const response= await axios.post(`${host}/api/manager/acceptfortech/${id}`,{
+    },
+    {
+           headers:header
+       }
+       );
+       return response.data;
+    }catch(err){
+           console.error(err)
+       }
+   }
 
 
+   export const TechfinishReq = async(data)=>{
+    const response = await fetch(`${host}/api/technician/completedreq/${data}`,{
+        method:'POST',
+        headers:{
+            "Content-Type": "application/json",
+            "auth-token":Cookies.get('auth-token')
+        },
+        body:JSON.stringify({
+            discription:''
+          })
+    })
+    const res = await response.json();
+    return res;
+}

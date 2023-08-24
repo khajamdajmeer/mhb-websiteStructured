@@ -74,6 +74,26 @@ setData({...data,[e.target.name]:e.target.value})
     today_6.setDate(today.getDate() + 6);
 
 
+    const getCurrentDate = () => {
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+        const day = currentDate.getDate().toString().padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      };
+
+      const getMaxDate = () => {
+        const currentDate = new Date();
+        const maxDate = new Date(currentDate);
+        maxDate.setDate(currentDate.getDate() + 7);
+    
+        const year = maxDate.getFullYear();
+        const month = (maxDate.getMonth() + 1).toString().padStart(2, '0');
+        const day = maxDate.getDate().toString().padStart(2, '0');
+    
+        return `${year}-${month}-${day}`;
+    };
+
 
 
 
@@ -144,7 +164,7 @@ setData({...data,[e.target.name]:e.target.value})
 
         <div className="ipbox">
             <label htmlFor="serviceDate" className="reqlabel">service date</label>
-            <select onChange={onchange} value={data.servicedate} name='servicedate' id="">
+            {/* <select onChange={onchange} value={data.servicedate} name='servicedate' id="">
                 <option value="0" defaultValue  >---  SELECT --- </option>
                 <option value={today.toDateString()} >{today.toDateString()} today </option>
                 <option value={today_1.toDateString()} >{today_1.toDateString()} tomorrow </option>
@@ -154,7 +174,8 @@ setData({...data,[e.target.name]:e.target.value})
                 <option value={today_5.toDateString()} >{today_5.toDateString()}  </option>
                 <option value={today_6.toDateString()} >{today_6.toDateString()}  </option>
 
-            </select>
+            </select> */}
+            <input type="date" onChange={onchange} value={data.servicedate} name='servicedate' min={getCurrentDate()} max={getMaxDate()}/>
 
         </div>
         <div className="ipbox">

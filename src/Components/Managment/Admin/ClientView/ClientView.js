@@ -4,9 +4,12 @@ import './ClientView.css'
 const ClientView = (props) => {
 
     const closefunction = props.closefunction;
+    const handlecomplain =()=>{
+        console.log('complain loged')
+    }
   return (
     <>
-    <div className="ad-cv-fullscreen">
+    <div className="ad-cv-fullscreen" >
        <div className="ad-cv-center">
         <div className="ad-cv-head">Customer Details</div>
         <div className="ad-cv-body">
@@ -53,7 +56,7 @@ const ClientView = (props) => {
             </ul>
             <ul className='ad-cv-bodyulbtn'>
                 <li className='ad-cv-lileftbtn'><button onClick={closefunction}>Close</button></li>
-                <li className='ad-cv-lileftbtn'><button>Raise Complain</button></li>
+                <li className='ad-cv-lileftbtn'><button onClick={handlecomplain}>Raise Complain</button></li>
             </ul>
         </div>
        </div>

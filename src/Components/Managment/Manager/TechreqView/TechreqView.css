@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500&display=swap');
 
 
-.ma-pv-fullscreen{
+.ma-trv-fullscreen{
     position: absolute;
     height: 100vh;
     width: 100vw;
@@ -14,10 +14,10 @@
 
 
 }
-.ma-pv-center{
+.ma-trv-center{
     width: 100%;
     max-width: 600px;
-   height: 450px;
+   height: 500px;
    background-color: bisque;
     flex-direction: column;
     display: flex;
@@ -25,9 +25,9 @@
     justify-content: center;
     border-radius: 10px;
 }
-.ma-pv-head{
+.ma-trv-head{
     width: 100%;
-    height: 12%;
+    height: 10%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,8 +35,8 @@
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
-.ma-pv-body{
-    height: 88%;
+.ma-trv-body{
+    height: 90%;
     width: 100%;
     background-color: #e1e5f2;
     display: flex;
@@ -47,9 +47,8 @@
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     overflow: auto;
-
 }
-.ma-pv-bodyul{
+.ma-trv-bodyul{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -58,16 +57,16 @@
     max-width: 350px;
     padding: 6px 0;
 }
-.ma-pv-lileft{
+.ma-trv-lileft{
     width: 30%;
     margin-right: 20px;
     text-align: center;
 }
-.ma-pv-liright{
+.ma-trv-liright{
     width: 50%;
     text-align: center;
 }
-.ma-pv-lileftbtn button{
+.ma-trv-lileftbtn button{
     width: 120px;
     padding: 10px;
     border: none;
@@ -76,33 +75,34 @@
     border-radius: 3px;
     color: white;
 }
-.ma-pv-lileftbtn button:hover{
+.ma-trv-lileftbtn button:hover{
    
     background-color: #46d2a8;
     
    
 }
-.ma-pv-bodyulbtn{
+.ma-trv-bodyulbtn{
     display: flex;
     list-style: none;
     width: 100%;
     max-width: 300px;
     justify-content: space-between;
 }
-.ma-pv-liright select{
+.ma-rpx-textarea{
+    resize: none;
     width: 100%;
-    text-align: center;
     border: none;
     border-radius: 5px;
-    outline: 1px solid black;
-}
-.ma-pv-disable{
-    opacity: 0.5;
-}
-.ma-pv-liright textarea{
-    width: 100%;
-    resize: none;
-    border-radius: 5px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-
 }
+.disabled-btn{
+    opacity: 0 !important;
+}
+.disabled-btn:hover{
+    background: none !important;
+}
+

@@ -1,4 +1,7 @@
-
+.color-red{
+    color: red;
+    font-weight: bold;
+}
 
 .ma-pp-fullscreen{
     height: 100vh;
@@ -24,6 +27,9 @@
     /* padding: 10px 0px; */
     background-color: aliceblue;
     height: 10%;
+}
+.ma-pp-head h1{
+    width: 75%;
 }
 .ma-pp-body{
 height: 90%;

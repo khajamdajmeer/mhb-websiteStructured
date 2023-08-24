@@ -4,8 +4,14 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import dotsicon from '../../../images and tones/3dot.png'
 import { Link } from 'react-router-dom';
 import arrow from '../../../images and tones/downarrow.png'
-import { GetCount } from '../../../../ApiCalls/AdminCalls/ProgressCalls';
+import { GetCount,GetfullDetail } from '../../../../ApiCalls/AdminCalls/ProgressCalls';
+import serachicon from '../../../images and tones/search-icon.png';
+import ClientView from '../ClientView/ClientView';
 const ViewProgress = (props) => {
+
+    const [data,setData ]=useState([])
+
+
 
     const location = useLocation();
     const { id, name, role, mobile } = location.state;
@@ -28,20 +34,77 @@ const ViewProgress = (props) => {
 
 
     const onMount=async()=>{
-        const res = await GetCount(location.state.id)
+        const res = await GetCount(location.state.id);
+        const fulldata = await GetfullDetail(location.state.id);
+        if(fulldata.success){
+            setData(fulldata.data)
+        }
         setCount(res);
     }
     useEffect(()=>{
         onMount()
-
-
     // eslint-disable-next-line
 },[])
+
+//LOGIC FOR HANDLING THE VIEW BTN
+const [showview,setShowview]=useState(false)
+const [viewdata,setViewdata]=useState('')
+const handleviewbtn = (data)=>{
+  setShowview(true);
+  setViewdata(data)
+}
+
+const handlecloseviewbtn = ()=>{
+  setShowview(false)
+}
+const [date,setDate]=useState('')
+const datechange = (e)=>{
+    setDate(e.target.value);
+}
+const handledateSerach=async()=>{
+    const fulldata = await GetfullDetail(location.state.id);
+        if(fulldata.success){
+            const datedata = fulldata.data.map((ele)=>{
+               if(ele.Service.Delivery.slice(0,10)===date){
+                return(ele)
+               }
+               else{
+                return(null)
+               }
+            })
+            console.log(datedata)
+            setData(datedata);
+        }
+}
+const handlereset =async()=>{
+    const fulldata = await GetfullDetail(location.state.id);
+        if(fulldata.success){
+            setData(fulldata.data)
+        }
+}
+
+const getformatemaxdate =()=>{
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    let mm = today.getMonth() + 1;
+    let dd = today.getDate();
+
+    if (mm < 10) {
+      mm = `0${mm}`;
+    }
+    if (dd < 10) {
+      dd = `0${dd}`;
+    }
+
+    return `${yyyy}-${mm}-${dd}`;
+}
+const maxdate=getformatemaxdate()
 
 
 
     return (
         <>
+         {showview &&<ClientView closefunction={handlecloseviewbtn} data={viewdata}/>}
             <div className="ad-vp-fullscreen">
                 <div className="ad-emp-center">
                     <div className="ad-emp-boxtop">
@@ -140,6 +203,42 @@ const ViewProgress = (props) => {
 
 
                     </div>
+                    <div className="ad-emp-maphead">
+                 
+
+                        <ul className="ad-emp-dataitemhead bolditem">
+                           <span className='ad-emp-spanlen'>S no</span> 
+                            <li>Name</li>
+                            <li>mobilenumber</li>
+                            <li>Servicetype</li>
+                            <li>Delivered Date</li>
+                        </ul>
+                            <div className="ad-emp-inputdivhead"> <input type="date" max={maxdate} name='data' value={date} onChange={datechange} />
+                  <button onClick={handledateSerach}><img src={serachicon} alt="" /></button>
+                  <button className='ad-emp-rstbtn' onClick={handlereset}>reset</button>
+                    </div> 
+                    </div>
+                    {data.map((ele,index)=>{
+                       return( ele!=null&& (<div className="ad-emp-mapitem">
+                        <ul className="ad-emp-dataitem">
+                           <span className='ad-emp-spanlen'>{index}. </span> 
+                            
+                        <li> {ele.name} </li>
+                        <li> {ele.mobileNumber} </li>
+                        {/* <li>{ele.Discription}</li> */}
+                        <li> {ele.Service.type} </li>
+                        <li> {ele.Service.Delivery.slice(0,10)} </li>
+                        </ul>
+                        <div className="ad-emp-inputdiv">
+
+                        <button onClick={()=>handleviewbtn(ele)}>view</button>
+                        </div>
+                    </div>))
+                    })
+
+                    }
+                                        
+
                 </div>
             </div>
 

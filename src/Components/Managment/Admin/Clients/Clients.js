@@ -140,17 +140,40 @@ const Clients = () => {
     }
     const handleSearch = () => {
       const filteredData = data.filter(item => {
-        const attributeValue = iptype === 'name' ? item.name : item.mobilenumberString;
-        if (attributeValue===ipval || attributeValue.includes(ipval)) {
-          return true;
+        if(iptype==='name'){
+          if(item.name===ipval||item.name.includes(ipval)){
+            return true
+          }
+          return false
         }
-        return false;
+        else if(iptype==='mobilenumber'){
+          if(item.mobilenumberString===ipval||item.mobilenumberString.includes(ipval)){
+            return true
+          }
+          return false
+        }
+        else if(iptype==='Date'){
+          if(item.Service.Delivery.slice(0,10)===ipval||item.Service.Delivery.includes(ipval)){
+            console.log(item)
+            return true;
+          }
+          return false
+        }
+        else{
+          return false;
+        }
       });
   
       // Use filteredData for display or further processing
       if(filteredData.length>=1){
         setSearchData(filteredData);
         setShowsearch(true)
+        console.log(filteredData)
+      }
+      else{
+        setSearchData([])
+        setShowsearch(true)
+
       }
       if(iptype.length<2){
         setShowsearch(false)
@@ -198,9 +221,18 @@ const Clients = () => {
               <option value="0">---select---</option>
               <option value="name">Name</option>
               <option value="mobilenumber">MobileNumber</option>
+              <option value="Date">Date</option>
             </select>
+            {iptype==='Date'? (
+            <input type="date" className="ad-c-searchip" id='ad-c-serachip-client' placeholder='Search' onChange={handleIpChange} value={ipval}/>
+            ):
+            (
             <input type="text" className="ad-c-searchip" id='ad-c-serachip-client' placeholder='Search' onChange={handleIpChange} value={ipval}/>
-            <button className="ad-c-searchbtn">
+
+            )
+
+            }
+            <button className="ad-c-searchbtn" onClick={handleSearch}>
               <img src={serachicon} alt="" />
             </button>
             {showsearch&&(<div className="ad-c-serachresut">

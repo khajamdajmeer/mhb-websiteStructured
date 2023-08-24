@@ -40,6 +40,9 @@ const EmplooyUpdate = () => {
             setShowmsg(true);
             setMsginfo({message:res.message,navigate:'/admindashboard/updateemplooy'})
         }
+        // setTimeout(()=>{
+        //     setShowmsg(false);
+        // },2000)
     }
     const history = useNavigate()
 
@@ -49,7 +52,7 @@ const EmplooyUpdate = () => {
   return (
     <>
     {showmsg&&(
-        <Message message={msginfo.message} navigate={msginfo.navigate}/>
+        <Message message={msginfo.message} navigate={msginfo.navigate} showOk={true}/>
     )
 
     }

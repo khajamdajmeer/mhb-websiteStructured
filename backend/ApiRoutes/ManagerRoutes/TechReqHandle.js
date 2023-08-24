@@ -7,6 +7,7 @@ const RequestDB = require('../../DBmodels/DBClient/Request')
 const ManagerPushDB = require('../../DBmodels/DBManager/WaitingForPush')
 const FinishedReqDB = require('../../DBmodels/DBAdmin/FinishedReq')
 const DeletedReq_DB = require('../../DBmodels/DBAdmin/Deleted_Req')
+const Client_DB = require('../../DBmodels/DBAdmin/FinishedReq')
 const router = express.Router();
 
 //ROUTE FOR THE MANAGER TO FETCH TECHNICIAN
@@ -105,28 +106,58 @@ router.get('/viewtechreq',FetchEmplooy,async(req,res)=>{
 })
 
 
+// Get today's date
+const today = new Date();
+
+// Extract year, month, and day
+const year = today.getFullYear();
+const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+const day = String(today.getDate()).padStart(2, '0');
+
+// Format the date in "YYYY-MM-DD" format
+const formattedDate = `${year}-${month}-${day}`
+
+
 //ROUTER 4 FOR THE MANAGER TO REVIVE THE COMPLETED REQUEST BY THE TECHNICIAN
-router.get('/reviewreq',FetchEmplooy,async(req,res)=>{
-    try{
-        const response = await EmplooyDB.find({ designation: 'Technician' })
+router.get('/reviewreq', FetchEmplooy, async (req, res) => {
+    try {
+        const response = await EmplooyDB.find({ designation: 'Technician' });
 
         const data = await Promise.all(response.map(async (ele, index) => {
-            const count = await ManagerPushDB.find({ 'Technicain.id': ele._id,"forworded.id":req.user });
-            return {
-                _id: ele._id,
-                name: ele.name,
-                mobile:ele.mobilenumber,
-                data: count
-            };
+            // console.log(ele._id,req.user)
+            const dcount = await FinishedReqDB.find({ 'Technicain.id': ele._id,"forworded.id":req.user });
+            
+            const completcount = dcount.filter(ele=>{
+                const dateFromData = new Date(ele.Service.Delivery);
+                const year = dateFromData.getFullYear();
+                const month = (dateFromData.getMonth() + 1).toString().padStart(2, '0');
+                const day = dateFromData.getDate().toString().padStart(2, '0');
+                const checkformattedDate = `${year}-${month}-${day}`;
+
+                if(checkformattedDate.includes(formattedDate)){
+                    return true
+                }
+                else{
+                    return false;
+                }
+            })
+            // console.log(completcount.length)
+                        const count = await ManagerPushDB.find({ 'Technicain.id': ele._id,"forworded.id":req.user });
+                        return {
+                            _id: ele._id,
+                            name: ele.name,
+                            mobile:ele.mobilenumber,
+                            data: count,
+                            completeCount:completcount.length
+                        };
         }));
-        res.status(200).send(data)
-
-
-    }catch(error){
-        res.status(500).send({message:'error occured'})
+        // console.log(data)
+        res.status(200).send(data);
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({ message: 'error occurred' });
     }
-
-})
+});
 
 
 //ROUTER 5 FOR THE MANAGER TO FINISH THE REQUEST AND SEND IT TO COMPLETED REQ DATABASE
@@ -157,6 +188,7 @@ router.post('/finishreq/:id',FetchEmplooy,async(req,res)=>{
             },
             Discription:req.body.Discription
         }
+             
 
 
             const fdata = await FinishedReqDB.create(newdata)
@@ -225,6 +257,7 @@ router.put('/revert/:id',FetchEmplooy,async(req,res)=>{
     }
 
 })
+
 
 
 module.exports = router;

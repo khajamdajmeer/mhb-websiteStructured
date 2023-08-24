@@ -54,10 +54,7 @@ handlecancle();
                 <li className='ma-rpc-lileft'>Address:</li>
                 <li className='ma-rpc-liright'> {props.data.Address}</li>
             </ul>
-            <ul className='ma-rpc-bodyul'>
-                <li className='ma-rpc-lileft'>Technician:</li>
-                <li className='ma-rpc-liright'>{props.data.Technicain.name}</li>
-            </ul>
+            
            
            
             <ul className='ma-rpc-bodyul'>

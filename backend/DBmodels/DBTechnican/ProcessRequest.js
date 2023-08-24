@@ -31,11 +31,13 @@ const TechAccessSchema = new Schema({
         },
         Date: {
             type: String,
-            require: true,default:''
+            require: true,
+            default:''
         },
         Time: {
             type: String,
-            require: true,default:''
+            require: true,
+            default:''
         }
     }
     ,
@@ -53,7 +55,9 @@ const TechAccessSchema = new Schema({
     },
     Requestdate: {
         type: String,
-        require: true
+        require: true,
+        default:new Date()
+
     },
     forworded: {
         name: {
