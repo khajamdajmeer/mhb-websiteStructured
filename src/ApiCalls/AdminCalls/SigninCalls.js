@@ -1,6 +1,7 @@
 
 import Cookies from "js-cookie";
 import { host } from "../Host"
+import axios from "axios";
 
 export const adminlogin = async(data)=>{
 
@@ -49,5 +50,41 @@ export const adminAuthorization = async()=>{
             Cookies.remove(cookie)
         }
         return res;
+    }
+}
+
+export const adminSignup = async(data)=>{
+
+    try{
+        const res = await axios.post(`${host}/api/admin/signup`,{
+            name:data.name,
+            email:data.email,
+            mobileNumber:data.mobilenumber,
+            password:data.password
+        },{
+            headers:{'Content-Type':'application/json'}
+        })
+        return res.data
+
+    }catch(err){
+        console.error(err);
+        
+    }
+}
+export const otpverify = async(data)=>{
+    try{
+        console.log(data);
+        
+        const res = await axios.post(`${host}/api/admin/adminverification`,{
+            email:data.email,
+            otp:data.userotp,
+            adminotp:data.adminotp
+        },{
+            headers:{'Content-Type':'application/json'}
+        })
+        return res.data;
+
+    }catch(err){
+        console.error(err);
     }
 }

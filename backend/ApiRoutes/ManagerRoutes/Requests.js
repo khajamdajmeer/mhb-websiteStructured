@@ -276,7 +276,7 @@ router.post('/createforword',FetchEmplooy,async(req,res)=>{
        
 
     }catch(error){
-        res.status(500).send({error:'error occured'})
+        res.status(500).send({error:'error occured',success:false})
     }
 })
 

@@ -1,5 +1,8 @@
 const mongoose = require('mongoose')
 const { Schema } = require('mongoose');
+const { format, utcToZonedTime } = require('date-fns-tz');
+
+        const istTimezone = 'Asia/Kolkata';
 
 
 const TechAccessSchema = new Schema({
@@ -56,7 +59,11 @@ const TechAccessSchema = new Schema({
     Requestdate: {
         type: String,
         require: true,
-        default:new Date()
+        default:() => {
+            const now = new Date();
+            const istDate = utcToZonedTime(now, istTimezone);
+            return istDate;
+          }
 
     },
     forworded: {

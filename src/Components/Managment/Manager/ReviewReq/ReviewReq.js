@@ -118,7 +118,7 @@ const [data,setData]=useState([
   <div className="ma-vrr-dhead" onClick={()=>handlewrap(index)}>
     <div className="ma-vrr-dhead-body">{ele.name}</div>
     <div className="ma-vrr-dhead-body">{ele.mobile}</div>
-    <div className="ma-vrr-dhead-body"><div className='ma-vrr-count color-red'>{ele.data.length}</div></div>
+    <div className="ma-vrr-dhead-body"><div className='ma-vrr-count color-red bg-red'>{ele.data.length}</div></div>
     <div className="ma-vrr-dhead-body"><div className='ma-vrr-count '>{ele.completeCount}</div></div>
     {/* <div className="ma-vrr-dhead-body">this is body</div> */}
   </div>

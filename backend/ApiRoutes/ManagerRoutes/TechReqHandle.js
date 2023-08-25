@@ -7,7 +7,8 @@ const RequestDB = require('../../DBmodels/DBClient/Request')
 const ManagerPushDB = require('../../DBmodels/DBManager/WaitingForPush')
 const FinishedReqDB = require('../../DBmodels/DBAdmin/FinishedReq')
 const DeletedReq_DB = require('../../DBmodels/DBAdmin/Deleted_Req')
-const Client_DB = require('../../DBmodels/DBAdmin/FinishedReq')
+const Clients_DB = require('../../DBmodels/DBAdmin/ClientDB')
+
 const router = express.Router();
 
 //ROUTE FOR THE MANAGER TO FETCH TECHNICIAN
@@ -166,34 +167,96 @@ router.post('/finishreq/:id',FetchEmplooy,async(req,res)=>{
     try{
         const reqid = req.params.id;
         const data = await ManagerPushDB.findById(reqid)
-        // data.Discription = Discription
-        const newdata = {
-            name:data.name,
-            mobileNumber:data.mobileNumber,
-            mobilenumberString:data.mobilenumberString,
-            Location:data.Location,
-            Address:data.Address,
-            Service:{
-                type:data.Service.type,
-                Date:data.Service.Date
-            },
-            Technicain:{
-                name:data.Technicain.name,
-                id:data.Technicain.id
-            },
-            Requestdate:data.Requestdate,
-            forworded:{
-                name:data.forworded.name,
-                id:data.forworded.id
-            },
-            Discription:req.body.Discription
-        }
-             
+        console.log(data.mobileNumber)
+        const customer = await Clients_DB.findOne({mobileNumber:data.mobileNumber})
+        // console.log(customer)
+         // data.Discription = Discription
+        //  const newdata = {
+            
+        //     name:data.name,
+        //     mobileNumber:data.mobileNumber,
+        //     mobilenumberString:data.mobilenumberString,
+        //     Location:data.Location,
+        //     Address:data.Address,
+        //     Service:{
+        //         type:data.Service.type,
+        //         Date:data.Service.Date
+        //     },
+        //     Technicain:{
+        //         name:data.Technicain.name,
+        //         id:data.Technicain.id
+        //     },
+        //     Requestdate:data.Requestdate,
+        //     forworded:{
+        //         name:data.forworded.name,
+        //         id:data.forworded.id
+        //     },
+        //     Discription:req.body.Discription
+        // }
+        if(customer){
+            const newdata = {
+                cid:customer._id,
+                name:data.name,
+                mobileNumber:data.mobileNumber,
+                mobilenumberString:data.mobilenumberString,
+                Location:data.Location,
+                Address:data.Address,
+                Service:{
+                    type:data.Service.type,
+                    Date:data.Service.Date
+                },
+                Technicain:{
+                    name:data.Technicain.name,
+                    id:data.Technicain.id
+                },
+                Requestdate:data.Requestdate,
+                forworded:{
+                    name:data.forworded.name,
+                    id:data.forworded.id
+                },
+                Discription:req.body.Discription
+            }
+            
+            const fdata = await FinishedReqDB.create(newdata)
+            await ManagerPushDB.findByIdAndDelete(reqid)
+            console.log('if exicuted')
+            res.status(200).send({message:'Success',Success:true})
 
+        }else{
+            const cid = await Clients_DB.create({name:data.name,mobileNumber:data.mobileNumber,mobilenumberString:data.mobileNumber})
+            const newdata = {
+                cid:cid._id,
+                name:data.name,
+                mobileNumber:data.mobileNumber,
+                mobilenumberString:data.mobilenumberString,
+                Location:data.Location,
+                Address:data.Address,
+                Service:{
+                    type:data.Service.type,
+                    Date:data.Service.Date
+                },
+                Technicain:{
+                    name:data.Technicain.name,
+                    id:data.Technicain.id
+                },
+                Requestdate:data.Requestdate,
+                forworded:{
+                    name:data.forworded.name,
+                    id:data.forworded.id
+                },
+                Discription:req.body.Discription
+            }
+            console.log('if else exicuted')
 
             const fdata = await FinishedReqDB.create(newdata)
             await ManagerPushDB.findByIdAndDelete(reqid)
             res.status(200).send({message:'Success',Success:true})
+        }
+       
+             
+
+
+            
 
         
     }

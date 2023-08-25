@@ -14,7 +14,6 @@ const FetchAdmin = async(req,res,next)=>{
         req.user = data.isadmin.id;
         const isvalid = await AdminDB.findById(req.user)
         if(isvalid){
-
             next();
         }
         else{

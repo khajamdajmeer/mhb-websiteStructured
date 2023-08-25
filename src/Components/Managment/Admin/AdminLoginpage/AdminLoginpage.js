@@ -4,7 +4,7 @@
     import './AdminLoginpage.css';
     import { adminlogin,adminAuthorization } from '../../../../ApiCalls/AdminCalls/SigninCalls';
     import Message from '../../Common/Message/Message';
-    import { useNavigate } from 'react-router-dom';
+    import { useNavigate,Link } from 'react-router-dom';
     import Cookies from 'js-cookie';
     const AdminLoginpage = (props) => {
     
@@ -86,7 +86,9 @@
             <input type="password" value={logindata.password} onChange={onchange} className='signin-input' name='password' x placeholder='Enter your Password' required /></li>
     
           <li className="list-input paddingnone forgotpass">
-            <div className="input-container">signup</div>
+            <div className="input-container">
+              <Link to='/AdminSignup'>Sign Up</Link>
+            </div>
             <div className="input-container forgpass">
             forgot password?
           </div></li>

@@ -6,6 +6,10 @@
     align-items: center;
     justify-content: center;
 }
+.bg-red{
+  background-color: red !important;
+  color: rgb(255, 255, 255) !important;
+}
 .techcenterdiv{
     /* margin: auto; */
     margin-top: 40px;

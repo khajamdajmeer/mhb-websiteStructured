@@ -2,8 +2,10 @@
 const mongoose = require('mongoose')
 const {Schema}= require('mongoose')
 
-const date = new Date();
-const dateslice = date.toISOString().slice(0, 10);
+const { format, utcToZonedTime } = require('date-fns-tz');
+
+const istTimezone = 'Asia/Kolkata';
+
 
 const DeletedReq  = new Schema({
     name: {
@@ -70,7 +72,11 @@ const DeletedReq  = new Schema({
     Deleted:{
        Date:{
         type:String,
-        default:dateslice
+        default:() => {
+            const now = new Date();
+            const istDate = utcToZonedTime(now, istTimezone);
+            return istDate;
+          }
        },
        reason:{
         type:String,

@@ -20,6 +20,7 @@ import ReviewReq from './Components/Managment/Manager/ReviewReq/ReviewReq';
 import ForgotPassword from './Components/Managment/Common/ForgotPassword/ForgotPassword';
 import PendingPage from './Components/Managment/Manager/PendingPage/PendingPage';
 import CreateReq from './Components/Managment/Manager/CreateReq/CreateReq';
+import SignUpPage from './Components/Managment/Admin/SignUpPage/SignUpPage';
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
 
           {/* The Routes for the Administratior */}
           <Route exact path='loginadmin' element={<AdminLoginpage/>}/>
+          <Route exact path='adminsignup' element={<SignUpPage/>}/>
 
           <Route path='admindashboard' element={<AdminDashborad/>}>
           <Route  path='emplooys' element={<Emplooys/>}/>

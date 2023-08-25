@@ -33,7 +33,7 @@ router.post('/signup',async(req,res)=>{
     try{
         let user = await admincredentials.findOne({email:req.body.email});
         if(user){
-           return res.status(400).send({success:signupsuccess,message:'Sorry Emailalready Exists'})
+           return res.status(400).send({success:signupsuccess,message:'Sorry Email already Exists'})
         }
         const email=req.body.email
         //generating random 6 digin number to send as otp
@@ -214,8 +214,9 @@ const adminhtmlContent = `
         const AuthToken = await jwt.sign(data,JWT_SECRET)
 
         res.status(200).send({
-            success:signupsuccess,
-            email:email,
+            success:true,
+            message:`otp sent to ${email}`,
+
             // password:securepassword,
             // Authtoken:AuthToken
         })
@@ -417,14 +418,19 @@ router.post('/signin',async(req,res)=>{
 router.post('/adminverification',async(req,res)=>{
     try{
         const {email,otp,adminotp}=req.body;
+        console.log(req.body)
         const data = await admincredentials.findOne({email:email})
         if(data.OTP===otp && data.adminOTP===adminotp){
             const update= await admincredentials.findOneAndUpdate({email:email},{$set:{OTP:null,adminOTP:null,verification:true,adminverification:true}},{returnOriginal:false})
-            res.status(200).send({message:'Verification Success Login to continue'})
+            res.status(200).send({message:'Verification Success Login to continue',success:true})
+        }
+        else{
+            res.status(500).send({message:'Incorrect Otp',success:false})
+
         }
     }
     catch(error){
-        res.status(400).send({message:'error occured please try after some time'})
+        res.status(400).send({message:'error occured please try after some time',success:false})
     }
 })
 

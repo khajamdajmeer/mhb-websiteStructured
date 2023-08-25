@@ -1,6 +1,9 @@
 
 const mongoose = require('mongoose')
 const {schema} = require('mongoose')
+const { format, utcToZonedTime } = require('date-fns-tz');
+
+const istTimezone = 'Asia/Kolkata';
 
 
 const DeletedTechReq = new schema({
@@ -29,14 +32,18 @@ const DeletedTechReq = new schema({
     },
     DeletedDate:{
         type:Date,
-        default:Date.now()
+        default:() => {
+            const now = new Date();
+            const istDate = utcToZonedTime(now, istTimezone);
+            return istDate;
+          }
     },
     ForwordedBy:{
         name:{
             type:String,
             require:true
         },
-        ID:{
+        id:{
             type:mongoose.Schema.Types.ObjectId,
             require:true
         }

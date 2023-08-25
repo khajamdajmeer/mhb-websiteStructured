@@ -64,7 +64,9 @@
     margin: auto;
   }
   .forgotpass{
-    justify-content: flex-end;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
   }
   
   .signin-input{

@@ -7,7 +7,7 @@ const AdminSignup = new Schema({
         require:true
     },
     mobileNumber:{
-        type:Number,
+        type:String,
         require:true
     },
     email:{
@@ -21,12 +21,12 @@ const AdminSignup = new Schema({
         require:true
     },
     OTP:{
-        type:Number,
+        type:String,
         require:true,
 
     },
     adminOTP:{
-        type:Number,
+        type:String,
         require:true
     }
     ,

@@ -1,5 +1,9 @@
 const mongoose = require('mongoose')
 const { Schema } = require('mongoose');
+const { format, utcToZonedTime } = require('date-fns-tz');
+
+const istTimezone = 'Asia/Kolkata';
+
 
 const date = new Date();
 const dateslice = date.toISOString().slice(0, 10);
@@ -38,7 +42,11 @@ const ManagerPushWait = new Schema({
         Delivery: {
             type:Date,
             require: true,
-            default:dateslice
+            default: () => {
+                const now = new Date();
+                const istDate = utcToZonedTime(now, istTimezone);
+                return istDate;
+              }
         }
     }
     ,

@@ -1,6 +1,10 @@
 
 const {Schema} = require("mongoose");
 const mongoose = require("mongoose");
+const { format, utcToZonedTime } = require('date-fns-tz');
+
+const istTimezone = 'Asia/Kolkata';
+
 
 const CustomerRequest = new Schema({
     name:{
@@ -39,7 +43,11 @@ const CustomerRequest = new Schema({
     ,
     Requestdate:{
         type:Date,
-        default:Date.now
+        default:() => {
+            const now = new Date();
+            const istDate = utcToZonedTime(now, istTimezone);
+            return istDate;
+          }
     },
     Note:{
         type:String,
