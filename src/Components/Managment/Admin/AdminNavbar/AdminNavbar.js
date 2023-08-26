@@ -58,7 +58,7 @@ const AdminNavbar = () => {
   <div>
 <ul className="menutech" id='mymenutech'>
     <li><Link className='Linktag' to='emplooys' >Emplooys</Link></li>
-    <li><Link className='Linktag' to='clients' >Clients</Link></li>
+    <li><Link className='Linktag' to='Data' >Clients</Link></li>
     <li className='hamlogoutbtn'><button onClick={handlelogout}>Logout</button></li>
     {/* <li>Data Search</li> */}
   </ul>

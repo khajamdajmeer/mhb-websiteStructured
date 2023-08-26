@@ -99,6 +99,7 @@
 
 .ad-c-body{
     height: 77vh;
+    /* max-height: auto; */
     overflow: auto;
 }
 
@@ -139,11 +140,9 @@
 
 
 .ad-c-pages{
-    /* min-height: 30px; */
-    /* height: auto; */
-    /* height: 60px; */
+  
     width: 100%;
-    position: sticky;
+    position: absolute;
     bottom: 0;
     display: flex;
     align-items: center;

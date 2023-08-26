@@ -205,6 +205,7 @@ const Clients = () => {
       setShowview(false)
     }
 
+    const today = new Date().toISOString().split('T')[0];
 
 
 
@@ -214,7 +215,7 @@ const Clients = () => {
     <div className="ad-c-fullscreen">
       <div className="ad-c-centerdiv">
         <div className="ad-c-head">
-          <div className="ad-c-hleft">Clients</div>
+          <div className="ad-c-hleft">Service Data</div>
           <div className="ad-c-hright">
             <div className="ad-c-serachdiv">
             <select name="type" id="" className='ad-c-selectip' onChange={handleIpdataChange} value={iptype}>
@@ -224,7 +225,7 @@ const Clients = () => {
               <option value="Date">Date</option>
             </select>
             {iptype==='Date'? (
-            <input type="date" className="ad-c-searchip" id='ad-c-serachip-client' placeholder='Search' onChange={handleIpChange} value={ipval}/>
+            <input type="date" className="ad-c-searchip" id='ad-c-serachip-client' placeholder='Search' onChange={handleIpChange} value={ipval} max={today}/>
             ):
             (
             <input type="text" className="ad-c-searchip" id='ad-c-serachip-client' placeholder='Search' onChange={handleIpChange} value={ipval}/>
@@ -241,8 +242,8 @@ const Clients = () => {
                 <div className="ad-c-serachmapitem">
                 <div className="ad-c-serachname">{element.name}</div>
                 <div className="ad-c-serachname">{element.mobileNumber}</div>
-                <div className="ad-c-serachname">{element.Location}</div>
-                <div className="ad-c-serachname">{element.Address}</div>
+                {/* <div className="ad-c-serachname">{element.Location}</div>
+                <div className="ad-c-serachname">{element.Address}</div> */}
                 <div className="ad-c-serachname">{element.Service.type}</div>
                 <div className="ad-c-serachname">{element.Service.Delivery.slice(0,10)}</div>
                 <div className="ad-c-serachview">{element._id.length>2&&(<button onClick={()=>handleviewbtn(element)}>view</button>)}</div>
@@ -258,8 +259,8 @@ const Clients = () => {
               <img src={img3dots} alt="" />
             </button>
             {showDwnlod&&(<div className="ad-c-3dot-hbody" >
-              <button>view BlackList</button>
-              <button>aka</button>
+              {/* <button>view BlackList</button>
+              <button>aka</button> */}
               <button onClick={handleDownload}>download all</button>
             </div>)}
             </div>
@@ -271,10 +272,9 @@ const Clients = () => {
             slicedData.map((ele,index)=>{
              return( <div className="ad-c-mapitem" key={ele._id}>
               <div className="ad-c-index">{startIndex+index+1}</div>
-
               <div className="ad-c-names">{ele.name}</div>
               <div className="ad-c-names"> {ele.mobileNumber}</div>
-              <div className="ad-c-names"> {ele.Location}</div>
+              <div className="ad-c-names"> {ele.Service.Delivery.slice(0,10)}</div>
               <div className="ad-c-names">{ele.Service.type}</div>
               <div className="ad-c-names"> {ele.Discription}</div>
               <div className="ad-c-names ad-c-viewbtndiv"> <button className='ad-c-viewbtn' onClick={()=>handleviewbtn(ele)}>view</button></div>

@@ -194,7 +194,7 @@ router.post('/pendingforword/:id',FetchEmplooy,async(req,res)=>{
                     newdata.Note=req.body.Note;
                 }
                 const update = await techDB.findByIdAndUpdate(req.params.id,{$set:newdata},{new:true})
-                res.status(200).send({message:'forworded Success'})
+                res.status(200).send({message:'forworded Success',success:true})
         }
 
     }catch(err){
@@ -238,7 +238,7 @@ router.post('/createpending',FetchEmplooy,async(req,res)=>{
        
 
     }catch(error){
-        res.status(500).send({error:'error occured'})
+        res.status(500).send({error:'error occured',success:false})
     }
 })
 router.post('/createforword',FetchEmplooy,async(req,res)=>{

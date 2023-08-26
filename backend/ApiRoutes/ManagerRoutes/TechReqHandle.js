@@ -194,6 +194,7 @@ router.post('/finishreq/:id',FetchEmplooy,async(req,res)=>{
         //     Discription:req.body.Discription
         // }
         if(customer){
+            const technician = await EmplooyDB.findById(data.Technicain.id)
             const newdata = {
                 cid:customer._id,
                 name:data.name,
@@ -206,7 +207,7 @@ router.post('/finishreq/:id',FetchEmplooy,async(req,res)=>{
                     Date:data.Service.Date
                 },
                 Technicain:{
-                    name:data.Technicain.name,
+                    name:technician.name,
                     id:data.Technicain.id
                 },
                 Requestdate:data.Requestdate,
@@ -219,11 +220,11 @@ router.post('/finishreq/:id',FetchEmplooy,async(req,res)=>{
             
             const fdata = await FinishedReqDB.create(newdata)
             await ManagerPushDB.findByIdAndDelete(reqid)
-            console.log('if exicuted')
             res.status(200).send({message:'Success',Success:true})
 
         }else{
             const cid = await Clients_DB.create({name:data.name,mobileNumber:data.mobileNumber,mobilenumberString:data.mobileNumber})
+            const technician = await EmplooyDB.findById(data.Technicain.id)
             const newdata = {
                 cid:cid._id,
                 name:data.name,
@@ -236,7 +237,7 @@ router.post('/finishreq/:id',FetchEmplooy,async(req,res)=>{
                     Date:data.Service.Date
                 },
                 Technicain:{
-                    name:data.Technicain.name,
+                    name:technician.name,
                     id:data.Technicain.id
                 },
                 Requestdate:data.Requestdate,
@@ -246,7 +247,6 @@ router.post('/finishreq/:id',FetchEmplooy,async(req,res)=>{
                 },
                 Discription:req.body.Discription
             }
-            console.log('if else exicuted')
 
             const fdata = await FinishedReqDB.create(newdata)
             await ManagerPushDB.findByIdAndDelete(reqid)

@@ -1,6 +1,6 @@
 import './App.css';
 import Home from './Components/Client/Home';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes,Outlet} from 'react-router-dom';
 import { HashRouter } from 'react-router-dom';
 import Logincomponent from './Components/Managment/Common/Logincomponent/Logincomponent';
 import Dashborad from './Components/Managment/Manager/Dashboard/Dashborad';
@@ -21,6 +21,7 @@ import ForgotPassword from './Components/Managment/Common/ForgotPassword/ForgotP
 import PendingPage from './Components/Managment/Manager/PendingPage/PendingPage';
 import CreateReq from './Components/Managment/Manager/CreateReq/CreateReq';
 import SignUpPage from './Components/Managment/Admin/SignUpPage/SignUpPage';
+import DataBasePage from './Components/Managment/Admin/DataBasePage/DataBasePage';
 
 function App() {
   return (
@@ -60,7 +61,9 @@ function App() {
           <Route path='progress' element={<ViewProgress/>}/>
           <Route path='newemplooy' element={<AddEmploy/>} />
           <Route path='updateemplooy' element={<EmplooyUpdate/>}/>
-          <Route path='clients' element={<Clients/>}/>
+          <Route path='Data' element={<DataBasePage/>}>
+          </Route>
+            <Route path='Data/Service' element={<Clients/>}/>
           </Route>
 
 

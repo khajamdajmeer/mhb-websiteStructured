@@ -16,6 +16,7 @@
     border-radius: 14px;
     display: flex;
     flex-direction: column;
+    color: whitesmoke;
 }
 .ad-sup-head{
     width: unset;
@@ -23,9 +24,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #3f37c9;
+    /* background-color: #3f37c9; */
+    background-color: #2b2d42;
+
     border-top-right-radius: 14px;
     border-top-left-radius: 14px;
+    border-bottom: 1px solid white;
 }
 .ad-sup-body{
     width: unset;
@@ -35,15 +39,29 @@
     align-items: center;
     background-color: beige;
     padding: 10px 0px;
+    background-color: #2b2d42;
+    border-bottom-right-radius: 14px;
+    border-bottom-left-radius: 14px;
+
     /* justify-content: center; */
 }
 .ad-sup-ipitem{
-    width: 200px;
+    width: 280px;
     list-style: none;
+}
+.linkad-sup{
+    width: unset;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
 }
 .ad-sup-ipitem li{
     width: 100%;
-    /* background-color: orange; */
+    
 }
 .ad-sup-ipitem label{
     width: 100%;
@@ -67,6 +85,8 @@
     border: none;
     /* background-color: ; */
     background: #1d3557;
+  background: #1a759f;
+
     color: wheat;
 }
 
@@ -80,5 +100,7 @@
     border: none;
     /* background-color: ; */
     background: #1d3557;
+  background: #1a759f;
+
     color: wheat;
 }

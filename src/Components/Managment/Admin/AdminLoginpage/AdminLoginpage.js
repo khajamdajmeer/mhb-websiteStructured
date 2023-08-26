@@ -87,10 +87,11 @@
     
           <li className="list-input paddingnone forgotpass">
             <div className="input-container">
-              <Link to='/AdminSignup'>Sign Up</Link>
+              <Link className='ad-alp-signuplink' to='/AdminSignup'>Sign Up</Link>
             </div>
-            <div className="input-container forgpass">
-            forgot password?
+            <div className="input-container forgpass"  >
+              <Link className='ad-alp-signuplink'>forgot password?</Link>
+            
           </div></li>
     
           <li className="list-input paddingnone" >

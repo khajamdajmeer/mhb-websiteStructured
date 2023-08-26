@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import './SignUpPage.css'
 import { adminSignup,otpverify } from '../../../../ApiCalls/AdminCalls/SigninCalls';
 import Message from '../../Common/Message/Message'
+import { Link } from 'react-router-dom';
 
 const SignUpPage = () => {
 
@@ -76,9 +77,11 @@ const handleSignup =async()=>{
                     <li><input type="password"name="password" value={data.password} onChange={onchange} id="" placeholder='Enter Password' disabled={disabletop} /></li>
                 </ul>
                 <ul className="ad-sup-ipitem">
-                    <li><label htmlFor="Name">Re-enter Password</label></li>
+                    <li ><label htmlFor="Name" className={`${data.password!==data.repassword ? 'color-red':''}`}>Re-enter Password</label></li>
                     <li><input type="text" name="repassword" value={data.repassword} onChange={onchange} id="" placeholder='Re Enter Password' disabled={disabletop}/></li>
                 </ul>
+                
+
                 <ul className="ad-sup-ipitem">
                     <li><button className='ad-sup-sendotp' onClick={handlesendOTP}>SendOtp</button></li>
                     {/* <li><input type="text" name="" id="" /></li> */}
@@ -91,6 +94,10 @@ const handleSignup =async()=>{
                     <li><label htmlFor="Name">User OTP</label></li>
                     <li><input type="number" name="userotp" value={data.userotp} onChange={onchange} id="" placeholder='Enter your OTP' disabled={disablebottom}/></li>
                 </ul>
+                <ul className="ad-sup-ipitem">
+
+<Link className='ad-alp-signuplink linkad-sup' to='/loginadmin'>Sign in!</Link>
+  </ul>
                 <ul className="ad-sup-ipitem">
                     <li><button className='ad-sup-signupbtn' onClick={handleSignup} htmlFor="Name" disabled={disablebottom}>SignUp</button></li>
                     {/* <li><input type="text" name="" id="" /></li> */}
