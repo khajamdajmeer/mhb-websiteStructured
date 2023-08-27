@@ -1,6 +1,6 @@
 import './App.css';
 import Home from './Components/Client/Home';
-import { Route, Routes,Outlet} from 'react-router-dom';
+import { Route, Routes} from 'react-router-dom';
 import { HashRouter } from 'react-router-dom';
 import Logincomponent from './Components/Managment/Common/Logincomponent/Logincomponent';
 import Dashborad from './Components/Managment/Manager/Dashboard/Dashborad';
@@ -22,6 +22,9 @@ import PendingPage from './Components/Managment/Manager/PendingPage/PendingPage'
 import CreateReq from './Components/Managment/Manager/CreateReq/CreateReq';
 import SignUpPage from './Components/Managment/Admin/SignUpPage/SignUpPage';
 import DataBasePage from './Components/Managment/Admin/DataBasePage/DataBasePage';
+import ReqDB from './Components/Managment/Admin/ReqDB/ReqDB';
+import CustomerDB from './Components/Managment/Admin/CustomerDB/CustomerDB'
+import DeletedDb from './Components/Managment/Admin/DeletedDb/DeletedDb';
 
 function App() {
   return (
@@ -64,6 +67,10 @@ function App() {
           <Route path='Data' element={<DataBasePage/>}>
           </Route>
             <Route path='Data/Service' element={<Clients/>}/>
+            <Route path='Data/Request' element={<ReqDB/>}/>
+            <Route path='Data/Customer' element={<CustomerDB/>}/>
+            <Route path='Data/Deleted' element={<DeletedDb/>}/>
+            
           </Route>
 
 

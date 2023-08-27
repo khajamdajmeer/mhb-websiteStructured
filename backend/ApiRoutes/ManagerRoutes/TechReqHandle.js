@@ -167,7 +167,6 @@ router.post('/finishreq/:id',FetchEmplooy,async(req,res)=>{
     try{
         const reqid = req.params.id;
         const data = await ManagerPushDB.findById(reqid)
-        console.log(data.mobileNumber)
         const customer = await Clients_DB.findOne({mobileNumber:data.mobileNumber})
         // console.log(customer)
          // data.Discription = Discription

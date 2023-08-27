@@ -1,30 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500&display=swap');
 
 
-.ad-cv-fullscreen{
+.ad-cdbv-fullscreen{
     position: fixed;
     height: 100vh;
     width: 100vw;
 
     background-color: rgba(0, 0, 0, 0.54);
-    z-index: 15;
+    z-index: 5;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Exo 2', sans-serif;
 }
-.ad-cv-center{
+.ad-cdbv-center{
     width: 100%;
     max-width: 600px;
    height: 500px;
-   background-color: bisque;
+   background-color: #d5d5d5;
     flex-direction: column;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
 }
-.ad-cv-head{
+.ad-cdbv-head{
     width: 100%;
     height: 10%;
     display: flex;
@@ -34,20 +34,21 @@
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
-.ad-cv-body{
+.ad-cdbv-body{
     height: 90%;
     width: 100%;
     background-color: #e1e5f2;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px 0;
-    justify-content: center;
+    /* padding: 10px 0; */
+    /* justify-content: center; */
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    overflow: auto;
+    overflow-y: auto;
+
 }
-.ad-cv-bodyul{
+.ad-cdbv-bodyul{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -56,17 +57,19 @@
     max-width: 350px;
     padding: 6px 0;
 }
-.ad-cv-lileft{
+.ad-cdbv-lileft{
     width: 30%;
     margin-right: 20px;
     text-align: center;
     font-weight: bold;
 }
-.ad-cv-liright{
+.ad-cdbv-liright{
     width: 50%;
     text-align: center;
+    font-weight: bold;
+
 }
-.ad-cv-lileftbtn button{
+.ad-cdbv-closebtn{
     width: 120px;
     padding: 10px;
     border: none;
@@ -74,17 +77,60 @@
     outline: 1px solid white;
     border-radius: 3px;
     color: white;
+    margin: 2px 0;
 }
-.ad-cv-lileftbtn button:hover{
-   
+.ad-cdbv-closebtn:hover{
     background-color: #46d2a8;
-    
-   
 }
-.ad-cv-bodyulbtn{
+.ad-cdbv-bodyulbtn{
     display: flex;
     list-style: none;
     width: 100%;
     max-width: 300px;
     justify-content: space-between;
+}
+.ad-cdbv-mapitem{
+    width: 100%;
+    background-color: #fff;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    flex-flow: wrap;
+    border-bottom: 1px solid black;
+    
+
+}
+.ad-cdbv-item{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 0;
+    text-align: center;
+}
+.ad-cdbv-viewbtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.ad-cdbv-viewbtn button{
+    padding: 4px 10px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    outline: 1px solid black;
+    background-color: #243e36;
+    color: white;
+}
+
+
+@media (max-width:768px) {
+    .ad-cdbv-item{
+        width: 47%;
+    }
+    .ad-cdbv-viewbtn{
+        width: 100%;
+    }
+    
 }

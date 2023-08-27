@@ -20,7 +20,6 @@ export const ViewClients = async()=>{
         const response = await axios.get(`${host}/api/admin/Customers`,{
             headers:header
         });
-        
         return response.data;
 
     }catch(err){
@@ -52,5 +51,75 @@ export const newDownload =(data)=>{
     var newWB = XLSX.utils.book_new();
     var newWS = XLSX.utils.json_to_sheet(flatteneddata);
     XLSX.utils.book_append_sheet(newWB,newWS,'sheet 1')
+    XLSX.writeFile(newWB,'Service data.xls')
+}
+
+
+export const ViewRequest =async()=>{
+        try{
+            const res = await axios.get(`${host}/api/admin/db/requests`,{
+                headers:header
+            });
+            console.log(res.data)
+           
+            return res.data;
+
+        }catch(error){
+            console.log(error);
+            throw error;
+        }
+}
+
+
+export const ClientId_DB = async()=>{
+    try{
+        const res = await axios.get(`${host}/api/admin/db/Clients`,{
+            headers:header
+        });
+        return res.data;
+
+    }catch(err){
+        throw err;
+    }
+}
+export const CleintDB_Download = async(data)=>{
+    const raw = data;
+   
+    const flatteneddata = raw.map(entry=>{
+        return {_id: entry._id,
+            name: entry.name,
+            mobileNumber: entry.mobileNumber,
+    }
+    })
+    var newWB = XLSX.utils.book_new();
+    var newWS = XLSX.utils.json_to_sheet(flatteneddata);
+    XLSX.utils.book_append_sheet(newWB,newWS,'sheet 1')
     XLSX.writeFile(newWB,'customer data.xls')
+}
+
+export const client_history=async(id)=>{
+    try{
+        const res = await axios.get(`${host}/api/admin/db/client/${id}`,{
+                headers:header
+            })
+            console.log(res.data)
+            return res.data;
+
+    }catch(error){
+        console.log(error);
+        throw error;
+    }
+} 
+
+
+export const Deleted_req = async()=>{
+    try{
+        const res = await axios.get(`${host}/api/admin/db/deleted`,{
+            headers:header
+        });
+        return res.data;
+
+    }catch(err){
+        throw err;
+    }
 }

@@ -12,16 +12,16 @@ const DataBasePage = () => {
         <div className="ad-dbp-link-container">
           <ul>
             <li>
-          <Link className='ad-dbp-linktag'>Requests Data</Link>
+          <Link className='ad-dbp-linktag' to="/admindashboard/Data/Request">Requests Data</Link>
             </li>
             <li>
           <Link className='ad-dbp-linktag' to="/admindashboard/Data/Service">Service Data</Link>
             </li>
             <li>
-            <Link className='ad-dbp-linktag'>Clients Data</Link>
+            <Link className='ad-dbp-linktag' to="/admindashboard/Data/Customer">Clients Data</Link>
             </li>
             <li>
-            <Link className='ad-dbp-linktag'>Deleted Data</Link>
+            <Link className='ad-dbp-linktag' to="/admindashboard/Data/Deleted">Deleted Data</Link>
             </li>
             <li>
           <Link className='ad-dbp-linktag'>Inquery Data</Link>

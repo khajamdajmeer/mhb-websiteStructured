@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500&display=swap');
 
 
-.ad-cv-fullscreen{
+.ad-rdbv-fullscreen{
     position: fixed;
     height: 100vh;
     width: 100vw;
 
     background-color: rgba(0, 0, 0, 0.54);
-    z-index: 15;
+    z-index: 5;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Exo 2', sans-serif;
 }
-.ad-cv-center{
+.ad-rdbv-center{
     width: 100%;
     max-width: 600px;
    height: 500px;
@@ -24,7 +24,7 @@
     justify-content: center;
     border-radius: 10px;
 }
-.ad-cv-head{
+.ad-rdbv-head{
     width: 100%;
     height: 10%;
     display: flex;
@@ -34,7 +34,7 @@
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
-.ad-cv-body{
+.ad-rdbv-body{
     height: 90%;
     width: 100%;
     background-color: #e1e5f2;
@@ -47,7 +47,7 @@
     border-bottom-left-radius: 10px;
     overflow: auto;
 }
-.ad-cv-bodyul{
+.ad-rdbv-bodyul{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -56,17 +56,17 @@
     max-width: 350px;
     padding: 6px 0;
 }
-.ad-cv-lileft{
+.ad-rdbv-lileft{
     width: 30%;
     margin-right: 20px;
     text-align: center;
     font-weight: bold;
 }
-.ad-cv-liright{
+.ad-rdbv-liright{
     width: 50%;
     text-align: center;
 }
-.ad-cv-lileftbtn button{
+.ad-rdbv-closebtn{
     width: 120px;
     padding: 10px;
     border: none;
@@ -75,13 +75,10 @@
     border-radius: 3px;
     color: white;
 }
-.ad-cv-lileftbtn button:hover{
-   
+.ad-rdbv-closebtn:hover{
     background-color: #46d2a8;
-    
-   
 }
-.ad-cv-bodyulbtn{
+.ad-rdbv-bodyulbtn{
     display: flex;
     list-style: none;
     width: 100%;
