@@ -16,7 +16,7 @@ const InqueryDB = new Schema({
         requier:true
     },
     mobileNumberString:{
-        type:String
+        type:String,default:null
     },
     Location:{
         type:String,

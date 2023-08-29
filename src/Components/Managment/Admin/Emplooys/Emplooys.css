@@ -206,15 +206,35 @@ font-family: 'Libre Baskerville', serif;
 
 .ad-em-add:hover {
     background-color: #1e6091;
-    /* background-color: #ffffff; */
     transition: all 0.3s ease;
-
 }
 
 .ad-em-add:hover .ad-em-plusimg {
     filter: invert(0.7);
 transition: all 0.3s ease;
 }
+.ad-em-add::before{
+    content: 'Add New Emplooy';
+    position: absolute;
+    right: 20px;
+    background-color: #1e6091;
+    padding-right: 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    width: max-content;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.8s ease;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 10px;
+}
+.ad-em-add:hover::before{
+    transform: scaleX(1);
+}
+
 .ad-em-updatelink{
     text-decoration: none;
     height: 80%;

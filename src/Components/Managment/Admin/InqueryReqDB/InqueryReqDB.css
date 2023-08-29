@@ -1,6 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500&display=swap');
-.ad-rdb-fullscreen{
+.ad-ird-fullscreen{
     width: 100%;
     height: 100%;
     background-color: rgb(255, 255, 255);
@@ -11,13 +11,13 @@
     
      font-family: 'Exo 2', sans-serif;
 }
-.ad-rdb-centerdiv{
+.ad-ird-centerdiv{
     margin-top: 40px;
     width: 100%;
     height: auto;
     /* border: 2px solid wheat; */
 }
-.ad-rdb-head{
+.ad-ird-head{
     min-height: 40px;
     height: auto;
     width: 100%;
@@ -29,7 +29,7 @@
     position: sticky;
     top: 40px;
 }
-.ad-rdb-hright{
+.ad-ird-hright{
     height: 100%;
     /* text-align: right; */
     display: flex;
@@ -37,16 +37,17 @@
     margin-right: 10px;
 
 }
-.ad-rdb-hleft{
+.ad-ird-hleft{
     height: 100%;
     display: flex;
     align-items: center;
+    /* font-size: larger; */
     margin-left: 4px;
     width: 70%;
     justify-content: center;
 
 }
-.ad-rdb-selectip{
+.ad-ird-selectip{
     height: 20px;
     border: none;
     border-top-left-radius: 4px;
@@ -57,14 +58,14 @@
     
 }
 
-.ad-rdb-searchip{
+.ad-ird-searchip{
     height: 20px;
     width: 165px;
     border: none;
     outline: 1px solid black;
     
 }
-.ad-rdb-searchbtn{
+.ad-ird-searchbtn{
     height: 20px;
     width: 30px;
     border: none;
@@ -74,7 +75,7 @@
     outline: 1px solid black;
 
 }
-.ad-rdb-3dot{
+.ad-ird-3dot{
     width: 10px;
     height: 30px;
     border: none;
@@ -84,26 +85,26 @@
     align-items: center;
     justify-content: center;
 }
-.ad-rdb-3dot img{
+.ad-ird-3dot img{
     height: inherit;
     width: inherit;
     scale: 0.7;
 }
-.ad-rdb-searchbtn img{
+.ad-ird-searchbtn img{
     height: 20px;
     width: unset;
     transform: scale(0.8);
     /* filter: invert(1); */
 }
 
-.ad-rdb-body{
+.ad-ird-body{
     height: 77vh;
     /* max-height: auto; */
     overflow: auto;
 }
 
 
-.ad-rdb-mapitem{
+.ad-ird-mapitem{
     padding: 10px;
     background-color: #ced4da;
     display: flex;
@@ -114,22 +115,22 @@
     border-bottom: 1px solid ;
 }
 
-.ad-rdb-nmsg{
+.ad-ird-nmsg{
     justify-content: center;
 }
-.ad-rdb-names{
+.ad-ird-names{
     padding: 4px 0;
     width: 17%;
     overflow: hidden;
     overflow-wrap: hidden;
 }
-.ad-rdb-index{
+.ad-ird-index{
     width: 4%;
     text-align: left;
     color: #0000ef;
     font-weight: bold;
 }
-.ad-rdb-viewbtndiv{
+.ad-ird-viewbtndiv{
     width: 8%;
     /* padding: 0 2px; */
 }
@@ -138,7 +139,7 @@
 
 
 
-.ad-rdb-pages{
+.ad-ird-pages{
   
     width: 100%;
     position: absolute;
@@ -151,14 +152,14 @@
     padding: 6px 10px;
 
 }
-.ad-rdb-pages-ul{
+.ad-ird-pages-ul{
     display: flex !important;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     list-style: none;
 }
-.ad-rdb-pages-ul li{
+.ad-ird-pages-ul li{
     margin: 3px 10px;
     background-color: orangered;
     padding: 5px;
@@ -170,11 +171,11 @@
     cursor: pointer;
     user-select: none;
 }
-.ad-rdb-pageactiv{
+.ad-ird-pageactiv{
     color: white;
     background: #aee201 !important;
 }
-.ad-rdb-ul-prev{
+.ad-ird-ul-prev{
     margin: 3px 10px;
     padding: 5px;
     border-radius: 3px;
@@ -187,10 +188,10 @@
     color: black !important;
     border: none;
 }
-.ad-rdb-disabled{
+.ad-ird-disabled{
     opacity: 0.6;
 }
-.ad-rdb-viewbtn{
+.ad-ird-viewbtn{
     padding: 4px 10px;
     border: none;
     border-radius: 4px;
@@ -201,11 +202,11 @@
     letter-spacing: 1px;
     margin-left: 4px;
 }
-.ad-rdb-serachdiv{
+.ad-ird-serachdiv{
     display: flex;
     position: relative;
 }
-.ad-rdb-serachresut{
+.ad-ird-serachresut{
     position: absolute;
     top: 120%;
     left: -20%;
@@ -227,7 +228,7 @@
     }
     
 }
-.ad-rdb-serachmapitem{
+.ad-ird-serachmapitem{
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -237,15 +238,15 @@
     border-bottom: 1px solid gray;
     padding: 4px 0;
 }
-.ad-rdb-serachname{
+.ad-ird-serachname{
     width: 50%;
     text-align: center;
 }
-.ad-rdb-serachview{
+.ad-ird-serachview{
     width: 100%;
     text-align: center;
 }
-.ad-rdb-serachview button{
+.ad-ird-serachview button{
     /* height: 20px; */
     padding: 5px 10px;
     border: 1px solid black;
@@ -253,7 +254,7 @@
     color: #fff;
     border-radius: 6px;
 }
-.ad-rdb-serachview button:hover{
+.ad-ird-serachview button:hover{
     /* height: 20px; */
 
     background-color: #4258c1;
@@ -267,10 +268,10 @@
 
 
 
-.ad-rdb-3dot-hide{
+.ad-ird-3dot-hide{
     position: relative;
 }
-.ad-rdb-3dot-hbody{
+.ad-ird-3dot-hbody{
     position: absolute;
     background-color: #b8bedd;
     width: 100px;
@@ -285,7 +286,7 @@
     border-radius: 4px;
     outline: 1px solid black;
 }
-.ad-rdb-3dot-hbody button{
+.ad-ird-3dot-hbody button{
     width: 100px;
     /* animation: showbtns 1s forwards ease; */
     /* transform-origin: right; */
@@ -314,24 +315,24 @@
 
 
 @media (max-width:786px) {
-    .ad-rdb-head{
+    .ad-ird-head{
     padding: 8px 5px;
 
     }
-    .ad-rdb-hright{
+    .ad-ird-hright{
         display: flex;
         width: 100%;
         justify-content: space-between;
     }
-    .ad-rdb-names{
+    .ad-ird-names{
         width: auto;
 
     }
-    .ad-rdb-viewbtndiv{
+    .ad-ird-viewbtndiv{
         width: 100%;
         text-align: center;
     }
-    .ad-rdb-serachresut{
+    .ad-ird-serachresut{
         left: 0;
     }
 }

@@ -1,0 +1,63 @@
+.ma-rcp-body{
+    width: 100%;
+    background-color: orange;
+    height: 100%;
+}
+.ma-rcp-heading{
+    width: 100%;
+    text-align: center;
+    padding: 4px 0px;
+    background-color: #0d1b2a;
+    color: whitesmoke;
+}
+.ma-rcp-searchbody{
+    height: 100%;
+    background-color: orange;
+}
+
+.ma-rcp-mapitem{
+    width: unset;
+    background-color: #edede9;
+    padding: 10px 14px;
+    height: auto;
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+.ma-cplp-searchbar{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+
+}
+
+.ma-cplp-searchbar select{
+width: 50px;
+border: none;
+outline: 1px solid black;
+
+}
+.ma-cplp-searchbar button{
+    border: none;
+    padding: 0 10px;
+outline: 1px solid black;
+
+}
+.ma-cplp-searchbar input{
+    outline: 1px solid black;
+}
+
+@media (max-width:768px) {
+    .ma-cplp-searchbar{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: flex;
+    
+    }
+.ma-rcp-heading{
+    text-align: left;
+    color: #0d1b2a00;
+}
+}

@@ -6,6 +6,8 @@ import { ViewClients,newDownload } from '../../../../ApiCalls/AdminCalls/DBCalls
 import ClientView from '../ClientView/ClientView';
 
 const Clients = () => {
+  //logic for real data
+  const [realdata,setRealdata]=useState([])
 
   //logic for showing downloadbtns
   const [showDwnlod,setShowDwnlod]=useState(false)
@@ -45,11 +47,11 @@ const Clients = () => {
   const [showmsg,setShowmsg]=useState(false)
   const viewclients = async()=>{
     const res = await ViewClients();
-    console.log(res.message)
     if(res.success){
       setShowmsg(false);
       setShowdata(true)
       setData(res.message)
+      setRealdata(res.message)
     }
     else{
       setShowdata(false)
@@ -136,12 +138,13 @@ const Clients = () => {
 
     const handleIpdataChange = (e)=>{
       setIptype(e.target.value)
+      setData(realdata)
 
     }
     const handleSearch = () => {
-      const filteredData = data.filter(item => {
+      const filteredData = realdata.filter(item => {
         if(iptype==='name'){
-          if(item.name===ipval||item.name.includes(ipval)){
+          if(item.name.toLowerCase()===ipval.toLowerCase()||item.name.toLowerCase().includes(ipval.toLowerCase())){
             return true
           }
           return false
@@ -168,18 +171,15 @@ const Clients = () => {
       if(filteredData.length>=1){
         setSearchData(filteredData);
         setShowsearch(true)
-        console.log(filteredData)
+        setData(filteredData)
       }
       else{
         setSearchData([])
         setShowsearch(true)
-
       }
       if(iptype.length<2){
         setShowsearch(false)
-
       }
-      
     };
     
 
@@ -215,7 +215,7 @@ const Clients = () => {
     <div className="ad-c-fullscreen">
       <div className="ad-c-centerdiv">
         <div className="ad-c-head">
-          <div className="ad-c-hleft">Service Data</div>
+          <h1 className="ad-c-hleft">Service Data</h1>
           <div className="ad-c-hright">
             <div className="ad-c-serachdiv">
             <select name="type" id="" className='ad-c-selectip' onChange={handleIpdataChange} value={iptype}>

@@ -303,7 +303,7 @@ router.post('/inqueryrequest',FetchEmplooy,async(req,res)=>{
         await InqueryDB.create({
             name:data.name,
             mobileNumber:data.mobileNumber,
-            mobilenumberString:data.mobileNumber,
+            mobileNumberString:data.mobileNumber,
             Location:data.Location,
             Address:data.Address,
             Note:data.Note

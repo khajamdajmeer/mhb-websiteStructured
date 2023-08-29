@@ -24,7 +24,8 @@ const DataBasePage = () => {
             <Link className='ad-dbp-linktag' to="/admindashboard/Data/Deleted">Deleted Data</Link>
             </li>
             <li>
-          <Link className='ad-dbp-linktag'>Inquery Data</Link>
+            
+          <Link className='ad-dbp-linktag' to="/admindashboard/Data/Inquery">Inquery Data</Link>
             </li>
             <li>
           <Link className='ad-dbp-linktag'>Blacklist</Link>

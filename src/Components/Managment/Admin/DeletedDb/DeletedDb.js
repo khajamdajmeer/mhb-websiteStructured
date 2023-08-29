@@ -7,6 +7,8 @@ import DeleteView from '../Views/DeleteView/DeleteView';
 
 const DeletedDb = () => {
 
+  //logic for the realdata
+   const [realdata,setRealdata]=useState([])
 
 
   //Logic for fetching the clients Data
@@ -40,11 +42,11 @@ const DeletedDb = () => {
   const [showmsg,setShowmsg]=useState(false)
   const viewclients = async()=>{
     const res = await Deleted_req();
-    console.log(res.message)
     if(res.success){
       setShowmsg(false);
-      setShowdata(true)
-      setData(res.message)
+      setShowdata(true);
+      setData(res.message);
+      setRealdata(res.message)
     }
     else{
       setShowdata(false)
@@ -126,12 +128,12 @@ const DeletedDb = () => {
 
     const handleIpdataChange = (e)=>{
       setIptype(e.target.value)
-
+      setData(realdata)
     }
     const handleSearch = () => {
-      const filteredData = data.filter(item => {
+      const filteredData = realdata.filter(item => {
         if(iptype==='name'){
-          if(item.name===ipval||item.name.includes(ipval)){
+          if(item.name.toLowerCase()===ipval.toLowerCase()||item.name.toLowerCase().includes(ipval.toLowerCase())){
             return true
           }
           return false
@@ -152,12 +154,11 @@ const DeletedDb = () => {
       if(filteredData.length>=1){
         setSearchData(filteredData);
         setShowsearch(true)
-        console.log(filteredData)
+        setData(filteredData)
       }
       else{
         setSearchData([])
         setShowsearch(true)
-
       }
       if(iptype.length<2){
         setShowsearch(false)

@@ -26,6 +26,8 @@ import ReqDB from './Components/Managment/Admin/ReqDB/ReqDB';
 import CustomerDB from './Components/Managment/Admin/CustomerDB/CustomerDB'
 import DeletedDb from './Components/Managment/Admin/DeletedDb/DeletedDb';
 import InqueryReq from './Components/Managment/Manager/InquereyReq/InqueryReq';
+import InqueryReqDB from './Components/Managment/Admin/InqueryReqDB/InqueryReqDB';
+import ComplainPage from './Components/Managment/Manager/ComplainPage/ComplainPage';
 
 function App() {
   return (
@@ -47,6 +49,8 @@ function App() {
             <Route path='pending' element={<PendingPage/>}/>
             <Route path='newrequest' element={<CreateReq/>}/>
             <Route path='inquery' element={<InqueryReq/>}/>
+            <Route path='Querys' element={<ComplainPage/>}/>
+            
           </Route>
 
 {/* the routes for the technician */}
@@ -72,6 +76,7 @@ function App() {
             <Route path='Data/Request' element={<ReqDB/>}/>
             <Route path='Data/Customer' element={<CustomerDB/>}/>
             <Route path='Data/Deleted' element={<DeletedDb/>}/>
+            <Route path='Data/Inquery' element={<InqueryReqDB/>}/>
             
           </Route>
 

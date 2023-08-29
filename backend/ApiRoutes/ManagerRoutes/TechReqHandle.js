@@ -8,6 +8,7 @@ const ManagerPushDB = require('../../DBmodels/DBManager/WaitingForPush')
 const FinishedReqDB = require('../../DBmodels/DBAdmin/FinishedReq')
 const DeletedReq_DB = require('../../DBmodels/DBAdmin/Deleted_Req')
 const Clients_DB = require('../../DBmodels/DBAdmin/ClientDB')
+const InqueryDB= require('../../DBmodels/DBAdmin/InqueryDB')
 
 const router = express.Router();
 
@@ -220,6 +221,7 @@ router.post('/finishreq/:id',FetchEmplooy,async(req,res)=>{
             
             const fdata = await FinishedReqDB.create(newdata)
             await ManagerPushDB.findByIdAndDelete(reqid)
+            await InqueryDB.deleteMany({mobileNumber:data.mobileNumber})
             res.status(200).send({message:'Success',Success:true})
 
         }else{

@@ -7,6 +7,7 @@ const ReqDb = require('../../DBmodels/DBClient/Request')
 const cusotmer = require('../../DBmodels/DBAdmin/ClientDB');
 // const ClientDB = require('../../DBmodels/DBAdmin/ClientDB');
 const DeletedDb = require('../../DBmodels/DBAdmin/Deleted_Req');
+const InqueryDB = require('../../DBmodels/DBAdmin/InqueryDB')
 
 
 router.get('/Customers',FetchAdmin,async(req,res)=>{
@@ -85,6 +86,22 @@ router.get('/db/deleted',FetchAdmin,async(req,res)=>{
         res.status(500).send({message:'error occured',success:false})
     }
 })
+
+
+    //ROUTE FOR THE ADMIN TO ACCESS THE INQUERY DATA
+    router.get('/db/inquery',FetchAdmin,async(req,res)=>{
+        try{
+            const data  = await InqueryDB.find({});
+        if(data.length>0){
+            res.status(200).send({message:data,success:true})
+        }else{
+            res.status(200).send({message:'No data to Show',success:false})
+        }
+
+        }catch(error){
+            res.status(500).send({message:'Error Occured Please Try Again',success:false})
+        }
+    })
 
 
 module.exports=router

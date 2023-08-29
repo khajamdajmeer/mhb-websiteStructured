@@ -123,3 +123,16 @@ export const Deleted_req = async()=>{
         throw err;
     }
 }
+
+
+export const Inquery_Data = async()=>{
+    try{
+        const res = await axios.get(`${host}/api/admin/db/inquery`,{
+            headers:header
+        });
+        return res.data;
+    }catch(error){
+        console.log(error)
+        throw error;
+    }
+}

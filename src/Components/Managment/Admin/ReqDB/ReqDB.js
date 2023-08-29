@@ -7,6 +7,9 @@ import ReqView from '../Views/ReqView/ReqView';
 
 const ReqDB = () => {
 
+  //Logic for the real data 
+  const [realdata,setRealdata]=useState([]);
+
   //logic for showing downloadbtns
   const [showDwnlod,setShowDwnlod]=useState(false)
   const handleShowDwnload =()=>{
@@ -45,9 +48,9 @@ const ReqDB = () => {
   const [showmsg,setShowmsg]=useState(false)
   const viewclients = async()=>{
     const res = await ViewRequest();
-    console.log(res.message)
 
     if(res.success){
+      setRealdata(res.message)
       setShowmsg(false);
       setShowdata(true)
       setData(res.message)
@@ -127,12 +130,13 @@ const ReqDB = () => {
 
     const handleIpdataChange = (e)=>{
       setIptype(e.target.value)
+      setData(realdata)
 
     }
     const handleSearch = () => {
-      const filteredData = data.filter(item => {
+      const filteredData = realdata.filter(item => {
         if(iptype==='name'){
-          if(item.name===ipval||item.name.includes(ipval)){
+          if(item.name.toLowerCase()===ipval.toLowerCase()||item.name.toLowerCase().includes(ipval.toLowerCase())){
             return true
           }
           return false
@@ -159,12 +163,11 @@ const ReqDB = () => {
       if(filteredData.length>=1){
         setSearchData(filteredData);
         setShowsearch(true)
-        console.log(filteredData)
+        setData(filteredData)
       }
       else{
         setSearchData([])
         setShowsearch(true)
-
       }
       if(iptype.length<2){
         setShowsearch(false)
@@ -205,7 +208,7 @@ const ReqDB = () => {
     <div className="ad-rdb-fullscreen">
       <div className="ad-rdb-centerdiv">
         <div className="ad-rdb-head">
-          <div className="ad-rdb-hleft">Request DB</div>
+          <h1 className="ad-rdb-hleft">Request DB</h1>
           <div className="ad-rdb-hright">
             <div className="ad-rdb-serachdiv">
             <select name="type" id="" className='ad-rdb-selectip' onChange={handleIpdataChange} value={iptype}>

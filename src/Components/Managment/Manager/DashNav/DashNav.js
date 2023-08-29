@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Dashnav.css'
 import hamicon from '../../Imgs/menu-icon.png'
 import crosslogo from '../../Imgs/bgcross.png'
@@ -44,18 +44,17 @@ else if(level==='l1'){
 }
 
 const handleprofilebtn = ()=>{
-  // const profileelement = document.getElementById('profiledatabox');
-  // if(profileelement.style.display==='none'){
-  //   profileelement.style.display='block'
-  // }
-  // else{
-  //   profileelement.style.display = 'none'
-  // }
+
   const cookies = Cookies.get();
   for(const cookie in cookies){
     Cookies.remove(cookie)
   }
   history("/service")
+}
+
+const [link,setLink] = useState('')
+const handleactiveLink =(data)=>{
+setLink(data)
 }
 
   return (
@@ -67,10 +66,11 @@ const handleprofilebtn = ()=>{
   </div>
   <div>
 <ul className="menu" id='mymenu'>
-    <li><Link className='Linktag' to='requests'>Requests</Link></li>
-    <li><Link className='Linktag' to='pending'>pending</Link></li>
-    <li><Link className='Linktag' to='techrequest'>Tech Requests</Link></li>
-    <li><Link className='Linktag' to='reviewreq'>Review</Link></li>
+    <li><Link className={link==='request' ? 'Linktag activeLinktag':'Linktag'} onClick={()=>handleactiveLink('request')} to='requests'>Requests</Link></li>
+    <li><Link className={link==='Pending' ? 'Linktag activeLinktag':'Linktag'} onClick={()=>handleactiveLink('Pending')} to='pending'>pending</Link></li>
+    <li><Link className={link==='Tech Req' ? 'Linktag activeLinktag':'Linktag'} onClick={()=>handleactiveLink("Tech Req")} to='techrequest'>Tech Requests</Link></li>
+    <li><Link className={link==='Review' ? 'Linktag activeLinktag':'Linktag'} onClick={()=>handleactiveLink('Review')} to='reviewreq'>Review</Link></li>
+    <li><Link className={link==='Query' ? 'Linktag activeLinktag':'Linktag'} onClick={()=>handleactiveLink('Query')} to='Querys'>Querys</Link></li>
     <li><button  id='menulogoutbtn' onClick={handleprofilebtn}>logout</button></li>
     {/* <li>Data Search</li> */}
   </ul>

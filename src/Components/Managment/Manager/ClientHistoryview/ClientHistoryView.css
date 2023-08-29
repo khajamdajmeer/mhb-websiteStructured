@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500&display=swap');
+
+
+.ma-chv-fullscreen{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.54);
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Exo 2', sans-serif;
+}
+.ma-chv-center{
+    width: 100%;
+    max-width: 600px;
+   height: 500px;
+   background-color: #d5d5d5;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+.ma-chv-head{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #93a8ac;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.ma-chv-body{
+    height: 90%;
+    width: 100%;
+    background-color: #e1e5f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding: 10px 0; */
+    /* justify-content: center; */
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    overflow-y: auto;
+
+}
+.ma-chv-bodyul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    width: 100%;
+    max-width: 350px;
+    padding: 6px 0;
+}
+.ma-chv-lileft{
+    width: 30%;
+    margin-right: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+.ma-chv-liright{
+    width: 50%;
+    text-align: center;
+    font-weight: bold;
+
+}
+.ma-chv-closebtn{
+    width: 120px;
+    padding: 10px;
+    border: none;
+    background-color: #243e36;
+    outline: 1px solid white;
+    border-radius: 3px;
+    color: white;
+    margin: 2px 0;
+}
+.ma-chv-closebtn:hover{
+    background-color: #46d2a8;
+}
+.ma-chv-bodyulbtn{
+    display: flex;
+    list-style: none;
+    width: 100%;
+    max-width: 300px;
+    justify-content: space-between;
+}
+.ma-chv-mapitem{
+    width: 100%;
+    background-color: #fff;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    flex-flow: wrap;
+    border-bottom: 1px solid black;
+    
+
+}
+.ma-chv-item{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 0;
+    text-align: center;
+}
+.ma-chv-viewbtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.ma-chv-viewbtn button{
+    padding: 4px 10px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    outline: 1px solid black;
+    background-color: #243e36;
+    color: white;
+}
+
+
+@media (max-width:768px) {
+    .ma-chv-item{
+        width: 47%;
+    }
+    .ma-chv-viewbtn{
+        width: 100%;
+    }
+    
+}

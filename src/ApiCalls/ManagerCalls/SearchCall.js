@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Cookies from 'js-cookie';
 const {host} = require('../Host')
 
@@ -7,7 +8,7 @@ export const SerachTechDB = async(data)=>{
         method:'POST',
         headers:{
             "Content-Type": "application/json",
-            "auth-token":Cookies.set('auth-token')
+            "auth-token":Cookies.get('auth-token')
         },
         body:JSON.stringify({
             type:data.type,
@@ -20,19 +21,34 @@ export const SerachTechDB = async(data)=>{
 }
 
 
-export const RequestSearch=async(data)=>{
-    const response = await fetch(`${host}/api/search/requests`,{
-        method:"POST",
-        headers:{
+export const RequestSearch=async(iptype,ipval)=>{
+  try{  const response = await axios.post(`${host}/api/search/requests`,{type:iptype,
+        data:ipval},{headers:{
             "Content-Type": "application/json",
-            "auth-token":Cookies.set('auth-token')
-        },
-        body:JSON.stringify({
-            type:data.type,
-            data:data.data
-    })
-    });
-    const res = await response.json();
-    return res;
+                "auth-token":Cookies.get('auth-token')
+        }})
+   
+   
+    return response.data;
+}catch(error){
+        console.log(error);
+        throw error;
+    }
 
 }
+
+
+export const customerhistory=async(data)=>{
+    try{  const response = await axios.post(`${host}/api/search/gethistory`,{id:data},{headers:{
+              "Content-Type": "application/json",
+                  "auth-token":Cookies.get('auth-token')
+          }})
+     
+     
+      return response.data;
+  }catch(error){
+          console.log(error);
+          throw error;
+      }
+  
+  }

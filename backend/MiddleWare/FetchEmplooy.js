@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const EmplooyDB = require('../DBmodels/DBAdmin/NewEmplooyData')
 
 const FetchEmplooy = async (req,res,next)=>{
-    const token = req.header('auth-token');
+    const token = req.header('auth-token'); 
     if(!token){
         res.status(401).send({message:'invalid token'})
     }
