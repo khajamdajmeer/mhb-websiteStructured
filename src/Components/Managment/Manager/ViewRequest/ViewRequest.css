@@ -200,6 +200,31 @@ padding: 3px 5px;
     justify-content: center;
     text-decoration: none;
     cursor: pointer;
+    z-index: 4;
+}
+.ma-req-linkbtn::before{
+    content: 'Click To Add Request';
+    position: absolute;
+    right: 30px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    height: inherit;
+    background-color: orange;
+    padding: 0px 10px;
+    padding-right: 60px;
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 1.2s ease,opacity 1.2s ease;
+    border-radius: 5px;
+    font-weight: bold;
+   
+}
+.ma-req-linkbtn:hover::before{
+    opacity: 1;
+    transform: scaleX(1);
+
 }
 .ma-req-linkbtn img{
     width: inherit;
@@ -209,7 +234,83 @@ padding: 3px 5px;
     user-select: none;
     cursor: pointer;
 }
+
+
+
+.ma-req-Inquerybtn{
+    position: absolute;
+    bottom: 40px;
+    left: 50px;
+    height: 60px;
+    width: 60px;
+    background-color: #023047;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.ma-req-Inquerybtn img{
+    filter: invert(1);
+}
+.ma-req-linkbtn1{
+    width: inherit;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 4;
+}
+.ma-req-linkbtn1::before{
+    content: 'Create Inquery';
+    position: absolute;
+    left: 30px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    height: inherit;
+    background-color: #023047;
+    padding: 0px 10px;
+    padding-left: 60px;
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1.2s ease,opacity 1.2s ease;
+    border-radius: 5px;
+    font-weight: bold;
+    color: whitesmoke;
+}
+.ma-req-linkbtn1:hover::before{
+    opacity: 1;
+    transform: scaleX(1);
+
+}
+.ma-req-linkbtn1 img{
+    width: inherit;
+    height: inherit;
+    transform: scale(0.7);
+    user-select: none;
+    cursor: pointer;
+}
+
+
+
+
 @media (max-width:768px) {
     
+.ma-req-Inquerybtn{
+    bottom: 15px;
+    left: 10px;
+    height: 30px;
+    width: 30px;
+}
+.ma-req-creatbtn{
+    right: 10px;
+    bottom: 15px;
+    height: 30px;
+    width: 30px;
+}
     
 }

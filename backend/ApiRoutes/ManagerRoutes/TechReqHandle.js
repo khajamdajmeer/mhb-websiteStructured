@@ -41,6 +41,7 @@ router.post('/assign/:id',FetchEmplooy,async(req,res)=>{
     const tid = req.body.tid;
     const managername = req.name;
     if(data){
+        const techname = await EmplooyDB.findById(tid);
         const create = await TechDB.create(
           {  name:data.name,
         mobileNumber:data.mobileNumber,
@@ -59,7 +60,7 @@ router.post('/assign/:id',FetchEmplooy,async(req,res)=>{
             id:req.user
         },Technicain:{
             id:tid,
-            name:null
+            name:techname.name
         }
        
         

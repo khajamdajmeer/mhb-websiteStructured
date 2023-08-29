@@ -1,0 +1,103 @@
+.ma-inr-fullscreen{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(187, 176, 176);
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+.ma-inr-center{
+    width: 100%;
+    max-width: 800px;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #dee2ff;
+    border-radius: 8px;
+}
+.ma-inr-head{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+.ma-inr-body{
+    height: 90%;
+    background-color: #f1faee;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    align-items: center;
+}
+.ma-inr-item{
+    width: 100%;
+    max-width: 450px;
+    height: 100%;
+    background-color: rgba(234, 77, 77, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ma-inr-ul{
+    display: flex;
+    list-style-type: none;
+    width: 100%;
+    justify-content: center;
+    padding: 5px 10% ;
+}
+.ma-inr-lileft{
+    width: 30%;
+    /* max-width: 150px; */
+    font-weight: bold;
+}
+.ma-inr-liright{
+    width: 60%;
+}
+.ma-inr-liright input,.ma-inr-liright select{
+    width: 90%;
+    border: none;
+    outline: 1px solid black;
+    border-radius: 5px;
+    padding: 4px;
+    text-align: center;
+}
+.ma-inr-liright textarea{
+    width: 90%;
+    border: none;
+    padding: 4px;
+    resize: none;
+    outline: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+}
+.ma-inr-liright button{
+    width: 90%;
+    border: none;
+    outline: 1px solid black;
+    border-radius: 5px;
+    padding: 4px;
+    text-align: center;
+}
+.ma-inr-submitbtn{
+    width: 60%;
+    padding: 5px 0;
+    background-color: #023047;
+    color: white;
+    font-weight: bold;
+    font-size: larger;
+
+}
+@media (max-width:768px) {
+    .ma-inr-ul{
+        padding: 5px 18px;
+        justify-content: space-between;
+    }
+}

@@ -3,7 +3,9 @@ const express = require('express')
 const router = express.Router();
 const RequestDB = require('../../DBmodels/DBClient/Request');
 const FetchEmplooy = require('../../MiddleWare/FetchEmplooy');
-const techDB = require('../../DBmodels/DBTechnican/ProcessRequest')
+const techDB = require('../../DBmodels/DBTechnican/ProcessRequest');
+const NewEmplooyData = require('../../DBmodels/DBAdmin/NewEmplooyData');
+const InqueryDB = require('../../DBmodels/DBAdmin/InqueryDB');
 
 // ROUTE 1 FOR THE MANAGER FOR VIEWING THE REQUEST
 router.get('/requests',FetchEmplooy,async(req,res)=>{
@@ -245,7 +247,8 @@ router.post('/createforword',FetchEmplooy,async(req,res)=>{
 
     try{
         const managername = req.name;
-        const data = req.body.data
+        const data = req.body.data;
+        const tech = await NewEmplooyData.findById(data.Technicainid);
        await techDB.create(
             {  name:data.name,
           mobileNumber:data.mobileNumber,
@@ -263,7 +266,8 @@ router.post('/createforword',FetchEmplooy,async(req,res)=>{
               name:managername,
               id:req.user
           },Technicain:{
-            id:data.Technicianid
+            id:data.Technicianid,
+            name:tech.name
           },
           Note:data.Note
         
@@ -289,6 +293,26 @@ router.post('/acceptfortech/:id',FetchEmplooy,async(req,res)=>{
     }catch(error){
         console.error(error)
         res.status(500).send({message:'error occured',success:false})
+    }
+})
+
+//Router For the Manager to Create any Inquerys for data
+router.post('/inqueryrequest',FetchEmplooy,async(req,res)=>{
+    try{
+        const data = req.body;
+        await InqueryDB.create({
+            name:data.name,
+            mobileNumber:data.mobileNumber,
+            mobilenumberString:data.mobileNumber,
+            Location:data.Location,
+            Address:data.Address,
+            Note:data.Note
+
+        })
+        res.status(200).send({message:'Submit Successfull',success:true})
+
+    }catch(error){
+        res.status(500).send({message:'error occured please Try again',success:false})
     }
 })
 

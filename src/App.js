@@ -25,6 +25,7 @@ import DataBasePage from './Components/Managment/Admin/DataBasePage/DataBasePage
 import ReqDB from './Components/Managment/Admin/ReqDB/ReqDB';
 import CustomerDB from './Components/Managment/Admin/CustomerDB/CustomerDB'
 import DeletedDb from './Components/Managment/Admin/DeletedDb/DeletedDb';
+import InqueryReq from './Components/Managment/Manager/InquereyReq/InqueryReq';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
             <Route path='reviewreq' element={<ReviewReq/>}/>
             <Route path='pending' element={<PendingPage/>}/>
             <Route path='newrequest' element={<CreateReq/>}/>
+            <Route path='inquery' element={<InqueryReq/>}/>
           </Route>
 
 {/* the routes for the technician */}

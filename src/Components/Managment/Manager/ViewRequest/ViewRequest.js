@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './ViewRequest.css'
 import { ViewRequests, UpdateRequest, GetTechDetails, PushToTech,PendingRequest } from '../../../../ApiCalls/ManagerCalls/RequestCall';
-import Message from '../../Common/Message/Message';
 import { RequestSearch } from '../../../../ApiCalls/ManagerCalls/SearchCall';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { Link } from 'react-router-dom';
-import plusimg from '../../../images and tones/plus.png'
+import plusimg from '../../../images and tones/plus.png';
+import TopMsg from  '../../Common/TopMsg/TopMsg'
 
 
 const ViewRequest = () => {
@@ -219,10 +219,14 @@ const ViewRequest = () => {
         },3000)
     }
 
+    const handleclosemsg = ()=>{
+    setShowmsg(false);
+    }
+
 
     return (
         <>
-            {showmsg && (<Message message={msgdata.message} navigate={msgdata.navigate} />)}
+            {showmsg && (<TopMsg message={msgdata.message} handleclose={handleclosemsg}/>)}
 
             <div className="viewreq">
                 <div className="reqcenter">
@@ -438,6 +442,12 @@ const ViewRequest = () => {
             </div>
             <div className="ma-req-creatbtn">
                 <Link to={'/dashboard/newrequest'} className='ma-req-linkbtn'>
+                    <img src={plusimg} alt="" />
+                </Link>
+            </div>
+
+            <div className="ma-req-Inquerybtn">
+                <Link to={'/dashboard/inquery'} className='ma-req-linkbtn1'>
                     <img src={plusimg} alt="" />
                 </Link>
             </div>

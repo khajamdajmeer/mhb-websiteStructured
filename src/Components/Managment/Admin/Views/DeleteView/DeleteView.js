@@ -29,8 +29,8 @@ const DeleteView = (props) => {
                 <li className='ad-ddbv-liright'> {props.data.Address}</li>
             </ul>
             <ul className='ad-ddbv-bodyul'>
-                <li className='ad-ddbv-lileft'>Service Date:</li>
-                <li className='ad-ddbv-liright'>{props.data.ServiceDate}</li>
+                <li className='ad-ddbv-lileft'>Manager Name:</li>
+                <li className='ad-ddbv-liright'>{props.data.forworded.name}</li>
             </ul>
             <ul className='ad-ddbv-bodyul'>
                 <li className='ad-ddbv-lileft'>Service Type</li>

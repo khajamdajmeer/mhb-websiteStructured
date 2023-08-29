@@ -248,3 +248,25 @@ export const AcceptTechReq = async(id)=>{
     const res = await response.json();
     return res;
 }
+
+export const Create_Inquery_Data = async(data)=>{
+    try{
+        const res = await axios.post(`${host}/api/manager/inqueryrequest`,{
+            name:data.name,
+            mobileNumber:data.mobileNumber,
+            Location:data.Location,
+            Address:data.Address,
+            Note:data.Note
+        },{
+            headers:{
+                "Content-Type": "application/json",
+                "auth-token":Cookies.get('auth-token')
+            }
+        })
+        return res.data;
+
+    }catch(error){
+        console.log(error);
+        throw error;
+    }
+}
