@@ -270,3 +270,17 @@ export const Create_Inquery_Data = async(data)=>{
         throw error;
     }
 }
+
+
+export const raisecomplainCall = async(id,reason)=>{
+    try{
+        const res = await axios.post(`${host}/api/track/raisecomplain/${id}`,{note:reason},{
+            headers:header
+        });
+        return res.data;
+
+    }catch(error){
+        console.log(error);
+        throw error;
+    }
+}

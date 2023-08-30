@@ -198,7 +198,7 @@ const handleClose=async(id)=>{
                       {ele.data.map((element,iindex)=>{
                         return(
                           <>
-                          <div className={`ma-vtr-dreq ${element.Accepted ? 'ma-vtr-colorgreen':''}`}>
+                          <div className={`ma-vtr-dreq ${element.Accepted ? 'ma-vtr-colorgreen':''} ${element.Complain ? 'complainbg':''}`}>
                         <div className="ma-vtr-name">
                           {element.name}
                           </div>

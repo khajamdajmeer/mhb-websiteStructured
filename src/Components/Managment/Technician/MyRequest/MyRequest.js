@@ -143,7 +143,7 @@ const MyRequest = () => {
             mydata.map((ele,index)=>{
                 return(
                     ele.name.length>2&&ele.Accepted&& (<>
-                    <div  className={`techdatabox ${activeIndex===index ? 'techdatawrapbox':''}`}>
+                    <div  className={`techdatabox ${activeIndex===index ? 'techdatawrapbox':''} ${ele.Complain?'complainbg':''}`}>
                <div className="techdataboxshow" onClick={()=>toggleWrap(index)}>
                 <div className="techdatabox-left">
                     <div className="techdataname">{ele.name}</div>

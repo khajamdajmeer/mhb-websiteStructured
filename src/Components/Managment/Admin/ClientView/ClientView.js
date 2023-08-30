@@ -1,12 +1,16 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './ClientView.css'
 
 const ClientView = (props) => {
 
     const closefunction = props.closefunction;
-    const handlecomplain =()=>{
-        console.log('complain loged')
+    const raisecomplain = props.complainfunction;
+    const [reason,setReason]=useState('')
+    const onchange = (e)=>{
+        setReason(e.target.value)
     }
+
+    
   return (
     <>
     <div className="ad-cv-fullscreen" >
@@ -54,9 +58,13 @@ const ClientView = (props) => {
                 <li className='ad-cv-lileft'>Discription</li>
                 <li className='ad-cv-liright'>{props.data.Discription}</li>
             </ul>
+            <ul className='ad-cv-bodyul'>
+                <li className='ad-cv-lileft'>Complain Reason</li>
+                <li className='ad-cv-liright'><textarea onChange={onchange} name='reason' value={reason} placeholder='Complain Reason' type="text" /></li>
+            </ul>
             <ul className='ad-cv-bodyulbtn'>
                 <li className='ad-cv-lileftbtn'><button onClick={closefunction}>Close</button></li>
-                <li className='ad-cv-lileftbtn'><button onClick={handlecomplain}>Raise Complain</button></li>
+                <li className='ad-cv-lileftbtn'><button className={reason.length<5 ? 'btndisbale':''} onClick={()=>raisecomplain(props.data._id,reason)} disabled={reason.length<5}>Raise Complain</button></li>
             </ul>
         </div>
        </div>

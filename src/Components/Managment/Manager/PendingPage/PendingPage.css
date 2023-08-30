@@ -2,6 +2,9 @@
     color: red;
     font-weight: bold;
 }
+.complainbg{
+    background: #f94144 !important;
+}
 
 .ma-pp-fullscreen{
     height: 100vh;

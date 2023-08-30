@@ -1,6 +1,6 @@
 .top-msgcontainer{
     position: absolute;
-    z-index: 1;
+    z-index: 9999;
     top: 0;
     width: 100vw;
     display: flex;
@@ -13,7 +13,7 @@
         top: 0;
     }
 to{
-    top: 60px;
+    top: 120px;
 }    
 }
 .top-msgbody{

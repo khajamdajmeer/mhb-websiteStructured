@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './ClientHistoryView.css';
 import { customerhistory } from '../../../../ApiCalls/ManagerCalls/SearchCall';
 import ClientView from '../../Admin/ClientView/ClientView';
-
+import {raisecomplainCall} from '../../../../ApiCalls/ManagerCalls/RequestCall';
+import TopMsg from '../../Common/TopMsg/TopMsg'
 const ClientHistoryview = (props) => {
 
 
@@ -29,11 +30,28 @@ const ClientHistoryview = (props) => {
     onMount();
     // eslint-disable-next-line
   },[])
+
+  const [showmsg,setShowmsg]=useState(false);
+  const [msg,setMsg]=useState('')
+  const closemsg = ()=>{
+    setShowmsg(false);
+  }
+
+  const raisecomplainhandle = async(id,note)=>{
+    const res = await raisecomplainCall(id,note);
+      setShowmsg(true);
+      setMsg(res.message);
+    setInfoview(false)
+
+      
+    
+  }
     
     
   return (
     <>
-    {infoview&&(<ClientView closefunction={closeinfoview} data={viewdata}/>)}
+    {showmsg&&<TopMsg message={msg} handleclose={closemsg} />}
+    {infoview&&(<ClientView closefunction={closeinfoview} data={viewdata} complainfunction={raisecomplainhandle}/>)}
     <div className="ma-chv-fullscreen" >
        <div className="ma-chv-center">
         <h2 className="ma-chv-head">Customer Details</h2>

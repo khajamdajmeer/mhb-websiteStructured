@@ -8,7 +8,8 @@ const ManagerPushDB = require('../../DBmodels/DBManager/WaitingForPush')
 const FinishedReqDB = require('../../DBmodels/DBAdmin/FinishedReq')
 const DeletedReq_DB = require('../../DBmodels/DBAdmin/Deleted_Req')
 const Clients_DB = require('../../DBmodels/DBAdmin/ClientDB')
-const InqueryDB= require('../../DBmodels/DBAdmin/InqueryDB')
+const InqueryDB= require('../../DBmodels/DBAdmin/InqueryDB');
+const FinishedReq = require('../../DBmodels/DBAdmin/FinishedReq');
 
 const router = express.Router();
 
@@ -317,12 +318,51 @@ router.put('/revert/:id',FetchEmplooy,async(req,res)=>{
         }
 
     }catch(error){
-        console.log(error)
         res.status(500).send({message:'error occured',success:false})
     }
 
 })
 
+//ROUTE 8 FOR THE MANAGER TO RAISE A COMPLAIN
+     
+router.post('/raisecomplain/:id',FetchEmplooy,async(req,res)=>{
 
+    try{
+        const data = await FinishedReq.findById(req.params.id);
+        if(data){
+            const newdata = {
+                name:data.name,
+                mobileNumber:data.mobileNumber,
+                mobilenumberString:data.mobileNumber,
+                Location:data.Location,
+                Address:data.Address,
+                Service:{
+                    type:data.Service.type,
+                        },
+                        forworded:{
+                            name:data.forworded.name,
+                            id:data.forworded.id
+                        },
+                        Technicain:{
+                            name:null,
+                            id:null
+                        },
+                        Complain:true,
+                        Accepted:true,
+                        Note:req.body.note
+            }
+            await TechDB.create(newdata)
+            res.status(200).send({message:'Complain Raised Successfully',success:true})
+        }
+        else{
+
+            res.status(200).send({message:'Unable to find the Service Data',success:false})
+        }
+    }catch(error){
+        console.log(error);
+        res.status(500).send({message:'error occured',success:false})
+    }
+
+})
 
 module.exports = router;

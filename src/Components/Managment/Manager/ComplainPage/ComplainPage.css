@@ -18,6 +18,8 @@
 }
 .ma-cplp-ul li{
     padding: 0 10px;
+    user-select: none;
+    cursor: pointer;
 }
 
 .ma-cplp-ul li::after{

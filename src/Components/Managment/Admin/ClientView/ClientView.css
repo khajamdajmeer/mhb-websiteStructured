@@ -66,6 +66,12 @@
     width: 50%;
     text-align: center;
 }
+.ad-cv-liright textarea{
+    resize: none;
+    border: none;
+    outline: 1px solid black;
+    border-radius: 4px;
+}
 .ad-cv-lileftbtn button{
     width: 120px;
     padding: 10px;
@@ -87,4 +93,7 @@
     width: 100%;
     max-width: 300px;
     justify-content: space-between;
+}
+.btndisbale{
+    opacity: 0.6;
 }
