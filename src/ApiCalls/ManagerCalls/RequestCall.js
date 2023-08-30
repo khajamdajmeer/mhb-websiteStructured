@@ -284,3 +284,29 @@ export const raisecomplainCall = async(id,reason)=>{
         throw error;
     }
 }
+
+export const getTasks = async()=>{
+    try{
+        const res = await axios.get(`${host}/api/track/getTasks`,{
+            headers:header
+        })
+        return res.data
+
+    }catch(error){
+        console.log(error);
+        throw error;
+    }
+}
+
+
+export const finshTask = async(id,dnote)=>{
+try{
+    const res = await axios.put(`${host}/api/track/finishtask/${id}`,{
+        note:dnote
+    },{headers:header})
+    return res.data
+}catch(err){
+    console.log(err)
+    throw err;
+}
+}

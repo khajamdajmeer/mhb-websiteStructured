@@ -10,6 +10,7 @@ const DeletedReq_DB = require('../../DBmodels/DBAdmin/Deleted_Req')
 const Clients_DB = require('../../DBmodels/DBAdmin/ClientDB')
 const InqueryDB= require('../../DBmodels/DBAdmin/InqueryDB');
 const FinishedReq = require('../../DBmodels/DBAdmin/FinishedReq');
+const TaskDB = require('../../DBmodels/DBManager/Tasks')
 
 const router = express.Router();
 
@@ -364,5 +365,55 @@ router.post('/raisecomplain/:id',FetchEmplooy,async(req,res)=>{
     }
 
 })
+
+
+///ROUTE 9 FOR THE MANAGER TO GET HIS Tasks
+router.get('/getTasks',FetchEmplooy,async(req,res)=>{
+    try{
+        const userid = req.user;
+        const data = await TaskDB.find({'Manager.id':userid})
+        if(data.length>0){
+            const showdata = data.filter((ele,index)=>{
+                if(!ele.finished.yes){
+                    return ele;
+                }
+                else{
+                    return
+                }
+            })
+            res.status(200).send({message:showdata,success:true})
+        }
+        else{
+            res.status(200).send({message:data,success:true})
+        }
+    }catch(error){
+        res.status(500).send({message:'error occured try again',success:false})
+    }
+})
+
+//ROUTE 10 FOR THE MANAGER TO update the task Data
+router.put('/finishtask/:id',FetchEmplooy,async(req,res)=>{
+    try{
+        const newdata = {}
+        newdata.finished.note=req.body.note;
+        newdata.finished.yes=true;
+        await TaskDB.findByIdAndUpdate(req.params.id,{$set:newdata},{new:true})
+
+res.status(200).send({message:'Task Completed Successfuly',success:true})
+
+
+    }catch(error){
+        res.status(500).send({message:'error occured try again ',success:false})
+    }
+})
+
+
+
+
+
+
+
+
+
 
 module.exports = router;

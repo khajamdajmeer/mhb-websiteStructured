@@ -255,7 +255,25 @@ width: inherit;
     border-radius: 50%;
     font-weight: bold;
 }
-
+.ad-emp-progressbtns{
+    background-color: #c0b4b4;
+}
+.ad-emp-progressbtns ul{
+    width: 100%;
+    display: flex;
+    padding: 10px 20px;
+    list-style: none;
+}
+.ad-emp-progressbtns li{
+    padding: 0 20px ;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    user-select: none;
+    font-weight: bold;
+}
+.ad-emp-progressbtns li:hover{
+    text-decoration: underline;
+}
 
 
 

@@ -13,6 +13,17 @@
     align-items: center;
     font-family: 'Exo 2', sans-serif;
 }
+@keyframes showanimate {
+    from{
+        opacity: 0.6;
+        transform: scale(0);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+}
 .ad-cv-center{
     width: 100%;
     max-width: 600px;
@@ -23,6 +34,8 @@
     align-items: center;
     justify-content: center;
     border-radius: 10px;
+    animation: showanimate 0.6s forwards ease;
+
 }
 .ad-cv-head{
     width: 100%;
