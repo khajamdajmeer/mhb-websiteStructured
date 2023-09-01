@@ -3,6 +3,7 @@ import './InqueryReqDB.css';
 import serachicon from '../../../images and tones/search-icon.png'
 import img3dots from '../../../images and tones/3dot.png'
 import { CleintDB_Download,Inquery_Data } from '../../../../ApiCalls/AdminCalls/DBCalls';
+import Inqueryview from '../Views/Inqueryview/Inqueryview';
 
 const InqueryReqDB = () => {
 
@@ -156,6 +157,16 @@ const InqueryReqDB = () => {
       },typingTimeout)
       // eslint-disable-next-line 
     },[ipval])
+
+    //Logic for showing the view button
+    const [ showview,setShowview]=useState(false);
+    const [viewdata,setViewdata]=useState('')
+    const hanldeviewbtn = (data)=>{
+      console.log(data);
+      setShowview(true);
+      setViewdata(data);
+    }
+    const handlecloseview=()=>{setShowview(false)}
     
    
 
@@ -164,6 +175,7 @@ const InqueryReqDB = () => {
 
   return (
     <>
+    {showview&&<Inqueryview data={viewdata} closeview={handlecloseview}/>}
 
     <div className="ad-ird-fullscreen">
       <div className="ad-ird-centerdiv">
@@ -194,6 +206,8 @@ const InqueryReqDB = () => {
                 <div className="ad-ird-serachname">{element.mobileNumber}</div>
                 <div className="ad-ird-serachname">{element.CallDate.slice(0,10)}</div>
                 <div className="ad-ird-serachname">{element.Note}</div>
+                <button className='ad-ird-viewbtn'>view</button>
+
 
                 {/* <div className="ad-ird-serachview">{element._id.length>2&&(<button onClick={()=>handleviewbtn(element)}>view</button>)}</div> */}
               </div>
@@ -225,6 +239,7 @@ const InqueryReqDB = () => {
               <div className="ad-ird-names"> {ele.mobileNumber}</div>
               <div className="ad-ird-names"> {ele.CallDate.slice(0,10)}</div>
               <div className="ad-ird-names"> {ele.Note}</div>
+               <button className='ad-ird-viewbtn' onClick={()=>hanldeviewbtn(ele)}>view</button>
 
               {/* <div className="ad-ird-names ad-ird-viewbtndiv"> <button className='ad-ird-viewbtn' onClick={()=>handleviewbtn(ele)}>view</button></div> */}
             </div>)

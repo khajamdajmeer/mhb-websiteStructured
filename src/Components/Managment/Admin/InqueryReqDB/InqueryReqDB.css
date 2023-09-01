@@ -201,6 +201,7 @@
     font-weight: bold;
     letter-spacing: 1px;
     margin-left: 4px;
+    cursor: pointer;
 }
 .ad-ird-serachdiv{
     display: flex;
@@ -327,6 +328,9 @@
     .ad-ird-names{
         width: auto;
 
+    }
+    .ad-ird-viewbtn{
+        padding: 5px;
     }
     .ad-ird-viewbtndiv{
         width: 100%;

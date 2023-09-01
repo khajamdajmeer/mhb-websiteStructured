@@ -367,6 +367,8 @@ router.post('/InqueryToTask/:id',FetchAdmin,async(req,res)=>{
         }
 
       })
+      res.status(200).send({message:'Task Assigned  Succesfully',success:true})
+
 
      }else{
       res.status(200).send({message:'error occured',success:false})

@@ -12,6 +12,8 @@ body{
 .btndisbale{
   opacity: 0.6;
 }
+.btndisbale:hover{
+}
 
 ::-webkit-scrollbar{
   z-index: -1;
