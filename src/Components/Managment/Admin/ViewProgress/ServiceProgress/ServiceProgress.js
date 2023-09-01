@@ -42,7 +42,7 @@ const datechange = (e)=>{
     setDate(e.target.value);
 }
 const handledateSerach=async()=>{
-            const datedata = data.map((ele)=>{
+            const datedata = data.filter((ele)=>{
                if(ele.Service.Delivery.slice(0,10)===date){
                 return(ele)
                }
@@ -105,7 +105,7 @@ const raisecomplainhandle = (id,val)=>{
              {showdata.map((ele,index)=>{
                 return( ele!=null&& (<div className="ad-emp-mapitem">
                  <ul className="ad-emp-dataitem">
-                    <span className='ad-emp-spanlen'>{index}. </span> 
+                    <span className='ad-emp-spanlen'>{index+1}. </span> 
                      
                  <li> {ele.name} </li>
                  <li> {ele.mobileNumber} </li>

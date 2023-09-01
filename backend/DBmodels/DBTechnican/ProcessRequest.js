@@ -64,7 +64,6 @@ const TechAccessSchema = new Schema({
             const istDate = utcToZonedTime(now, istTimezone);
             return istDate;
           }
-
     },
     forworded: {
         name: {

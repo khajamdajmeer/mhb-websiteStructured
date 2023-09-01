@@ -6,7 +6,7 @@
     display: flex;
     align-content: center;
     justify-content: center;
-    animation: showmsg 1s forwards ease;
+    animation: showmsg 0.5s forwards ease;
 }
 @keyframes showmsg {
     from{
@@ -27,6 +27,30 @@ to{
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+.top-msgbody::after{
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    max-width: 500px;
+    height: 3px;
+    border-radius: 10px;
+    background-color: rgb(2, 2, 2);
+    transform-origin: left;
+    animation: msgtimer  3.0s ease-out 0.5s;
+    
+    
+}
+    @keyframes msgtimer {
+        0%{
+            transform: scaleX(1);
+        }
+        100%{
+            transform: scaleX(0);
+        }
+    
 }
 .top-msg{
 height: 100%;

@@ -84,7 +84,7 @@ const InqueryReq = () => {
                 </ul>
               </div>
               <div className="ma-inr-item">
-                <button className='ma-inr-submitbtn' onClick={handlesubmit}>submit</button>
+                <button className={data.mobileNumber.length!==10 ?'ma-inr-submitbtn btndisbale':'ma-inr-submitbtn'} disabled={data.mobileNumber.length!==10} onClick={handlesubmit}>submit</button>
               </div>
              
               

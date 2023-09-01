@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './DailyActivity.css'
-import { getTasks } from '../../../../../ApiCalls/ManagerCalls/RequestCall';
+import { getTasks,finshTask } from '../../../../../ApiCalls/ManagerCalls/RequestCall';
+import TopMsg from '../../../Common/TopMsg/TopMsg';
 
 const DailyActivity = () => {
 
@@ -35,8 +36,24 @@ const DailyActivity = () => {
     const onchange=(e)=>{
         setNote(e.target.value);
     }
-    const handlefinish =(id)=>{
+
+    const [showmsg,setShowmsg]=useState(false);
+    const [msg,setMsg]=useState('')
+    const handlefinish =async(id)=>{
         console.log(id,note)
+        const res = await finshTask(id,note);
+        if(res.success){
+            setShowview(false)
+            setShowmsg(true);
+            setMsg(res.message);
+            onMount()
+            setNote('')
+        }
+        setTimeout(()=>{setShowmsg(false)},3000)
+    }
+
+    const closemsg = ()=>{
+        setShowmsg(false)
     }
 
 
@@ -44,6 +61,7 @@ const DailyActivity = () => {
 
   return (
     <>
+{showmsg&&<TopMsg message={msg} handleclose={closemsg} />}
     <div className="ad-dly-conatainer">
        <div className="ad-dly-centerdiv">
         <h2 className="ma-dly-head">
@@ -76,7 +94,7 @@ const DailyActivity = () => {
                         </div>
                         <div className="ma-dly-viewname">
                             <label htmlFor="">Note</label>
-                            <textarea name="note"value={note} onChange={onchange} id="" placeholder='Enter Note'></textarea>
+                            <textarea name="note" value={note} onChange={onchange} id="" placeholder='Enter Note'></textarea>
                         </div>
                         <div className="ma-dly-viewbtn">
                         <button onClick={closeview}>close</button>

@@ -3,11 +3,16 @@ const FetchAdmin = require('../../MiddleWare/FetchAdmin');
 const FinishDB = require('../../DBmodels/DBAdmin/FinishedReq')
 const EmplooyDB = require('../../DBmodels/DBAdmin/NewEmplooyData')
 const Tech_Process_DB = require('../../DBmodels/DBTechnican/ProcessRequest');
-const Complain_DB = require('../../DBmodels/DBTechnican/Complain')
+const Complain_DB = require('../../DBmodels/DBTechnican/Complain');
+const taskDB = require('../../DBmodels/DBManager/Tasks');
+const DeletedDb = require('../../DBmodels/DBAdmin/Deleted_Req');
+
+
 const { finished } = require('stream');
+const InqueryDB = require('../../DBmodels/DBAdmin/InqueryDB');
 const router = express.Router();
 
-
+//ROUTE FOR THE ADMIN TO GET COUNT OF THE MANAGERS WORK PROGRESS
 
 router.get('/reqcount/:id',FetchAdmin,async(req,res)=>{
 
@@ -183,7 +188,7 @@ router.get('/reqcount/:id',FetchAdmin,async(req,res)=>{
 
 
 })
-
+//ROUTE FOR THE ADIMN TO CREATE COMPLAIN FROM THE PRESENT FINISHED DB
 router.post('/complain/:id',FetchAdmin,async(req,res)=>{
   try{
     const findingdata = await FinishDB.findById(req.params.id);
@@ -219,12 +224,12 @@ router.post('/complain/:id',FetchAdmin,async(req,res)=>{
   }
 })
 
-
+//FOR THE ADMIN TO GET THE LIST FOR WORK DONE BY EACH EMPLOY
 router.get('/getdetails/:id',FetchAdmin,async(req,res)=>{
   const emplooy = await EmplooyDB.findById(req.params.id);
   if(emplooy){
       if(emplooy.designation==='Manager'){
-          const data = await FinishDB.find({'forworded.id':req.params.id})
+          const data = await FinishDB.find({'forworded.id':req.params.id,'Technicain.id':{ $ne: null }})
           res.status(200).send({data:data,success:true})
       }
       else{
@@ -236,4 +241,158 @@ router.get('/getdetails/:id',FetchAdmin,async(req,res)=>{
       res.status(400).send({message:'data not found',success:false})
   }
 })
+
+//ROUTE FOR THE ADMIN TO GET THE LIST TASKS COMPLETED BY THE MANAGER
+router.get('/getcompleteTasks/:id',FetchAdmin,async(req,res)=>{
+  const emplooy = await EmplooyDB.findById(req.params.id);
+  if(emplooy){
+      if(emplooy.designation==='Manager'){
+        const data = await taskDB.find({'Manager.id':req.params.id,'finished.yes':true});
+        if(data.length>0){
+      res.status(200).send({message:data,success:true})
+        }
+        else{
+          res.status(200).send({message:'data not  found',success:false})
+        }
+      }
+      else{
+      res.status(200).send({message:'data not found',success:false})
+      }
+  }
+  else{
+      res.status(400).send({message:'data not found',success:false})
+  }
+})
+
+
+//ROUTE FOR THE ADMIN TO GET THE PENDING SERVICE REQUESTS OF THE EMPLOOY
+
+router.get('/pendingtechreq/:id',FetchAdmin,async(req,res)=>{
+  const emplooy = await EmplooyDB.findById(req.params.id);
+  if(emplooy){
+      if(emplooy.designation==='Manager'){
+        const data = await Tech_Process_DB.find({'forworded.id':req.params.id,'Technicain.id':null})
+        if(data.length>0){
+          res.status(200).send({message:data,success:true})
+        }
+        else{
+          res.status(200).send({message:'no data found',success:false})
+        }
+    
+      }
+      else{
+        const data = await Tech_Process_DB.find({'Technicain.id':req.params.id})
+        if(data.length>0){
+          res.status(200).send({message:data,success:true})
+        }
+        else{
+          res.status(200).send({message:'no data found',success:false})
+        }
+
+      }
+  }
+  else{
+      res.status(400).send({message:'data not found',success:false})
+  }
+})
+
+
+//ROUTE FOR THE ADMIN TO GET PENDING TASKS DEATIALS
+router.get('/getpendingtasks/:id',FetchAdmin,async(req,res)=>{
+  const emplooy = await EmplooyDB.findById(req.params.id);
+  if(emplooy){
+      if(emplooy.designation==='Manager'){
+        const data = await taskDB.find({'Manager.id':req.params.id,'finished.yes':false});
+        if(data.length>0){
+      res.status(200).send({message:data,success:true})
+        }
+        else{
+          res.status(200).send({message:'data not  found',success:false})
+        }
+      }
+      else{
+      res.status(200).send({message:'data not found',success:false})
+      }
+  }
+  else{
+      res.status(400).send({message:'data not found',success:false})
+  }
+})
+
+
+//Router  FOR THE ADMIN TO FORWORD A DATA TO TASK A MANAGER
+  //DELETED DATA TO TASK
+
+router.post('/deleteToTask/:id',FetchAdmin,async(req,res)=>{
+  try{
+    const {mid,note,mname}=req.body;
+    const data = await DeletedDb.findById(req.params.id)
+    if(data){
+        await taskDB.create({
+          name:data.name,
+          mobileNumber:data.mobileNumber,
+          mobileNumberString:data.mobileNumber,
+          Task:note,
+          Manager:{
+            id:mid,
+            name:mname
+          }
+        })
+        res.status(200).send({message:'Task Created Successfully',success:true})
+
+    }else{
+    res.status(200).send({message:'error occured',success:false})
+    }
+  }catch(error){
+    console.log(error)
+    res.status(500).send({message:'error occured',success:false})
+  }
+})
+
+
+//ROUTE FOR THE ADMIN TO CREATE A TASK FROM INQUERY data
+router.post('/InqueryToTask/:id',FetchAdmin,async(req,res)=>{
+  try{
+    const {mid,note,mname}=req.body;
+     const data = await InqueryDB.findById(req.params.id);
+     if(data){
+      await taskDB.create({
+        name:data.name,
+        mobileNumber:data.mobileNumber,
+        mobileNumberString:data.mobileNumber,
+        Task:note,
+        Manager:{
+          id:mid,
+          name:mname
+        }
+
+      })
+
+     }else{
+      res.status(200).send({message:'error occured',success:false})
+      }
+
+
+
+  }catch(error){
+    res.status(500).send({message:'error occured',success:false})
+  }
+})
+
+// ROUTE FOR THE ADMIN TO GET ALL THE MANAGER DETAILS
+  router.get('/MangaerData',FetchAdmin,async(req,res)=>{
+    try{
+      const data = await EmplooyDB.find({designation:'Manager'});
+      if(data.length>0){
+        res.status(200).send({message:data,success:true})
+      }else{
+        res.status(200).send({message:'no managers found in Emplooys data',success:false})
+
+      }
+
+    }catch(error){
+      res.status(500).send({message:'error occured try again',success:false})
+    }
+  })
+
 module.exports = router;

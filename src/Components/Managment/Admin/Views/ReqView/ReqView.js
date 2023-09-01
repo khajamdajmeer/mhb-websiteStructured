@@ -46,9 +46,7 @@ const ReqView = (props) => {
                 <li className='ad-rdbv-lileft'>Note:</li>
                 <li className='ad-rdbv-liright'>{props.data.Note}</li>
             </ul>
-            
             <button className='ad-rdbv-closebtn' onClick={closefunction}>Close</button>
-           
         </div>
        </div>
     </div>

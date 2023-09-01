@@ -16,7 +16,8 @@ export const GetCount = async (id) => {
     } catch (error) {
         // Handle error here
         console.error('An error occurred:', error);
-        throw error; // Rethrow the error to handle it in the calling code
+        return ({message:'error occured',success:false})        
+
     }
 };
 
@@ -29,6 +30,84 @@ export const GetfullDetail = async(id)=>{
     } catch (error) {
         // Handle error here
         console.error('An error occurred:', error);
-        throw error; // Rethrow the error to handle it in the calling code
+        return ({message:'error occured',success:false})        
+
+    }
+};
+
+
+export const getcompleteTasks = async(id)=>{
+    try{
+        const res = await axios.get(`${host}/api/progress/getcompleteTasks/${id}`,{headers:header})
+        return res.data;
+
+    }catch(error){
+        console.log(error);
+        return ({message:'error occured',success:false})        
+
+    }
+}
+
+export const getPendingTechReq = async(id)=>{
+    try{
+        const res = await axios.get(`${host}/api/progress/pendingtechreq/${id}`,{headers:header})
+        return res.data;
+
+    }catch(error){
+        console.log(error);
+    return ({message:'error occured',success:false})        
+    }
+}
+
+export const getPendingTasks = async(id)=>{
+    try{
+        const res = await axios.get(`${host}/api/progress/getpendingtasks/${id}`,{headers:header})
+        return res.data;
+
+    }catch(error){
+        console.log(error);
+    return ({message:'error occured',success:false})        
+    }
+}
+
+
+export const getManagerdata = async()=>{
+    try{
+        const res = await axios.get(`${host}/api/progress/MangaerData`,{headers:header})
+        return res.data
+    }catch(error){
+        console.log(error)
+        return
+    }
+}
+
+export const InqueryToTask = async(id,mid,mname,note)=>{
+    try{
+        const res = await axios.post(`${host}/api/progress/InqueryToTask/${id}`,{
+            mid:mid,
+            mname:mname,
+            note:note
+        },{headers:header})
+        return res.data;
+
+    }catch(error){
+        console.log(error);
+        return
+    }
+}
+
+
+export const deleteToTask = async(id,mid,mname,note)=>{
+    try{
+        const res = await axios.post(`${host}/api/progress/deleteToTask/${id}`,{
+            mid:mid,
+            mname:mname,
+            note:note
+        },{headers:header})
+        return res.data;
+
+    }catch(error){
+        console.log(error);
+        return
     }
 }

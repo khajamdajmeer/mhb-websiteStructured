@@ -85,3 +85,19 @@
     max-width: 300px;
     justify-content: space-between;
 }
+.ad-ddbv-managerselect{
+    width: 80%;
+    text-align: center;
+    padding: 4px 0;
+    border: none;
+    outline: 1px solid black;
+    border-radius: 5px;
+}
+.ad-ddbv-textarea{
+    resize: none;
+    width: 100%;
+    text-align: center;
+    border: none;
+    outline: 1px solid black;
+    border-radius: 5px;
+}

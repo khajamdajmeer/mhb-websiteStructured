@@ -299,10 +299,10 @@ export const getTasks = async()=>{
 }
 
 
-export const finshTask = async(id,dnote)=>{
+export const finshTask = async(id,note)=>{
 try{
     const res = await axios.put(`${host}/api/track/finishtask/${id}`,{
-        note:dnote
+        note:note
     },{headers:header})
     return res.data
 }catch(err){

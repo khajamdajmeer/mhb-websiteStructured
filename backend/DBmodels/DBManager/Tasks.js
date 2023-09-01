@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const {Schema}= require('mongoose')
-const { format, utcToZonedTime } = require('date-fns-tz');
+const { format, utcToZonedTime,zonedTimeToUtc } = require('date-fns-tz');
 
 const istTimezone = 'Asia/Kolkata';
 
@@ -25,18 +25,22 @@ const Tasks = new Schema({
     },
     Task:{
         type:String,
-        require:true
+        require:true,
+        default:'none'
     },
     Address:{
         type:String
     },
     Date:{
         type:Date,
-        default: () => {
-            const now = new Date();
-            const istDate = utcToZonedTime(now, istTimezone);
-            return istDate;
-          }
+        default: Date.now()
+
+        // () => {
+        //     const now = new Date();
+        //     const istDate = utcToZonedTime(now, istTimezone);
+        //     const utcIstDate = zonedTimeToUtc(istDate, istTimezone);
+        //     return utcIstDate;
+        //   }
     },
     finished:{
        note:{

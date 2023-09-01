@@ -5,7 +5,10 @@ import dotsicon from '../../../images and tones/3dot.png'
 import { Link } from 'react-router-dom';
 import arrow from '../../../images and tones/downarrow.png'
 import { GetCount } from '../../../../ApiCalls/AdminCalls/ProgressCalls';
-import ServiceProgress from './ServiceProgress/ServiceProgress'
+import ServiceProgress from './ServiceProgress/ServiceProgress';
+import Tasks from './Tasks/Tasks';
+import PendingReq from './Pending Req/PendingReq';
+import PendingTasks from './PendingTasks/PendingTasks';
 const ViewProgress = (props) => {
 
 
@@ -161,6 +164,9 @@ setComponent(val);
                     </ul>
                   </div>
                   {component==='serviceReq'&&<ServiceProgress id={id}/>}
+                  {component==='Task'&&<Tasks id={id}/>}
+                  {component==='Pending Req'&&<PendingReq id={id}/>}
+                  {component==='Pending Tasks'&&<PendingTasks id={id}/>}
                                         
 
                 </div>

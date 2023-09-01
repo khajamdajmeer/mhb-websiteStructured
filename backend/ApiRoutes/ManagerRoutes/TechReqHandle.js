@@ -394,15 +394,20 @@ router.get('/getTasks',FetchEmplooy,async(req,res)=>{
 //ROUTE 10 FOR THE MANAGER TO update the task Data
 router.put('/finishtask/:id',FetchEmplooy,async(req,res)=>{
     try{
-        const newdata = {}
-        newdata.finished.note=req.body.note;
-        newdata.finished.yes=true;
+        
+        const {note}=req.body;
+        console.log(note)
+        const newdata = {
+            finished:{ note:note,yes:true}
+        }
+        
         await TaskDB.findByIdAndUpdate(req.params.id,{$set:newdata},{new:true})
 
 res.status(200).send({message:'Task Completed Successfuly',success:true})
 
 
     }catch(error){
+        console.log(error);
         res.status(500).send({message:'error occured try again ',success:false})
     }
 })
