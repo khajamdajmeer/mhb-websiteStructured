@@ -2,9 +2,10 @@ const express = require('express')
 const router = express.Router();
 const FetchAdmin = require('../../MiddleWare/FetchAdmin');
 const EmplooyDB = require('../../DBmodels/DBAdmin/NewEmplooyData');
+const terminate = require('../../DBmodels/DBAdmin/Terminate')
 const mongoose = require('mongoose');
 require('dotenv').config();
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
 
 const twilosid = process.env.TWILIO_SMM_SID;
 const twiloAuth = process.env.TWILIO_AUTH_TOKEN;
@@ -129,6 +130,36 @@ router.put('/emplooysignup/:id',FetchAdmin,async(req,res)=>{
     }
 })
 
+
+///ROUTE 5 FOR THE ADMIN TO TERMINATE EMPLOOY   
+router.post('/terminate/:id',FetchAdmin,async(req,res)=>{
+
+try{
+    const fetchemploy= await EmplooyDB.findById(req.params.id);
+    if(fetchemploy){
+        const {name,age,mobilenumber,email,joiningdate,presentAdress,permanentAdress,designation}=fetchemploy;
+       
+        await terminate.create( {
+            name:name,
+            age:age,mobilenumber:mobilenumber,email:email,
+            joiningdate:joiningdate,
+            presentAdress:presentAdress,
+            permanentAdress:permanentAdress,
+            designation:designation
+        })
+        await EmplooyDB.findByIdAndDelete(req.params.id)
+        res.status(200).send({message:`Emplooy ${fetchemploy.name} has been Terminated`,success:true})
+    }
+    else{
+        res.status(200).send({message:`Emplooy Data not found`,success:true})
+    }
+}catch(error){
+console.log(error);
+res.status(500).send({message:`Error Occured please Try again`,success:false})
+
+}
+
+})
 
 
 

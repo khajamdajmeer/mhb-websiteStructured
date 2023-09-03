@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react';
 import './Tasks.css';
 import serachicon from '../../../../images and tones/search-icon.png';
 import { getcompleteTasks } from '../../../../../ApiCalls/AdminCalls/ProgressCalls';
-
+import FinishedTasksView from '../../Views/FinishedTasksView/FinishedTasksView';
 
 const Tasks = (props) => {
 
@@ -51,6 +51,7 @@ useEffect(()=>{
 //logic for handing the search
 const handleserach=()=>{
     const filterdate = data.filter((ele)=>{
+        console.log(ele.Date.slice(0,10),date)
         if(ele.Date.slice(0,10)===date){
             return(ele)
            }
@@ -61,13 +62,32 @@ const handleserach=()=>{
     setShowdata(filterdate);
 }
 
+const handlereset =()=>{
+    setShowdata(data)
+}
+
+
+//Logic for handling the view button and passing the data to view compnent as props
+const [showview,setShowview]=useState(false);
+    const [viewdata,setViewdata]=useState('');
+const handleshowview= (ele)=>{
+    setShowview(true);
+    setViewdata(ele);
+}
+const handleCloseView = ()=>{
+    setShowview(false);
+}
+
   return (
     <>
+    {showview&&<FinishedTasksView data={viewdata} closefunction={handleCloseView}/>}
+
+
     <div className="ma-tsk-head">
         <h1>Tasks</h1>
         <div className="ad-emp-inputdivhead"> <input type="date" max={maxdate} name='data' value={date} onChange={datechange} />
            <button onClick={handleserach}><img src={serachicon} alt="" /></button>
-           <button className='ad-emp-rstbtn' >reset</button>
+           <button className='ad-emp-rstbtn' onClick={handlereset} >reset</button>
            </div>
     </div>
     <div className="ma-tsk-body">
@@ -86,7 +106,7 @@ const handleserach=()=>{
                         <li>{ele.mobileNumber}</li>
                         <li>{ele.Task}</li>
                         <li>{ele.finished.note}</li>
-                        <li className="ma-tsk-viewbtn"><button>view</button></li>
+                        <li className="ma-tsk-viewbtn"><button onClick={()=>handleshowview(ele)}>view</button></li>
                     </ul>
                     </div>)
     })

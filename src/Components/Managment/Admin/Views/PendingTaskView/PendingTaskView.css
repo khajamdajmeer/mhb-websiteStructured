@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500&display=swap');
 
 
-.ad-rdbv-fullscreen{
+.ad-ptv-fullscreen{
     position: fixed;
     height: 100vh;
     width: 100vw;
@@ -13,10 +13,10 @@
     align-items: center;
     font-family: 'Exo 2', sans-serif;
 }
-.ad-rdbv-center{
+.ad-ptv-center{
     width: 100%;
-    max-width: 600px;
-   height: 500px;
+    max-width: 500px;
+   height:unset;
    background-color: bisque;
     flex-direction: column;
     display: flex;
@@ -33,7 +33,7 @@
         transform: scale(1);
     }    
 }
-.ad-rdbv-head{
+.ad-ptv-head{
     width: 100%;
     height: 10%;
     display: flex;
@@ -43,7 +43,7 @@
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
-.ad-rdbv-body{
+.ad-ptv-body{
     height: 90%;
     width: 100%;
     background-color: #e1e5f2;
@@ -55,27 +55,30 @@
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     overflow: auto;
+    padding: 20px 0;
 }
-.ad-rdbv-bodyul{
+.ad-ptv-bodyul{
     display: flex;
     align-items: center;
     justify-content: center;
     list-style: none;
     width: 100%;
-    max-width: 350px;
-    padding: 6px 0;
+    padding: 12px 0;
 }
-.ad-rdbv-lileft{
+.ad-ptv-lileft{
     width: 30%;
     margin-right: 20px;
     text-align: center;
     font-weight: bold;
+    word-wrap: break-word;
+
 }
-.ad-rdbv-liright{
+.ad-ptv-liright{
     width: 50%;
     text-align: center;
+    word-wrap: break-word;
 }
-.ad-rdbv-closebtn{
+.ad-ptv-closebtn{
     width: 120px;
     padding: 10px;
     border: none;
@@ -84,13 +87,12 @@
     border-radius: 3px;
     color: white;
 }
-.ad-rdbv-closebtn:hover{
+.ad-ptv-closebtn:hover{
     background-color: #46d2a8;
 }
-.ad-rdbv-bodyulbtn{
+.ad-ptv-bodyulbtn{
     display: flex;
     list-style: none;
     width: 100%;
-    max-width: 300px;
     justify-content: space-between;
 }

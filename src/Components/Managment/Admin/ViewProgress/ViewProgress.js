@@ -9,7 +9,11 @@ import ServiceProgress from './ServiceProgress/ServiceProgress';
 import Tasks from './Tasks/Tasks';
 import PendingReq from './Pending Req/PendingReq';
 import PendingTasks from './PendingTasks/PendingTasks';
+import { TerminateEmplooy } from '../../../../ApiCalls/AdminCalls/EmplooyCalls';
+import TopMsg from '../../Common/TopMsg/TopMsg';
+import TerminateView from './TerminateView/TerminateView';
 const ViewProgress = (props) => {
+
 
 
 
@@ -46,17 +50,44 @@ const ViewProgress = (props) => {
 const [component,setComponent] =useState('serviceReq')
 const handlecomponentChange = (val)=>{
 setComponent(val);
-
 }
 
 
+//Logic to handle Terminate button
+const [showterminate,setShowterminate]=useState(false);
+const handleshowterminate = ()=>{
+    setShowterminate(true);
+}
+//declaring show message variables
+const [showmsg,setShowmsg]=useState('')
+const [msgval,setMsgval]=useState('')
+const terminatefunction=async()=>{
+    const res = await TerminateEmplooy(id);
+    if(res.success){
+        setShowmsg(true);
+        setMsgval(res.message)
+    }else{
+        setShowmsg(true);
+        setMsgval(res.message)
+    }
+setTimeout(()=>{
+    setShowmsg(false);
+    history("/admindashboard/emplooys")
+},3000)
+}
+const handlecancleterminate=()=>{
+    setShowterminate(false)
+}
 
+const handleclose=()=>setShowmsg(false);
 
 
 
 
     return (
         <>
+        {showterminate&&<TerminateView data={location.state} terminatefunction={terminatefunction} handleclose={handlecancleterminate}/>}
+        {showmsg&&<TopMsg message={msgval} handleclose={handleclose}/>}
             <div className="ad-vp-fullscreen">
                 <div className="ad-emp-center">
                     <div className="ad-emp-boxtop">
@@ -65,6 +96,7 @@ setComponent(val);
                         {hideupdate && (
                             <div className="ad-em-hidbox">
                                 <Link to='/admindashboard/updateemplooy' state={{ id: id }} className='ad-emp-upbtn'>update</Link>
+                                <button onClick={handleshowterminate}   className='ad-emp-upbtn'>Terminate</button>
                             </div>
                         )
                         }

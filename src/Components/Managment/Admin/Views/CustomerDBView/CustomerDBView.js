@@ -35,7 +35,7 @@ const CustomerDBView = (props) => {
               <div className="ad-cdbv-mapitem">{index+1}
             <div className="ad-cdbv-item">{ele.Location}</div>
             <div className="ad-cdbv-item"> {ele.Address}</div>
-            <div className="ad-cdbv-item color-red"> {ele.Service.Delivery.slice(0,10)}</div>
+            <div className="ad-cdbv-item "> {ele.Service.Delivery.slice(0,10)}</div>
             <div className="ad-cdbv-item"> {ele.Service.type}</div>
             <div className="ad-cdbv-viewbtn"> <button onClick={()=>handleview(ele)}>View</button></div>
           </div>

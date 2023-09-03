@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import serachicon from '../../../../images and tones/search-icon.png';
 import { getPendingTasks } from '../../../../../ApiCalls/AdminCalls/ProgressCalls';
+import PendingTaskView from '../../Views/PendingTaskView/PendingTaskView';
 
 
 const PendingTasks = (props) => {
@@ -74,9 +75,21 @@ const handlereset=()=>{
   setShowdata(data)
 }
 
+//Logic to handle the viewbtn inhere
+const [showview,setShowview]=useState(false);
+const [viewdata,setViewdata]=useState('')
+const handleview=(ele)=>{
+  setViewdata(ele);
+  setShowview(true)
+}
+const handlecloseview = ()=>{
+  setShowview(false);
+}
+
 
   return (
     <>
+    {showview&&<PendingTaskView data={viewdata} closefunction={handlecloseview}/>}
     <div className="ma-tsk-head">
         <h1>Pending Tasks</h1>
         <div className="ad-emp-inputdivhead"> <input type="date" max={maxdate} name='data' value={date} onChange={datechange} />
@@ -101,7 +114,7 @@ const handlereset=()=>{
             <li>{ele.mobileNumber}</li>
             <li className={ele.Date.slice(0,10)<formattedDate ? 'color-red':''}>{ele.Date.slice(0,10)}</li>
             <li>{ele.Task}</li>
-            <li className="ma-tsk-viewbtn"><button>view</button></li>
+            <li className="ma-tsk-viewbtn"><button onClick={()=>handleview(ele)}>view</button></li>
         </ul>
     </div>
 

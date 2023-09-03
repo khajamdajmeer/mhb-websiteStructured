@@ -4,8 +4,8 @@ import './ClientView.css'
 const ClientView = (props) => {
 
     const closefunction = props.closefunction;
-    const raisecomplain = props.complainfunction;
     const [reason,setReason]=useState('')
+    const raisecomplain = props.complainfunction ? props.complainfunction:console.log();
     const onchange = (e)=>{
         setReason(e.target.value)
     }

@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import serachicon from '../../../../images and tones/search-icon.png';
 import { getPendingTechReq } from '../../../../../ApiCalls/AdminCalls/ProgressCalls';
+import ReqView from '../../Views/ReqView/ReqView'
 
 
 const PendingReq = (props) => {
@@ -38,7 +39,7 @@ const datechange = (e)=>{
   setDate(e.target.value);
 }
 
-
+//this is the logic to run while the component is mounted
 const onMount=async()=>{
   const res = await getPendingTechReq(props.id);
   if(res.success){
@@ -47,6 +48,8 @@ const onMount=async()=>{
   }
 
 }
+
+//useEffect triggering the function that need to run on component mount
 useEffect(()=>{
   onMount();
   // eslint-disable-next-line
@@ -70,8 +73,21 @@ const handlereset=()=>{
   setShowdata(data)
 }
 
+//Logic to show the view req details compnent
+const [showview,setShowview]=useState(false);
+const [viewdata,setViewdata]= useState('')
+const handleshowview = (data)=>{
+  setShowview(true);
+  setViewdata(data);
+  
+}
+const handlecloseview=()=>{
+  setShowview(false);
+}
+
   return (
     <>
+    {showview && <ReqView closefunction={handlecloseview} data={viewdata}/>}
     <div className="ma-tsk-head">
         <h1>Pending Request</h1>
         <div className="ad-emp-inputdivhead"> <input type="date" max={maxdate} name='data' value={date} onChange={datechange} />
@@ -96,7 +112,7 @@ const handlereset=()=>{
             <li>{ele.mobileNumber}</li>
             <li className={ele.Service.Date.slice(0,10)<=formattedDate ? 'color-red':''}>{ele.Service.Date}</li>
             <li>{ele.Address}</li>
-            <li className="ma-tsk-viewbtn"><button>view</button></li>
+            <li className="ma-tsk-viewbtn"><button onClick={()=>{handleshowview(ele)}}>view</button></li>
         </ul>
     </div>
 

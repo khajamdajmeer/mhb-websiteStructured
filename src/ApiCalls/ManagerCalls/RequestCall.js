@@ -2,6 +2,10 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 const {host} = require('../Host')
+const header = {
+    'Content-Type': 'application/json',
+    'auth-token': Cookies.get('auth-token')
+}
 
 
 export const ViewRequests = async()=>{
@@ -161,10 +165,7 @@ export const PendingRequest = async(id)=>{
 
 export const getPendingReq = async()=>{
     try{const response = await axios.get(`${host}/api/manager/pendingdata`,{
-        headers:{
-            'Content-Type':'application/json',
-            'auth-token':Cookies.get('auth-token')
-        }
+        headers:header
     })
     return response.data
 }
@@ -173,10 +174,7 @@ catch(err){
     throw err
 }
 }
-const header = {
-    'Content-Type': 'application/json',
-    'auth-token': Cookies.get('auth-token')
-}
+
 
 export const ForwordPendingReq = async (rid, data) => {
     try {

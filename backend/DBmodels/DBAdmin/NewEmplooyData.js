@@ -36,7 +36,7 @@ const Emplooy_Schema = new Schema({
     AdharNumber:{
         type:Number,
         require:true,
-        unique:true
+        // unique:true
     },
   
     presentAdress:{
