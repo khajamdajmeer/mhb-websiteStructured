@@ -56,6 +56,19 @@ const Inqueryview = (props) => {
         setShowmsg(false);
         closeview()
     }
+
+    //logic for the mapping of history
+    const mdata = props.data
+    const arrLen = props.data.CallDate.length;
+    const historyarr = [];
+    for(let i =0;i<arrLen;i++){
+        const combineobject = {
+            CallDate:mdata.CallDate[i]||'',
+            Manager: mdata.Manager[i]|| {id:'',name:''},
+            Note:mdata.Note[i]||''
+        };
+        historyarr.push(combineobject);
+    }
     
   return (
     <>
@@ -64,32 +77,24 @@ const Inqueryview = (props) => {
 
     <div className="ad-iqvw-fullscreen" >
        <div className="ad-iqvw-center">
-        <h2 className="ad-iqvw-head">Request Details</h2>
+        <h2 className="ad-iqvw-head"> Details</h2>
+        <h4 className="ad-iqvw-head head2">
+            <div>{props.data.name} </div>
+            <div>{props.data.mobileNumber}</div>
+            </h4>
         <div className="ad-iqvw-body">
-            <ul className='ad-iqvw-bodyul'>
-                <li className='ad-iqvw-lileft'>Name:</li>
-                <li className='ad-iqvw-liright'>{props.data.name}</li>
-            </ul>
-            <ul className='ad-iqvw-bodyul'>
-                <li className='ad-iqvw-lileft'>MobileNumber:</li>
-                <li className='ad-iqvw-liright'>{props.data.mobileNumber}</li>
-            </ul>
-            <ul className='ad-iqvw-bodyul'>
-                <li className='ad-iqvw-lileft'>Location:</li>
-                <li className='ad-iqvw-liright'>{props.data.Location}</li>
-            </ul>
-            <ul className='ad-iqvw-bodyul'>
-                <li className='ad-iqvw-lileft'>Address:</li>
-                <li className='ad-iqvw-liright'> {props.data.Address}</li>
-            </ul>
-            <ul className='ad-iqvw-bodyul'>
-                <li className='ad-iqvw-lileft'>Inquery Date:</li>
-                <li className='ad-iqvw-liright'>{props.data.CallDate.slice(0,10)}</li>
-            </ul>
-            <ul className='ad-iqvw-bodyul'>
-                <li className='ad-iqvw-lileft'>Note</li>
-                <li className='ad-iqvw-liright'> {props.data.Note}</li>
-            </ul>
+            {historyarr.map((ele,index)=>{
+                return(
+<div className="ad-iqvw-history">
+                <div className="ad-iqvw-date">{ele.CallDate.slice(0,10)}</div>
+                <div className="ad-iqvw-date">{ele.Note}</div>
+                <div className="ad-iqvw-date">{ele.Manager.name}</div>
+            </div>
+                )
+            })}
+            
+          
+          
             <ul className='ad-iqvw-bodyul'>
                 <li className='ad-iqvw-lileft'>Task Assign</li>
                 <li className='ad-iqvw-liright'>

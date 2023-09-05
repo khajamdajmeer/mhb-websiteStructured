@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 const FetchAdmin = async(req,res,next)=>{
     const token = req.header('auth-token');
     if(!token){
-       return res.status(401).send({message:"Token Doesn't exists"})
+       return res.status(401).send({message:"Token Doesn't exists",success:false})
     }
     try{
         const data = jwt.verify(token,JWT_SECRET);
@@ -17,12 +17,12 @@ const FetchAdmin = async(req,res,next)=>{
             next();
         }
         else{
-       return res.status(401).send({message:"user does not exists"})
+       return res.status(401).send({message:"user does not exists",success:false})
 
         }
     }
     catch(error){
-        res.status(401).send({message:'error occured',...error})
+        res.status(401).send({message:'error occured',...error,success:false})
      }
 }
 

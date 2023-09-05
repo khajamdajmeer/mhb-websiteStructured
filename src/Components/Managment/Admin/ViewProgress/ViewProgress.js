@@ -40,7 +40,10 @@ const ViewProgress = (props) => {
 
     const onMount=async()=>{
         const res = await GetCount(location.state.id);
-        setCount(res);
+       if(res.success){
+           setCount(res);
+       }
+       
     }
     useEffect(()=>{
         onMount()

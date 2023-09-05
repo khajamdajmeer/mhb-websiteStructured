@@ -204,7 +204,7 @@ const InqueryReqDB = () => {
                 <div className="ad-ird-serachmapitem">
                 <div className="ad-ird-serachname">{element.name}</div>
                 <div className="ad-ird-serachname">{element.mobileNumber}</div>
-                <div className="ad-ird-serachname">{element.CallDate.slice(0,10)}</div>
+                <div className="ad-ird-serachname">{element.CallDate[0].slice(0,10)}</div>
                 <div className="ad-ird-serachname">{element.Note}</div>
                 <button className='ad-ird-viewbtn'>view</button>
 
@@ -237,7 +237,7 @@ const InqueryReqDB = () => {
               <div className="ad-ird-index">{startIndex+index+1}</div>
               <div className="ad-ird-names">{ele.name}</div>
               <div className="ad-ird-names"> {ele.mobileNumber}</div>
-              <div className="ad-ird-names"> {ele.CallDate.slice(0,10)}</div>
+              <div className="ad-ird-names"> {ele.CallDate[ele.CallDate.length-1].slice(0,10)}</div>
               <div className="ad-ird-names"> {ele.Note}</div>
                <button className='ad-ird-viewbtn' onClick={()=>hanldeviewbtn(ele)}>view</button>
 

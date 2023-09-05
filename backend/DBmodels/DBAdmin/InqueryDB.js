@@ -25,20 +25,20 @@ const InqueryDB = new Schema({
         type:String,
         default:null
     },
-    Note:{
+    Note:[{
         type:String,
         default:null
-    },
-    CallDate:{
+    }],
+    Manager:[{
+        id:{type:mongoose.Schema.Types.ObjectId},
+            name:{
+                type:String
+            }
+    }],
+    CallDate:[{
         type:Date,
-        require: true,
-        default:() => {
-            const now = new Date();
-            const istDate = utcToZonedTime(now, istTimezone);
-            return istDate;
-          }
-
-    }
+       
+         }]
 
 })
 

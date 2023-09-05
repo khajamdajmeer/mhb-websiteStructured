@@ -6,6 +6,16 @@ const FetchEmplooy = require('../../MiddleWare/FetchEmplooy');
 const techDB = require('../../DBmodels/DBTechnican/ProcessRequest');
 const NewEmplooyData = require('../../DBmodels/DBAdmin/NewEmplooyData');
 const InqueryDB = require('../../DBmodels/DBAdmin/InqueryDB');
+const { format, utcToZonedTime } = require('date-fns-tz');
+
+
+const istTimezone = 'Asia/Kolkata';
+const date = () => {
+    const now = new Date();
+    const istDate = utcToZonedTime(now, istTimezone);
+    return istDate;
+  }
+  const todaydate = date();
 
 // ROUTE 1 FOR THE MANAGER FOR VIEWING THE REQUEST
 router.get('/requests',FetchEmplooy,async(req,res)=>{
@@ -299,15 +309,24 @@ router.post('/acceptfortech/:id',FetchEmplooy,async(req,res)=>{
 router.post('/inqueryrequest',FetchEmplooy,async(req,res)=>{
     try{
         const data = req.body;
-        await InqueryDB.create({
-            name:data.name,
-            mobileNumber:data.mobileNumber,
-            mobileNumberString:data.mobileNumber,
-            Location:data.Location,
-            Address:data.Address,
-            Note:data.Note
-
-        })
+        const {name,mobileNumber,Location,Address,Note}=req.body;
+        const finddata = await InqueryDB.findOne({mobileNumber:mobileNumber})
+        
+        if(finddata){
+            await InqueryDB.findByIdAndUpdate(finddata._id,{$push:{Manager:{id:req.user,name:req.name},Note:Note,CallDate:todaydate}},{new:true})
+        }else{
+            await InqueryDB.create({
+                name:name,
+                mobileNumber:mobileNumber,
+                mobileNumberString:mobileNumber,
+                Location:Location,
+                Address:Address,
+                Manager:{id:req.user,name:req.name},
+                Note:Note,
+                CallDate:todaydate
+            })
+        }
+        
         res.status(200).send({message:'Submit Successfull',success:true})
 
     }catch(error){
