@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500&display=swap');
+
+
+.ma-ddbv-fullscreen{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+
+    background-color: rgba(0, 0, 0, 0.54);
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Exo 2', sans-serif;
+}
+.ma-ddbv-center{
+    width: 100%;
+    max-width: 600px;
+   height: 500px;
+   background-color: bisque;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    
+}
+.ma-ddbv-head{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #93a8ac;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.ma-ddbv-body{
+    height: 90%;
+    width: 100%;
+    background-color: #e1e5f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    justify-content: center;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    overflow: auto;
+}
+.ma-ddbv-bodyul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    width: 100%;
+    max-width: 350px;
+    padding: 6px 0;
+}
+.ma-ddbv-lileft{
+    width: 30%;
+    margin-right: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+.ma-ddbv-liright{
+    width: 50%;
+    text-align: center;
+}
+.ma-ddbv-closebtn{
+    width: 120px;
+    padding: 10px;
+    border: none;
+    background-color: #243e36;
+    outline: 1px solid white;
+    border-radius: 3px;
+    color: white;
+}
+.ma-ddbv-closebtn:hover{
+    background-color: #46d2a8;
+}
+.ma-ddbv-bodyulbtn{
+    display: flex;
+    list-style: none;
+    width: 100%;
+    max-width: 300px;
+    justify-content: space-between;
+}
+.ma-ddbv-managerselect{
+    width: 80%;
+    text-align: center;
+    padding: 4px 0;
+    border: none;
+    outline: 1px solid black;
+    border-radius: 5px;
+}
+.ma-ddbv-textarea{
+    resize: none;
+    width: 100%;
+    text-align: center;
+    border: none;
+    outline: 1px solid black;
+    border-radius: 5px;
+}

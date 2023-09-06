@@ -59,9 +59,23 @@ const CustomerDB = () => {
       setCurrentPage(newPage);
       scrolable.scrollTop=0;
     }
+    const sortDataByDate = [...data].sort((a, b) => {
+      // Assuming 'Date' is a property inside 'Service'
+      const dateA = new Date(a.CreatedDate);
+      const dateB = new Date(b.CreatedDate);
+    
+      // Extract only the date part (year, month, and day)
+      const datePartA = new Date(dateA.getFullYear(), dateA.getMonth(), dateA.getDate());
+      const datePartB = new Date(dateB.getFullYear(), dateB.getMonth(), dateB.getDate());
+    
+      // Compare the date parts
+      if (datePartA < datePartB) return 1;
+      if (datePartA > datePartB) return -1;
+      return 0;
+    });
     const startIndex = (currentPage-1)*itemperpage;
     const endIndex = Math.min(startIndex + itemperpage,data.length);
-    const slicedData = data.slice(startIndex,endIndex)
+    const slicedData = sortDataByDate.slice(startIndex,endIndex)
 
     const handleNextpage = ()=>{
       setCurrentPage(currentPage+1);
@@ -236,7 +250,7 @@ const CustomerDB = () => {
           {showdata&&(
             slicedData.map((ele,index)=>{
              return( <div className="ad-cdb-mapitem" key={ele._id}>
-              <div className="ad-cdb-index">{startIndex+index+1}</div>
+              <div className="ad-cdb-index">{sortDataByDate.length-startIndex-index}</div>
               <div className="ad-cdb-names">{ele.name}</div>
               <div className="ad-cdb-names"> {ele.mobileNumber}</div>
               <div className="ad-cdb-names ad-cdb-viewbtndiv"> <button className='ad-cdb-viewbtn' onClick={()=>handleviewbtn(ele)}>view</button></div>

@@ -7,7 +7,22 @@ import FinishedTasksView from '../../Views/FinishedTasksView/FinishedTasksView';
 const Tasks = (props) => {
 
     const [data,setData]=useState([])
-    const[showdata,setShowdata]=useState([])
+    const[showdata,setShowdata]=useState([]);
+//Logic to sort data by Date form latest to oldest
+    const sortDataByDate = [...showdata].sort((a, b) => {
+        // Assuming 'Date' is a property inside 'Service'
+        const dateA = new Date(a.Date);
+        const dateB = new Date(b.Date);
+      
+        // Extract only the date part (year, month, and day)
+        const datePartA = new Date(dateA.getFullYear(), dateA.getMonth(), dateA.getDate());
+        const datePartB = new Date(dateB.getFullYear(), dateB.getMonth(), dateB.getDate());
+      
+        // Compare the date parts
+        if (datePartA < datePartB) return 1;
+        if (datePartA > datePartB) return -1;
+        return 0;
+      });
 
     const getformatemaxdate =()=>{
         const today = new Date();
@@ -99,7 +114,7 @@ const handleCloseView = ()=>{
             <li> </li>
         </ul>
     </div>
-    {showdata.map((ele,index)=>{
+    {sortDataByDate.map((ele,index)=>{
             return(<div className="ma-tsk-mapitem">
                     <ul>
                         <li>{ele.name}</li>

@@ -308,3 +308,25 @@ try{
     throw err;
 }
 }
+
+
+
+
+export const getDeletedData = async()=>{
+    try{
+        const res = await axios.get(`${host}/api/track/getdeltedDb`,{headers:header})
+        return res.data
+    }catch(error){
+    console.log(error);
+    }
+}
+
+export const getInqueryDb = async()=>{
+    try{
+        const res = await axios.get(`${host}/api/track/getInqueryDb`,{headers:header})
+        return res.data
+    }catch(error){
+    console.log(error);
+    }
+}
+

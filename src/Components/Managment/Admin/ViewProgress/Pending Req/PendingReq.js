@@ -1,7 +1,8 @@
 import React,{useEffect, useState} from 'react';
 import serachicon from '../../../../images and tones/search-icon.png';
 import { getPendingTechReq } from '../../../../../ApiCalls/AdminCalls/ProgressCalls';
-import ReqView from '../../Views/ReqView/ReqView'
+import ReqView from '../../Views/ReqView/ReqView';
+
 
 
 const PendingReq = (props) => {
@@ -16,6 +17,23 @@ const PendingReq = (props) => {
 
   const [data,setData]=useState([])
   const[showdata,setShowdata]=useState([])
+
+     //logic to sort the data by the date latest to oldest
+     const sortDataByDate = [...showdata].sort((a, b) => {
+      // Assuming 'Date' is a property inside 'Service'
+      const dateA = new Date(a.RequestDate);
+      const dateB = new Date(b.RequestDate);
+    
+      // Extract only the date part (year, month, and day)
+      const datePartA = new Date(dateA.getFullYear(), dateA.getMonth(), dateA.getDate());
+      const datePartB = new Date(dateB.getFullYear(), dateB.getMonth(), dateB.getDate());
+    
+      // Compare the date parts
+      if (datePartA < datePartB) return 1;
+      if (datePartA > datePartB) return -1;
+      return 0;
+    });
+
   const getformatemaxdate =()=>{
       const today = new Date();
       const yyyy = today.getFullYear();
@@ -104,7 +122,7 @@ const handlecloseview=()=>{
             <li> </li>
         </ul>
     </div>
-    {showdata.map((ele,index)=>{
+    {sortDataByDate.map((ele,index)=>{
       return(
         <div className="ma-tsk-mapitem">
           <ul>

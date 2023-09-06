@@ -1,17 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './InqueryReqDB.css';
-import serachicon from '../../../images and tones/search-icon.png'
-import img3dots from '../../../images and tones/3dot.png'
-import { CleintDB_Download,Inquery_Data } from '../../../../ApiCalls/AdminCalls/DBCalls';
-import Inqueryview from '../Views/Inqueryview/Inqueryview';
+import './Inquery.css';
+// import serachicon from '../../../images and tones/search-icon.png'
+// import img3dots from '../../../images and tones/3dot.png'
+import { getInqueryDb } from '../../../../../ApiCalls/ManagerCalls/RequestCall';
+import View from './view/view';
+const Inquery = () => {
 
-const InqueryReqDB = () => {
 
-  //logic for showing downloadbtns
-  const [showDwnlod,setShowDwnlod]=useState(false)
-  const handleShowDwnload =()=>{
-    setShowDwnlod(!showDwnlod)
-  }
+
 
   //Logic for fetching the clients Data
   const [data,setData]=useState([
@@ -28,7 +24,7 @@ const InqueryReqDB = () => {
   const [msg,setMsg]=useState('')
   const [showmsg,setShowmsg]=useState(false)
   const onMount = async()=>{
-    const res = await Inquery_Data();
+    const res = await getInqueryDb();
     if(res.success){
       setShowmsg(false);
       setShowdata(true)
@@ -48,7 +44,7 @@ const InqueryReqDB = () => {
   //LOGIC FOR SHOWING 2O ITEMS PER PAGE
     const itemperpage=15;
     const [currentPage,setCurrentPage]=useState(1);
-    const scrolable = document.getElementById('ad-ird-scrolable')
+    const scrolable = document.getElementById('ma-irdd-scrolable')
 
     const handlePageChange = (newPage)=>{
       setCurrentPage(newPage);
@@ -70,15 +66,11 @@ const InqueryReqDB = () => {
     }
     //LOGIC TO CLOSE 3DOT BTNS ON CLICICKING ANYWHERE
     const close3dot = ()=>{
-      setShowDwnlod(false)
       setShowsearch(false)
     }
    
 
-    //LOGIC OF DOWNLODING THE ALL CLIENTS DATA
-    const handleDownload = ()=>{
-      CleintDB_Download(data)
-    }
+  
 
     //LOGIC FOR SEARCH TRIGERING A FUCTION ON STOPING THE TYPING FOR 1SEC
   
@@ -175,92 +167,83 @@ const InqueryReqDB = () => {
 
   return (
     <>
-    {showview&&<Inqueryview data={viewdata} closeview={handlecloseview}/>}
+    {showview&&<View data={viewdata} closeview={handlecloseview}/>}
 
-    <div className="ad-ird-fullscreen">
-      <div className="ad-ird-centerdiv">
-        <div className="ad-ird-head">
-          <h1 className="ad-ird-hleft">Inquery DB</h1>
-          <div className="ad-ird-hright">
-            <div className="ad-ird-serachdiv">
-            <select name="type" id="" className='ad-ird-selectip' onChange={handleIpdataChange} value={iptype}>
+    <div className="ma-irdd-fullscreen">
+      <div className="ma-irdd-centerdiv">
+        <div className="ma-irdd-head">
+          <h1 className="ma-irdd-hleft">Inquery DB</h1>
+          <div className="ma-irdd-hright">
+            <div className="ma-irdd-serachdiv">
+            <select name="type" id="" className='ma-irdd-selectip' onChange={handleIpdataChange} value={iptype}>
               <option value="0">---select---</option>
               <option value="name">Name</option>
               <option value="mobilenumber">MobileNumber</option>
               <option value="Date">Date</option>
             </select>
-            <input type={iptype==='Date' ? 'Date' : 'text'} className="ad-ird-searchip" id='ad-ird-serachip-client' placeholder='Search' onChange={handleIpChange} value={ipval}/>
+            <input type={iptype==='Date' ? 'Date' : 'text'} className="ma-irdd-searchip" id='ma-irdd-serachip-client' placeholder='Search' onChange={handleIpChange} value={ipval}/>
 
 
             
 
 
-            <button className="ad-ird-searchbtn" onClick={handleSearch}>
-              <img src={serachicon} alt="" />
+            <button className="ma-irdd-searchbtn" onClick={handleSearch}>
+              {/* <img src={serachicon} alt="" /> */}
             </button>
-            {showsearch&&(<div className="ad-ird-serachresut">
+            {showsearch&&(<div className="ma-irdd-serachresut">
             {(  searchData.map((element)=>{
               return(
-                <div className="ad-ird-serachmapitem">
-                <div className="ad-ird-serachname">{element.name}</div>
-                <div className="ad-ird-serachname">{element.mobileNumber}</div>
-                <div className="ad-ird-serachname">{element.CallDate[0].slice(0,10)}</div>
-                <div className="ad-ird-serachname">{element.Note}</div>
-                <button className='ad-ird-viewbtn'>view</button>
+                <div className="ma-irdd-serachmapitem">
+                <div className="ma-irdd-serachname">{element.name}</div>
+                <div className="ma-irdd-serachname">{element.mobileNumber}</div>
+                <div className="ma-irdd-serachname">{element.CallDate[0].slice(0,10)}</div>
+                <div className="ma-irdd-serachname">{element.Note}</div>
+                <button className='ma-irdd-viewbtn'>view</button>
 
 
-                {/* <div className="ad-ird-serachview">{element._id.length>2&&(<button onClick={()=>handleviewbtn(element)}>view</button>)}</div> */}
+                {/* <div className="ma-irdd-serachview">{element._id.length>2&&(<button onClick={()=>handleviewbtn(element)}>view</button>)}</div> */}
               </div>
               )
             }))}
-            <div className="ad-ird-serachmapitem">no Data To show</div>
+            <div className="ma-irdd-serachmapitem">no Data To show</div>
             </div>)}
             
             </div>
-            <div className='ad-ird-3dot-hide'>
-            <button className="ad-ird-3dot" onClick={handleShowDwnload}>
-              <img src={img3dots} alt="" />
-            </button>
-            {showDwnlod&&(<div className="ad-ird-3dot-hbody" >
-              {/* <button>view BlackList</button>
-              <button>aka</button> */}
-              <button onClick={handleDownload}>download all</button>
-            </div>)}
-            </div>
+          
           </div>
 
         </div>
-        <div className="ad-ird-body" id='ad-ird-scrolable' onClick={close3dot}>
+        <div className="ma-irdd-body" id='ma-irdd-scrolable' onClick={close3dot}>
           {showdata&&(
             slicedData.map((ele,index)=>{
-             return( <div className="ad-ird-mapitem" key={ele._id}>
-              <div className="ad-ird-index">{startIndex+index+1}</div>
-              <div className="ad-ird-names">{ele.name}</div>
-              <div className="ad-ird-names"> {ele.mobileNumber}</div>
-              <div className="ad-ird-names"> {ele.LastCallDate.slice(0,10)}</div>
-              <div className="ad-ird-names"> {ele.Note[ele.Note.length-1]}</div>
-               <button className='ad-ird-viewbtn' onClick={()=>hanldeviewbtn(ele)}>view</button>
+             return( <div className="ma-irdd-mapitem" key={ele._id}>
+              <div className="ma-irdd-index">{startIndex+index+1}</div>
+              <div className="ma-irdd-names">{ele.name}</div>
+              <div className="ma-irdd-names"> {ele.mobileNumber}</div>
+              <div className="ma-irdd-names"> {ele.LastCallDate.slice(0,10)}</div>
+              <div className="ma-irdd-names"> {ele.Note[ele.Note.length-1]}</div>
+               <button className='ma-irdd-viewbtn' onClick={()=>hanldeviewbtn(ele)}>view</button>
 
-              {/* <div className="ad-ird-names ad-ird-viewbtndiv"> <button className='ad-ird-viewbtn' onClick={()=>handleviewbtn(ele)}>view</button></div> */}
+              {/* <div className="ma-irdd-names ma-irdd-viewbtndiv"> <button className='ma-irdd-viewbtn' onClick={()=>handleviewbtn(ele)}>view</button></div> */}
             </div>)
             })
           )}
           {
             showmsg&&(
-              <div className='ad-ird-nmsg ad-ird-mapitem'>{msg}</div>
+              <div className='ma-irdd-nmsg ma-irdd-mapitem'>{msg}</div>
             )
           }
 
        
         </div>
 
-     {data.length>itemperpage&&( <div className="ad-ird-pages">
-        <ul className='ad-ird-pages-ul'>
-          <button  className={`ad-ird-ul-prev ${currentPage<=1 ? `ad-ird-disabled`:' '}`} onClick={handlePrevPage} disabled={currentPage<=1}>Prev</button>
+     {data.length>itemperpage&&( <div className="ma-irdd-pages">
+        <ul className='ma-irdd-pages-ul'>
+          <button  className={`ma-irdd-ul-prev ${currentPage<=1 ? `ma-irdd-disabled`:' '}`} onClick={handlePrevPage} disabled={currentPage<=1}>Prev</button>
           {Array.from({length:Math.ceil(data.length/itemperpage)},(_, index)=>{
-            return(<li onClick={()=>{handlePageChange(index+1)}} className={currentPage === index+1 ? 'ad-ird-pageactiv':' '} >{index+1}</li>)
+            return(<li onClick={()=>{handlePageChange(index+1)}} className={currentPage === index+1 ? 'ma-irdd-pageactiv':' '} >{index+1}</li>)
           })}
-          <button className={`ad-ird-ul-prev ${(currentPage*itemperpage)>=data.length ? `ad-ird-disabled`:' '}`} onClick={handleNextpage} disabled={(currentPage*itemperpage)>=data.length} >Next</button>
+          <button className={`ma-irdd-ul-prev ${(currentPage*itemperpage)>=data.length ? `ma-irdd-disabled`:' '}`} onClick={handleNextpage} disabled={(currentPage*itemperpage)>=data.length} >Next</button>
         </ul>
       </div>)}
       </div>
@@ -275,4 +258,7 @@ const InqueryReqDB = () => {
 
 
 
-export default InqueryReqDB;
+
+
+
+export default Inquery;

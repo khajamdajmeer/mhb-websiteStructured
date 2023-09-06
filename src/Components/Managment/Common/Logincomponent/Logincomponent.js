@@ -42,9 +42,7 @@ const handlelogin = async(e)=>{
       Cookies.set('level',lv)
     }
     else{
-      console.log(Cookies.get('auth-token'))
       setMessage({message:res.message,navigate:'/dashboard',showOk:true})
-
       let lv = 'L2'
       Cookies.set('level',lv)
     }

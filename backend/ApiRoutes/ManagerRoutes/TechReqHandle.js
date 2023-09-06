@@ -223,6 +223,7 @@ router.post('/finishreq/:id',FetchEmplooy,async(req,res)=>{
             
             const fdata = await FinishedReqDB.create(newdata)
             await ManagerPushDB.findByIdAndDelete(reqid)
+            await DeletedReq_DB.deleteMany({mobileNumber:data.mobileNumber})
             await InqueryDB.deleteMany({mobileNumber:data.mobileNumber})
             res.status(200).send({message:'Success',Success:true})
 
@@ -413,10 +414,36 @@ res.status(200).send({message:'Task Completed Successfuly',success:true})
 })
 
 
+//ROUTE 11 FOR THE MANGER TO VIEW THE DELETED REQUEST BY HIM
+router.get('/getdeltedDb',FetchEmplooy,async(req,res)=>{
+    try{
+        const data = await DeletedReq_DB.find({'forworded.id':req.user});
+        if(data.length>0){
+            res.status(200).send({message:data,success:true})
+        }else{
+            res.status(200).send({message:'No data to Show',success:false})
+        }
+
+    }catch(error){
+        res.status(500).send({message:'error occured',success:false})
+    }
+})
 
 
+//Route 12 FOR THE MANGER TO GET THE INQUERY DATA
+router.get('/getInqueryDb',FetchEmplooy,async(req,res)=>{
+    try{
+        const data  = await InqueryDB.find({'Manager.id':req.user});
+    if(data.length>0){
+        res.status(200).send({message:data,success:true})
+    }else{
+        res.status(200).send({message:'No data to Show',success:false})
+    }
 
-
+    }catch(error){
+        res.status(500).send({message:'Error Occured Please Try Again',success:false})
+    }
+})
 
 
 

@@ -1,0 +1,341 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500&display=swap');
+.ma-irdd-fullscreen{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    flex-direction: column;
+    
+     font-family: 'Exo 2', sans-serif;
+}
+.ma-irdd-centerdiv{
+    width: 100%;
+    height: auto;
+    /* border: 2px solid wheat; */
+}
+.ma-irdd-head{
+    min-height: 40px;
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #edf2f4;
+    position: sticky;
+    top: 40px;
+}
+.ma-irdd-hright{
+    height: 100%;
+    /* text-align: right; */
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+
+}
+.ma-irdd-hleft{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* font-size: larger; */
+    margin-left: 4px;
+    width: 70%;
+    justify-content: center;
+
+}
+.ma-irdd-selectip{
+    height: 20px;
+    border: none;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background-color: #a8dadc;
+    width: 60px;
+    outline: 1px solid black;
+    
+}
+
+.ma-irdd-searchip{
+    height: 20px;
+    width: 165px;
+    border: none;
+    outline: 1px solid black;
+    
+}
+.ma-irdd-searchbtn{
+    height: 20px;
+    width: 30px;
+    border: none;
+    background-color: #a8dadc;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    outline: 1px solid black;
+
+}
+.ma-irdd-3dot{
+    width: 10px;
+    height: 30px;
+    border: none;
+    /* background-color: orange; */
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ma-irdd-3dot img{
+    height: inherit;
+    width: inherit;
+    scale: 0.7;
+}
+.ma-irdd-searchbtn img{
+    height: 20px;
+    width: unset;
+    transform: scale(0.8);
+    /* filter: invert(1); */
+}
+
+.ma-irdd-body{
+    height: 77vh;
+    /* max-height: auto; */
+    overflow: auto;
+}
+
+
+.ma-irdd-mapitem{
+    padding: 10px;
+    background-color: #ced4da;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    box-shadow: 1px 0px 8px -2px #111 ;
+    border-bottom: 1px solid ;
+}
+
+.ma-irdd-nmsg{
+    justify-content: center;
+}
+.ma-irdd-names{
+    padding: 4px 0;
+    width: 17%;
+    overflow: hidden;
+    overflow-wrap: hidden;
+}
+.ma-irdd-index{
+    width: 4%;
+    text-align: left;
+    color: #0000ef;
+    font-weight: bold;
+}
+.ma-irdd-viewbtndiv{
+    width: 8%;
+    /* padding: 0 2px; */
+}
+
+
+
+
+
+.ma-irdd-pages{
+  
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e9ecef;
+    overflow-wrap: wrap;
+    padding: 6px 10px;
+
+}
+.ma-irdd-pages-ul{
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+}
+.ma-irdd-pages-ul li{
+    margin: 3px 10px;
+    background-color: orangered;
+    padding: 5px;
+    border-radius: 3px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+}
+.ma-irdd-pageactiv{
+    color: white;
+    background: #aee201 !important;
+}
+.ma-irdd-ul-prev{
+    margin: 3px 10px;
+    padding: 5px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    background-color: #a8dadc !important;
+    color: black !important;
+    border: none;
+}
+.ma-irdd-disabled{
+    opacity: 0.6;
+}
+.ma-irdd-viewbtn{
+    padding: 4px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #495867 ;
+    color: #fff;
+    outline: 1px solid black;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-left: 4px;
+    cursor: pointer;
+}
+.ma-irdd-serachdiv{
+    display: flex;
+    position: relative;
+}
+.ma-irdd-serachresut{
+    position: absolute;
+    top: 120%;
+    left: -20%;
+    height: 250px;
+    background-color: #dfe7fd;
+    border-radius: 5px;
+    outline: 1px solid black;
+    width: 120%;
+    overflow: auto;
+    animation: serachopen 0.4s forwards ease;
+    
+}
+@keyframes serachopen {
+    from{
+        opacity: 0.3;
+    }
+    to{
+        opacity: 1;
+    }
+    
+}
+.ma-irdd-serachmapitem{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    border-bottom: 1px solid gray;
+    padding: 4px 0;
+}
+.ma-irdd-serachname{
+    width: 50%;
+    text-align: center;
+}
+.ma-irdd-serachview{
+    width: 100%;
+    text-align: center;
+}
+.ma-irdd-serachview button{
+    /* height: 20px; */
+    padding: 5px 10px;
+    border: 1px solid black;
+    background-color: #3d5a80;
+    color: #fff;
+    border-radius: 6px;
+}
+.ma-irdd-serachview button:hover{
+    /* height: 20px; */
+
+    background-color: #4258c1;
+    border-radius: 4px;
+
+}
+
+
+
+
+
+
+
+.ma-irdd-3dot-hide{
+    position: relative;
+}
+.ma-irdd-3dot-hbody{
+    position: absolute;
+    background-color: #b8bedd;
+    width: 100px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    right: 90%;
+    animation: showbtns 0.6s forwards ease;
+    transform-origin: right top;
+    border-radius: 4px;
+    outline: 1px solid black;
+}
+.ma-irdd-3dot-hbody button{
+    width: 100px;
+    /* animation: showbtns 1s forwards ease; */
+    /* transform-origin: right; */
+    overflow: hidden;
+   height: 25px;
+   background: transparent;
+   /* border: 1px solid white; */
+   border: none;
+  border-bottom: 1px solid white;
+   padding: 1px;
+   font-weight: bold;
+   color: #003049;
+    
+
+
+}
+@keyframes showbtns {
+    from{
+        transform: scale(0);
+    }
+    t0{
+        transform: scale(1);
+    }
+    
+}
+
+
+@media (max-width:786px) {
+    .ma-irdd-head{
+    padding: 8px 5px;
+
+    }
+    .ma-irdd-hright{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .ma-irdd-names{
+        width: auto;
+
+    }
+    .ma-irdd-viewbtn{
+        padding: 5px;
+    }
+    .ma-irdd-viewbtndiv{
+        width: 100%;
+        text-align: center;
+    }
+    .ma-irdd-serachresut{
+        left: 0;
+    }
+}

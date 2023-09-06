@@ -9,6 +9,23 @@ const ServiceProgress = (props) => {
     const [data,setData ]=useState([])
     const [showdata,setShowdata]=useState([])
 
+    //logic to sort the data by the date latest to oldest
+    const sortDataByDate = [...showdata].sort((a, b) => {
+      // Assuming 'Date' is a property inside 'Service'
+      const dateA = new Date(a.Service.Delivery);
+      const dateB = new Date(b.Service.Delivery);
+    
+      // Extract only the date part (year, month, and day)
+      const datePartA = new Date(dateA.getFullYear(), dateA.getMonth(), dateA.getDate());
+      const datePartB = new Date(dateB.getFullYear(), dateB.getMonth(), dateB.getDate());
+    
+      // Compare the date parts
+      if (datePartA < datePartB) return 1;
+      if (datePartA > datePartB) return -1;
+      return 0;
+    });
+    
+
    const onMount=async()=>{
     const res = await GetfullDetail(props.id);
     if(res.success){
@@ -102,10 +119,10 @@ const raisecomplainhandle = (id,val)=>{
            <button className='ad-emp-rstbtn' onClick={handlereset}>reset</button>
              </div> 
              </div>
-             {showdata.map((ele,index)=>{
+             {sortDataByDate.map((ele,index)=>{
                 return( ele!=null&& (<div className="ad-emp-mapitem">
                  <ul className="ad-emp-dataitem">
-                    <span className='ad-emp-spanlen'>{index+1}. </span> 
+                    <span className='ad-emp-spanlen'>{sortDataByDate.length-index}. </span> 
                      
                  <li> {ele.name} </li>
                  <li> {ele.mobileNumber} </li>

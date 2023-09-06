@@ -6,16 +6,15 @@ const FetchEmplooy = require('../../MiddleWare/FetchEmplooy');
 const techDB = require('../../DBmodels/DBTechnican/ProcessRequest');
 const NewEmplooyData = require('../../DBmodels/DBAdmin/NewEmplooyData');
 const InqueryDB = require('../../DBmodels/DBAdmin/InqueryDB');
-const { format, utcToZonedTime } = require('date-fns-tz');
 
 
-const istTimezone = 'Asia/Kolkata';
-const date = () => {
-    const now = new Date();
-    const istDate = utcToZonedTime(now, istTimezone);
-    return istDate;
-  }
-  const todaydate = date();
+
+const nowdate = Date();
+const changeformat = new Date(nowdate);
+const year = changeformat.getFullYear();
+const month = String(changeformat.getMonth()+1).padStart(2,'0');
+const day =String(changeformat.getDate()).padStart(2,'0');
+const todaydate= `${year}-${month}-${day}`
 
 // ROUTE 1 FOR THE MANAGER FOR VIEWING THE REQUEST
 router.get('/requests',FetchEmplooy,async(req,res)=>{
@@ -311,9 +310,8 @@ router.post('/inqueryrequest',FetchEmplooy,async(req,res)=>{
         const data = req.body;
         const {name,mobileNumber,Location,Address,Note}=req.body;
         const finddata = await InqueryDB.findOne({mobileNumber:mobileNumber})
-        
         if(finddata){
-            await InqueryDB.findByIdAndUpdate(finddata._id,{$push:{Manager:{id:req.user,name:req.name},Note:Note,CallDate:todaydate}},{new:true})
+            await InqueryDB.findByIdAndUpdate(finddata._id,{$push:{Manager:{id:req.user,name:req.name},Note:Note,CallDate:todaydate},$set:{LastCallDate:todaydate}},{new:true})
         }else{
             await InqueryDB.create({
                 name:name,
@@ -323,7 +321,8 @@ router.post('/inqueryrequest',FetchEmplooy,async(req,res)=>{
                 Address:Address,
                 Manager:{id:req.user,name:req.name},
                 Note:Note,
-                CallDate:todaydate
+                CallDate:todaydate,
+                LastCallDate:todaydate
             })
         }
         

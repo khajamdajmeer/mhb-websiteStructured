@@ -27,7 +27,7 @@ const FinishedTasksView = (props) => {
          </ul>
          <ul className='ad-ptv-bodyul'>
              <li className='ad-ptv-lileft'>Update:</li>
-             <li className='ad-ptv-liright'>{props.data.Task}</li>
+             <li className='ad-ptv-liright'>{props.data.finished.note}</li>
          </ul>
          <button className='ad-ptv-closebtn' onClick={props.closefunction}>Close</button>
      </div>

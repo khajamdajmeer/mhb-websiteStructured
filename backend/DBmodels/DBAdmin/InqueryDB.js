@@ -38,7 +38,10 @@ const InqueryDB = new Schema({
     CallDate:[{
         type:Date,
        
-         }]
+         }],
+         LastCallDate:{
+            type:Date
+         }
 
 })
 

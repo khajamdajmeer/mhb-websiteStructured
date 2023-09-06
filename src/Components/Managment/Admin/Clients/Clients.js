@@ -73,9 +73,26 @@ const Clients = () => {
       setCurrentPage(newPage);
       scrolable.scrollTop=0;
     }
+//LOGIC TO SORT THE DATA FROM LATEST DATE TO OLD DATE
+    const sortDataByDate = [...data].sort((a, b) => {
+      // Assuming 'Date' is a property inside 'Service'
+      const dateA = new Date(a.Service.Delivery);
+      const dateB = new Date(b.Service.Delivery);
+    
+      // Extract only the date part (year, month, and day)
+      const datePartA = new Date(dateA.getFullYear(), dateA.getMonth(), dateA.getDate());
+      const datePartB = new Date(dateB.getFullYear(), dateB.getMonth(), dateB.getDate());
+    
+      // Compare the date parts
+      if (datePartA < datePartB) return 1;
+      if (datePartA > datePartB) return -1;
+      return 0;
+    });
+    
+
     const startIndex = (currentPage-1)*itemperpage;
     const endIndex = Math.min(startIndex + itemperpage,data.length);
-    const slicedData = data.slice(startIndex,endIndex)
+    const slicedData = sortDataByDate.slice(startIndex,endIndex)
 
     const handleNextpage = ()=>{
       setCurrentPage(currentPage+1);
@@ -271,7 +288,7 @@ const Clients = () => {
           {showdata&&(
             slicedData.map((ele,index)=>{
              return( <div className="ad-c-mapitem" key={ele._id}>
-              <div className="ad-c-index">{startIndex+index+1}</div>
+              <div className="ad-c-index">{sortDataByDate.length-startIndex-index}</div>
               <div className="ad-c-names">{ele.name}</div>
               <div className="ad-c-names"> {ele.mobileNumber}</div>
               <div className="ad-c-names"> {ele.Service.Delivery.slice(0,10)}</div>

@@ -77,7 +77,6 @@ const TechAccessSchema = new Schema({
     },
     Accepted:{
         type:Boolean,
-        require:true,
         default:false
     },
     Complain:{
