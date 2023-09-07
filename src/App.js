@@ -28,6 +28,8 @@ import DeletedDb from './Components/Managment/Admin/DeletedDb/DeletedDb';
 import InqueryReq from './Components/Managment/Manager/InquereyReq/InqueryReq';
 import InqueryReqDB from './Components/Managment/Admin/InqueryReqDB/InqueryReqDB';
 import ComplainPage from './Components/Managment/Manager/ComplainPage/ComplainPage';
+import ForgotPass from './Components/Managment/Admin/AdminLoginpage/ForgotPass/ForgotPass';
+import AdminMa from './Components/Managment/Admin/AdminManagerDashboard/AdminMa';
 
 function App() {
   return (
@@ -62,9 +64,11 @@ function App() {
           {/* The Routes for the Administratior */}
           <Route exact path='loginadmin' element={<AdminLoginpage/>}/>
           <Route exact path='adminsignup' element={<SignUpPage/>}/>
+          <Route exact path='adminforgotpassword' element={<ForgotPass/>}/>
 
           <Route path='admindashboard' element={<AdminDashborad/>}>
           <Route  path='emplooys' element={<Emplooys/>}/>
+          <Route  path='adRequests' element={<AdminMa/>}/>
 
           
           <Route path='progress' element={<ViewProgress/>}/>

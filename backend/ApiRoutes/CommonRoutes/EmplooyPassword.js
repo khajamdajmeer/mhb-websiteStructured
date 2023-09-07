@@ -184,7 +184,7 @@ router.post('/login',async(req,res)=>{
             res.status(200).send({message:"login success",Token:AuthToken,level:isEmplooy.designation,})
         }
         else{
-            return res.status(200).send({message:"accout not verified"})
+            return res.status(200).send({message:"account not verified"})
         }
 
 

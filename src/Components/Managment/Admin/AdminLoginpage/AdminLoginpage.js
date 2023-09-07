@@ -90,7 +90,7 @@
               <Link className='ad-alp-signuplink' to='/AdminSignup'>Sign Up</Link>
             </div>
             <div className="input-container forgpass"  >
-              <Link className='ad-alp-signuplink'>forgot password?</Link>
+              <Link className='ad-alp-signuplink' to='/adminforgotpassword'>forgot password?</Link>
             
           </div></li>
     

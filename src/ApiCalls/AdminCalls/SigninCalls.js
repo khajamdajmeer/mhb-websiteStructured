@@ -88,3 +88,32 @@ export const otpverify = async(data)=>{
         console.error(err);
     }
 }
+
+
+export const forgotPasswordAdmin = async(data)=>{
+
+    try{
+        const response = await axios.post(`${host}/api/admin/forgotpass`,{
+            email:data
+        });
+        return response.data;
+
+    }catch(error){
+        console.log(error);
+    }
+}
+
+export const verifyForgotPassOtp =async(data)=>{
+    try{
+        const response = await axios.post(`${host}/api/admin/updatepassword`,{
+            email:data.email,
+            otp:data.otp,
+            adminotp:data.adminotp,
+            password:data.password
+        })
+        return response.data;
+
+    }catch(error){
+
+    }
+}
