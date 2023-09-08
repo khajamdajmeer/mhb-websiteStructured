@@ -49,11 +49,11 @@ function App() {
             <Route path='techrequest' element={<ViewTechreq />} />
             <Route path='reviewreq' element={<ReviewReq/>}/>
             <Route path='pending' element={<PendingPage/>}/>
-            <Route path='inquery' element={<InqueryReq/>}/>
             <Route path='Querys' element={<ComplainPage/>}/>
             
-            <Route path='newrequest' element={<CreateReq/>}/>
           </Route>
+            <Route path='inquery' element={<InqueryReq/>}/>
+            <Route path='newrequest' element={<CreateReq/>}/>
 
 {/* the routes for the technician */}
           <Route path='technician' element={<TechDashboard/>}>

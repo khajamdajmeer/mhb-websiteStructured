@@ -441,13 +441,13 @@ const ViewRequest = () => {
                 </div>
             </div>
             <div className="ma-req-creatbtn">
-                <Link to={'/dashboard/newrequest'} className='ma-req-linkbtn'>
+                <Link to={'/newrequest'} className='ma-req-linkbtn'>
                     <img src={plusimg} alt="" />
                 </Link>
             </div>
 
             <div className="ma-req-Inquerybtn">
-                <Link to={'/dashboard/inquery'} className='ma-req-linkbtn1'>
+                <Link to={'/inquery'} className='ma-req-linkbtn1'>
                     <img src={plusimg} alt="" />
                 </Link>
             </div>

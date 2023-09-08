@@ -1,7 +1,7 @@
 .ma-cr-fullscreen{
     width: 100vw;
     height: 100vh;
-    background-color: rgb(187, 176, 176);
+    background-color: #124559;
     display: flex;
     margin: auto;
     align-items: center;
@@ -19,6 +19,7 @@
     border-radius: 8px;
 }
 .ma-cr-head{
+    position: relative;
     height: 10%;
     width: 100%;
     display: flex;
@@ -26,6 +27,23 @@
     justify-content: center;
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
+}
+.ma-cr-head button{
+    height: 100%;
+    position: absolute;
+    left: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.ma-cr-head img{
+    height: inherit;
+    rotate: 90deg;
+    user-select: none;
+    transform: scale(0.7);
 }
 .ma-cr-body{
     height: 90%;

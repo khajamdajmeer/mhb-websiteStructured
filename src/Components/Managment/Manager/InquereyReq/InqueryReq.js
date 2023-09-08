@@ -2,6 +2,8 @@ import React, {useState } from 'react';
 import './InqueryReq.css';
 import TopMsg from '../../Common/TopMsg/TopMsg';
 import { Create_Inquery_Data } from '../../../../ApiCalls/ManagerCalls/RequestCall';
+import arrowimg from '../../../images and tones/downarrow.png'
+
 const InqueryReq = () => {
 
 
@@ -38,7 +40,9 @@ const InqueryReq = () => {
     },3000)
   }
   
-
+  const handlebackBtn = ()=>{
+    window.history.back();
+  }
 
 
   return (
@@ -48,7 +52,9 @@ const InqueryReq = () => {
     )}
     <div className="ma-inr-fullscreen">
         <div className="ma-inr-center">
-            <div className="ma-inr-head"><h2>Inquery Details</h2></div>
+            <div className="ma-inr-head">
+            <button onClick={handlebackBtn}><img src={arrowimg} alt="" /></button>
+              <h2>Inquery Details</h2></div>
             <div className="ma-inr-body">
               <div className="ma-inr-item">
                 <ul className="ma-inr-ul">

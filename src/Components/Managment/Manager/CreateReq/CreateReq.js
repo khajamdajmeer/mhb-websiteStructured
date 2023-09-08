@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './CreateReq.css';
 import { CreateReqSendtoPending,GetTechDetails,CreateReqandForword } from '../../../../ApiCalls/ManagerCalls/RequestCall';
 import Message from '../../Common/Message/Message';
+import arrowimg from '../../../images and tones/downarrow.png'
 const CreateReq = () => {
   //LOGIC FOR GETING THE TECH DETAILS
   const [techname,setTechname]=useState([])
@@ -83,7 +84,9 @@ const CreateReq = () => {
   }
   
 
-
+const handlebackBtn = ()=>{
+  window.history.back();
+}
 
   return (
     <>
@@ -92,7 +95,9 @@ const CreateReq = () => {
     )}
     <div className="ma-cr-fullscreen">
         <div className="ma-cr-center">
-            <div className="ma-cr-head"><h2>Book a Service</h2></div>
+            <div className="ma-cr-head">
+              <button onClick={handlebackBtn}><img src={arrowimg} alt="" /></button>
+              <h2>Book a Service</h2></div>
             <div className="ma-cr-body">
               <div className="ma-cr-item">
                 <ul className="ma-cr-ul">

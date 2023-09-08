@@ -1,7 +1,8 @@
 .ma-inr-fullscreen{
     width: 100vw;
     height: 100vh;
-    background-color: rgb(187, 176, 176);
+    background-color: #124559;
+
     display: flex;
     margin: auto;
     align-items: center;
@@ -26,7 +27,26 @@
     justify-content: center;
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
+    position: relative;
 }
+.ma-inr-head button{
+    height: 100%;
+    position: absolute;
+    left: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.ma-inr-head img{
+    height: inherit;
+    rotate: 90deg;
+    user-select: none;
+    transform: scale(0.7);
+}
+
 .ma-inr-body{
     height: 90%;
     background-color: #f1faee;
