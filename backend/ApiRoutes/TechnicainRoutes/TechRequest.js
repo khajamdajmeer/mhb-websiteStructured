@@ -94,7 +94,6 @@ router.post('/completedreq/:id',FetchEmplooy,async(req,res)=>{
         const reqid = req.params.id;
         const Discription = req.body.discription;
         const data = await techDB.findById( reqid )
-        const findtech= await employ_db.findById(data.forworded.id)
         const newdata = {
             name:data.name,
             mobileNumber:data.mobileNumber,
@@ -111,7 +110,7 @@ router.post('/completedreq/:id',FetchEmplooy,async(req,res)=>{
             },
             Requestdate:data.Requestdate,
             forworded:{
-                name:findtech.name,
+                name:data.forworded.name,
                 id:data.forworded.id
             },
             Discription:Discription

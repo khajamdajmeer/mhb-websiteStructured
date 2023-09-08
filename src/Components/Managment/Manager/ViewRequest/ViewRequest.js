@@ -88,7 +88,7 @@ const ViewRequest = () => {
     const validationcheck = ()=>{
         const token = Cookies.get('auth-token')
         const level = Cookies.get('level')
-        if(!token||level!=='L2'){
+        if(!token||level==='L3'){
             const cookies = Cookies.get();
             for(const cookie in cookies){
                 Cookies.remove(cookie)

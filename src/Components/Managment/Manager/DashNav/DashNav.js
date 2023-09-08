@@ -22,7 +22,7 @@ else if(level==='l3'){
   history('/technician/request')
 }
 else if(level==='l1'){
-  history('/admindashboard/emplooys')
+  // history('/admindashboard/emplooys')
 }
 
   }, [history])

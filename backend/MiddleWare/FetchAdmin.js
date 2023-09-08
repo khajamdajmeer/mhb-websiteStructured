@@ -18,7 +18,6 @@ const FetchAdmin = async(req,res,next)=>{
         }
         else{
        return res.status(401).send({message:"user does not exists",success:false})
-
         }
     }
     catch(error){

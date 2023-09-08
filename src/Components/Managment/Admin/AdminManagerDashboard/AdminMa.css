@@ -1,0 +1,61 @@
+
+.ad-ma-navright{
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    height: 30px;
+    width: 10px;
+    z-index: 999;
+}
+.ad-ma-navright button{
+    height: 100%;
+    background:none;
+    border: none;
+    cursor: pointer;
+}
+.ad-ma-navright img{
+    height: inherit;
+}
+.ad-ma-navboxopen{
+    display: none;
+    position: absolute;
+    top: 66px;
+    right: 40px;
+    transform-origin: top right;
+    animation: openbox 0.3s ease-in-out ;
+    z-index: 999;
+
+}
+@keyframes openbox {
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+   /* 100%,0%{
+    transform: scale(0);
+    } */
+}
+.ad-ma-navul{
+    list-style: none;
+    background-color: #023e8a;
+    font-weight: bold;
+    border-radius: 4px;
+}
+.ad-ma-navul li{
+border-bottom: 1px solid grey;
+}
+.ad-ma-navul button{
+    width: 100%;
+    padding: 5px 10px;
+background: none;
+border: none;
+font-weight: bold;
+cursor: pointer;
+color: white;
+}
+.ad-ma-navul li:last-child{
+border-bottom: none;
+
+}

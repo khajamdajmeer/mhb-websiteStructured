@@ -25,8 +25,8 @@ useEffect(()=>{
   else if(istoken&&authlevel==='L3'){
     history('/technician')
   }
-  
-},[history])
+ //eslint-disable-next-line 
+},[])
 
 const handlelogin = async(e)=>{
   e.preventDefault();
