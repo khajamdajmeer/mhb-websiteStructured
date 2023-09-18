@@ -106,3 +106,9 @@
     background: none !important;
 }
 
+@media (max-width:668px) {
+    .ma-trv-center{
+        scale: 0.9;
+    }
+    
+}

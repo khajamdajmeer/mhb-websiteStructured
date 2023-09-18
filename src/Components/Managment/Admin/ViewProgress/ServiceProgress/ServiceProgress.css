@@ -4,3 +4,11 @@
     background-color: #264653;
 color: #fff;
 }
+
+@media (max-width:668px) {
+    .ad-adm-vibtn{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+}

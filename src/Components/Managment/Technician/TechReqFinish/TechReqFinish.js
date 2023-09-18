@@ -30,7 +30,7 @@ const TechReqFinish = (props) => {
                 </ul>
                 <ul>
                     <li className='tech-finish-left'>Mobilenumber :</li>
-                    <li className='tech-finish-right'>{props.newdata.mobilNumber}</li>
+                    <li className='tech-finish-right'>{props.newdata.mobileNumber}</li>
                 </ul><ul>
                     <li className='tech-finish-left'>Location :</li>
                     <li className='tech-finish-right'>{props.newdata.Location}</li>

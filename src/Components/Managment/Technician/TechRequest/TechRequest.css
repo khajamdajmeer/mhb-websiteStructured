@@ -162,7 +162,7 @@ font-family: 'Noto Sans JP', sans-serif;
 }
 }
 
-@media (max-width:440px){
+@media (max-width:480px){
     #tech-req-view-center{
         width: 90%;
     margin-top: 8px;
@@ -170,10 +170,14 @@ font-family: 'Noto Sans JP', sans-serif;
     #tech-data-div{
         flex-direction: column;
     }
-    .tech-viewdata ul{
-        flex-direction: column;
+    #tech-viewdata ul{
+        flex-flow: column;
     }
-    .tech-viewdata li{
-        padding: 8px 0px;
+    #tech-viewdata li{
+        /* width: 100%;
+        text-align: center; */
+
+        padding: 2px 10px;
+        flex-flow: wrap;
     }
 }

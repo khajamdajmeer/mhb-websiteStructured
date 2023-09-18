@@ -194,8 +194,8 @@ const handleclose=()=>setShowmsg(false);
                     <ul>
                         <li onClick={()=>handlecomponentChange('serviceReq')}>Service</li>
                         <li onClick={()=>handlecomponentChange('Task')}>Task</li>
-                        <li  onClick={()=>handlecomponentChange('Pending Req')}>Pending Req</li>
-                        <li  onClick={()=>handlecomponentChange('Pending Tasks')}>pending Tasks</li>
+                        <li  onClick={()=>handlecomponentChange('Pending Req')}>Pending Requests</li>
+                        <li  onClick={()=>handlecomponentChange('Pending Tasks')}>Pending Tasks</li>
                     </ul>
                   </div>
                   {component==='serviceReq'&&<ServiceProgress id={id}/>}

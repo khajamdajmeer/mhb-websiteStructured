@@ -8,6 +8,7 @@
     background-color: #8d99ae;
 }
 .ad-dly-centerdiv{
+    z-index: 2;
     width: 100%;
     max-width:800px;
     height: 80%;
@@ -113,4 +114,47 @@
 }
 .textcenter{
     justify-content: center !important;
+}
+.ma-dly-name{
+    width: 24%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ma-dly-name button{
+    padding: 2px ;
+    font-weight: bold;
+    
+    
+}
+.ma-dly-viewname label{
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+.ma-dly-viewname div{
+    width: unset;
+    padding: 4px;
+    text-align: center;
+    font-size: large;
+}
+.ma-dly-vbtn{
+    padding: 4px;
+    background: #055aaf ;
+    border: 1px solid black;
+    border-radius: 3px;
+    color: whitesmoke;
+}
+@media (max-width:660px) {
+.ad-dly-centerdiv{
+    height: 100%;
+}
+    .ma-dly-mapitem{
+        flex-flow: wrap;
+    }
+.ma-dly-name{
+    width: 48%;
+    padding: 2px;
+}
 }

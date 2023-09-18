@@ -78,7 +78,7 @@ const [msgData,setMsgData]=useState({message:''})
                 <li className='ma-pv-lileft'>Technicain</li>
                 <li className='ma-pv-liright'>
                     <select id="" value={data.tid} name='tid' onChange={onchange}>
-                        <option value="0">---select---</option>
+                        <option value="0">---select Technician---</option>
                         {techname.map((ele,index)=>{
                             return (
                         <option value={ele._id}>{ele.name} ({ele.count})</option>

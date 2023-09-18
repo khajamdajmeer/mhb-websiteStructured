@@ -15,6 +15,7 @@
     background-color: beige;
 }
 .ma-pp-centerdiv{
+    margin-top: 40px;
     width: 100%;
     max-width: 800px;
     height: 80%;
@@ -55,6 +56,7 @@ overflow: auto;
     align-items: center;
     width: 110px;
     padding: 4px 2px;
+    word-break: normal;
 }
 .ma-pp-btn{
     padding: 7px 14px;
@@ -69,4 +71,31 @@ overflow: auto;
    
     background: #0b3358;
     color: #fff;
+}
+
+@media (max-width:660px) {
+    .ma-pp-head{
+        width: 100%;
+        word-wrap: break-word;
+        height: auto;
+    font-size: 0.9rem;
+
+    }
+    .ma-pp-head h1{
+        scale: 0.7;
+        width: auto;
+    }
+    .color-red{
+        scale: 0.7;
+    }
+    .ma-pp-centerdiv{
+        background: none;
+    }
+    .ma-pp-btnresponse{
+        width: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }

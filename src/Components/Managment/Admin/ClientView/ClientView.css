@@ -69,6 +69,9 @@
     max-width: 350px;
     padding: 6px 0;
 }
+.displaynone{
+    display: none;
+}
 .ad-cv-lileft{
     width: 30%;
     margin-right: 20px;

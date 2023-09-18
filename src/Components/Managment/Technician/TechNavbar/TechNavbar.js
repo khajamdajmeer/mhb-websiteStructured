@@ -43,9 +43,9 @@ const TechNavbar = () => {
   </div>
   <div>
 <ul className="menutech" id='mymenutech'>
-    <li><Link className='Linktag' to='request' >Requests</Link></li>
-    <li><Link className='Linktag' to='myrequests' >My Requests</Link></li>
-    <li className='hamlogoutbtn'><button onClick={handlelogout}>Logout</button></li>
+    <li><Link className='Linktag' to='request' onClick={handlehambtn} >Requests</Link></li>
+    <li><Link className='Linktag' to='myrequests' onClick={handlehambtn} >My Requests</Link></li>
+    <li className='hamlogoutbtn'><button className='logoutbtncommon' onClick={handlelogout}>Logout</button></li>
     {/* <li>Data Search</li> */}
   </ul>
 
@@ -54,7 +54,7 @@ const TechNavbar = () => {
         <img src={hamicon} alt="" id='hamimgtech'/>
     </button>
 <div className='profilecontainertech'>
-  <button className='profilebtntech'onClick={handlelogout} >logout</button>
+  <button className='profilebtntech logoutbtncommon' onClick={handlelogout} >logout</button>
   {/* <div className="profilebox" id='profiledatabox'> 
   this is profile
   </div> */}

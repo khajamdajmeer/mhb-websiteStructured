@@ -10,7 +10,8 @@
 .ma-cr-center{
     width: 100%;
     max-width: 800px;
-    height: 80%;
+    /* height: 80%; */
+    /* max-height: max-content; */
     display: flex;
     flex-direction: column;
     align-items: center;

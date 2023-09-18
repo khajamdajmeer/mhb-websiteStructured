@@ -326,7 +326,7 @@
         justify-content: space-between;
     }
     .ad-ird-names{
-        width: auto;
+        width: 45%;
 
     }
     .ad-ird-viewbtn{
@@ -338,5 +338,8 @@
     }
     .ad-ird-serachresut{
         left: 0;
+    }
+    .ad-ird-mapitem{
+        justify-content: center;
     }
 }

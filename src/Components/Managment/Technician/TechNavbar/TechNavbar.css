@@ -109,7 +109,7 @@ body {
     /* border: none; */
     padding: 1px 5px;
     background:transparent;
-
+    margin-right: 10px;
   }
   .profilecontainertech{
     position: relative;
@@ -168,6 +168,9 @@ body {
 
   .menutech li::after{
     background-color: transparent;
+  }
+  .Linktag:hover::after{
+    transform: scaleX(0);
   }
   }
   

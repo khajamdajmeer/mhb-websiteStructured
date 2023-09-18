@@ -34,6 +34,7 @@
     background-color: #93a8ac;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+    font-weight: bold;
 }
 .ma-rpc-body{
     height: 90%;
@@ -61,6 +62,7 @@
     width: 30%;
     margin-right: 20px;
     text-align: center;
+    font-weight: bold;
 }
 .ma-rpc-liright{
     width: 50%;
@@ -98,4 +100,11 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+@media (max-width:668px) {
+    .ma-rpc-center{
+        scale: 0.9;
+    }
+    
 }

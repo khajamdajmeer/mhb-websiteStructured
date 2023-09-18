@@ -58,7 +58,7 @@ const ClientView = (props) => {
                 <li className='ad-cv-lileft'>Discription</li>
                 <li className='ad-cv-liright'>{props.data.Discription}</li>
             </ul>
-            <ul className='ad-cv-bodyul'>
+            <ul className='ad-cv-bodyul displaynone'>
                 <li className='ad-cv-lileft'>Complain Reason</li>
                 <li className='ad-cv-liright'><textarea onChange={onchange} name='reason' value={reason} placeholder='Complain Reason' type="text" /></li>
             </ul>

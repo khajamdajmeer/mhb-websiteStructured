@@ -55,6 +55,7 @@ const handleprofilebtn = ()=>{
 const [link,setLink] = useState('')
 const handleactiveLink =(data)=>{
 setLink(data)
+// handlehambtn();
 }
 
   return (
@@ -71,7 +72,7 @@ setLink(data)
     <li><Link className={link==='Tech Req' ? 'Linktag activeLinktag':'Linktag'} onClick={()=>handleactiveLink("Tech Req")} to='techrequest'>Tech Requests</Link></li>
     <li><Link className={link==='Review' ? 'Linktag activeLinktag':'Linktag'} onClick={()=>handleactiveLink('Review')} to='reviewreq'>Review</Link></li>
     <li><Link className={link==='Query' ? 'Linktag activeLinktag':'Linktag'} onClick={()=>handleactiveLink('Query')} to='Querys'>Querys</Link></li>
-    <li><button  id='menulogoutbtn' onClick={handleprofilebtn}>logout</button></li>
+    <li><button  id='menulogoutbtn' className='logoutbtncommon' onClick={handleprofilebtn}>logout</button></li>
     {/* <li>Data Search</li> */}
   </ul>
 

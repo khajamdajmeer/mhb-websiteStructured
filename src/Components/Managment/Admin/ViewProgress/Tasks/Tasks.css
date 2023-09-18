@@ -78,12 +78,16 @@ align-items: center; */
 @media (max-width:680px) {
 
 .ma-tsk-body{
-    /* display: none; */
+    display: none;
 
     }
+    .ma-tsk-mapitem ul{
+        padding: 1px;
+    }
     .ma-tsk-mapitem li{
-        min-width:25%;
-   max-width: 33%;
+        min-width:49%;
+   max-width: 49%;
+   word-break: normal;
     }
     .ma-tsk-viewbtn{
        min-width: 100% !important;

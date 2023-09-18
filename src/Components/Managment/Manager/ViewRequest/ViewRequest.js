@@ -49,6 +49,7 @@ const ViewRequest = () => {
         setShowview(true)
         setShowupdate(false)
         setShowingdata(data[index])
+        handleelementview();
     }
 
 
@@ -204,7 +205,6 @@ const ViewRequest = () => {
         setShowingdata(searchdata[index])
 
 
-
     }
 
     //Logic for handling the pending
@@ -223,6 +223,11 @@ const ViewRequest = () => {
     setShowmsg(false);
     }
 
+
+    const handleelementview=()=>{
+        const element =  document.getElementById('xclientdata')
+        element.scrollIntoView({behavior:'smooth'})
+    }
 
     return (
         <>
@@ -248,10 +253,10 @@ const ViewRequest = () => {
                         }
 
                     </div>
-                    <div className="reqright ">
-                        <div className="reqheadright">
+                    <div className="reqright " >
+                        <div className="reqheadright" id='xclientdata'>
                             <div className='headingtype'>
-                                client request
+                                client request Details
                             </div>
                             <div className='techright'>
                                 <select name="type" value={searchinput.type} onChange={onchangesearch} id="techsearchfilter">

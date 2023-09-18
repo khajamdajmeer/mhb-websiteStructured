@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Inquery.css';
-// import serachicon from '../../../images and tones/search-icon.png'
+import serachicon from '../../../../images and tones/search-icon.png'
 // import img3dots from '../../../images and tones/3dot.png'
 import { getInqueryDb } from '../../../../../ApiCalls/ManagerCalls/RequestCall';
 import View from './view/view';
@@ -188,7 +188,7 @@ const Inquery = () => {
 
 
             <button className="ma-irdd-searchbtn" onClick={handleSearch}>
-              {/* <img src={serachicon} alt="" /> */}
+              <img src={serachicon} alt="" />
             </button>
             {showsearch&&(<div className="ma-irdd-serachresut">
             {(  searchData.map((element)=>{

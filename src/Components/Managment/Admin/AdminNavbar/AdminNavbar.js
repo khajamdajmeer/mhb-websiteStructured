@@ -60,7 +60,7 @@ const AdminNavbar = () => {
     <li><Link className='Linktag' to='emplooys' >Emplooys</Link></li>
     <li><Link className='Linktag' to='Data' >Data Base</Link></li>
     <li><Link className='Linktag' to='adRequests' >Requests</Link></li>
-    <li className='hamlogoutbtn'><button onClick={handlelogout}>Logout</button></li>
+    <li className='hamlogoutbtn'><button className='logoutbtncommon' onClick={handlelogout}>Logout</button></li>
     {/* <li>Data Search</li> */}
   </ul>
 
@@ -69,7 +69,7 @@ const AdminNavbar = () => {
         <img src={hamicon} alt="" id='hamimgtech'/>
     </button>
 <div className='profilecontainertech'>
-  <button className='profilebtntech'onClick={handlelogout} >logout</button>
+  <button className='profilebtntech profilebtn'onClick={handlelogout} >logout</button>
   {/* <div className="profilebox" id='profiledatabox'> 
   this is profile
   </div> */}

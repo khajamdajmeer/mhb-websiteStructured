@@ -34,6 +34,7 @@
     background-color: #93a8ac;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+    font-weight: bold;
 }
 .ma-pv-body{
     height: 88%;
@@ -105,4 +106,16 @@
     border-radius: 5px;
     text-align: center;
 
+}
+
+@media (max-width:668px){
+    .ma-pv-lileft{
+        display: none;
+    }
+    .ma-pv-center{
+        scale: 0.8;
+    }
+    .ma-pv-liright{
+        width: 80%;
+    }
 }

@@ -321,7 +321,7 @@
     .ma-ddb-hright{
         display: flex;
         width: 100%;
-        justify-content: space-between;
+        justify-content: flex-end;
     }
     .ma-ddb-names{
         width: auto;

@@ -74,7 +74,7 @@ const DailyActivity = () => {
                 <div className="ma-dly-name">{ele.mobileNumber}</div>
                 <div className="ma-dly-name">{ele.Task}</div>
                 {/* <div className="ma-dly-name">ajmeer khajA</div> */}
-                <div className="ma-dly-name"><button onClick={()=>handleview(ele)}>view</button></div>
+                <div className="ma-dly-name"><button className='ma-dly-vbtn' onClick={()=>handleview(ele)}>view</button></div>
 
             </div>)
             })

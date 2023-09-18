@@ -130,9 +130,9 @@ const raisecomplainhandle = (id,val)=>{
                  <li> {ele.Service.type} </li>
                  <li> {ele.Service.Delivery.slice(0,10)} </li>
                  </ul>
-                 <div className="ad-emp-inputdiv">
+                 <div className="ad-emp-inputdiv ad-adm-vibtn">
 
-                 <button onClick={()=>handleviewbtn(ele)}>view</button>
+                 <button className='' onClick={()=>handleviewbtn(ele)}>view</button>
                  </div>
              </div>))
              })

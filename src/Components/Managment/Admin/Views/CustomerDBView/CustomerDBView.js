@@ -30,7 +30,7 @@ const CustomerDBView = (props) => {
                 <li className='ad-cdbv-liright'>{props.data.mobileNumber}</li>
             </ul>
         <div className="ad-cdbv-body">
-          {hdata.reverse().map((ele,index)=>{
+          {[...hdata].reverse().map((ele,index)=>{
             return(
               <div className="ad-cdbv-mapitem">{index+1}
             <div className="ad-cdbv-item">{ele.Location}</div>

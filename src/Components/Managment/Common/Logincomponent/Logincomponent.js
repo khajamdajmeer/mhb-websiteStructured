@@ -32,8 +32,7 @@ const handlelogin = async(e)=>{
   e.preventDefault();
   const res =await Logincall(logindata.username,logindata.password);
   if(res.message==="login success"){
-    setShowmessage(true)
-    setMessage({message:res.message,navigate:'/dashboard',showOk:true})
+    
     Cookies.set("auth-token",res.Token)
     if(res.level==='Technician'){
 
@@ -46,6 +45,8 @@ const handlelogin = async(e)=>{
       let lv = 'L2'
       Cookies.set('level',lv)
     }
+    setShowmessage(true)
+    setMessage({message:res.message,navigate:'/dashboard',showOk:true})
   }
   else{
     setShowmessage(true)

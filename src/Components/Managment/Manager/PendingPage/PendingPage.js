@@ -51,14 +51,14 @@ const formattedDate = `${year}-${month}-${day}`;
      {
       data.map((ele,index)=>{
         return( <div className={ele.Complain ?"complainbg ma-pp-mapitem":'ma-pp-mapitem'}>
-        <div className="ma-pp-item-name">{ele.name}</div>
+        <div className="ma-pp-item-name">{index+1}.{ele.name}</div>
         <div className="ma-pp-item-name">{ele.mobilenumberString}</div>
         <div className="ma-pp-item-name">{ele.Location}</div>
         <div className={`ma-pp-item-name ${ele.Service.Date.slice(0,10)<=formattedDate ? 'color-red':''}`}>{ele.Service.Date}</div>
         <div className="ma-pp-item-name">{ele.Address}</div>
         {/* <div className="ma-pp-item-name">{ele.Service.type.length>2 ? ele.Service.type :'none'}</div> */}
         {/* <div className="ma-pp-item-name"><button className='ma-pp-btn'>view</button></div> */}
-        <div className="ma-pp-item-name"><button className='ma-pp-btn' onClick={()=>{handlePView(ele)}}>forword</button></div>
+        <div className="ma-pp-item-name ma-pp-btnresponse"><button className='ma-pp-btn' onClick={()=>{handlePView(ele)}}>forword</button></div>
       </div>)
       })
      }
