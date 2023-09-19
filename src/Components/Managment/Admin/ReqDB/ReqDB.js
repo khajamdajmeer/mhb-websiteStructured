@@ -4,8 +4,16 @@ import serachicon from '../../../images and tones/search-icon.png'
 import img3dots from '../../../images and tones/3dot.png'
 import { newDownload,ViewRequest } from '../../../../ApiCalls/AdminCalls/DBCalls';
 import ReqView from '../Views/ReqView/ReqView';
-
+import SkeletonLoader from '../../Common/SkeletonLoader/SkeletonLoader';
+import { bindActionCreators } from 'redux';
+import { useDispatch,useSelector } from 'react-redux';
+import { actionCreator } from '../../../../Redux';
 const ReqDB = () => {
+
+  //using REdux for skelton loaders
+const dispatch = useDispatch();
+const {showloading,hideloading}=bindActionCreators(actionCreator,dispatch);
+const loadingstate = useSelector(state=>state.load);
 
   //Logic for the real data 
   const [realdata,setRealdata]=useState([]);
@@ -47,24 +55,28 @@ const ReqDB = () => {
   const [msg,setMsg]=useState('')
   const [showmsg,setShowmsg]=useState(false)
   const viewclients = async()=>{
+    showloading();
     const res = await ViewRequest();
 
     if(res.success){
       setRealdata(res.message)
       setShowmsg(false);
-      setShowdata(true)
-      setData(res.message)
+      setShowdata(true);
+      setData(res.message);
+      hideloading();
     }
     else{
-      setShowdata(false)
+      setShowdata(false);
       setShowmsg(true);
-      setMsg(res.message)
+      setMsg(res.message);
+      hideloading();
     }
   }
 
   useEffect(()=>{
     viewclients();
-  },[])
+    // eslint-disable-next-line
+},[])
 
   //LOGIC FOR SHOWING 2O ITEMS PER PAGE
     const itemperpage=15;
@@ -278,6 +290,8 @@ const ReqDB = () => {
 
         </div>
         <div className="ad-rdb-body" id='ad-rdb-scrolable' onClick={close3dot}>
+        {loadingstate&&<SkeletonLoader/>}
+
           {showdata&&(
             slicedData.map((ele,index)=>{
              return( <div className="ad-rdb-mapitem" key={ele._id}>

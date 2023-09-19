@@ -2,9 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { GetfullDetail } from '../../../../../ApiCalls/AdminCalls/ProgressCalls';
 import serachicon from '../../../../images and tones/search-icon.png';
 import ClientView from '../../ClientView/ClientView'
-import './ServiceProgress.css'
+import './ServiceProgress.css';
+import SkeletonLoader from '../../../Common/SkeletonLoader/SkeletonLoader';
+import { bindActionCreators } from 'redux';
+import { actionCreator } from '../../../../../Redux';
+
+import { useDispatch,useSelector } from 'react-redux';
 
 const ServiceProgress = (props) => {
+
+  //using redux for the skeleton loader
+  const dispatch = useDispatch();
+  const {showloading,hideloading}= bindActionCreators(actionCreator,dispatch)
+  const loadingstate = useSelector(state=>state.load)
 
     const [data,setData ]=useState([])
     const [showdata,setShowdata]=useState([])
@@ -27,10 +37,16 @@ const ServiceProgress = (props) => {
     
 
    const onMount=async()=>{
+     showloading();
     const res = await GetfullDetail(props.id);
     if(res.success){
         setData(res.data)
         setShowdata(res.data)
+        hideloading();
+
+    }
+    else{
+      hideloading();
     }
    }
    useEffect(()=>{
@@ -119,6 +135,8 @@ const raisecomplainhandle = (id,val)=>{
            <button className='ad-emp-rstbtn' onClick={handlereset}>reset</button>
              </div> 
              </div>
+{loadingstate&&<SkeletonLoader/>}
+
              {sortDataByDate.map((ele,index)=>{
                 return( ele!=null&& (<div className="ad-emp-mapitem">
                  <ul className="ad-emp-dataitem">
@@ -138,6 +156,7 @@ const raisecomplainhandle = (id,val)=>{
              })
 
              }
+
       </>
     );
 }

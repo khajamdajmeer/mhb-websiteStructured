@@ -2,19 +2,30 @@ import React, { useEffect, useState } from 'react';
 import './DailyActivity.css'
 import { getTasks,finshTask } from '../../../../../ApiCalls/ManagerCalls/RequestCall';
 import TopMsg from '../../../Common/TopMsg/TopMsg';
+import { bindActionCreators } from 'redux';
+import { useDispatch,useSelector } from 'react-redux';
+import SkeletonLoader from '../../../Common/SkeletonLoader/SkeletonLoader';
+import {actionCreator} from '../../../../../Redux';
 
 const DailyActivity = () => {
+    //Using Redux for skeleton loader
+    const dispatch = useDispatch();
+    const {showloading,hideloading} = bindActionCreators(actionCreator,dispatch)
+    const loadingstate = useSelector(state=>state.load)
 
     //seting up data 
     const [data,setData]= useState([])
     //functino to run on Mount of the component
     const onMount=async()=>{
+        showloading()
         const data = await getTasks();
         
         setData(data.message);
+        hideloading();
     }
     useEffect(()=>{
         onMount();
+        // eslint-disable-next-line
     },[])
 
 
@@ -68,6 +79,7 @@ const DailyActivity = () => {
             Tasks
         </h2>
         <div className="ma-dly-body">
+            {loadingstate&&<SkeletonLoader/>}
             {data.map((ele,index)=>{
                 return(<div className="ma-dly-mapitem">
                 <div className="ma-dly-name">{ele.name}</div>

@@ -1,11 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './FindRequest.css'
 import { RequestSearch } from '../../../../../ApiCalls/ManagerCalls/SearchCall';
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 import ClientHistoryview from '../../ClientHistoryview/ClientHistoryview';
-
+import { bindActionCreators } from 'redux';
+import { useDispatch,useSelector } from 'react-redux';
+import SkeletonLoader from '../../../Common/SkeletonLoader/SkeletonLoader';
+import {actionCreator} from '../../../../../Redux';
 const FindRequest = () => {
-
+ //Using Redux for skeleton loader
+ const dispatch = useDispatch();
+ const {showloading,hideloading} = bindActionCreators(actionCreator,dispatch)
+ const loadingstate = useSelector(state=>state.load)
     const [data,setData]=useState([])
 
 const [iptype,setIptype]=useState('');
@@ -17,13 +23,16 @@ const onchange = (e)=>{
     setIpval(e.target.value)
 }
 const handleserach =async()=>{
+    showloading();
+    if(ipval.length<1){
+        hideloading();
+    }
     const res = await RequestSearch(iptype,ipval);
     if(res.success){
         setData(res.message)
+        hideloading();
     }
-    console.log(res)
-    console.log(Cookies.get('auth-token'))
-
+    hideloading();
 
 }
 const time = 1000;
@@ -68,6 +77,7 @@ const handleclose = ()=>{
       <div className="ma-rcp-body">
             <h1 className="ma-rcp-heading">Find Requests</h1>
             <div className="ma-rcp-searchbody">
+                {loadingstate&&<SkeletonLoader/>}
             {data.map((ele,index)=>{
             return (
                 <div className="ma-rcp-mapitem">

@@ -4,8 +4,19 @@ import { techAuthorization } from '../../../../ApiCalls/CommonCalls/Authorizatio
 import { useNavigate } from 'react-router-dom';
 import { AcceptRequest,ViewMyReq } from '../../../../ApiCalls/TechnicalCalls/TechnicianRequest';
 import Cookies from 'js-cookie';
+import { bindActionCreators } from 'redux';
+import { useDispatch,useSelector } from 'react-redux';
+import SkeletonLoader from '../../Common/SkeletonLoader/SkeletonLoader';
+import {actionCreator} from '../../../../Redux';
 
 const TechRequest = () => {
+
+
+    //using redux for skeleton loader
+    const dispatch= useDispatch();
+    const {showloading,hideloading}=bindActionCreators(actionCreator,dispatch);
+    const loadingstate = useSelector(state=>state.load);
+
 
 const history = useNavigate();
     const token = Cookies.get('auth-token')
@@ -17,19 +28,21 @@ const history = useNavigate();
     }])
     
     const checkauthorization = useCallback(async()=>{
+        showloading();
         if(token){
             const res = await techAuthorization();
             if(res.name){
             setName(res.name)
-
                 const newdata = await ViewMyReq();
                 if(newdata.length<1){
                     setTechdata([{
                         name:'',Location:" ",adress: " "  ,_id:" "
                     }])
+                    hideloading();
                 }
                 else{
                     setTechdata(newdata);
+                    hideloading();
                 }
             }
             else{
@@ -41,6 +54,7 @@ const history = useNavigate();
         else{
             history('/service')
         }
+    // eslint-disable-next-line
     },[token,history])
     useEffect(()=>{
         checkauthorization();
@@ -98,6 +112,7 @@ const history = useNavigate();
 
                </div>
             </div>
+                {loadingstate&&<SkeletonLoader/>}
             <div id="tech-data-scrollable">
 
             {

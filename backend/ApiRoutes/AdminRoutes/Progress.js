@@ -94,7 +94,6 @@ router.get('/reqcount/:id',FetchAdmin,async(req,res)=>{
                                       fullcount:tdycount,
                                       Count:findtdy
                                     }}
-                
 
                 res.status(200).send({data:full,success:true})
 
@@ -182,12 +181,17 @@ router.get('/reqcount/:id',FetchAdmin,async(req,res)=>{
         
 
     }catch(error){
-      console.log(error);
         res.status(500).send({message:'error occured Please try again',success:false})
     }
 
 
 })
+
+//
+
+
+
+
 //ROUTE FOR THE ADIMN TO CREATE COMPLAIN FROM THE PRESENT FINISHED DB
 router.post('/complain/:id',FetchAdmin,async(req,res)=>{
   try{

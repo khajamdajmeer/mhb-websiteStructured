@@ -4,8 +4,15 @@ import serachicon from '../../../../images and tones/search-icon.png'
 // import img3dots from '../../../images and tones/3dot.png'
 import { getInqueryDb } from '../../../../../ApiCalls/ManagerCalls/RequestCall';
 import View from './view/view';
+import { bindActionCreators } from 'redux';
+import { useDispatch,useSelector } from 'react-redux';
+import SkeletonLoader from '../../../Common/SkeletonLoader/SkeletonLoader';
+import {actionCreator} from '../../../../../Redux';
 const Inquery = () => {
-
+ //Using Redux for skeleton loader
+ const dispatch = useDispatch();
+ const {showloading,hideloading} = bindActionCreators(actionCreator,dispatch)
+ const loadingstate = useSelector(state=>state.load)
 
 
 
@@ -24,21 +31,25 @@ const Inquery = () => {
   const [msg,setMsg]=useState('')
   const [showmsg,setShowmsg]=useState(false)
   const onMount = async()=>{
+    showloading();
     const res = await getInqueryDb();
     if(res.success){
       setShowmsg(false);
-      setShowdata(true)
-      setData(res.message)
+      setShowdata(true);
+      setData(res.message);
+      hideloading();
     }
     else{
-      setShowdata(false)
+      setShowdata(false);
       setShowmsg(true);
-      setMsg(res.message)
+      setMsg(res.message);
+      hideloading();
     }
   }
 
   useEffect(()=>{
     onMount();
+    // eslint-disable-next-line
   },[])
 
   //LOGIC FOR SHOWING 2O ITEMS PER PAGE
@@ -214,6 +225,7 @@ const Inquery = () => {
 
         </div>
         <div className="ma-irdd-body" id='ma-irdd-scrolable' onClick={close3dot}>
+          {loadingstate&&<SkeletonLoader/>}
           {showdata&&(
             slicedData.map((ele,index)=>{
              return( <div className="ma-irdd-mapitem" key={ele._id}>

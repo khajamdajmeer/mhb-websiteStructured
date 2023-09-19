@@ -5,8 +5,11 @@ import ViewRequest from '../../Manager/ViewRequest/ViewRequest';
 import PendingPage from '../../Manager/PendingPage/PendingPage';
 import ViewTechreq from '../../Manager/ViewTechreq/ViewTechreq';
 import ReviewReq from '../../Manager/ReviewReq/ReviewReq';
-import ComplainPage from '../../Manager/ComplainPage/ComplainPage' 
+import ComplainPage from '../../Manager/ComplainPage/ComplainPage' ;
+
 const AdminMa = () => {
+
+
 
 
   //handling the wrap button 3dots

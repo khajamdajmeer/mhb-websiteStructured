@@ -43,8 +43,8 @@ const TechNavbar = () => {
   </div>
   <div>
 <ul className="menutech" id='mymenutech'>
-    <li><Link className='Linktag' to='request' onClick={handlehambtn} >Requests</Link></li>
-    <li><Link className='Linktag' to='myrequests' onClick={handlehambtn} >My Requests</Link></li>
+    <li><Link className='Linktag' to='request' >Requests</Link></li>
+    <li><Link className='Linktag' to='myrequests'  >My Requests</Link></li>
     <li className='hamlogoutbtn'><button className='logoutbtncommon' onClick={handlelogout}>Logout</button></li>
     {/* <li>Data Search</li> */}
   </ul>

@@ -4,9 +4,17 @@ import arrow from '../../../images and tones/downarrow.png'
 import { AllEmploydata } from '../../../../ApiCalls/AdminCalls/EmplooyCalls';
 import plus from '../../../images and tones/plus.png'
 import { Link } from 'react-router-dom';
-import progressicon from '../../../images and tones/progess-icon.png'
-
+import progressicon from '../../../images and tones/progess-icon.png';
+import SkeletonLoader from '../../Common/SkeletonLoader/SkeletonLoader';
+import { bindActionCreators } from 'redux';
+import { useDispatch,useSelector } from 'react-redux';
+import { actionCreator } from '../../../../Redux';
 const Emplooys = () => {
+
+  //using REdux for skelton loaders
+const dispatch = useDispatch();
+const {showloading,hideloading}=bindActionCreators(actionCreator,dispatch);
+const loadingstate = useSelector(state=>state.load);
 
   // const data = [{test:'1'},{test:'1'},{test:'1'},{test:'1'},]
 
@@ -16,14 +24,20 @@ const Emplooys = () => {
   }])
 
   const onMount = async()=>{
+    showloading();
    const res = await AllEmploydata();
    if(res.length>=1){
      setData(res)
+     hideloading();
+   }
+   else{
+    hideloading();
    }
   }
 
   useEffect(()=>{
     onMount();
+    // eslint-disable-next-line
   },[])
 
   const [activeindex,setActiveindex]=useState();
@@ -39,6 +53,8 @@ const Emplooys = () => {
           Employs data
         </h1>
         <div className="ad-em-scrolable">
+        {loadingstate&&<SkeletonLoader/>}
+
 
 {
   data.map((ele,index)=>{

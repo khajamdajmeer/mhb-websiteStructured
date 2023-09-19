@@ -6,8 +6,17 @@ import { techAuthorization } from '../../../../ApiCalls/CommonCalls/Authorizatio
 import {  useNavigate } from 'react-router-dom';
 import TechReqFinish from '../TechReqFinish/TechReqFinish';
 import Cookies from 'js-cookie';
+import { bindActionCreators } from 'redux';
+import { useDispatch,useSelector } from 'react-redux';
+import SkeletonLoader from '../../Common/SkeletonLoader/SkeletonLoader';
+import {actionCreator} from '../../../../Redux';
 const MyRequest = () => {
 
+
+    //using redux for skeleton loader
+    const dispatch= useDispatch();
+    const {showloading,hideloading}=bindActionCreators(actionCreator,dispatch);
+    const loadingstate = useSelector(state=>state.load);
 
 
     const history = useNavigate();
@@ -25,6 +34,7 @@ const MyRequest = () => {
     )
 
     const request = async()=>{
+        showloading();
         if(token){
             const res = await techAuthorization();
             setName(res.name)
@@ -32,20 +42,24 @@ const MyRequest = () => {
 
                 const newdata = await ViewMyReq();
                 if(newdata.length<1){
-                    setMydata(  [ {
-                        _id:"",name:'',mobileNumber:'',Address:'',Location:'',Service:{type:"",Date:'',Time:''}
-                    }])
+                   
+                    hideloading();
                 }
                 else{
                     setMydata(newdata);
                     // console.log(newdata)
+                    hideloading();
                 }
+                hideloading();
+
             }
             else{
                 const cookies = Cookies.get();
                 for(const cookie in cookies){
                     Cookies.remove(cookie)
                 }
+                hideloading();
+
             }
         }
         else{
@@ -139,6 +153,7 @@ const MyRequest = () => {
                Name: {name}
 
                </div>
+               {loadingstate&&<SkeletonLoader/>}
         {
             mydata.map((ele,index)=>{
                 return(

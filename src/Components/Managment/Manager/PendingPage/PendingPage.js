@@ -2,17 +2,30 @@ import React, { useEffect, useState } from 'react';
 import './PendingPage.css'
 import { getPendingReq } from '../../../../ApiCalls/ManagerCalls/RequestCall';
 import PendingView from '../PendingView/PendingView';
+import { bindActionCreators } from 'redux';
+import { useDispatch,useSelector } from 'react-redux';
+import SkeletonLoader from '../../Common/SkeletonLoader/SkeletonLoader';
+import {actionCreator} from '../../../../Redux'
 
 const PendingPage = () => {
+
+//using REdux for skeleton loader
+const dispatch = useDispatch();
+const {showloading,hideloading}= bindActionCreators(actionCreator,dispatch)
+const loadinstate = useSelector(state=>state.load)
+
   const [data,setData]=useState([])
   const onMount =async()=>{
+    showloading();
     const res = await getPendingReq();
     setData(res);
-    console.log(res);
+    hideloading();
+
 
   }
   useEffect(()=>{
     onMount();
+    // eslint-disable-next-line
   },[])
 
   //  LOGIC FOR RENDERING THE PENDING VIEW
@@ -48,6 +61,7 @@ const formattedDate = `${year}-${month}-${day}`;
           <h2 className='color-red'>{formattedDate.slice(0,10)}</h2>
         </div>
         <div className="ma-pp-body">
+          {loadinstate&&<SkeletonLoader/>}
      {
       data.map((ele,index)=>{
         return( <div className={ele.Complain ?"complainbg ma-pp-mapitem":'ma-pp-mapitem'}>

@@ -6,10 +6,18 @@ import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { Link } from 'react-router-dom';
 import plusimg from '../../../images and tones/plus.png';
-import TopMsg from  '../../Common/TopMsg/TopMsg'
-
+import TopMsg from  '../../Common/TopMsg/TopMsg';
+import { bindActionCreators } from 'redux';
+import { useDispatch,useSelector } from 'react-redux';
+import SkeletonLoader from '../../Common/SkeletonLoader/SkeletonLoader'
+import {actionCreator} from '../../../../Redux'
 
 const ViewRequest = () => {
+
+    //using Redux for Skeleton loder
+    const dispatch = useDispatch();
+    const {showloading,hideloading}=bindActionCreators(actionCreator,dispatch)
+    const loadingstate = useSelector(state=>state.load)
 
     const [activeIndex, setActiveIndex] = useState(null);
 
@@ -64,7 +72,7 @@ const ViewRequest = () => {
 
 
     const onMount = async () => {
-
+showloading();
         const techres = await GetTechDetails();
         setTechdata(techres)
         const res = await ViewRequests();
@@ -77,12 +85,15 @@ const ViewRequest = () => {
                     __v: ""
                 }
             ])
+            hideloading();
         }
         else {
-            setData(res)
-            console.log(res)
-            setShowview(true)
-            setShowupdate(false)
+            setData(res);
+            console.log(res);
+            setShowview(true);
+            setShowupdate(false);
+            hideloading();
+
         }
     }
     const history = useNavigate();
@@ -240,6 +251,7 @@ const ViewRequest = () => {
                             <div>Name</div>
                             <div>Mobilenumber</div>
                         </div>
+                        {loadingstate&&<SkeletonLoader/>}
                         {
                             data.map((ele, index) => {
 

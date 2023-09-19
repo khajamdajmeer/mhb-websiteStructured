@@ -4,8 +4,19 @@ import serachicon from '../../../images and tones/search-icon.png'
 import img3dots from '../../../images and tones/3dot.png'
 import { ViewClients,newDownload } from '../../../../ApiCalls/AdminCalls/DBCalls';
 import ClientView from '../ClientView/ClientView';
+import SkeletonLoader from '../../Common/SkeletonLoader/SkeletonLoader';
+import { bindActionCreators } from 'redux';
+import { useDispatch,useSelector } from 'react-redux';
+import { actionCreator } from '../../../../Redux';
 
 const Clients = () => {
+//using REdux for skelton loaders
+const dispatch = useDispatch();
+const {showloading,hideloading}=bindActionCreators(actionCreator,dispatch)
+const loadingstate = useSelector(state=>state.load)
+
+
+
   //logic for real data
   const [realdata,setRealdata]=useState([])
 
@@ -46,22 +57,26 @@ const Clients = () => {
   const [msg,setMsg]=useState('')
   const [showmsg,setShowmsg]=useState(false)
   const viewclients = async()=>{
+    showloading();
     const res = await ViewClients();
     if(res.success){
       setShowmsg(false);
       setShowdata(true)
       setData(res.message)
       setRealdata(res.message)
+      hideloading();
     }
     else{
       setShowdata(false)
       setShowmsg(true);
       setMsg(res.message)
+      hideloading();
     }
   }
 
   useEffect(()=>{
     viewclients();
+    // eslint-disable-next-line
   },[])
 
   //LOGIC FOR SHOWING 2O ITEMS PER PAGE
@@ -285,6 +300,7 @@ const Clients = () => {
 
         </div>
         <div className="ad-c-body" id='ad-c-scrolable' onClick={close3dot}>
+        {loadingstate&&<SkeletonLoader/>}
           {showdata&&(
             slicedData.map((ele,index)=>{
              return( <div className="ad-c-mapitem" key={ele._id}>

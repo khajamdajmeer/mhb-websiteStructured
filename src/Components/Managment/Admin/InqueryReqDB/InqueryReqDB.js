@@ -4,8 +4,16 @@ import serachicon from '../../../images and tones/search-icon.png'
 import img3dots from '../../../images and tones/3dot.png'
 import { CleintDB_Download,Inquery_Data } from '../../../../ApiCalls/AdminCalls/DBCalls';
 import Inqueryview from '../Views/Inqueryview/Inqueryview';
-
+import SkeletonLoader from '../../Common/SkeletonLoader/SkeletonLoader';
+import { bindActionCreators } from 'redux';
+import { useDispatch,useSelector } from 'react-redux';
+import { actionCreator } from '../../../../Redux';
 const InqueryReqDB = () => {
+  
+//using REdux for skelton loaders
+const dispatch = useDispatch();
+const {showloading,hideloading}=bindActionCreators(actionCreator,dispatch);
+const loadingstate = useSelector(state=>state.load);
 
   //logic for showing downloadbtns
   const [showDwnlod,setShowDwnlod]=useState(false)
@@ -28,21 +36,25 @@ const InqueryReqDB = () => {
   const [msg,setMsg]=useState('')
   const [showmsg,setShowmsg]=useState(false)
   const onMount = async()=>{
+    showloading();
     const res = await Inquery_Data();
     if(res.success){
       setShowmsg(false);
-      setShowdata(true)
-      setData(res.message)
+      setShowdata(true);
+      setData(res.message);
+      hideloading();
     }
     else{
-      setShowdata(false)
+      setShowdata(false);
       setShowmsg(true);
-      setMsg(res.message)
+      setMsg(res.message);
+      hideloading();
     }
   }
 
   useEffect(()=>{
     onMount();
+    // eslint-disable-next-line
   },[])
 
   //LOGIC FOR SHOWING 2O ITEMS PER PAGE
@@ -231,6 +243,7 @@ const InqueryReqDB = () => {
 
         </div>
         <div className="ad-ird-body" id='ad-ird-scrolable' onClick={close3dot}>
+        {loadingstate&&<SkeletonLoader/>}
           {showdata&&(
             slicedData.map((ele,index)=>{
              return( <div className="ad-ird-mapitem" key={ele._id}>

@@ -4,8 +4,17 @@ import  './DeletedDb.css'
 import serachicon from '../../../images and tones/search-icon.png'
 import { Deleted_req } from '../../../../ApiCalls/AdminCalls/DBCalls';
 import DeleteView from '../Views/DeleteView/DeleteView';
-
+import SkeletonLoader from '../../Common/SkeletonLoader/SkeletonLoader';
+import { bindActionCreators } from 'redux';
+import { useDispatch,useSelector } from 'react-redux';
+import { actionCreator } from '../../../../Redux';
 const DeletedDb = () => {
+
+  
+//using REdux for skelton loaders
+const dispatch = useDispatch();
+const {showloading,hideloading}=bindActionCreators(actionCreator,dispatch);
+const loadingstate = useSelector(state=>state.load);
 
   //logic for the realdata
    const [realdata,setRealdata]=useState([])
@@ -41,22 +50,26 @@ const DeletedDb = () => {
   const [msg,setMsg]=useState('')
   const [showmsg,setShowmsg]=useState(false)
   const viewclients = async()=>{
+    showloading();
     const res = await Deleted_req();
     if(res.success){
       setShowmsg(false);
       setShowdata(true);
       setData(res.message);
-      setRealdata(res.message)
+      setRealdata(res.message);
+      hideloading();
     }
     else{
       setShowdata(false)
       setShowmsg(true);
       setMsg(res.message)
+      hideloading();
     }
   }
 
   useEffect(()=>{
     viewclients();
+    // eslint-disable-next-line
   },[])
 
   //LOGIC FOR SHOWING 2O ITEMS PER PAGE
@@ -236,6 +249,7 @@ const DeletedDb = () => {
 
         </div>
         <div className="ad-ddb-body" id='ad-ddb-scrolable' onClick={close3dot}>
+        {loadingstate&&<SkeletonLoader/>}
           {showdata&&(
             slicedData.map((ele,index)=>{
              return( <div className="ad-ddb-mapitem" key={ele._id}>
