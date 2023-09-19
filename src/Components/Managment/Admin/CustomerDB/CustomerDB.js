@@ -8,6 +8,7 @@ import SkeletonLoader from '../../Common/SkeletonLoader/SkeletonLoader';
 import { bindActionCreators } from 'redux';
 import { useDispatch,useSelector } from 'react-redux';
 import { actionCreator } from '../../../../Redux';
+import CreateCustomer from './CreateCustomer/CreateCustomer';
 
 
 
@@ -209,12 +210,20 @@ const loadingstate = useSelector(state=>state.load)
 
 
 
+    //logic for entering customer data
+    const [newclient,setNewclient]= useState(false);
+    const handlenewclient = ()=>{
+      setNewclient(true);
+    }
+
 
   return (
     <>
+    {newclient&&<CreateCustomer/>}
     {showview &&<CustomerDBView history={historydata} closefunction={handlecloseviewbtn} data={viewdata}/>}
 
     <div className="ad-cdb-fullscreen">
+    
       <div className="ad-cdb-centerdiv">
         <div className="ad-cdb-head">
           <h1 className="ad-cdb-hleft">Customer DB</h1>
@@ -255,6 +264,7 @@ const loadingstate = useSelector(state=>state.load)
             {showDwnlod&&(<div className="ad-cdb-3dot-hbody" >
               {/* <button>view BlackList</button>
               <button>aka</button> */}
+              <button onClick={handlenewclient}>Add Customer</button>
               <button onClick={handleDownload}>download all</button>
             </div>)}
             </div>

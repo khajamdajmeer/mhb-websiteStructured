@@ -6,6 +6,8 @@
     margin: auto;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    z-index: 4;
 }
 .ma-cr-center{
     width: 100%;

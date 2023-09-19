@@ -136,3 +136,24 @@ export const Inquery_Data = async()=>{
         throw error;
     }
 }
+
+
+
+export const insertNewCustomer=async(data)=>{
+    try{
+        const res = await axios.post(`${host}/api/admin/createcustomer`,{
+                name:data.name,
+                mobileNumber:data.mobileNumber,
+                mobilenumberString:data.mobileNumber,Location:data.Location,
+                Address:data.Address,Service:{type:data.ServiceType,Date:data.ServiceDate},
+                Technicain:{name:data.Technicianid},
+                Discription:data.Note,
+                
+            },{headers:header})
+            return res.data;
+
+    }catch(error){
+        console.log(error);
+    }
+
+}

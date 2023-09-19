@@ -11,6 +11,11 @@
     
      font-family: 'Exo 2', sans-serif;
 }
+.ad-cdb-addcustomerdata{
+    position: absolute;
+    bottom: 20px ;
+    right: 20px;
+}
 .ad-cdb-centerdiv{
     margin-top: 40px;
     width: 100%;

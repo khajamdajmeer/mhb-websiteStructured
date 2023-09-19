@@ -5,9 +5,10 @@ const router = express.Router();
 const onlineclientDB = require('../../DBmodels/DBAdmin/FinishedReq')
 const ReqDb = require('../../DBmodels/DBClient/Request')
 const cusotmer = require('../../DBmodels/DBAdmin/ClientDB');
-// const ClientDB = require('../../DBmodels/DBAdmin/ClientDB');
+const ClientDB = require('../../DBmodels/DBAdmin/ClientDB');
 const DeletedDb = require('../../DBmodels/DBAdmin/Deleted_Req');
-const InqueryDB = require('../../DBmodels/DBAdmin/InqueryDB')
+const InqueryDB = require('../../DBmodels/DBAdmin/InqueryDB');
+const EmplooyDB = require('../../DBmodels/DBAdmin/NewEmplooyData')
 
 
 router.get('/Customers',FetchAdmin,async(req,res)=>{
@@ -103,5 +104,89 @@ router.get('/db/deleted',FetchAdmin,async(req,res)=>{
         }
     })
 
+
+
+    //router for the admin to create a new customer
+    // without any involment in online just pushing customers data to the completed database
+
+    router.post('/createcustomer',FetchAdmin,async(req,res)=>{
+
+        try{
+            const data = req.body;
+            const customer = await ClientDB.findOne({mobileNumber:data.mobileNumber})
+            if(customer){
+                const technician = await EmplooyDB.findById(data.Technicain.id)
+                const newdata = {
+                    cid:customer._id,
+                    name:data.name,
+                    mobileNumber:data.mobileNumber,
+                    mobilenumberString:data.mobilenumberString,
+                    Location:data.Location,
+                    Address:data.Address,
+                    Service:{
+                        type:data.Service.type,
+                        Date:data.Service.Date
+                    },
+                    Technicain:{
+                        name:data.Technicain.name,
+                        id:req.user
+                        
+                    },
+                    Requestdate:data.Service.Date
+                    ,
+                    forworded:{
+                        name:'admin',
+                        id:req.user
+                    },
+                    Discription:req.body.Discription
+                }
+                
+                const fdata = await onlineclientDB.create(newdata)
+                await InqueryDB.deleteMany({mobileNumber:data.mobileNumber})
+                res.status(200).send({message:'Success',Success:true})
+    
+            }else{
+                const cid = await ClientDB.create({name:data.name,mobileNumber:data.mobileNumber,mobilenumberString:data.mobileNumber})
+                const technician = await EmplooyDB.findById(data.Technicain.id)
+                const newdata = {
+                    cid:cid._id,
+                    name:data.name,
+                    mobileNumber:data.mobileNumber,
+                    mobilenumberString:data.mobilenumberString,
+                    Location:data.Location,
+                    Address:data.Address,
+                    Service:{
+                        type:data.Service.type,
+                        Date:data.Service.Date
+                    },
+                    Technicain:{
+                        name:technician.name,
+                        id:data.Technicain.id
+                    },
+                    Requestdate:data.Requestdate,
+                    forworded:{
+                        name:data.forworded.name,
+                        id:data.forworded.id
+                    },
+                    Discription:req.body.Discription
+                }
+    
+                const fdata = await onlineclientDB.create(newdata);
+                await InqueryDB.deleteMany({mobileNumber:data.mobileNumber})
+                res.status(200).send({message:'Success',Success:true})
+            }
+           
+                 
+    
+    
+                
+    
+            
+        }
+        catch(error){
+            console.log(error)
+            res.status(500).send({message:'error occured',Success:false})
+        }
+    })
 
 module.exports=router
