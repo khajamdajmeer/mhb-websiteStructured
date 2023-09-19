@@ -32,7 +32,6 @@
   }
   
   .listright li {
-    /* padding: 0 40px; */
     padding-right: 30px;
     display: flex;
     align-items: center;
@@ -41,7 +40,6 @@
   
   .lileft {
     height: inherit;
-    /* background-color: orange; */
     background-color: #fb8500;
     border-radius: 50%;
     scale: 0.7;
@@ -51,7 +49,6 @@
   .lileft img {
     height: inherit;
     scale: 0.6;
-    /* filter: invert(1); */
   }
   
   @import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');

@@ -30,7 +30,6 @@ max-height: 600px;
     align-items: center;
     justify-content: center;
     background-color: #1e6091;
-    /* border: 1px solid gray; */
 }
 
 .ad-em-heading{
@@ -38,7 +37,6 @@ max-height: 600px;
     text-align: center;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
-    /* border: 1px solid red; */
     padding: 10px 10px;
     box-shadow: 0px 2px 0px #d3d0d0;
     z-index: 4;
@@ -53,11 +51,9 @@ max-height: 600px;
 height: 25px;
 display: flex;
 flex-direction: column;
-/* align-items: center; */
 padding: 10px 0 0 0 ;
 overflow: hidden;
 
-/* justify-content: center; */
 }
 .ad-em-id-data-wrap{
     height: 320px;
@@ -107,7 +103,6 @@ overflow: hidden;
     border: none;
 }
 .info-dots img{
-    /* filter: invert(0.6); */
     height: 24px;
     width: 8px;
 }
@@ -119,7 +114,6 @@ justify-content: space-between;
 align-items: center;
 }
 .ad-leftrole{
-    /* border: 1px solid blue; */
     border-radius: 3px;
     height: 100%;
     
@@ -138,7 +132,6 @@ align-items: center;
     width: 95%;
     max-width: 400px;
     position: relative;
-    /* border: 2px solid white; */
 
 }
 .ad-em-rdata-center ul{
@@ -147,7 +140,6 @@ align-items: center;
     list-style: none;
     align-items: center;
     justify-content: center;
-    /* justify-content: flex-end; */
     width: 100%;
     padding: 2px 0;
 
@@ -160,8 +152,6 @@ align-items: center;
     width: 35%;
 text-align: right;
 text-transform: capitalize;
-/* overflow-wrap: break-word; */
-/* font-weight: bold; */
 color: #bdbab5;
 font-family: 'Libre Baskerville', serif;
 
@@ -174,7 +164,6 @@ font-family: 'Libre Baskerville', serif;
     overflow: hidden;
     color: #e0e1dd;
     font-weight: 500;
-    /* font-family: 'Oswald', sans-serif; */
 font-family: 'Libre Baskerville', serif;
 
 

@@ -61,7 +61,6 @@ body {
     margin: 5px 0;
   }
   
-  /* Media Query for Hamburger Menu */
   @media (max-width: 768px) {
    
     .menu {

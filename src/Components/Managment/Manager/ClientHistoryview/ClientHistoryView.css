@@ -40,8 +40,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* padding: 10px 0; */
-    /* justify-content: center; */
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     overflow-y: auto;

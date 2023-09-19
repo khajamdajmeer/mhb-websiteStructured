@@ -21,8 +21,7 @@
     outline: 1px solid red;
     height: fit-content;
     position: relative;
-    /* display: flex;
-align-items: center;    */
+   
  background-color: #f2e9e4;
 justify-content: center;
 flex-direction: column;
@@ -54,7 +53,6 @@ flex-direction: column;
     right: 20px;
     width: 100px;
     height: fit-content;
-    /* outline: 1px solid red; */
     animation: opendots 0.6s forwards;
     transform-origin: top;
     display: flex;
@@ -80,7 +78,6 @@ flex-direction: column;
     text-align: center;
     background-color: #c0b4b4;
     text-decoration: none;
-    /* border-radius: 6px; */
     height: 30px;
     display: flex;
     align-items: center;
@@ -102,7 +99,6 @@ flex-direction: column;
     align-items: center;
     justify-content: space-between;
     width: unset;
-    /* background-color: orange; */
     max-width: 500px;
     padding: 1px 0px;
     padding-right: 5px;
@@ -139,7 +135,6 @@ height: inherit;
 width: inherit;
 }
 .ad-emp-mapitem{
-    /* width: unset; */
     display: flex;
     align-items: center;
     width: 100%;
@@ -149,7 +144,6 @@ width: inherit;
 
 }
 .ad-emp-dataitem{
-    /* width: unset; */
     width: 80%;
     display: flex;
     list-style-type: none;
@@ -157,11 +151,8 @@ width: inherit;
     align-items: center;
     justify-content: space-between;
     padding: 5px 12px;
-    /* background-color: #ffffff; */
 }
 .ad-emp-dataitem li{
-    /* min-width: 140px; */
-    /* width: 150px; */
     padding: 4px 0;
     width: 23%;
     overflow-wrap: wrap;
@@ -213,7 +204,6 @@ width: inherit;
 }
 .ad-emp-inputdiv{
     width: 12%;
-    /* width: unset; */
     
     padding: 4px 20px;
     height: 30px;
@@ -223,7 +213,6 @@ width: inherit;
 
 
 .ad-emp-inputdiv button{
-    /* width: 30px; */
     height: 100%;
     display: flex;
     align-items: center;
@@ -253,9 +242,6 @@ width: inherit;
     background-color: #54d9d7;
 }
 .ad-emp-spanlen{
-    /* margin-right: 10px; */
-    /* width: 40px; */
-    /* background-color: rebeccapurple; */
     padding: 5px;
     border-radius: 50%;
     font-weight: bold;
@@ -292,12 +278,7 @@ width: inherit;
     }
     .ad-emp-dataitemhead{
         display: none;
-        /* width: 100%;
-        display:flex;
-        width: 80%;
-        align-items: center;
-        justify-content: space-between;
-        list-style: none; */
+      
     }
     .ad-emp-inputdivhead{
        width: 100%;
@@ -362,7 +343,6 @@ width: inherit;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* border: 10px solid #274c77; */
     border-radius: 10px;
     justify-content: center;
     font-size: 24px;
@@ -383,9 +363,6 @@ width: inherit;
   .card-back {
     background-color: #c7f9cc;
     color: #fff;
-    /* display: flex; */
-    /* align-items: center; */
-    /* border: 10px solid #F08A5D; */
     border-radius: 10px;
     justify-content: center;
     font-size: 24px;
@@ -421,7 +398,6 @@ width: inherit;
     }
     .ad-vp-bs-bname{
         width: 70%;
-        /* height: 100%; */
         overflow: hidden;
         white-space: nowrap;
         color: black;

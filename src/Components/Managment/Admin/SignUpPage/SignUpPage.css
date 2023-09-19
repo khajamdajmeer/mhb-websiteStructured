@@ -24,7 +24,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: #3f37c9; */
     background-color: #2b2d42;
 
     border-top-right-radius: 14px;
@@ -43,7 +42,6 @@
     border-bottom-right-radius: 14px;
     border-bottom-left-radius: 14px;
 
-    /* justify-content: center; */
 }
 .ad-sup-ipitem{
     width: 280px;
@@ -83,7 +81,6 @@
     outline: 1px solid black;
     border-radius: 4px;
     border: none;
-    /* background-color: ; */
     background: #1d3557;
   background: #1a759f;
 
@@ -98,7 +95,6 @@
     outline: 1px solid black;
     border-radius: 4px;
     border: none;
-    /* background-color: ; */
     background: #1d3557;
   background: #1a759f;
 

@@ -14,7 +14,6 @@ font-family: 'Noto Sans JP', sans-serif;
 }
 #techmsg-centerbox{
     position: relative;
-    /* border: 2px solid whitesmoke; */
     height: 150px;
     width: 200px;
     background-color: #f1faee;

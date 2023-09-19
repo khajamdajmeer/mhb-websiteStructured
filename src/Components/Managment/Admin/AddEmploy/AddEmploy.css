@@ -1,6 +1,4 @@
 .ad-nem-data{
-    /* border: 2px solid white; */
-
     height: 85%;
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
@@ -19,7 +17,6 @@
     padding-top: 10px;
 }
 .ad-nem-label{
-    /* width: 100%; */
 font-weight: bold;
 }
 .ad-nem-input{
@@ -36,7 +33,6 @@ input[type='number']::-webkit-outer-spin-button{
 .ad-nem-ipbox{
     width: 100%;
     display: flex;
-    /* flex-direction: column; */
     padding: 2px 0;
     justify-content: space-between;
 

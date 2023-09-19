@@ -21,7 +21,6 @@
     border-bottom-right-radius: 5px;
     background-color: #74c69d;
     transition: all 0.5s;
-/* color: ; */
 }
 .techright button:hover{
     background-color: #2d6a4f;
@@ -32,7 +31,6 @@
     border-radius: none;
 }
 .viewreq {
-    /* position: relative; */
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -58,7 +56,6 @@
     top: 0;
     width: 35%;
     overflow: auto;
-    /* border-right: 2px solid black; */
     padding: 0px 0px;
 
 
@@ -149,7 +146,6 @@
 }
 .dataright{
     width: 60%;
-    /* font-size: 20px; */
     justify-content: center;
 padding: 3px 5px;
 }
@@ -164,7 +160,6 @@ padding: 3px 5px;
     align-items: center;
     justify-content: space-between;
     padding: 8px 20px;
-    /* width: 40%; */
 }
 .detailsbuttons button{
     padding: 5px 20px ;
@@ -173,7 +168,6 @@ padding: 3px 5px;
 }
 .serachresult1{
     position: absolute;
-    /* top: 100%; */
     right: 2px;
     width: 50%;
     border: 2px solid white;
@@ -337,7 +331,6 @@ padding: 3px 5px;
 @media (max-width:560px){
     .dataleft{
         display: none;
-        /* transform: scale(0.6); */
     }
     .dataright{
         width: 100%;

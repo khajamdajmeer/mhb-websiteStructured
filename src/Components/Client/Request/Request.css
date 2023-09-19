@@ -7,7 +7,6 @@
     padding: 40px 0px;
     background: whitesmoke;
   }
-    /* @import url('https://fonts.googleapis.com/css2?family=Exo+2&family=Rajdhani:wght@600&display=swap'); */
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
   
   .ipbox {
@@ -38,7 +37,6 @@
   
   .reqlabel {
     font-weight: bold;
-    /* color: #023e8a; */
     text-transform: uppercase;
   }
   
@@ -55,7 +53,6 @@
   
   .ipbox select {
     text-transform: capitalize;
-    /* font-size: 20px; */
     font-weight: 500;
   }
   

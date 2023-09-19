@@ -1,5 +1,4 @@
 .techreqcontainer{
-    /* position: relative; */
     height: 100vh;
     background-color: #edede9;
     width: 100vw;
@@ -91,7 +90,6 @@ box-shadow: rgba(0, 0, 0, 0.02) 0px 0px 0px 0px, rgba(27, 31, 35, 0.15) 0px 0px 
     overflow-x: hidden;
 }
 
-/* msgbody css here */
 @import url('https://fonts.googleapis.com/css2?family=Kanit&family=Noto+Sans+JP:wght@300&display=swap');
 #tech-msgfullScreen{
     height: 100vh;
@@ -108,7 +106,6 @@ font-family: 'Noto Sans JP', sans-serif;
 }
 #techmsg-centerbox{
     position: relative;
-    /* border: 2px solid whitesmoke; */
     height: 150px;
     width: 200px;
     background-color: #f1faee;
@@ -174,8 +171,6 @@ font-family: 'Noto Sans JP', sans-serif;
         flex-flow: column;
     }
     #tech-viewdata li{
-        /* width: 100%;
-        text-align: center; */
 
         padding: 2px 10px;
         flex-flow: wrap;

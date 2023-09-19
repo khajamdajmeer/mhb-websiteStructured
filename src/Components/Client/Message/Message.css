@@ -4,7 +4,6 @@
     height:100vh;
     width: 100vw;
     background-color: white;
-    /* background-color: rgba(0, 0, 0, 0.782); */
     z-index: 99999999;
     display: flex;
     flex-direction: column;
@@ -33,7 +32,6 @@
   
   .msgcenter{
     display: none;
-    /* display: inline; */
     border: 3px solid #f1faee;
     padding: 10px;
     border-radius: 15px;

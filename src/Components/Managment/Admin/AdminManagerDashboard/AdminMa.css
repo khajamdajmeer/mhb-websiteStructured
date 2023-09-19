@@ -33,9 +33,7 @@
     100%{
         transform: scale(1);
     }
-   /* 100%,0%{
-    transform: scale(0);
-    } */
+   
 }
 .ad-ma-navul{
     list-style: none;

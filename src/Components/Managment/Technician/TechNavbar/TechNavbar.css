@@ -28,7 +28,6 @@ body {
  .menu-icontech{
     display: block;
     height: inherit;
-    /* width: 35%; */
  }
   .menu-icontech img{
     height: inherit;
@@ -36,8 +35,6 @@ body {
   }
   .menutech {
     display: flex;
-    /* position: absolute;
-    top: 45px; */
 
     list-style: none;
     margin: 0;
@@ -53,25 +50,7 @@ body {
   .menutech li {
     padding: 0 15px;
   }
-  /* .menutech li::after{
-    content: "";
-    position: relative;
-    top: 3px;
-    display: block;
-    height: 3px;
-    width: 105%;
-    background-color: #fb8500;
-    transform: scaleX(0);
-    border-radius: 3px;
-    transform-origin: right;
-    transition: transform 0.4s ease;
-  }
-  .menutech li:hover::after{
-    cursor: pointer;
-    transform: scaleX(1);
-    transform-origin: left;
-  } */
- 
+  
   
 
   
@@ -97,7 +76,6 @@ body {
   #profiledataboxtech{
     position: absolute;
     width: 300px;
-    /* top: 2px; */
     right: 0;
     border: 2px solid red;
     height: 200px;
@@ -106,7 +84,6 @@ body {
 
   }
   .profilebtntech{
-    /* border: none; */
     padding: 1px 5px;
     background:transparent;
     margin-right: 10px;
@@ -118,7 +95,6 @@ body {
     display: none;
   }
   
-  /* Media Query for Hamburger Menu */
   @media (max-width: 768px) {
    
     .menutech {
@@ -135,7 +111,6 @@ body {
     .profilecontainertech{
         display: none;
         width: 0;
-        /* position: absolute; */
     }
 
     @keyframes hamopen{

@@ -7,10 +7,8 @@
     justify-content: center;
 }
 .techcenterdiv{
-    /* margin: auto; */
     margin-top: 40px;
     height: 80%;
-    /* border: 2px solid red; */
     border-radius: 5px;
     width: 95%;
     max-width: 800px;
@@ -57,7 +55,6 @@ width: 100%;
 .ma-vtr-dbody{
   height: 210px;
   transition: all 0.5s ease;
-  /* animation: openwrap 1s forwards; */
   overflow: auto;
 }
 .ma-vtr-openwrap{
@@ -81,14 +78,10 @@ width: 100%;
   background-color: #80ed99;
   height: 30px;
   width: 30px;
-  /* outline: 1px solid #000; */
-  /* width: fit-content; */
-  /* padding: 0 4px; */
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  /* color: #ffff; */
 
   border-radius: 50%;
 }
@@ -118,7 +111,6 @@ width: 100%;
   padding: 0 3px;
 }
 
-/* loading skeleton css */
 .ma-vtr-dhead-loader{
   
   height: 40px;
@@ -171,7 +163,6 @@ width: 100%;
   position: absolute;
   top: 15px;
   right: 25px;
-  /* padding: 10px 0; */
   border-radius: 4px;
   animation: opendbtn 0.4s forwards ease;
   z-index: 6;
