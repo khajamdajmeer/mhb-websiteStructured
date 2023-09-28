@@ -1,3 +1,12 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500&family=Jockey+One&family=Jost&family=Kalam:wght@300;400&family=Marhey&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500&family=Jockey+One&family=Jomolhari&family=Jost&family=Kalam:wght@300;400&family=Marhey&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500&family=Itim&family=Jockey+One&family=Jomolhari&family=Jost&family=Kalam:wght@300;400&family=Marhey&display=swap');
+
+
+
 *{
     margin: 0;
     padding: 0;
@@ -57,3 +66,11 @@ body{
     border: none;
     color: whitesmoke;
   }
+
+/* 
+  @media (max-width:600px) {
+    
+  }
+  @media (max-width:839px) {
+    
+  } */

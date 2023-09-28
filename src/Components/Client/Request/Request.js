@@ -118,11 +118,10 @@ setData({...data,[e.target.name]:e.target.value})
 
         </>
         )}
-        {/* <Message/> */}
 
     <div className="services-container">
         <div className=" iptextbox">
-            Book service Now {loading&&(<div>wait loading</div>)}
+            Book service Now 
         </div>
         <form action="post">
         <div className="ipbox">
@@ -192,7 +191,7 @@ setData({...data,[e.target.name]:e.target.value})
 
 
         <div className="ipbox ipsubbox">
-            <label htmlFor="none" className='displaynone'>d</label>
+            <label htmlFor="none" className='invisible'>d</label>
            
             <button type='submit' onClick={handleRequest} 
             disabled = {

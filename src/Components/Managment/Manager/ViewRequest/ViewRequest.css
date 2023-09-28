@@ -139,6 +139,10 @@
     width: 75%;
     justify-content: center;
 }
+.dblock input{
+    border-radius: 5px;
+    border: 1px solid black;
+}
 .dataleft{
     width: 40%;
     font-size: 20px;

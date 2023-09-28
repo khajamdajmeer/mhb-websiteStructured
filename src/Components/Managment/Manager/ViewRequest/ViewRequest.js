@@ -385,30 +385,30 @@ showloading();
                                         <div className="dataleft">Name</div>
 
 
-                                        <input type='text' onChange={onchange} value={updatedata.name} name='name' className="dataright" />
+                                        <input type='text' onChange={onchange} value={updatedata.name} name='name' className="dataright" placeholder='Enter Name' />
                                     </div>
                                     <div className="dblock">
                                         <div className="dataleft">MobileNumber</div>
                                         {/* <div className="dataright">{updatedata.mobileNumber}</div> */}
 
-                                        <input type='text' name='mobileNumber' value={updatedata.mobileNumber} onChange={onchange} className="dataright" disabled />
+                                        <input type='text' name='mobileNumber' value={updatedata.mobileNumber} onChange={onchange} className="dataright" disabled placeholder='Enter Mobilenumber'/>
                                     </div>
                                     <div className="dblock">
                                         <div className="dataleft">Location</div>
-                                        <input type='text' name='Location' value={updatedata.Location} onChange={onchange} className="dataright" />
+                                        <input type='text' name='Location' value={updatedata.Location} onChange={onchange} className="dataright" placeholder='Enter Location' />
                                     </div>
                                     <div className="dblock">
                                         <div className="dataleft">Address</div>
-                                        <textarea type='textarea' name='Address' value={updatedata.Address} onChange={onchange} className="dataright textarea" row='4' />
+                                        <textarea type='textarea' name='Address' value={updatedata.Address} onChange={onchange} className="dataright textarea" row='4' placeholder='Enter Complete Address' />
                                     </div>
                                     <div className="dblock">
                                         <div className="dataleft">ServiceType</div>
-                                        <input type='text' name='ServiceType' value={updatedata.ServiceType} onChange={onchange} className="dataright" />
+                                        <input type='text' name='ServiceType' value={updatedata.ServiceType} onChange={onchange} className="dataright" placeholder='Enter Service Type' />
                                     </div>
                                     <div className="dblock">
                                         <div className="dataleft">ServiceDate</div>
-                                        <select onChange={onchange} value={updatedata.ServiceDate} className='dataright' name='ServiceDate' id="">
-                                            <option value="0" defaultValue  >---  SELECT --- </option>
+                                        <select onChange={onchange} value={updatedata.ServiceDate} className='dataright' name='ServiceDate' id="" placeholder='Select Date'>
+                                            <option value="0" defaultValue  >---  SELECT Date --- </option>
                                             <option value={today.toDateString()} >{today.toDateString()} today </option>
                                             <option value={today_1.toDateString()} >{today_1.toDateString()} tomorrow </option>
                                             <option value={today_2.toDateString()} >{today_2.toDateString()}  </option>
@@ -423,7 +423,7 @@ showloading();
                                         <div className="dataleft">ServiceTime</div>
 
                                         <select onChange={onchange} value={updatedata.ServiceTime} name='ServiceTime' className='dataright' id="">
-                                            <option value="0" defaultValue >---Select--- </option>
+                                            <option value="0" defaultValue >---Select Time--- </option>
                                             <option value="8 Am - 10 Am" >8 Am - 10 am</option>
                                             <option value="10 Am - 12 pm">10 am - 12 pm</option>
                                             <option value="12 pm - 2 pm">12 pm - 2 pm</option>

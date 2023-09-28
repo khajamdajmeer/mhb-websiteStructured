@@ -45,10 +45,14 @@ app.use('/api/adminauthorization',require('./ApiRoutes/CommonRoutes/AdminAuthori
 app.use('/api/progress',require('./ApiRoutes/AdminRoutes/Progress'))
 
 
-app.listen(port,(err)=>{
+const server = app.listen(port,(err)=>{
     if(err) console.log(err);
-    console.log('server listengin on port',port);
+    const address = server.address();
+    const host = address.address === '::' ? 'localhost' : address.address;
+    const serverPort = address.port;
+    console.log(`Server listening on http://${host}:${serverPort}`);
     })
+    
     
     const connecttoMongo = require('./ConnectMongo')
     connecttoMongo();
