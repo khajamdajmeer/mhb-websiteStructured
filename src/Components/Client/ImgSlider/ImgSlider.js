@@ -1,4 +1,4 @@
-import React,{useEffect, useState,useMemo} from 'react';
+import React,{useEffect, useState,useMemo, useRef} from 'react';
 import './ImgSlider.css';
 import img1 from "../imgClient/sliderimages/tech1.jpeg";
 import img2 from "../imgClient/sliderimages/tech2.jpeg";
@@ -45,17 +45,28 @@ const ImgSlider = () => {
         setImg(imgfilelocations[index]);
     }, [index, imgfilelocations]);
 
+    
+    const inputnameRef = useRef(null);
+    const handlescroolToBookNow =()=>{
+      const bookingcontainer = document.getElementById('bookingContainer');
+      if(bookingcontainer){
+          bookingcontainer.scrollIntoView({behavior:'smooth'});
+          if(inputnameRef.current){
+              inputnameRef.current.focus();
+          }
+      }
+  }
 
   return (
    <>
-   <div className="slideshow-container">
+   <div className="slideshow-container" id='iamhome'>
         <div className="myslides fade">
      
           <img src={img} className='transition-fade show' alt="" />
           <div className="slidercenter">
-            <div className="slidertop">We are master of Servicies</div>
-            <div className="slidermiddle">MHB <span className="orangecolor">Service</span>  <br />Provider</div>
-            <div className="sliderbottom"><button className="bookservice">Book a service</button></div>
+            <div className="slidermiddle">MHB <span className="orangecolor"> AC </span> Repair &  <br />Services</div>
+            <div className="slidertop">Your Comfort is Our Success</div>
+            <div className="sliderbottom"><button onClick={handlescroolToBookNow} className="bookservice">Book a service</button></div>
           </div>
         </div>
         {/* <div className="myslides fade">

@@ -31,7 +31,11 @@ const Message = (props) => {
         <div className="msgcenter" id='fullmessage'>
             <div className="msghead">
             Service Booked 
-                <span className='orangecolor'> Succesfully !</span>
+                <span className='orangecolor'> Succesfully
+                <span class="material-symbols-outlined">
+verified
+</span>
+                 </span>
                
             </div>
             <div className="msgbody">
@@ -71,7 +75,7 @@ const Message = (props) => {
                 ThankYou For Booking Our Service
             </div>
             <div className="greetfooter">
-                For Any Queries regarding Your Booking Plese call 1234567890
+                For Any Queries regarding Your Booking Plese call 8919168521
             </div>
         </div>
         <div className="servicegif" id='successgif'>

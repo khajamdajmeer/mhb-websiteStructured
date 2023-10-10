@@ -4,6 +4,7 @@
   justify-content: center;
     margin: auto;
   background-color: #90e0ef;
+  /* background-color: #fcbf49; */
 
   }
   
@@ -66,12 +67,17 @@
     font-size: x-large;
     font-family: 'Exo 2', sans-serif;
     text-transform: capitalize;
+    font-weight: bold;
+    margin-bottom: 18px;
+    color: #000000;
   }
   
   .slidermiddle {
     /* border: 2px solid red; */
     font-size: 75px;
     font-family: 'Exo 2', sans-serif;
+    font-weight: bold;
+    color: #023e8a;
   }
   
   .bookservice {

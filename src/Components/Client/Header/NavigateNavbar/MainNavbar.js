@@ -8,6 +8,9 @@ import { Link } from 'react-router-dom';
 const MainNavbar = () => {
 
 
+  
+
+
     var hamlogo = iconmenu;
 
 
@@ -26,9 +29,32 @@ const MainNavbar = () => {
 
  }
 
+ const handleHomeBtn =()=>{
+  const home= document.getElementById('iamhome')
+  if(home){
+    home.scrollIntoView({behavior:'smooth'})
+  }
+ }
 
+ const handleAboutBtn = ()=>{
+  const about = document.getElementById('iamabout');
+  if(about){about.scrollIntoView({behavior:'smooth'})
 
+  }
+ }
+  const handleServicBtn = ()=>{
+  const service = document.getElementById('iamservice');
+  if(service){service.scrollIntoView({behavior:'smooth'})
 
+  }
+ }
+
+const handleBookingBtn =()=>{
+  const booking = document.getElementById('bookingContainer');
+  if(booking){
+    booking.scrollIntoView({behavior:'smooth'})
+  }
+}
 
 
   return (
@@ -39,10 +65,11 @@ const MainNavbar = () => {
       <img src={logo} alt="" />
       </div>
     <ul className="menu" id='mymenu'>
-        <li><Link to='service'>home</Link></li>
-        <li>About</li>
-        <li>Services</li>
-        <li>Contact</li>
+        <li><button onClick={handleHomeBtn}>Home</button></li>
+        <li><button onClick={handleAboutBtn}>About</button></li>
+        <li><button onClick={handleServicBtn}>Service</button></li>
+        <li><button onClick={handleBookingBtn}>Booking</button></li>
+        <li><button>Contact</button></li>
       </ul>
       <button className='hambutton' onClick={handlehambtn}>
             <img src={hamlogo} alt="" id='hamimg'/>

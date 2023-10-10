@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-between;
     background-color: #EEF4F9;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
     
   }
   
@@ -22,7 +22,7 @@
   
   .navleft img {
     height: inherit;
-    border-radius: 40%;
+    /* border-radius: 40%; */
   }
   
   .listright {
@@ -60,7 +60,11 @@
   .orangecolor {
     color: #fb8500;
   }
-
+.orangecolor span{
+color: #ffffff;
+padding-left: 5px;
+  font-size: 48px;
+}
   @media (max-width: 768px) {
    
 

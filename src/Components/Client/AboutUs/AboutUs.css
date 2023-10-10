@@ -1,15 +1,19 @@
 .c-about-container{
   width: 100vw;
-height: 528px;
+height: auto;
 background-color: #eef4f9;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 30px 0;
+
+}
+.justifytext{
+  text-align: justify;
 }
 .c-about-center{
-  width: 654px;
-/* height: 324px; */
-height: auto;
+  width: 70%;
+height: 80%;
 background-color: #eef4f9;
 display: flex;
 box-shadow: 0 16px 24px 2px #023e8a;
@@ -21,17 +25,24 @@ border-radius: 8px;
   filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.367));
 }
 .c-about-left{
-  width: 327px;
-  /* height: 324px; */
+  width: 50%;
   height: auto;
   padding: 8px 24px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25), 0 6px 30px 5px rgba(0, 0, 0, 0.12);
+}
+.c-about-left p{
+  color: rgb(71, 71, 71);
+  padding: 0px 16px;
+  font-family: 'Mukta', sans-serif;
+  font-weight: bold;
+
 }
 .about-heading{
   padding: 8px 16px;
   font-family: 'Jost', sans-serif;
   color: #023e8a;
-  font-size: 18px;
+  font-size: 34px;
+  
 }
 .about-subheading{
   color: #023e8a;
@@ -41,11 +52,30 @@ font-weight: bold;
 
 }
 .about-orange{
-  color: #F48C06;
+  color: #fb8500 ;
+}
+.hrquote{
+  padding: 10px 0;
+  background-color: #000000;
+  color: #eef4f9;
+  text-align: center;
+}
+.hrquote h2{
+  padding: 10px 0;
+}
+.about-alltags{
+  display: flex;
+  padding: 10px 0;
+  align-items: center;
+  justify-content: center;
 }
 .about-tags{
   padding: 8px 16px;
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
 }
 .about-tags h3{
   margin-left: 16px;
@@ -58,18 +88,19 @@ font-size: 18px;
 
 }
 .tick{
-  width: 24px;
-  height: 24px;
-  background-color: #023e8a;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fb8500;
+  border-radius: 50%;
 }
-.material-symbols-outlined {
-  color: #eef4f9;
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
+.tick span{
+  color: #03045e;
+  font-size: 32px;
 }
+
 
 .c-about-right{
   width: 327px;
@@ -80,12 +111,19 @@ font-size: 18px;
   background-color: #eef4f9;
   width: 100vw;
   display: flex;
-  align-content: center;
+flex-direction: column;
+  align-items: center;
   justify-content: center;
   height: auto;
 padding: 24px 0;
 }
-
+.serviceheading{
+  padding: 10px 0;
+  font-weight: bolder;
+  color: #023e8a;
+  font-size: 36px;
+  font-family: 'Jost', sans-serif;
+}
 .c-aboutcard-center{
   height: auto;
   width: auto;
@@ -159,6 +197,9 @@ padding: 24px 16px;
     row-gap: 16px;
     padding: 0 5px;
     }
+    .c-about-center{
+      width: 90%;
+    }
   }
   @media (max-width:839px) {
     .c-about-container{
@@ -182,6 +223,10 @@ padding: 24px 16px;
       align-items: center;
       justify-content: center;
     }
+    .about-alltags{
+  flex-flow: wrap;
+
+    }
     .about-heading{
       width: 100%;
     }
@@ -189,6 +234,6 @@ padding: 24px 16px;
       width: 100%;
     }
     .about-tags{
-      width: 100%;
+      /* width: 100%; */
     }
   }

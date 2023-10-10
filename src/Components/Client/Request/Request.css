@@ -18,6 +18,9 @@
   display: flex;
   font-family: 'Outfit', sans-serif;
   }
+  .req-select option{
+    padding: 2px 0;
+  }
   
   .ipbox label{
     width: 200px;
@@ -48,10 +51,13 @@
   
   
   .iptextbox {
-    padding-bottom: 30px;
+    /* padding-bottom: 30px; */
     text-align: center;
     font-weight: bold;
     font-size: 64px;
+    background-color: #EEF4F9;
+    /* background-color: #fcbf49; */
+
     color: #023E8A;
     text-transform: uppercase;
     font-family: 'Jockey One', sans-serif;
@@ -89,6 +95,57 @@
    .ipsubbox button[disabled]{
     background: #d6ccc2;
    }
+   .c-book-container{
+    background-color: #EEF4F9;
+    /* background-color: #fcbf49; */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+   }
+   .c-bookservice{
+    background-color: #EEF4F9;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 85%; 
+    box-shadow: 1px 1px 8px #0000005e;
+    padding: 10px 0;
+    border-radius: 10px;
+   }
+   .c-book-row{
+    min-width: 300px;
+    max-width:30%;
+    padding: 0 10px;
+    color:#023E8A;
+   }
+   .text-orange{
+    color:#fb8500;
+    font-size: 36px;
+   }
+   .c-book-column{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+   }
+   .c-book-column input , .c-book-column button, .c-book-column select{
+    width: 100%;
+    padding: 10px 8px;
+    border-radius: 5px;
+    box-shadow: none;
+    border: 1px solid #023E8A;
+   }
+   .c-book-column button{
+    background-color: #fb8500;
+    font-weight: bold;
+    color: #023E8A;
+   }
+   .c-book-column .material-symbols-outlined{
+    color: #023E8A;
+    padding: 0 4px;
+  }
 
 @media (max-width: 768px) {
   .ipbox{
