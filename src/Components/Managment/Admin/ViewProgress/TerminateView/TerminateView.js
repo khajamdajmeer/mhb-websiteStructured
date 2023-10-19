@@ -50,7 +50,7 @@ const handleterminate= ()=>{
             </ul>
             <ul className='unflexul terviewbtnsul'>
                 <li><button onClick={props.handleclose}>cancle</button></li>
-                <li><button onClick={handleterminate}>Terminate</button></li>
+                <li><button className='terminatebtn' onClick={handleterminate}>Terminate</button></li>
             </ul>
 
 

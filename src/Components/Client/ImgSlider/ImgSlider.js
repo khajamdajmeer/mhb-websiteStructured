@@ -2,7 +2,12 @@ import React,{useEffect, useState,useMemo, useRef} from 'react';
 import './ImgSlider.css';
 import img1 from "../imgClient/sliderimages/tech1.jpeg";
 import img2 from "../imgClient/sliderimages/tech2.jpeg";
-import img3 from '../imgClient/sliderimages/bg3.jpg'
+// import img3 from '../imgClient/sliderimages/bg3.jpg';
+// import sider4 from '../imgClient/sliderimages/bg2.jpeg';
+import gascharging from '../imgClient/sliderimages/GasCharging.jpg';
+import vrfoutdoorimg from  '../imgClient/sliderimages/Vrfoutdoorimg.jpg';
+import casateservice from '../imgClient/sliderimages/CaseteSliderimg.jpg';
+import waterjetimg from '../imgClient/jetservice.jpeg';
 
 const ImgSlider = () => {
     
@@ -27,7 +32,7 @@ const ImgSlider = () => {
   //     }, []);
     
   const imgfilelocations = useMemo(() => [
-    img1, img2, img1,img3
+    img1, waterjetimg,img2,casateservice,vrfoutdoorimg,gascharging
 ], []);
     const [index, setIndex] = useState(0);
     const [img, setImg] = useState(imgfilelocations[index]);

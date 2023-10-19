@@ -2,7 +2,7 @@
     position: absolute;
     height: 100vh;
     width: 100vw;
-    background: #e8e8e4;
+    background: rgba(0, 0, 0, 0.473);
     display: flex;
     flex-direction: column;
     align-items: center;

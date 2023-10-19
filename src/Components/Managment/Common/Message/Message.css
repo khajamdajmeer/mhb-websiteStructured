@@ -5,7 +5,7 @@
     display: flex;
     position: absolute;
     top: 0;
-    background-color: rgba(0, 0, 0, 0.655);
+    background-color: #00000069;
     z-index: 20;
 }
 .msgbody1{
@@ -16,7 +16,8 @@
     height: 35%;
     width: 25%;
     border-radius: 15px;
-    background-color: #354f52;
+    background-color: var(--onprimary);
+    color: var(--primary);
 
 }
 .msgbody1 button:hover{

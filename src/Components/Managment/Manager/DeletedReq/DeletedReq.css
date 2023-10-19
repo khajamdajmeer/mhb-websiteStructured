@@ -22,9 +22,10 @@
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
-    background-color: #edf2f4;
+    background-color: #000000;
     position: sticky;
     top: 40px;
+    padding: 4px 0;
 }
 .ma-ddb-hright{
     height: 100%;

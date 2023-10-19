@@ -42,6 +42,16 @@ body{
     background-color: rgb(26, 23, 23);
     
   }
+  :root{
+    --onprimary:#03045e;
+    --primary:#EEF4F9;
+    --org:#fb8500;
+    --primarydark:#bdbfc0;
+    --secondary:#274c77;
+    --manager:#7cdda9ba;
+    --onmanager:#1b4332;
+    
+  }
   @media (max-width:768px) {
     
 
@@ -58,6 +68,7 @@ body{
   }
 
   }
+ 
 
   .logoutbtncommon{
     padding: 0 14px ;
@@ -66,7 +77,9 @@ body{
     border: none;
     color: whitesmoke;
   }
-
+button{
+  transition: all 0.5s ease !important ;
+}
 /* 
   @media (max-width:600px) {
     

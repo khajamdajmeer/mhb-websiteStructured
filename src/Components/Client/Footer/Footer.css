@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: #ffedea;
+    background-color: var(--onprimary);
     padding: 10px 0;
 
 }
@@ -16,24 +16,28 @@
 .c-footer-box h5{
     padding: 5px 0;
     font-size:16px;
-    color: #023047;
+    color: var(--primarydark);
 }
 .c-footer-box h2{
     padding: 5px 0;
     font-size: 24px; 
-    color: #023047;
+    color: var(--primary);
+
 }
 .c-footer-box p{
-    color: gray;
+    color: var(--primarydark);
+
     padding: 5px 0;
 }
 .c-footer-info .material-symbols-outlined{
-    color: #023047;
+    color: var(--primary);
+
 }
 .c-footer-info{
     padding: 8px 0;
     display: flex;
     align-items: center;
     font-weight: bold;
-    color: #023047;
+    color: var(--primary);
+
 }

@@ -17,7 +17,7 @@
 .ad-dbp-link-container{
     width: 100%;
     max-width: 350px;
-    background-color: #3d405b;
+    background-color: var(--onprimary);
     height: 350px;
     border-radius: 10px;
     padding: 10px;
@@ -38,7 +38,7 @@
 }
 .ad-dbp-link-container ul{
     font-size: 30px;
-    color: orange;
+    color: var(--primary);
 }
 .ad-dbp-link-container li{
     padding: 6px;

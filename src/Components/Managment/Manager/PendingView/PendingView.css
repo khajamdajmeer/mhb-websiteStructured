@@ -31,7 +31,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #93a8ac;
+    background-color: var(--onprimary);
+    color: var(--primary);
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     font-weight: bold;
@@ -63,6 +64,7 @@
     width: 30%;
     margin-right: 20px;
     text-align: center;
+    font-weight: bold;
 }
 .ma-pv-liright{
     width: 50%;
@@ -72,14 +74,14 @@
     width: 120px;
     padding: 10px;
     border: none;
-    background-color: #243e36;
+    background-color: var(--onprimary);
     outline: 1px solid white;
     border-radius: 3px;
     color: white;
 }
 .ma-pv-lileftbtn button:hover{
-   
-    background-color: #46d2a8;
+   box-shadow: 1px 2px 20px 2px var(--onprimary);
+    background-color: var(--onprimary);
     
    
 }

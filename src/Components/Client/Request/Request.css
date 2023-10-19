@@ -140,7 +140,13 @@
    .c-book-column button{
     background-color: #fb8500;
     font-weight: bold;
-    color: #023E8A;
+    color: var(--primary);
+    transition: all 0.4s ease-in-out;
+   }
+   .c-book-column button:hover{
+    background-color: var(--primary);
+    color: var(--onprimary);
+    box-shadow: 1px 1px 21px 2px var(--onprimary);
    }
    .c-book-column .material-symbols-outlined{
     color: #023E8A;
@@ -155,4 +161,8 @@
 .iptextbox{
   font-size: 24px;
 }
+.c-bookservice{
+  width: 100%;
+}
+
 }

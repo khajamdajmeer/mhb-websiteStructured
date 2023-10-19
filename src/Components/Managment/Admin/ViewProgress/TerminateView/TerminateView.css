@@ -12,13 +12,14 @@
 
 .ad-terv-center{
     width: 300px;
-    background-color: beige;
+    background-color: var(--primary);
     height:300px;
     border-radius: 8px;
 }
 .ad-terv-head{
     height: 10%;
-    background-color: aqua;
+    background-color: var(--secondary);
+    color: var(--primary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,7 +50,7 @@
     align-items: center;
     padding: 10px 0;
     font-weight: bold;
-    color: blueviolet;
+    color: red;
 }
 .terviewbtnsul{
     justify-content: space-between;
@@ -64,4 +65,19 @@ padding: 4px 0;
 border: none;
 outline: 1px solid black;
 font-weight: bold;
+background-color: var(--onprimary);
+color: var(--primary);
+border-radius: 4px;
+}
+.terviewbtnsul button:hover{
+    box-shadow: 1px 1px 20px 2px black;
+    background-color: var(--primary);
+    color: var(--onprimary);
+}
+.terminatebtn{
+    background-color: red !important;
+}
+.terminatebtn:hover{
+    box-shadow: 1px 1px 20px 2px red !important;
+
 }

@@ -28,6 +28,8 @@
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
     position: relative;
+    background-color: var(--primary);
+    color: var(--onprimary);
 }
 .ma-inr-head button{
     height: 100%;
@@ -49,12 +51,11 @@
 
 .ma-inr-body{
     height: 90%;
-    background-color: #f1faee;
-    width: 100%;
+background-color: var(--secondary);    width: 100%;
+color: var(--primary);
     display: flex;
     flex-direction: column;
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
+    
     align-items: center;
 }
 .ma-inr-item{

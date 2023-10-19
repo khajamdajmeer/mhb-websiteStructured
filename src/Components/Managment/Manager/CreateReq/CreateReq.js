@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './CreateReq.css';
 import { CreateReqSendtoPending,GetTechDetails,CreateReqandForword } from '../../../../ApiCalls/ManagerCalls/RequestCall';
-import Message from '../../Common/Message/Message';
-import arrowimg from '../../../images and tones/downarrow.png'
+import arrowimg from '../../../images and tones/downarrow.png';
+import TopMsg from '../../Common/TopMsg/TopMsg';
 const CreateReq = () => {
   //LOGIC FOR GETING THE TECH DETAILS
   const [techname,setTechname]=useState([])
@@ -39,17 +39,20 @@ const CreateReq = () => {
   
   //LOGIC FOR HANDLING CREATING PENDING REQUEST
   const [showmsg,setShowmsg]=useState(false);
-  const [msgdata,setMsgdata]=useState({message:'',showOk:'true',navigate:''})
+  const [msgdata,setMsgdata]=useState({message:'',showOk:'false',navigate:''})
   const handlepending=async()=>{
     const res = await CreateReqSendtoPending(data);
     if(res.success){
       setShowmsg(true);
-      setMsgdata({message:res.message,showOk:true,navigate:'/dashboard/requests'})
+      setMsgdata({message:res.message,showOk:false,navigate:'/dashboard/requests'})
       setData({
         name:'',mobileNumber:'',Location:'',Address:"",ServiceType:'',ServiceDate:'',
         ServiceTime:'',Note:'',Technicianid:''
     
       })
+      setTimeout(() => {
+        setShowmsg(false)
+      }, 3000);
     }
     else{
       setShowmsg(true);
@@ -87,11 +90,13 @@ const CreateReq = () => {
 const handlebackBtn = ()=>{
   window.history.back();
 }
-
+const topmsgclose = ()=>{
+  setShowmsg(false);
+}
   return (
     <>
     {showmsg&&(
-      <Message message={msgdata.message} showOk={msgdata.showOk} navigate={msgdata.navigate}/>
+      <TopMsg message={msgdata.message} handleclose={topmsgclose}/>
     )}
     <div className="ma-cr-fullscreen">
         <div className="ma-cr-center">

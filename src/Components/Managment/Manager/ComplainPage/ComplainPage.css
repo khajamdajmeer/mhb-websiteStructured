@@ -1,6 +1,6 @@
 .ma-cplp-fullscreen{
     height: 100vh;
-    background-color: orange;
+    background-color: var(--primarydark);
     display: flex;
     flex-direction: column;
     overflow: auto;

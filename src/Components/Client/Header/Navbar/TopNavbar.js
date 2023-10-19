@@ -12,9 +12,11 @@ const TopNavbar = () => {
      <div className="navright">
         <ul className="listright">
         <li id='phone'><div className="lileft"><img src={callicon} alt="" /></div>
-            <div className="liright"><span className="orangecolor">Call for Service</span><br /> 8686303089</div>
-            </li>  <li id='phone'><div className="lileft"><img src={callicon} alt="" /></div>
-            <div className="liright"><span className="orangecolor">Office Number</span><br /> 8919168521</div>
+            <div className="liright"><span className="orangecolor">Call for Service</span><br />
+            <a href="tel:8686303089" style={{color:'black'}}>8686303089</a> </div>
+            </li> 
+             <li id='phone'><div className="lileft"><img src={callicon} alt="" /></div>
+            <div className="liright"><span className="orangecolor">Office Number</span><br /> <a href="tel:8919168521" style={{color:'black'}}>8919168521</a></div>
             </li>
             
             <li id='email'><div className="lileft">

@@ -1,8 +1,8 @@
 .ad-emp-heading{
     width: 100%;
     text-align: center;
-    background-color: #264653;
-color: #fff;
+    background-color: var(--manager);
+    color: var(--onmanager);
 }
 
 @media (max-width:668px) {

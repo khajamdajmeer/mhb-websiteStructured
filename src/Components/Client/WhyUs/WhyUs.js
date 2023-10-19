@@ -18,7 +18,7 @@ const WhyUs = () => {
     <div className="why-us-container">
         <div className="why-center">
             <div className="why-center-left"> 
-                <h3>Why Choose Us?</h3>
+                <h3>Why Choose MHB?</h3>
                 <h2>Best valued deals you will ever find</h2>
                 <p>Discover the Best deals You'll ever find with our unbeatable Pricing.
                     We're dedicated to provide you with the best value for your money. we're your trusted choice for AC repairs and services. With a commitment to excellence, our skilled technicians deliver top-notch solutions to keep your cooling systems running efficiently. We take pride in our reliability, quality workmanship, and 24/7 support. Choose us for a refreshing and worry-free AC experience. 

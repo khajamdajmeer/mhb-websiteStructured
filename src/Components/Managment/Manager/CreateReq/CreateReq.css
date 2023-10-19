@@ -1,7 +1,7 @@
 .ma-cr-fullscreen{
     width: 100vw;
     height: 100vh;
-    background-color: #124559;
+    background-color: var(--secondary);
     display: flex;
     margin: auto;
     align-items: center;
@@ -10,6 +10,7 @@
     z-index: 4;
 }
 .ma-cr-center{
+    box-shadow: 1px 2px 20px 2px black;
     width: 100%;
     max-width: 800px;
     display: flex;
@@ -18,6 +19,7 @@
     justify-content: center;
     background: #dee2ff;
     border-radius: 8px;
+    overflow: hidden;
 }
 .ma-cr-head{
     position: relative;
@@ -26,8 +28,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
+   padding: 8px 0;
+   background-color: var(--onprimary);
+   color: var(--primary);
 }
 .ma-cr-head button{
     height: 100%;
@@ -39,6 +42,7 @@
     background: none;
     border: none;
     cursor: pointer;
+    filter: invert(1);
 }
 .ma-cr-head img{
     height: inherit;
@@ -48,7 +52,8 @@
 }
 .ma-cr-body{
     height: 90%;
-    background-color: #f1faee;
+    background-color: var(--primarydark);
+    font-weight: bold;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -98,12 +103,16 @@
 .ma-cr-liright button{
     width: 90%;
     border: none;
-    outline: 1px solid black;
     border-radius: 5px;
     padding: 4px;
     text-align: center;
+    background-color: var(--secondary);
+    color: var(--primary);
+    font-weight: bold;
 }
-
+.ma-cr-liright button:hover{
+    box-shadow: 1px 2px 10px 2px var(--secondary);
+}
 @media (max-width:768px) {
     .ma-cr-ul{
         padding: 5px 18px;

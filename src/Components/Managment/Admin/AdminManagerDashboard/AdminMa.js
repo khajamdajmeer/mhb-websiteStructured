@@ -40,7 +40,7 @@ const AdminMa = () => {
         <li><button onClick={()=>handlerenderpage('pendingpage')}>PendingPage</button></li>
         <li><button onClick={()=>handlerenderpage('techRequest')}>Tech Request</button></li>
         <li><button onClick={()=>handlerenderpage('ReviewReq')}>Review Request</button></li>
-        <li><button onClick={()=>handlerenderpage('ComplainPage')}>ComplainPage</button></li>
+        {/* <li><button onClick={()=>handlerenderpage('ComplainPage')}>ComplainPage</button></li> */}
       </div>
     </div>
     {renderpage==='request'&&<ViewRequest/>}

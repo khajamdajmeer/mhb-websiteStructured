@@ -12,7 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: beige;
+    background-color: var(--primary);
 }
 .ma-pp-centerdiv{
     margin-top: 40px;
@@ -21,6 +21,9 @@
     height: 80%;
     max-height: 600px;
    background-color: #dfe7fd;
+   box-shadow: 1px 2px 20px 2px black;
+   overflow: hidden;
+   border-radius: 8px;
 }
 .ma-pp-head{
     width: 100%;
@@ -28,7 +31,8 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-color: aliceblue;
+    background-color:var(--secondary);
+    color: var(--primary);
     height: 10%;
 }
 .ma-pp-head h1{
@@ -62,13 +66,16 @@ overflow: auto;
     margin-left: 10px;
     border: none;
     border-radius: 5px;
-    background: #055aa9;
+    background-color: var(--onprimary) ;
+
     color: #fff;
     outline: 1px solid black;
+    font-weight: bold;
 }
 .ma-pp-btn:hover{
    
-    background: #0b3358;
+    background-color: var(--onprimary) ;
+    box-shadow: 1px 2px 20px 2px var(--onprimary);
     color: #fff;
 }
 

@@ -1,6 +1,6 @@
 .ma-rcp-body{
     width: 100%;
-    background-color: orange;
+    background-color: var(--primary);
     height: 100%;
 }
 .ma-rcp-heading{
@@ -12,7 +12,8 @@
 }
 .ma-rcp-searchbody{
     height: 100%;
-    background-color: orange;
+    background-color: var(--primary);
+
 }
 
 .ma-rcp-mapitem{
